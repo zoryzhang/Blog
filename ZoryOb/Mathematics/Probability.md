@@ -191,14 +191,16 @@ Prop. Distribution func is right continuous.
 
 Proof. Given the monotonicity of $F_X$,
 
-$$\begin{aligned}
+$$
+\begin{aligned}
 \lim_{h\to0^+} F_{X}(x+h)
 &=\lim_{h\to0^+} \text{I\kern-0.15em P} \circ X^{-1}((- \infty, x+h])
 =\text{I\kern-0.15em P} \circ X^{-1}(\lim_{h\to0^+} (- \infty, x+h]) 
-\\ &=\text{I\kern-0.15em P} \circ X^{-1}(\lim_{n\to  \infty} (- \infty, x+ \frac 1 n ])
-\\ &=\text{I\kern-0.15em P} \circ X^{-1}(\cap_{n=1}^{\infty} (- \infty, x+ \frac 1 n ])
-\\ &=\text{I\kern-0.15em P} \circ X^{-1}((- \infty, x ])=F_{X}(x)
-\end{aligned}$$
+\\\\ &=\text{I\kern-0.15em P} \circ X^{-1}(\lim_{n\to  \infty} (- \infty, x+ \frac 1 n ])
+\\\\ &=\text{I\kern-0.15em P} \circ X^{-1}(\cap_{n=1}^{\infty} (- \infty, x+ \frac 1 n ])
+\\\\ &=\text{I\kern-0.15em P} \circ X^{-1}((- \infty, x ])=F_{X}(x)
+\end{aligned}
+$$
 
 In contrast, for $\lim_{h\to0^-} F_{X}(x+h)=\text{I\kern-0.15em P} \circ X^{-1}((- \infty, x))=F_X(x-)$.
 
