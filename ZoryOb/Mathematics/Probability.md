@@ -253,13 +253,13 @@ E.g. $\omega=(\omega_{1}, \omega_{2}), X_{1}(\omega) \equiv \tilde X_{1}(\omega_
 ## 3.2 Discrete distributions
 Def. (**Bernoulli trial**) $A \in \mathcal{F}$. We call the trial a success if $A$ occurs. Bernoulli distribution  $X \sim Be(p)$.
 
-Def. (**Binomial distribution** $Y \sim Bin(n,p)$) Perform n independent Bernoulli trials with $p=\text{I\kern-0.15em P}(A)$, and let Bernoulli r.v.s. $X_{1}, X_{2} \dots X_{n}$ be the indicator funciton of success of the experiments. Let $Y:=\sum X_{i}$, then the p.m.f. $f_{Y}(k)={n \choose k} p^{k} (1-p)^{n-k},k=1, 2, \dots, n$.
+Def. (**Binomial distribution**, $Y \sim Bin(n,p)$) Perform n independent Bernoulli trials with $p=\text{I\kern-0.15em P}(A)$, and let Bernoulli r.v.s. $X_{1}, X_{2} \dots X_{n}$ be the indicator funciton of success of the experiments. Let $Y:=\sum X_{i}$, then the p.m.f. $f_{Y}(k)={n \choose k} p^{k} (1-p)^{n-k},k=1, 2, \dots, n$.
 
-Def. (**Geometric distribution** $W \sim Geom(p)$) Keep performing Bernoulli trials until the first success, and let $W:=\text{the waiting time}$, then $f_{W}(k)=(1-p)^{k-1}p,k=1, 2, \dots$
+Def. (**Geometric distribution**, $W \sim Geom(p)$) Keep performing Bernoulli trials until the first success, and let $W:=\text{the waiting time}$, then $f_{W}(k)=(1-p)^{k-1}p,k=1, 2, \dots$
 
-Def. (**Negative Binomial distribution** $W_{r} \sim NB(r,p)$) Let $W_{r}:=\text{the waiting time for r sucesses}$, then $f_{W_{r}}(k)={k-1 \choose r-1} p^{r-1} (1-p)^{k-r}p ,k=1, 2, \dots$
+Def. (**Negative Binomial distribution**, $W_{r} \sim NB(r,p)$ ) Let $W_{r}:=\text{the waiting time for r sucesses}$, then $f_{W_{r}}(k)={k-1 \choose r-1} p^{r-1} (1-p)^{k-r}p ,k=1, 2, \dots$
 
-Def. (**Poisson distribution** $X \sim poisson(\lambda)$) $f_{X}(k):= \frac{\lambda^{k}}{k!} e^{-\lambda}, k=1, 2, \dots$ The Poisson distribution is an approximation of a binomial distribution of a rare event in the case that n is large, p is small, and $\lambda=np$ is moderate.
+Def. (**Poisson distribution**, $X \sim poisson(\lambda)$ ) $f_{X}(k):= \frac{\lambda^{k}}{k!} e^{-\lambda}, k=1, 2, \dots$ The Poisson distribution is an approximation of a binomial distribution of a rare event in the case that n is large, p is small, and $\lambda=np$ is moderate.
 
 ## 3.3 Expectation
 Def. (**Expectation**) A discrete r.v. X taking values from ${x_{1}, x_{2}, \dots}$ with p.m.f. $f_{X}(x)$. The expectation $\text{I\kern-0.15em E}X:=\sum_{i} x_{i} f_{X}(x_{i})=\sum_{x:f_{X}(x)>0} xf_{X}(x)$ exists if the sum is absolutely convergent.
