@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ZoryOb/FML/Kernel.md",
+                "file": "ZoryOb/Mathematics/Probability.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ZoryOb/FML/Kernel.md",
+                "file": "ZoryOb/Mathematics/Probability.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ZoryOb/FML/Kernel.md",
+                "file": "ZoryOb/Mathematics/Probability.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ZoryOb/FML/Kernel.md"
+                "file": "ZoryOb/Mathematics/Probability.md"
               }
             }
           },
@@ -142,8 +142,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -156,6 +155,8 @@
   },
   "active": "8b87deb19a119901",
   "lastOpenFiles": [
+    "ZoryOb/Mathematics/Statistic.md",
+    "ZoryOb/FML/Kernel.md",
     "ZoryOb/Mathematics/Probability.md",
     "ZoryOb/att",
     "Zory🫤/FML/Kernel.md",
