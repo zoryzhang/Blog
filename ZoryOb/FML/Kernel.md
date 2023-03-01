@@ -4,6 +4,7 @@ Reference:
 2. [Reproducing Kernel Hilbert Space, Mercer's Theorem, Eigenfunctions, Nyström Method, and Use of Kernels in Machine Learning: Tutorial and Survey](https://arxiv.org/abs/2106.08443)
 3. [wikipedia](https://en.wikipedia.org/wiki/Reproducing_kernel_Hilbert_space)
 4. Foundations of Machine Learning (second edition)
+5. https://ngilshie.github.io/jekyll/update/2018/02/01/RKHS.html
 
 ## Kernels
 def. (**Real-valued Hilbert space**) a real textbftor space $\mathcal{H}$ equipped with an inner product, s.t. the induced normed textbftor space($|| \textbf v||=\sqrt{ \left<  \textbf v, \textbf v \right> }$) is a Banach space.

@@ -17,7 +17,7 @@ Rmk. Field is a collection of events that are of interest.
 
 Def. (**$\sigma$-Field** $\mathcal{F}$) A Field satisfies that (closed under countable unions & intersections)
 $$A_{1}, A_{2}, \dots \in \mathcal{F} \implies \bigcup_{i=1}^ {\infty} A_{i} \in \mathcal{F}$$
-E.g. The smallest $\sigma$-Field=$\{\emptyset , \Omega\}$, largest=$2^{\Omega}$
+E.g. The smallest $\sigma\text{-Field}=\{\emptyset, \Omega\}$, largest=$2^{\Omega}$.
 
 Rmk. With any experiment, we may associate a pair $(\Omega, \mathcal{F})$.
 ![[proba1.png]]
@@ -260,8 +260,10 @@ Def. (**Negative Binomial distribution**, $W_{r} \sim NB(r,p)$ ) Let $W_{r}:=\te
 Def. (**Poisson distribution**, $X \sim poisson(\lambda)$ ) $f_{X}(k):= \frac{\lambda^{k}}{k!} e^{-\lambda}, k=1, 2, \dots$ The Poisson distribution is an approximation of a binomial distribution of a rare event in the case that n is large, p is small, and $\lambda=np$ is moderate.
 
 ## 3.3 Expectation
-Def. (**Expectation**) A discrete r.v. X taking values from ${x_{1}, x_{2}, \dots}$ with p.m.f. $f_{X}(x)$. The expectation $\text{I\kern-0.15em E}X:=\sum_{i} x_{i} f_{X}(x_{i})=\sum_{x:f_{X}(x)>0} xf_{X}(x)$ exists if the sum is absolutely convergent.
+Def. (**Expectation**) A discrete r.v. X taking values from ${x_{1}, x_{2}, \dots}$ with p.m.f. $f_{X}(x)$. The expectation $\text{I\kern-0.15em E}X:=\sum_{i} x_{i} f_{X}(x_{i})=\sum_{x:f_{X}(x)>0} xf_{X}(x)$ exists if the sum is absolutely convergent. The summation range is indicating the countability.
 
 Rmk. Absolutely convergence ensures the reorderability.
 
-Lemma. (Change of variable) $\text{I\kern-0.15em E}g(X)=\text{I\kern-0.15em E}Y:=\sum_{y:f_{Y}(y)>0} yf_{Y}(y)=\sum_{x:f_{X}(x)>0} g(x)f_{X}(x)$.
+Lemma. (Change of variable for Lebesgue integrable) $\text{I\kern-0.15em E}g(X)=\text{I\kern-0.15em E}Y:=\sum_{y:f_{Y}(y)>0} yf_{Y}(y)=\sum_{x:f_{X}(x)>0} g(x)f_{X}(x)$.
+
+Lemma. (3.6.6) Let $X,Y$ be two r.v.s. jointly discrete, and $g(X,Y)$ is still a r.v, then $\text{I\kern-0.15em E}g(X,Y)=\sum_{x,y:f_{X,Y}(x,y)>0} g(x,y) f_{X,Y}(x,y)$.
