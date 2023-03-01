@@ -125,7 +125,7 @@ $$
 E.g. $\Omega= \mathbb{R}$, $\mathcal{F}$ is some $\sigma$-field including all intervals. If we know $\text{I\kern-0.15em P}([a,b])$ for all $[a,b] \subset \mathbb{R}$, then 
 $$\lim_{n \to  \infty} \text{I\kern-0.15em P}([a+ \frac{1}{n}, b- \frac{1}{n} ])=\text{I\kern-0.15em P}(\lim_{n \to  \infty}  [a+ \frac{1}{n}, b- \frac{1}{n} ])=\text{I\kern-0.15em P}((a,b))$$, which uniquely extend all open intervals.
 
-## 1.3 Conditional probability, independence
+## 1.4 Conditional probability, independence
 Rmk. "B has occurred" means $\omega \in B$. We may consider B as another sample space.
 
 Def. (**Conditional probability**) If $\text{I\kern-0.15em P}(B)>0$, then $\text{I\kern-0.15em P}(A|B)= \frac{\text{I\kern-0.15em P}(A \cap B)}{\text{I\kern-0.15em P}(B)}$(pronounced as probability of A given B).
@@ -189,17 +189,28 @@ Rmk. Because of the continuity, it's enough to know the **distribution function*
 
 Prop. Distribution func is right continuous.
 
-Proof. Given the monotonicity of $F_X$,
 $$
 \begin{aligned}
+\mu(A)
+&=\mu(\lim_{n \to  \infty} A_n)
+:=\mu(\bigcup_{n=1}^ {\infty} \bigcap_{m=n}^ {\infty} A_{m}) \\
+&=\mu(\bigcup_{n=1}^ {\infty} A_{n})
+=\mu(\bigcup_{n=1}^ {\infty}D_{n})
+\overset{(*)}{=} \sum_{n=1}^ {\infty} \mu(D_{n})\\
+&=\lim_{n \to  \infty} \sum_{i=1}^{n} \mu(D_i)
+=\lim_{n \to  \infty} \mu(\bigcup_{i=1}^{n} D_i)
+=\lim_{n \to  \infty} \mu(A_n)
+\end{aligned}$$
+
+Proof. Given the monotonicity of $F_X$,
+$$\begin{aligned}
 \lim_{h\to0^+} F_{X}(x+h)
 &=\lim_{h\to0^+} \text{I\kern-0.15em P} \circ X^{-1}((- \infty, x+h])
 =\text{I\kern-0.15em P} \circ X^{-1}(\lim_{h\to0^+} (- \infty, x+h]) \\
 &=\text{I\kern-0.15em P} \circ X^{-1}(\lim_{n\to  \infty} (- \infty, x+ \frac 1 n ])\\
 &=\text{I\kern-0.15em P} \circ X^{-1}(\cap_{n=1}^{\infty} (- \infty, x+ \frac 1 n ])
 =\text{I\kern-0.15em P} \circ X^{-1}((- \infty, x ])=F_{X}(x)
-\end{aligned}
-$$
+\end{aligned}$$
 
 In contrast, for $\lim_{h\to0^-} F_{X}(x+h)=\text{I\kern-0.15em P} \circ X^{-1}((- \infty, x))=F_X(x-)$.
 
