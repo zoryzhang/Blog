@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "4e91a60b37e791d5",
@@ -153,7 +154,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8b87deb19a119901",
+  "active": "3d93ab568e75cd17",
   "lastOpenFiles": [
     "ZoryOb/Mathematics/Probability.md",
     "ZoryOb/Mathematics/Statistic.md",

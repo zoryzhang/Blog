@@ -134,7 +134,7 @@ Lemma. (**Law of total probability**) Let $B_{1}, B_{2}, \dots, B_{n}$ be a part
 
 Rmk. $\text{I\kern-0.15em P}(\cdot | B)=\mathbb{Q}(\cdot)$ is also a probability measure.
 
-Cor. Bayes' Theorm
+Cor. **Bayes' Theorm**
 
 Def. (**Independence of events**) Let $A, B \in \mathcal{F}$, that $\text{I\kern-0.15em P}(A \cap B)=\text{I\kern-0.15em P}(A)\text{I\kern-0.15em P}(B)$, denoted as $A  \perp \!\!\! \perp B$.
 
@@ -185,9 +185,9 @@ Rmk. Define $Q(B):=\text{I\kern-0.15em P}(X^{-1}(B))$, or $Q=\text{I\kern-0.15em
 Proof. (countable additivity) Notice that $X^{-1}(B_{n})=\{ \omega : X(\omega ) \in B_{n} \}$, and must be disjoint if $B_n$ disjoint, therefore $Q(\bigcup_{i=1}^ {\infty} B_{i})=\bigcup_{i=1}^ {\infty} \text{I\kern-0.15em P}(X^{-1}(B_{i}))=\sum_{i=1}^ {\infty} Q(B_{i})$.
 
 ## 2.4 Distribution function
-Rmk. Because of the continuity, it's enough to know the **distribution function** $F_X(x):=\text{I\kern-0.15em P} \circ X^{-1}((- \infty, x]), \forall x$, given Caratheodory's extension theorem, to understand the prabability distribution of a random variable.
+Rmk. Because of the continuity, it's enough to know the **(cumulative) distribution function** $F_X(x):=\text{I\kern-0.15em P} \circ X^{-1}((- \infty, x]), \forall x$, given Caratheodory's extension theorem, to understand the prabability distribution of a random variable.
 
-Prop. Distribution func is right continuous.
+Prop. c.d.f is right continuous.
 
 Proof. Given the monotonicity of $F_X$,
 
@@ -212,7 +212,7 @@ Def. (**Discrete r.v.**) X takes values in some countable subset of $\mathbb{R}$
 
 Def. (**Probability mass func p.m.f.**) $f(x)=\text{I\kern-0.15em P} \circ X^{-1}(\{x\})=\text{I\kern-0.15em P}(X=x)=F_X(x)-F_X(x-)$.
 
-Def. (**(Absolutely) continuous r.v.**) distribution func $F_X(x)$ can be written as an integral of some Lebesgue integrable function $f:\mathbb{R} \to [0, \infty)$. $f$ is called **probability density function**(p.d.f.).
+Def. (**(Absolutely) continuous r.v.**) c.d.f. $F_X(x)$ can be written as an integral of some Lebesgue integrable function $f:\mathbb{R} \to [0, \infty)$. $f$ is called **probability density function**(p.d.f.).
 
 
 ## 2.5 Random vector
@@ -226,16 +226,13 @@ Def. (**Random function**) By metric -> open set -> Borel $\sigma$-field.
 
 Def. (**Joint distribution func**) $F_{X_{1}, X_{2}}(x_{1}, x_{2}) = \text{I\kern-0.15em P} \circ \vec X^{-1}((- \infty, x_{1}] \times (- \infty, x_{2}])$.
 
-Def. (**Margined distribution func**) $F_{X}(x)=\lim_{y \uparrow  \infty} F_{X,Y}(x,y)$.
+Def. (**Marginal distribution func**) $F_{X}(x)=\lim_{y \uparrow  \infty} F_{X,Y}(x,y)$. The marginal distribution of a subset of a collection of random variables is the probability distribution of the variables contained in the subset. It gives the probabilities of various values of the variables in the subset without reference to the values of the other variables.
 
 Def. (**(Absolutely) continuous r.v.s.**) distribution func $F_{X,Y}(x,y)$ can be written as an double integral of some Lebesgue integrable functions $f:\mathbb{R^2} \to [0, \infty)$. $f$ is called **joint probability density function**.
 
-Two X, Y may not
-#TODO 
-
 
 # Ch3 Discrete world
-## 3.1 Independence
+## 3.1 Independence of discrete r.v.
 Def. (**Independence of r.v.**) $X,Y:\Omega\to \mathbb{R}$ are independent($X  \perp \!\!\! \perp Y$) if $\text{I\kern-0.15em P}(X \in E, Y \in F)=\text{I\kern-0.15em P}(X \in E) \text{I\kern-0.15em P}(Y \in F),\forall E,F \in B(\mathbb{R})$.
 
 Rmk. The following two are also equivalent to the definition:
@@ -252,21 +249,43 @@ Proof. By measure theory.
 E.g. $\omega=(\omega_{1}, \omega_{2}), X_{1}(\omega) \equiv \tilde X_{1}(\omega_{1}), X_{2}(\omega) \equiv \tilde X_{2}(\omega_{2})$, where $X_{1}, X_{2}$ are defined on the product space, then $X_{1}  \perp \!\!\! \perp X_{2}$.
 
 ## 3.2 Discrete distributions
-Def. (**Bernoulli trial**) $A \in \mathcal{F}$. We call the trial a success if $A$ occurs. Bernoulli distribution  $X \sim Be(p)$.
+> Def. (**Bernoulli trial**) $A \in \mathcal{F}$. We call the trial a success if $A$ occurs. Bernoulli distribution  $X \sim Be(p)$.
 
-Def. (**Binomial distribution**, $Y \sim Bin(n,p)$ ) Perform n independent Bernoulli trials with $p=\text{I\kern-0.15em P}(A)$, and let Bernoulli r.v.s. $X_{1}, X_{2} \dots X_{n}$ be the indicator funciton of success of the experiments. Let $Y:=\sum X_{i}$, then the p.m.f. $f_{Y}(k)={n \choose k} p^{k} (1-p)^{n-k},k=1, 2, \dots, n$.
+> Def. (**Binomial distribution**, $Y \sim Bin(n,p)$ ) Perform n independent Bernoulli trials with $p=\text{I\kern-0.15em P}(A)$, and let Bernoulli r.v.s. $X_{1}, X_{2} \dots X_{n}$ be the indicator funciton of success of the experiments. Let $Y:=\sum X_{i}$, then the p.m.f. $f_{Y}(k)={n \choose k} p^{k} (1-p)^{n-k},k=1, 2, \dots, n$.
 
-Def. (**Geometric distribution**, $W \sim Geom(p)$ ) Keep performing Bernoulli trials until the first success, and let $W:=\text{the waiting time}$, then $f_{W}(k)=(1-p)^{k-1}p,k=1, 2, \dots$
+> Def. (**Geometric distribution**, $W \sim Geom(p)$ ) Keep performing Bernoulli trials until the first success, and let $W:=\text{the waiting time}$, then $f_{W}(k)=(1-p)^{k-1}p,k=1, 2, \dots$
 
-Def. (**Negative Binomial distribution**, $W_{r} \sim NB(r,p)$ ) Let $W_{r}:=\text{the waiting time for r sucesses}$, then $f_{W_{r}}(k)={k-1 \choose r-1} p^{r-1} (1-p)^{k-r}p ,k=1, 2, \dots$
+> Def. (**Negative Binomial distribution**, $W_{r} \sim NB(r,p)$ ) Let $W_{r}:=\text{the waiting time for r sucesses}$, then $f_{W_{r}}(k)={k-1 \choose r-1} p^{r-1} (1-p)^{k-r}p ,k=1, 2, \dots$
 
-Def. (**Poisson distribution**, $X \sim poisson(\lambda)$ ) $f_{X}(k):= \frac{\lambda^{k}}{k!} e^{-\lambda}, k=1, 2, \dots$ The Poisson distribution is an approximation of a binomial distribution of a rare event in the case that n is large, p is small, and $\lambda=np$ is moderate.
+> Def. (**Poisson distribution**, $X \sim poisson(\lambda)$ ) $f_{X}(k):= \frac{\lambda^{k}}{k!} e^{-\lambda}, k=1, 2, \dots$ The Poisson distribution is an approximation of a binomial distribution of a rare event in the case that n is large, p is small, and $\lambda=np$ is moderate.
 
-## 3.3 Expectation
-Def. (**Expectation**) A discrete r.v. X taking values from ${x_{1}, x_{2}, \dots}$ with p.m.f. $f_{X}(x)$. The expectation $\text{I\kern-0.15em E}X:=\sum_{i} x_{i} f_{X}(x_{i})=\sum_{x:f_{X}(x)>0} xf_{X}(x)$ exists if the sum is absolutely convergent. The summation range is indicating the countability.
+## 3.3 Expectation of discrete r.v.
+> Def. (**Expectation**) A discrete r.v. X taking values from ${x_{1}, x_{2}, \dots}$ with p.m.f. $f_{X}(x)$. The expectation $\text{I\kern-0.15em E}X:=\sum_{i} x_{i} f_{X}(x_{i})=\sum_{x:f_{X}(x)>0} xf_{X}(x)$ exists if the sum is absolutely convergent. The summation range is indicating the countability.
 
 Rmk. Absolutely convergence ensures the reorderability.
 
-Lemma. (Change of variable for Lebesgue integrable) $\text{I\kern-0.15em E}g(X)=\text{I\kern-0.15em E}Y:=\sum_{y:f_{Y}(y)>0} yf_{Y}(y)=\sum_{x:f_{X}(x)>0} g(x)f_{X}(x)$.
+Lemma. (**Change of variable for Lebesgue integrable**) $\text{I\kern-0.15em E}g(X)=\text{I\kern-0.15em E}Y:=\sum_{y:f_{Y}(y)>0} yf_{Y}(y)=\sum_{x:f_{X}(x)>0} g(x)f_{X}(x)$.
 
 Lemma. (3.6.6) Let $X,Y$ be two r.v.s. jointly discrete, and $g(X,Y)$ is still a r.v, then $\text{I\kern-0.15em E}g(X,Y)=\sum_{x,y:f_{X,Y}(x,y)>0} g(x,y) f_{X,Y}(x,y)$.
+
+Rmk. Expectation has finite linearity.
+
+> Def. (**Uncorrelated**) $\text{I\kern-0.15em E}(XY)=\text{I\kern-0.15em E}(X)E(Y)$. Independence implies uncorrelation.
+
+## 3.4 Variance of discrete r.v.
+> Def. (**k-th moments**) $g(x)=x^{k}, \text{I\kern-0.15em E} X^k=:m_{k}$
+
+> Def. (**k-th central moments**) $g(x)=(x-\text{I\kern-0.15em E} X)^{k}, \text{I\kern-0.15em E} (X-\text{I\kern-0.15em E} X)^k=:\sigma_{k}$
+
+> Def. (**Variance**) 2-nd central moments $\sigma_{2}=m_{2}-m_{1}^{2}$, which describes the randomness of a r.v.
+
+> Def. (**Covariance**) $Cov(X,Y)=\text{I\kern-0.15em E}[(X-\text{I\kern-0.15em E}X)(Y-\text{I\kern-0.15em E}Y)]=\text{I\kern-0.15em E}XY-\text{I\kern-0.15em E}X \cdot \text{I\kern-0.15em E} Y$.
+
+Rmk. Properties of variance.
+1. $Var(aX+b)=a^{2} Var X$
+2. $VarX=Cov(X,X)$
+3. $Var(X+Y)=Var X + Var Y+2Cov(X,Y)$
+
+## 3.5 Conditional distribution & expectation
+> Joint p.d.f is a symmetric viewpoint, here we try an asymmetric viewpoint.
+
