@@ -121,8 +121,31 @@
     ],
     "currentTab": 0
   },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
   "active": "37311f906b44f63f",
   "lastOpenFiles": [
+    "Mathematics/Probability.md",
+    "att/proba1.png",
+    "zotero.json",
+    "Mathematics/Statistic.md",
+    "Graph Kernel.md",
+    "TCS/Approximation Algorithms.md",
+    "tex.json",
+    "Zettelkasten Method.md",
+    "FML/Kernel.md",
+    "LICENSE",
+    "readme.md",
+    "TCS/Randomized Algorithm.md",
+    "Mathematics/Linear algebra.md",
     "Hello.md",
     "Approximation Algorithms.md"
   ]

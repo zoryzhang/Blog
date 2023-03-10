@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#left≥4clogn",
+                "query": "tag:#TODO",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,7 +65,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -156,7 +157,10 @@
   },
   "active": "3d93ab568e75cd17",
   "lastOpenFiles": [
+    "Knowledge graph.md",
     "ZoryOb/Mathematics/Probability.md",
+    "Zory🫤/zotero.json",
+    "Zory🫤",
     "ZoryOb/Mathematics/Statistic.md",
     "ZoryOb/FML/Kernel.md",
     "ZoryOb/att",
