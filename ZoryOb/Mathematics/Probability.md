@@ -247,14 +247,12 @@ Rmk. We can replace all Borel sets by all "rectangles".
 
 > Def. (**(Absolutely) continuous r.v.s.**) distribution func $F_{X,Y}(x,y)$ can be written as an double integral of some Lebesgue integrable functions $f:\mathbb{R^2} \to [0, \infty)$. $f$ is called **joint probability density function**.
 
-
-# Ch3 Discrete world
-## 3.1 Independence of discrete r.v.
-> Def. (**Independence of r.v.**) $X,Y:\Omega\to \mathbb{R}$ are independent($X  \perp \!\!\! \perp Y$) if $\text{I\kern-0.15em P}(X \in E, Y \in F)=\text{I\kern-0.15em P}(X \in E) \text{I\kern-0.15em P}(Y \in F),\forall E,F \in B(\mathbb{R})$.
+## 2.6 Independence of r.v.s.
+> Def. (**Independence of r.v.s.**) $X,Y:\Omega\to \mathbb{R}$ are independent($X  \perp \!\!\! \perp Y$) if $\text{I\kern-0.15em P}(X \in E, Y \in F)=\text{I\kern-0.15em P}(X \in E) \text{I\kern-0.15em P}(Y \in F),\forall E,F \in B(\mathbb{R})$.
 
 Rmk. The following two are also equivalent to the definition:
 1. Holding on all half spaces is enough: $F_{X,Y}(x,y)=F_{X}(x)F_{Y}(y)$.
-2. Holding on all single points is enough: p.m.f if discrete; otherwise p.d.f
+2. Holding on all single points is enough: p.m.f if discrete; otherwise p.d.f, i.e., $f_{X,Y}(x,y)=f_{X}(x)f_{Y}(y)$.
 
 > Def. (**Mutually independence of r.v.s.**) $F_{X_{1},X_{2}, \dots, X_{n}}(x_{1}, x_{2}, \dots, x_{n})=F_{X_{1}}(x_{1})F_{X_{2}}(x_{2}) \dots F_{X_{n}}(x_{n})$. By choosing $x_i= \infty$, we have the freedom to restrict on all subsets of r.v.s, not only all of them.
 
@@ -265,10 +263,11 @@ Proof. By measure theory.
 
 E.g. $\omega=(\omega_{1}, \omega_{2}), X_{1}(\omega) \equiv \tilde X_{1}(\omega_{1}), X_{2}(\omega) \equiv \tilde X_{2}(\omega_{2})$, where $X_{1}, X_{2}$ are defined on the product space, then $X_{1}  \perp \!\!\! \perp X_{2}$.
 
-## 3.2 Discrete distributions
-> Def. (**Bernoulli trial**) $A \in \mathcal{F}$. We call the trial a success if $A$ occurs. Bernoulli distribution  $X \sim Be(p)$.
+# Ch3 Discrete world
+## 3.1 Discrete distributions
+> Def. (**Bernoulli distribution** $X \sim Be(p)$) Bernoulli trial is that $A \in \mathcal{F}$, and we call the trial a success if $A$ occurs. Bernoulli distribution is based on single Bernoulli trial.
 
-> Def. (**Binomial distribution**, $Y \sim Bin(n,p)$ ) Perform n independent Bernoulli trials with $p=\text{I\kern-0.15em P}(A)$, and let Bernoulli r.v.s. $X_{1}, X_{2} \dots X_{n}$ be the indicator funciton of success of the experiments. Let $Y:=\sum X_{i}$, then the p.m.f. $f_{Y}(k)={n \choose k} p^{k} (1-p)^{n-k},k=1, 2, \dots, n$.
+> Def. (**Binomial distribution**, $Y \sim Bin(n,p)$ ) Perform n independent Bernoulli trials with $p=\text{I\kern-0.15em P}(A)$, and let Bernoulli r.v.s. $X_{1}, X_{2} \dots X_{n}$ be the indicator funciton of success of the experiments. Let $Y:=\sum X_{i}$, then the p.m.f. $f_{Y}(k)={n \choose k} p^{k} (1-p)^{n-k},k=1, 2, \dots, n$. **Binomial process** is that $Y_n$ #TODO 
 
 > Def. (**Geometric distribution**, $W \sim Geom(p)$ ) Keep performing Bernoulli trials until the first success, and let $W:=\text{the waiting time}$, then $f_{W}(k)=(1-p)^{k-1}p,k=1, 2, \dots$
 
@@ -276,12 +275,14 @@ E.g. $\omega=(\omega_{1}, \omega_{2}), X_{1}(\omega) \equiv \tilde X_{1}(\omega_
 
 > Def. (**Poisson distribution**, $X \sim poisson(\lambda)$ ) $f_{X}(k):= \frac{\lambda^{k}}{k!} e^{-\lambda}, k=1, 2, \dots$ The Poisson distribution is an approximation of a binomial distribution of a rare event in the case that n is large, p is small, and $\lambda=np$ is moderate.
 
-## 3.3 Expectation of discrete r.v.
+## 3.2 Expectation of discrete r.v.
 > Def. (**Expectation**) A discrete r.v. X taking values from ${x_{1}, x_{2}, \dots}$ with p.m.f. $f_{X}(x)$. The expectation $\text{I\kern-0.15em E}X:=\sum_{i} x_{i} f_{X}(x_{i})=\sum_{x:f_{X}(x)>0} xf_{X}(x)$ exists if the sum is absolutely convergent. The summation range is indicating the countability.
+
+Rmk. Our best guess of X to minimize $(X-\text{I\kern-0.15em E}X)^{2}$.
 
 Rmk. Absolutely convergence ensures the reorderability.
 
-Lemma. (**Change of variable for Lebesgue integrable**) $\text{I\kern-0.15em E}g(X)=\text{I\kern-0.15em E}Y:=\sum_{y:f_{Y}(y)>0} yf_{Y}(y)=\sum_{x:f_{X}(x)>0} g(x)f_{X}(x)$.
+Lemma. (**Change of variable for Lebesgue integral) $\text{I\kern-0.15em E}g(X)=\sum_{x:f_{X}(x)>0} g(x)f_{X}(x)$.
 
 Lemma. (3.6.6) Let $X,Y$ be two r.v.s. jointly discrete, and $g(X,Y)$ is still a r.v, then $\text{I\kern-0.15em E}g(X,Y)=\sum_{x,y:f_{X,Y}(x,y)>0} g(x,y) f_{X,Y}(x,y)$.
 
@@ -289,7 +290,7 @@ Rmk. Expectation has finite linearity.
 
 > Def. (**Uncorrelated**) $\text{I\kern-0.15em E}(XY)=\text{I\kern-0.15em E}(X)E(Y)$. Independence implies uncorrelation.
 
-## 3.4 Variance of discrete r.v.
+## 3.3 Variance of discrete r.v.
 > Def. (**k-th moments**) $m_{k}:=\text{I\kern-0.15em E} X^k$.
 
 > Def. (**k-th central moments**) $\sigma_{k}:=\text{I\kern-0.15em E} (X-\text{I\kern-0.15em E} X)^k$.
@@ -303,16 +304,68 @@ Rmk. Properties of variance.
 2. $VarX=Cov(X,X)$
 3. $Var(X+Y)=Var X + Var Y+2Cov(X,Y)$
 
-## 3.5 Conditional distribution & expectation
+## 3.4 Conditional distribution & expectation
 > Joint p.d.f is a symmetric viewpoint, here we try an asymmetric viewpoint.
 
-> Def. (**Conditional distribution** of Y given X=x) To answer $\text{I\kern-0.15em P}(Y \in \cdot|X=x): B(\mathbb{R}) \to [0,1]$, define the c.m.f. $F_{Y|X}(\cdot|x):=\text{I\kern-0.15em P}(Y \le \cdot|X=x)$. The p.m.f $f_{Y|X}(\cdot|x)=\frac{ f_{X,Y}(x, \cdot) }{ f_{X}(x) }$, if $f_{X}(x)>0$.
+> Def. (**Conditional distribution** of Y given event "X=x") To answer $\text{I\kern-0.15em P}(Y \in \cdot|X=x): B(\mathbb{R}) \to [0,1]$, define the c.m.f. $F_{Y|X}(\cdot|x):=\text{I\kern-0.15em P}(Y \le \cdot|X=x)$. The p.m.f $f_{Y|X}(\cdot|x)=\frac{ f_{X,Y}(x, \cdot) }{ f_{X}(x) }$, if $f_{X}(x)>0$.
 
-> Def. (**Conditional expectation** of Y given event "X=x") $\psi(\cdot):= \text{I\kern-0.15em E}(Y|X=\cdot):=\sum_{y} y f_{Y|X}(y|\cdot)$.
+> Def. (**Conditional expectation** of Y given event "$X=x:=\cdot$") $\psi_{Y|X}: \mathbb{R} \to \mathbb{R}$, $\psi_{Y|X}(\cdot):= \text{I\kern-0.15em E}(Y|X=\cdot):=\sum_{y} y f_{Y|X}(y|\cdot)$.
 
-> Def. (**Conditional expectation** of Y given a r.v. X) $\psi(X):= \text{I\kern-0.15em E}(Y|X):=\text{I\kern-0.15em E} \psi(\cdot) =\sum_{x,y} y f_{Y|X}(y|x)$.
+Rmk. Our best guess of Y to minimize $(Y-\text{I\kern-0.15em E}Y)^{2}$, after know that $X=x$.
+
+> Def. (**Conditional expectation** of Y given a r.v. X) $\psi_{Y}: r.v. \to r.v.$, $\psi_{Y}(X):= \text{I\kern-0.15em E} (Y|X)=\sum_{x} \mathbb{1}(X=x) \cdot \text{I\kern-0.15em E}(Y|X=x)=\sum_{x} \mathbb{1}(X=x) \psi_{Y|X}(x)$.
+
+Rmk. $\psi_{Y}(X)$ is from the same probability space as $X$, and it's our best guess of the "strategy" of Y to minimize $(Y-\text{I\kern-0.15em E}Y)^{2}$, after knowing the distribution of $X$.
 
 > Def. (**Conditional expectation** of Y given a $\sigma$-field) skipped.
 
-> Thm. (**Law of total expectation**) $\xi(X):=\text{I\kern-0.15em E}(Y|X), \text{I\kern-0.15em E} \xi(X)=\text{I\kern-0.15em E}Y$.
-> 
+> Thm. (**Law of total expectation**) $\text{I\kern-0.15em E}\text{I\kern-0.15em E} (Y|X)=\text{I\kern-0.15em E} \psi_{Y}(X)=\sum_{x} \text{I\kern-0.15em P}(X=x) \cdot \text{I\kern-0.15em E}(Y|X=x)=\text{I\kern-0.15em E} Y$. 
+
+## 3.6 Sum of random variables
+- (Convolution) If $X  \perp \!\!\! \perp Y$, $f_{X+Y}(z)=\sum_{x}f_{X}(x)f_{Y}(z-x)$.
+
+# Ch4 Continuous world
+The probability at u is $f_{X}(u) \,\mathrm{d}u$.
+
+## 4.1 Expectation of continuous r.v.
+> Def. (**Expectation of continuous r.v.** X)  $\text{I\kern-0.15em E}X:=\int_{- \infty}^ {\infty} x f_{X}(x) \,\mathrm{d}x$. It exists if absolutely convergent.
+
+Lemma. (**Tail probability**) $\text{I\kern-0.15em E} X=\int_{- \infty}^ {\infty} (1-F_{X}(x)) \,\mathrm{d}x=\int_{- \infty}^ {\infty} \text{I\kern-0.15em P}(X \ge x) \,\mathrm{d}x$.
+
+Thm. (**Change of variable for Lebesgue integral) Suppose X and g(X) are both continuous r.v., $g(X) \ge 0$, $\text{I\kern-0.15em E}g(X)=\int_{- \infty}^ {\infty} g(x) f_{X}(x)  \,\mathrm{d} x$.
+
+Proof. 
+
+$$
+\begin{aligned}
+\text{I\kern-0.15em E} g(X)
+&=\int_{0}^{\infty} \text{I\kern-0.15em P}(g(X) >x) \,\mathrm{d}x
+=\int_{0}^{\infty} \left[\int_{B:=\{y:g(y)>x\}} f_{X}(y) \,\mathrm{d} y \right] \,\mathrm{d} x,
+\\
+&=\int_{-\infty}^{\infty} [ \int_{0}^{g(y)} f_{X}(y) \,\mathrm{d} x ] \,\mathrm{d}y
+=\int_{-\infty}^{\infty} g(y) f_{X}(y) \,\mathrm{d}y
+\end{aligned}
+$$
+## 4.2 Variance of continuous r.v.
+> Def. (**k-th moments**) $m_{k}:=\text{I\kern-0.15em E} X^{k}=\int x^{k} f_{X}(x) \,\mathrm{d}x$.
+
+> Def. (**k-th central moments**) $\sigma_{k}:=\text{I\kern-0.15em E} (X-\text{I\kern-0.15em E} X)^{k}=\int (x-\text{I\kern-0.15em E} X)^{k} f_{X}(x) \,\mathrm{d}x$.
+
+
+## 4.3 Continuous distributions
+> Def. (**Uniform distribution** $X \sim \mathcal{U}[0,1]$) $f_{X}(x)=1, F_{X}(x)=x$.
+
+Thm. (**Inverse transform sampling**) Given invertible distribution G, we can generate r.v. Y for it, and only needs to generate r.v. $U \sim \mathcal{U}[0,1]$. Claim that $Y:=G^{-1}(U)$.
+
+Proof. G is strictly increasing because of invertibility.
+$$
+F_Y(x)=\text{I\kern-0.15em P}(Y \le x)=\text{I\kern-0.15em P}(G^{-1}(U) \le x)=\text{I\kern-0.15em P}(U \le G(x))=G(x)
+$$
+
+Rmk. If G is not invertible, what we really want is $G^{-1}(Y) \le x \iff U \le G(x)$. Consider to construct a generalized inverse function to satisfy this property.
+
+> Def. (**Exponential distribution** $X \sim Exp(\lambda)$) $F_{X}(x)= \begin{cases} 0, x<0 \\ 1-e^{-\lambda x} ,x \ge 0 \end{cases}$, $f_{X}(x)= \begin{cases} 0, x<0 \\ \lambda e^{-\lambda x} ,x \ge 0 \end{cases}$.
+
+Rmk. X is the waiting time for the first success in a poisson process.
+
+> Def. (**Normal/Gaussian distribution** $X \sim \mathcal{N}(\mu,\sigma^{2})$) $f_{X}(x)=\frac{1}{ \sqrt{2\pi} \sigma } \exp ( - \frac{(x-\mu)^{2}}{2 \sigma^{2}} )$. Standard normal distribution $Y \sim \mathcal{N}(0,1)$, denote the p.d.f. as $\phi(x)=\frac{1}{\sqrt{2\pi}} \exp(\frac{-x^{2}}{2})$.

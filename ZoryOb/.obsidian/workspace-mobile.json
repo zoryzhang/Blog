@@ -86,7 +86,7 @@
           "type": "backlink",
           "state": {
             "file": "Mathematics/Probability.md",
-            "collapseAll": false,
+            "collapseAll": true,
             "extraContext": false,
             "sortOrder": "alphabetical",
             "showSearch": false,
@@ -131,7 +131,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "37311f906b44f63f",
+  "active": "a4477488305946b5",
   "lastOpenFiles": [
     "Mathematics/Probability.md",
     "att/proba1.png",
