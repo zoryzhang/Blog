@@ -266,7 +266,7 @@ E.g. $\omega=(\omega_{1}, \omega_{2}), X_{1}(\omega) \equiv \tilde X_{1}(\omega_
 
 # Ch3 Discrete world
 ## 3.1 Discrete distributions
-> Def. (**Bernoulli distribution**, $X \sim Be(p)$) Bernoulli trial is that $A \in \mathcal{F}$, and we call the trial a success if $A$ occurs. Bernoulli distribution is based on single Bernoulli trial.
+> Def. (**Bernoulli distribution**, $X \sim Be(p)$ ) Bernoulli trial is that $A \in \mathcal{F}$, and we call the trial a success if $A$ occurs. Bernoulli distribution is based on single Bernoulli trial.
 
 > Def. (**Binomial distribution**, $Y \sim Bin(n,p)$ ) Perform n independent Bernoulli trials with $p=\text{I\kern-0.15em P}(A)$, and let Bernoulli r.v.s. $X_{1}, X_{2} \dots X_{n}$ be the indicator funciton of success of the experiments. Let $Y:=\sum X_{i}$, then the p.m.f. $f_{Y}(k)={n \choose k} p^{k} (1-p)^{n-k},k=1, 2, \dots, n$. **Binomial process** is that $Y_n$ #TODO 
 
@@ -283,7 +283,7 @@ Rmk. Our best guess of X to minimize $(X-\text{I\kern-0.15em E}X)^{2}$.
 
 Rmk. Absolutely convergence ensures the reorderability.
 
-Lemma. (**Change of variable for Lebesgue integral) $\text{I\kern-0.15em E}g(X)=\sum_{x:f_{X}(x)>0} g(x)f_{X}(x)$.
+Lemma. (**Change of variable for Lebesgue integral**) $\text{I\kern-0.15em E}g(X)=\sum_{x:f_{X}(x)>0} g(x)f_{X}(x)$.
 
 Lemma. (3.6.6) Let $X,Y$ be two r.v.s. jointly discrete, and $g(X,Y)$ is still a r.v, then $\text{I\kern-0.15em E}g(X,Y)=\sum_{x,y:f_{X,Y}(x,y)>0} g(x,y) f_{X,Y}(x,y)$.
 
@@ -328,31 +328,31 @@ Rmk. $\text{I\kern-0.15em E}(\text{I\kern-0.15em E}(Y|X)g(X))=\text{I\kern-0.15e
 - (Convolution) If $X  \perp Y$, $f_{X+Y}(z)=\sum_{x}f_{X}(x)f_{Y}(z-x)$.
 
 # Ch4 Continuous world
-The probability at u is $f_{X}(u) \,\mathrm{d}u$.
+The probability at u is $f_{X}(u) \ \mathrm{d}u$.
 
 ## 4.1 Expectation of continuous r.v.
-> Def. (**Expectation of continuous r.v.** X)  $\text{I\kern-0.15em E}X:=\int_{- \infty}^ {\infty} x f_{X}(x) \,\mathrm{d}x$. It exists if absolutely convergent.
+> Def. (**Expectation of continuous r.v.** X)  $\text{I\kern-0.15em E}X:=\int_{- \infty}^ {\infty} x f_{X}(x) \ \mathrm{d}x$. It exists if absolutely convergent.
 
-Lemma. (**Tail probability**) $\text{I\kern-0.15em E} X=\int_{- \infty}^ {\infty} (1-F_{X}(x)) \,\mathrm{d}x=\int_{- \infty}^ {\infty} \text{I\kern-0.15em P}(X \ge x) \,\mathrm{d}x$.
+Lemma. (**Tail probability**) $\text{I\kern-0.15em E} X=\int_{- \infty}^ {\infty} (1-F_{X}(x)) \ \mathrm{d}x=\int_{- \infty}^ {\infty} \text{I\kern-0.15em P}(X \ge x) \ \mathrm{d}x$.
 
-Thm. (**Change of variable for Lebesgue integral) Suppose X and g(X) are both continuous r.v., $g(X) \ge 0$, $\text{I\kern-0.15em E}g(X)=\int_{- \infty}^ {\infty} g(x) f_{X}(x)  \,\mathrm{d} x$.
+Thm. (**Change of variable for Lebesgue integral) Suppose X and g(X) are both continuous r.v., $g(X) \ge 0$, $\text{I\kern-0.15em E}g(X)=\int_{- \infty}^ {\infty} g(x) f_{X}(x)  \ \mathrm{d} x$.
 
 Proof. 
 
 $$
 \begin{aligned}
 \text{I\kern-0.15em E} g(X)
-&=\int_{0}^{\infty} \text{I\kern-0.15em P}(g(X) >x) \,\mathrm{d}x
-=\int_{0}^{\infty} \left[\int_{B:=\{y:g(y)>x\}} f_{X}(y) \,\mathrm{d} y \right] \,\mathrm{d} x,
+&=\int_{0}^{\infty} \text{I\kern-0.15em P}(g(X) >x) \ \mathrm{d}x
+=\int_{0}^{\infty} \left[\int_{B:=\{y:g(y)>x\}} f_{X}(y) \ \mathrm{d} y \right] \ \mathrm{d} x,
 \\
-&=\int_{-\infty}^{\infty} [ \int_{0}^{g(y)} f_{X}(y) \,\mathrm{d} x ] \,\mathrm{d}y
-=\int_{-\infty}^{\infty} g(y) f_{X}(y) \,\mathrm{d}y
+&=\int_{-\infty}^{\infty} [ \int_{0}^{g(y)} f_{X}(y) \ \mathrm{d} x ] \ \mathrm{d}y
+=\int_{-\infty}^{\infty} g(y) f_{X}(y) \ \mathrm{d}y
 \end{aligned}
 $$
 ## 4.2 Variance of continuous r.v.
-> Def. (**k-th moments**) $m_{k}:=\text{I\kern-0.15em E} X^{k}=\int x^{k} f_{X}(x) \,\mathrm{d}x$.
+> Def. (**k-th moments**) $m_{k}:=\text{I\kern-0.15em E} X^{k}=\int x^{k} f_{X}(x) \ \mathrm{d}x$.
 
-> Def. (**k-th central moments**) $\sigma_{k}:=\text{I\kern-0.15em E} (X-\text{I\kern-0.15em E} X)^{k}=\int (x-\text{I\kern-0.15em E} X)^{k} f_{X}(x) \,\mathrm{d}x$.
+> Def. (**k-th central moments**) $\sigma_{k}:=\text{I\kern-0.15em E} (X-\text{I\kern-0.15em E} X)^{k}=\int (x-\text{I\kern-0.15em E} X)^{k} f_{X}(x) \ \mathrm{d}x$.
 
 
 ## 4.3 Continuous distributions
@@ -374,14 +374,14 @@ Rmk. X is the waiting time for the first success in a poisson process.
 
 > Def. (**Normal/Gaussian distribution**, $X \sim \mathcal{N}(\mu,\sigma^{2})$) $f_{X}(x)=\frac{1}{ \sqrt{2\pi} \sigma } \exp ( - \frac{(x-\mu)^{2}}{2 \sigma^{2}} )$. Standard normal distribution $Y \sim \mathcal{N}(0,1)$, denote the p.d.f. as $\phi(x)=\frac{1}{\sqrt{2\pi}} \exp(\frac{-x^{2}}{2})$.
 
-Rmk. To compute $I=\int_{-\infty}^{\infty}\phi(x) \,\mathrm{d}x$, consider 
+Rmk. To compute $I=\int_{-\infty}^{\infty}\phi(x) \ \mathrm{d}x$, consider 
 
 $$
 \begin{aligned}
 I^{2}
-&=\int_{-\infty}^{\infty} \phi(x) \,\mathrm{d}x \int_{-\infty}^{\infty}\phi(y) \,\mathrm{d}y
-\\ &=\frac{1}{2\pi} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \exp(- \frac{x^{2}+y^{2}}{2} ) \,\mathrm{d}x \,\mathrm{d}y
-\\ &=\frac{1}{2\pi} \int_{0}^{2 \pi} \int_{0}^{\infty} \exp(- \frac{r^{2}}{2} ) r \,\mathrm{d}r \,\mathrm{d} \theta=1
+&=\int_{-\infty}^{\infty} \phi(x) \ \mathrm{d}x \int_{-\infty}^{\infty}\phi(y) \ \mathrm{d}y
+\\ &=\frac{1}{2\pi} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \exp(- \frac{x^{2}+y^{2}}{2} ) \ \mathrm{d}x \ \mathrm{d}y
+\\ &=\frac{1}{2\pi} \int_{0}^{2 \pi} \int_{0}^{\infty} \exp(- \frac{r^{2}}{2} ) r \ \mathrm{d}r \ \mathrm{d} \theta=1
 \end{aligned}
 $$
 
