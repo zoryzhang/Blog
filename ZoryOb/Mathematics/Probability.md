@@ -153,13 +153,13 @@ Rmk. $\text{I\kern-0.15em P}(\cdot | B)=\mathbb{Q}(\cdot)$ is also a probability
 
 Cor. **Bayes' Theorm**
 
-Def. (**Independence of events**) Let $A, B \in \mathcal{F}$, that $\text{I\kern-0.15em P}(A \cap B)=\text{I\kern-0.15em P}(A)\text{I\kern-0.15em P}(B)$, denoted as $A  \perp \!\!\! \perp B$.
+Def. (**Independence of events**) Let $A, B \in \mathcal{F}$, that $\text{I\kern-0.15em P}(A \cap B)=\text{I\kern-0.15em P}(A)\text{I\kern-0.15em P}(B)$, denoted as $A  \perp B$.
 
 > Def. (**Mutually independence**) Let $\{A_{i}\}, A_{i} \in \mathcal{F}$, that $\text{I\kern-0.15em P}(\bigcap_{i \in J} A_{i}) = \prod_{i \in J} \text{I\kern-0.15em P}(A_{i}), \forall J \subset I$.
 
 > Def. (**Pairwise independence**) Let $\{A_{i}\}, A_{i} \in \mathcal{F}$, that $\text{I\kern-0.15em P}(\bigcap_{i \in J} A_{i}) = \prod_{i \in J} \text{I\kern-0.15em P}(A_{i}), \forall J \subset I, |J|=2$.
 
-Cor. If $A  \perp \!\!\! \perp B$, then $A  \perp \!\!\! \perp \overline B, \overline  A  \perp \!\!\! \perp B, \overline A  \perp \!\!\! \perp \overline B$.
+Cor. If $A  \perp B$, then $A  \perp \overline B, \overline  A  \perp B, \overline A  \perp \overline B$.
 
 Cor. If A, B, and C are mutually independent, then A is independent of whatever events formed from B and C.
 
@@ -248,7 +248,7 @@ Rmk. We can replace all Borel sets by all "rectangles".
 > Def. (**(Absolutely) continuous r.v.s.**) distribution func $F_{X,Y}(x,y)$ can be written as an double integral of some Lebesgue integrable functions $f:\mathbb{R^2} \to [0, \infty)$. $f$ is called **joint probability density function**.
 
 ## 2.6 Independence of r.v.s.
-> Def. (**Independence of r.v.s.**) $X,Y:\Omega\to \mathbb{R}$ are independent($X  \perp \!\!\! \perp Y$) if $\text{I\kern-0.15em P}(X \in E, Y \in F)=\text{I\kern-0.15em P}(X \in E) \text{I\kern-0.15em P}(Y \in F),\forall E,F \in B(\mathbb{R})$.
+> Def. (**Independence of r.v.s.**) $X,Y:\Omega\to \mathbb{R}$ are independent($X  \perp Y$) if $\text{I\kern-0.15em P}(X \in E, Y \in F)=\text{I\kern-0.15em P}(X \in E) \text{I\kern-0.15em P}(Y \in F),\forall E,F \in B(\mathbb{R})$.
 
 Rmk. The following two are also equivalent to the definition:
 1. Holding on all half spaces is enough: $F_{X,Y}(x,y)=F_{X}(x)F_{Y}(y)$.
@@ -256,16 +256,17 @@ Rmk. The following two are also equivalent to the definition:
 
 > Def. (**Mutually independence of r.v.s.**) $F_{X_{1},X_{2}, \dots, X_{n}}(x_{1}, x_{2}, \dots, x_{n})=F_{X_{1}}(x_{1})F_{X_{2}}(x_{2}) \dots F_{X_{n}}(x_{n})$. By choosing $x_i= \infty$, we have the freedom to restrict on all subsets of r.v.s, not only all of them.
 
-Rmk. Independence of events is a special case of indepence of r.v., given that $A  \perp \!\!\! \perp B \iff I_{A}  \perp \!\!\! \perp I_{B}$.
+Rmk. Independence of events is a special case of indepence of r.v., given that $A  \perp B \iff I_{A}  \perp I_{B}$.
 
-Thm. If $X  \perp \!\!\! \perp Y$, and two Borel measurable functions $g,h: \mathbb{R} \to \mathbb{R}$, then $g(X), h(Y)$ are still r.v.s., and that $g(X)  \perp \!\!\! \perp h(Y)$.
+Thm. If $X  \perp Y$, and two Borel measurable functions $g,h: \mathbb{R} \to \mathbb{R}$, then $g(X), h(Y)$ are still r.v.s., and that $g(X)  \perp h(Y)$.
+
 Proof. By measure theory.
 
-E.g. $\omega=(\omega_{1}, \omega_{2}), X_{1}(\omega) \equiv \tilde X_{1}(\omega_{1}), X_{2}(\omega) \equiv \tilde X_{2}(\omega_{2})$, where $X_{1}, X_{2}$ are defined on the product space, then $X_{1}  \perp \!\!\! \perp X_{2}$.
+E.g. $\omega=(\omega_{1}, \omega_{2}), X_{1}(\omega) \equiv \tilde X_{1}(\omega_{1}), X_{2}(\omega) \equiv \tilde X_{2}(\omega_{2})$, where $X_{1}, X_{2}$ are defined on the product space, then $X_{1}  \perp X_{2}$.
 
 # Ch3 Discrete world
 ## 3.1 Discrete distributions
-> Def. (**Bernoulli distribution** $X \sim Be(p)$) Bernoulli trial is that $A \in \mathcal{F}$, and we call the trial a success if $A$ occurs. Bernoulli distribution is based on single Bernoulli trial.
+> Def. (**Bernoulli distribution**, $X \sim Be(p)$) Bernoulli trial is that $A \in \mathcal{F}$, and we call the trial a success if $A$ occurs. Bernoulli distribution is based on single Bernoulli trial.
 
 > Def. (**Binomial distribution**, $Y \sim Bin(n,p)$ ) Perform n independent Bernoulli trials with $p=\text{I\kern-0.15em P}(A)$, and let Bernoulli r.v.s. $X_{1}, X_{2} \dots X_{n}$ be the indicator funciton of success of the experiments. Let $Y:=\sum X_{i}$, then the p.m.f. $f_{Y}(k)={n \choose k} p^{k} (1-p)^{n-k},k=1, 2, \dots, n$. **Binomial process** is that $Y_n$ #TODO 
 
@@ -288,7 +289,7 @@ Lemma. (3.6.6) Let $X,Y$ be two r.v.s. jointly discrete, and $g(X,Y)$ is still a
 
 Rmk. Expectation has finite linearity.
 
-> Def. (**Uncorrelated**) $\text{I\kern-0.15em E}(XY)=\text{I\kern-0.15em E}(X)E(Y)$. Independence implies uncorrelation.
+> Def. (**Uncorrelated**) $\text{I\kern-0.15em E}(XY)=\text{I\kern-0.15em E}(X)E(Y) \iff X \perp Y$. Independence implies uncorrelation.
 
 ## 3.3 Variance of discrete r.v.
 > Def. (**k-th moments**) $m_{k}:=\text{I\kern-0.15em E} X^k$.
@@ -309,7 +310,7 @@ Rmk. Properties of variance.
 
 > Def. (**Conditional distribution** of Y given event "X=x") To answer $\text{I\kern-0.15em P}(Y \in \cdot|X=x): B(\mathbb{R}) \to [0,1]$, define the c.m.f. $F_{Y|X}(\cdot|x):=\text{I\kern-0.15em P}(Y \le \cdot|X=x)$. The p.m.f $f_{Y|X}(\cdot|x)=\frac{ f_{X,Y}(x, \cdot) }{ f_{X}(x) }$, if $f_{X}(x)>0$.
 
-> Def. (**Conditional expectation** of Y given event "$X=x:=\cdot$") $\psi_{Y|X}: \mathbb{R} \to \mathbb{R}$, $\psi_{Y|X}(\cdot):= \text{I\kern-0.15em E}(Y|X=\cdot):=\sum_{y} y f_{Y|X}(y|\cdot)$.
+> Def. (**Conditional expectation** of Y given event " $X=x:=\cdot$ ") $\psi_{Y|X}: \mathbb{R} \to \mathbb{R}$, $\psi_{Y|X}(\cdot):= \text{I\kern-0.15em E}(Y|X=\cdot):=\sum_{y} y f_{Y|X}(y|\cdot)$.
 
 Rmk. Our best guess of Y to minimize $(Y-\text{I\kern-0.15em E}Y)^{2}$, after know that $X=x$.
 
@@ -321,8 +322,10 @@ Rmk. $\psi_{Y}(X)$ is from the same probability space as $X$, and it's our best 
 
 > Thm. (**Law of total expectation**) $\text{I\kern-0.15em E}\text{I\kern-0.15em E} (Y|X)=\text{I\kern-0.15em E} \psi_{Y}(X)=\sum_{x} \text{I\kern-0.15em P}(X=x) \cdot \text{I\kern-0.15em E}(Y|X=x)=\text{I\kern-0.15em E} Y$. 
 
+Rmk. $\text{I\kern-0.15em E}(\text{I\kern-0.15em E}(Y|X)g(X))=\text{I\kern-0.15em E}(Yg(X))$.
+
 ## 3.6 Sum of random variables
-- (Convolution) If $X  \perp \!\!\! \perp Y$, $f_{X+Y}(z)=\sum_{x}f_{X}(x)f_{Y}(z-x)$.
+- (Convolution) If $X  \perp Y$, $f_{X+Y}(z)=\sum_{x}f_{X}(x)f_{Y}(z-x)$.
 
 # Ch4 Continuous world
 The probability at u is $f_{X}(u) \,\mathrm{d}u$.
@@ -358,14 +361,27 @@ $$
 Thm. (**Inverse transform sampling**) Given invertible distribution G, we can generate r.v. Y for it, and only needs to generate r.v. $U \sim \mathcal{U}[0,1]$. Claim that $Y:=G^{-1}(U)$.
 
 Proof. G is strictly increasing because of invertibility.
+
 $$
 F_Y(x)=\text{I\kern-0.15em P}(Y \le x)=\text{I\kern-0.15em P}(G^{-1}(U) \le x)=\text{I\kern-0.15em P}(U \le G(x))=G(x)
 $$
 
 Rmk. If G is not invertible, what we really want is $G^{-1}(Y) \le x \iff U \le G(x)$. Consider to construct a generalized inverse function to satisfy this property.
 
-> Def. (**Exponential distribution** $X \sim Exp(\lambda)$) $F_{X}(x)= \begin{cases} 0, x<0 \\ 1-e^{-\lambda x} ,x \ge 0 \end{cases}$, $f_{X}(x)= \begin{cases} 0, x<0 \\ \lambda e^{-\lambda x} ,x \ge 0 \end{cases}$.
+> Def. (**Exponential distribution**, $X \sim Exp(\lambda)$) $F_{X}(x)= \begin{cases} 0, x<0 \\ 1-e^{-\lambda x} ,x \ge 0 \end{cases}$, $f_{X}(x)= \begin{cases} 0, x<0 \\ \lambda e^{-\lambda x} ,x \ge 0 \end{cases}$.
 
 Rmk. X is the waiting time for the first success in a poisson process.
 
-> Def. (**Normal/Gaussian distribution** $X \sim \mathcal{N}(\mu,\sigma^{2})$) $f_{X}(x)=\frac{1}{ \sqrt{2\pi} \sigma } \exp ( - \frac{(x-\mu)^{2}}{2 \sigma^{2}} )$. Standard normal distribution $Y \sim \mathcal{N}(0,1)$, denote the p.d.f. as $\phi(x)=\frac{1}{\sqrt{2\pi}} \exp(\frac{-x^{2}}{2})$.
+> Def. (**Normal/Gaussian distribution**, $X \sim \mathcal{N}(\mu,\sigma^{2})$) $f_{X}(x)=\frac{1}{ \sqrt{2\pi} \sigma } \exp ( - \frac{(x-\mu)^{2}}{2 \sigma^{2}} )$. Standard normal distribution $Y \sim \mathcal{N}(0,1)$, denote the p.d.f. as $\phi(x)=\frac{1}{\sqrt{2\pi}} \exp(\frac{-x^{2}}{2})$.
+
+Rmk. To compute $I=\int_{-\infty}^{\infty}\phi(x) \,\mathrm{d}x$, consider 
+
+$$
+\begin{aligned}
+I^{2}
+&=\int_{-\infty}^{\infty} \phi(x) \,\mathrm{d}x \int_{-\infty}^{\infty}\phi(y) \,\mathrm{d}y
+\\ &=\frac{1}{2\pi} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \exp(- \frac{x^{2}+y^{2}}{2} ) \,\mathrm{d}x \,\mathrm{d}y
+\\ &=\frac{1}{2\pi} \int_{0}^{2 \pi} \int_{0}^{\infty} \exp(- \frac{r^{2}}{2} ) r \,\mathrm{d}r \,\mathrm{d} \theta=1
+\end{aligned}
+$$
+
