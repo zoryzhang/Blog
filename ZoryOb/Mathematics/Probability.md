@@ -17,9 +17,10 @@ Rmk. Field is a collection of events that are of interest.
 
 Def. (**$\sigma$-Field** $\mathcal{F}$) A Field satisfies that (closed under countable unions & intersections)
 $$A_{1}, A_{2}, \dots \in \mathcal{F} \implies \bigcup_{i=1}^ {\infty} A_{i} \in \mathcal{F}$$
-E.g. The smallest $\sigma\text{-Field}=\{\emptyset, \Omega\}$, largest=$2^{\Omega}$.
+E.g. The smallest $\sigma\text{-Field}=\{\emptyset, \Omega\}$, largest= $2^{\Omega}$ .
 
 Rmk. With any experiment, we may associate a pair $(\Omega, \mathcal{F})$.
+
 ![[proba1.png]]
 
 ## 1.2 Assignment
@@ -239,13 +240,15 @@ Rmk. We can replace all Borel sets by all "rectangles".
 
 > Def.2 (**Random vector**) Given $(\Omega, \mathcal{F},  \text{I\kern-0.15em P})$, consider n random variables $X_i$, which means $X_{i}^{-1}(D_{i}) \in \mathcal{F}, \forall D_{i} \in B(\mathbb{R})$, to constitute $\vec X=[X_{1}, X_{2}, \dots, X_{n}]$.
 
-> Def. (**Random function**) By metric -> open set -> Borel $\sigma$-field.
+> Def. (**Random function**) By new metric space -> open set -> Borel $\sigma$-field.
 
 > Def. (**Joint distribution func**) $F_{X_{1}, X_{2}}(x_{1}, x_{2}) = \text{I\kern-0.15em P} \circ \vec X^{-1}((- \infty, x_{1}] \times (- \infty, x_{2}])$.
 
-> Def. (**Marginal distribution func**) $F_{X}(x)=\lim_{y \uparrow  \infty} F_{X,Y}(x,y)$. The marginal distribution of a subset of a collection of random variables is the probability distribution of the variables contained in the subset. It gives the probabilities of various values of the variables in the subset without reference to the values of the other variables.
+> Def. (**Marginal distribution func**) $F_{X}(x)=\lim_{y \uparrow  \infty} F_{X,Y}(x,y)$. 
 
-> Def. (**(Absolutely) continuous r.v.s.**) distribution func $F_{X,Y}(x,y)$ can be written as an double integral of some Lebesgue integrable functions $f:\mathbb{R^2} \to [0, \infty)$. $f$ is called **joint probability density function**.
+Rmk. The marginal distribution of a subset of a collection of random variables is the probability distribution of the variables contained in the subset. It gives the probabilities of various values of the variables in the subset without reference to the values of the other variables.
+
+> Def. (**Jointly (absolutely) continuous r.v.s.**) distribution func $F_{X,Y}(x,y)$ can be written as an double integral of some Lebesgue integrable functions $f:\mathbb{R^2} \to [0, \infty)$. $f$ is called **joint probability density function**.
 
 ## 2.6 Independence of r.v.s.
 > Def. (**Independence of r.v.s.**) $X,Y:\Omega\to \mathbb{R}$ are independent($X  \perp Y$) if $\text{I\kern-0.15em P}(X \in E, Y \in F)=\text{I\kern-0.15em P}(X \in E) \text{I\kern-0.15em P}(Y \in F),\forall E,F \in B(\mathbb{R})$.
@@ -320,6 +323,8 @@ Rmk. $\psi_{Y}(X)$ is from the same probability space as $X$, and it's our best 
 
 > Def. (**Conditional expectation** of Y given a $\sigma$-field) skipped.
 
+
+
 > Thm. (**Law of total expectation**) $\text{I\kern-0.15em E}\text{I\kern-0.15em E} (Y|X)=\text{I\kern-0.15em E} \psi_{Y}(X)=\sum_{x} \text{I\kern-0.15em P}(X=x) \cdot \text{I\kern-0.15em E}(Y|X=x)=\text{I\kern-0.15em E} Y$. 
 
 Rmk. $\text{I\kern-0.15em E}(\text{I\kern-0.15em E}(Y|X)g(X))=\text{I\kern-0.15em E}(Yg(X))$.
@@ -335,7 +340,7 @@ The probability at u is $f_{X}(u) \ \mathrm{d}u$.
 
 Lemma. (**Tail probability**) $\text{I\kern-0.15em E} X=\int_{- \infty}^ {\infty} (1-F_{X}(x)) \ \mathrm{d}x=\int_{- \infty}^ {\infty} \text{I\kern-0.15em P}(X \ge x) \ \mathrm{d}x$.
 
-Thm. (**Change of variable for Lebesgue integral) Suppose X and g(X) are both continuous r.v., $g(X) \ge 0$, $\text{I\kern-0.15em E}g(X)=\int_{- \infty}^ {\infty} g(x) f_{X}(x)  \ \mathrm{d} x$.
+Thm. (**Change of variable for Lebesgue integral**) Suppose X and g(X) are both continuous r.v., $g(X) \ge 0$, $\text{I\kern-0.15em E}g(X)=\int_{- \infty}^ {\infty} g(x) f_{X}(x)  \ \mathrm{d} x$.
 
 Proof. 
 
@@ -345,7 +350,7 @@ $$
 &=\int_{0}^{\infty} \text{I\kern-0.15em P}(g(X) >x) \ \mathrm{d}x
 =\int_{0}^{\infty} \left[\int_{B:=\{y:g(y)>x\}} f_{X}(y) \ \mathrm{d} y \right] \ \mathrm{d} x,
 \\
-&=\int_{-\infty}^{\infty} [ \int_{0}^{g(y)} f_{X}(y) \ \mathrm{d} x ] \ \mathrm{d}y
+&=\int_{-\infty}^{\infty} \left[ \int_{0}^{g(y)} f_{X}(y) \ \mathrm{d} x \right] \ \mathrm{d}y
 =\int_{-\infty}^{\infty} g(y) f_{X}(y) \ \mathrm{d}y
 \end{aligned}
 $$
@@ -356,23 +361,43 @@ $$
 
 
 ## 4.3 Continuous distributions
-> Def. (**Uniform distribution** $X \sim \mathcal{U}[0,1]$) $f_{X}(x)=1, F_{X}(x)=x$.
+> Def. (**Uniform distribution** $X \sim \mathcal{U}[0,1]$ ) $f_{X}(x)=1, F_{X}(x)=x$ over $[0,1]$, otherwise nature.
 
-Thm. (**Inverse transform sampling**) Given invertible distribution G, we can generate r.v. Y for it, and only needs to generate r.v. $U \sim \mathcal{U}[0,1]$. Claim that $Y:=G^{-1}(U)$.
+Thm. (**Inverse transform sampling**) Given a distribution function G, we can generate a r.v. Y with $F_{Y}=G$ by only generating a r.v. $U \sim \mathcal{U}[0,1]$.
 
-Proof. G is strictly increasing because of invertibility.
-
+Proof. We know G is non-decreasing and right continuous.
+1. Case 1: G is strictly increasing, and therefore invertible. Claim that $Y:=G^{-1}(U)$, then
+   
 $$
 F_Y(x)=\text{I\kern-0.15em P}(Y \le x)=\text{I\kern-0.15em P}(G^{-1}(U) \le x)=\text{I\kern-0.15em P}(U \le G(x))=G(x)
 $$
 
-Rmk. If G is not invertible, what we really want is $G^{-1}(Y) \le x \iff U \le G(x)$. Consider to construct a generalized inverse function to satisfy this property.
+2. Case 2: otherwise,  what we really want is the property that $G^{-1}(z) \le x \iff z \le G(x)$. Consider to construct a generalized inverse function to satisfy this property. Claim that $Y:=invG(U)$, where $invG(z):=\inf \{ t \in \mathbb{R}:G(t) \ge z \}=\inf H_{z}$. Due to right continuity and monotone, $invG(z) \in H_{z}$. We can verify the property:
 
-> Def. (**Exponential distribution**, $X \sim Exp(\lambda)$) $F_{X}(x)= \begin{cases} 0, x<0 \\ 1-e^{-\lambda x} ,x \ge 0 \end{cases}$, $f_{X}(x)= \begin{cases} 0, x<0 \\ \lambda e^{-\lambda x} ,x \ge 0 \end{cases}$.
+$$invG(z) \le x \iff \inf H_{z} \le x \iff  x \in H_{z} \iff G(x) \ge z$$
 
-Rmk. X is the waiting time for the first success in a poisson process.
+Rmk. It can help generate psuedo-random numbers following specific distribution given a uniformly distributed psuedo-random numbers generator.
 
-> Def. (**Normal/Gaussian distribution**, $X \sim \mathcal{N}(\mu,\sigma^{2})$) $f_{X}(x)=\frac{1}{ \sqrt{2\pi} \sigma } \exp ( - \frac{(x-\mu)^{2}}{2 \sigma^{2}} )$. Standard normal distribution $Y \sim \mathcal{N}(0,1)$, denote the p.d.f. as $\phi(x)=\frac{1}{\sqrt{2\pi}} \exp(\frac{-x^{2}}{2})$.
+> Def. (**Exponential distribution**, $X \sim Exp(\lambda)$ ) 
+
+$$
+F_{X}(x)= 
+\begin{cases} 0, x<0 
+\\ 1-e^{-\lambda x} ,x \ge 0 
+\end{cases}
+,f_{X}(x)= 
+\begin{cases} 0, x<0  
+\\ \lambda e^{-\lambda x} ,x \ge 0 
+\end{cases}
+$$
+
+Rmk. 
+1. X is the waiting time for the first success in a poisson process.
+2. $\text{I\kern-0.15em E}X=\frac{1}{\lambda}$.
+3. (Memoryless) $\text{I\kern-0.15em P}(X>s+t|X>t)=\text{I\kern-0.15em P}(X>s)$.
+4. (Failture/hazard rate for positive r.v.) $r(t) = \lim_{h \downarrow 0} \frac{1}{h} \text{I\kern-0.15em P}(X \le t+h|X>t) = \frac{f(t)}{1-F(t)}=\lambda$.
+
+> Def. (**Normal/Gaussian distribution**, $X \sim \mathcal{N}(\mu,\sigma^{2})$ ) $f_{X}(x)=\frac{1}{ \sqrt{2\pi} \sigma } \exp ( - \frac{(x-\mu)^{2}}{2 \sigma^{2}} )$. Standard normal distribution $Y \sim \mathcal{N}(0,1)$, denote the p.d.f. as $\phi(x)=\frac{1}{\sqrt{2\pi}} \exp(\frac{-x^{2}}{2})$.
 
 Rmk. To compute $I=\int_{-\infty}^{\infty}\phi(x) \ \mathrm{d}x$, consider 
 
@@ -385,3 +410,15 @@ I^{2}
 \end{aligned}
 $$
 
+> Def. (**(standard) Cauchy distribution**, $X \sim \mathcal{N}(\mu,\sigma^{2})$ ) p.d.f. $f_{X}(x)=\frac{1}{\pi (1+x^{2})}$.
+
+Rmk. (Heavy tail distribution without moment) Notice the $\text{I\kern-0.15em E}X=\int_{-\infty}^{\infty} |x| f_{X}(x) \ \mathrm{d}x=\infty$ does not exist.
+
+## 4.4 Dependence & joint distribution(symmetric)
+Thm. (**Change of variable for Lebesgue integral**) $g: \mathbb{R^{2}} \to \mathbb{R}$ is Lebesgue integrable, then $\text{I\kern-0.15em E}g(X,Y)=\int_{- \infty}^ {\infty} \int_{- \infty}^ {\infty} g(x,y) f_{X,Y}(x,y)  \ \mathrm{d} x \ \mathrm{d}y$.
+
+Rmk. By marginal distribution func, linearity of expectation can be proved.
+
+> Def. (**Correlation coefficient**) $\frac{Cov(X,Y)}{\sqrt{Var X \cdot Var Y}}$, which is invariant under scaling.
+
+## 4.5 Conditional(asymmetric)
