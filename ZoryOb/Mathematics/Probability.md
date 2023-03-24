@@ -1,3 +1,5 @@
+>  The note of HKUST course MATH2431 Honors Probability, by Zory ZHANG.
+
 # Ch1 Events
 ## 1.1 Space
 Def. (**Sample space** $\Omega$) The set of all outcomes of an experiment.
@@ -250,6 +252,8 @@ Rmk. The marginal distribution of a subset of a collection of random variables i
 
 > Def. (**Jointly (absolutely) continuous r.v.s.**) distribution func $F_{X,Y}(x,y)$ can be written as an double integral of some Lebesgue integrable functions $f:\mathbb{R^2} \to [0, \infty)$. $f$ is called **joint probability density function**.
 
+Rmk. If $X=Y$, they're not jointly continuous.
+
 ## 2.6 Independence of r.v.s.
 > Def. (**Independence of r.v.s.**) $X,Y:\Omega\to \mathbb{R}$ are independent($X  \perp Y$) if $\text{I\kern-0.15em P}(X \in E, Y \in F)=\text{I\kern-0.15em P}(X \in E) \text{I\kern-0.15em P}(Y \in F),\forall E,F \in B(\mathbb{R})$.
 
@@ -271,11 +275,11 @@ E.g. $\omega=(\omega_{1}, \omega_{2}), X_{1}(\omega) \equiv \tilde X_{1}(\omega_
 ## 3.1 Discrete distributions
 > Def. (**Bernoulli distribution**, $X \sim Be(p)$ ) Bernoulli trial is that $A \in \mathcal{F}$, and we call the trial a success if $A$ occurs. Bernoulli distribution is based on single Bernoulli trial.
 
-> Def. (**Binomial distribution**, $Y \sim Bin(n,p)$ ) Perform n independent Bernoulli trials with $p=\text{I\kern-0.15em P}(A)$, and let Bernoulli r.v.s. $X_{1}, X_{2} \dots X_{n}$ be the indicator funciton of success of the experiments. Let $Y:=\sum X_{i}$, then the p.m.f. $f_{Y}(k)={n \choose k} p^{k} (1-p)^{n-k},k=1, 2, \dots, n$. **Binomial process** is that $Y_n$ #TODO 
+> Def. (**Binomial distribution**, $Y \sim Bin(n,p)$ ) Perform n independent Bernoulli trials with $p=\text{I\kern-0.15em P}(A)$, and let Bernoulli r.v.s. $X_{1}, X_{2} \dots X_{n}$ be the indicator funciton of success of the experiments. Let $Y:=\sum X_{i}$, then the p.m.f. $f_{Y}(k)={n \choose k} p^{k} (1-p)^{n-k},k=1, 2, \dots, n$. **Binomial process** is that $Y_n$ to be the number of successes in the first n $Be(p)$ trials.
 
 > Def. (**Geometric distribution**, $W \sim Geom(p)$ ) Keep performing Bernoulli trials until the first success, and let $W:=\text{the waiting time}$, then $f_{W}(k)=(1-p)^{k-1}p,k=1, 2, \dots$
 
-> Def. (**Negative Binomial distribution**, $W_{r} \sim NB(r,p)$ ) Let $W_{r}:=\text{the waiting time for r sucesses}$, then $f_{W_{r}}(k)={k-1 \choose r-1} p^{r-1} (1-p)^{k-r}p ,k=1, 2, \dots$
+> Def. (**Negative Binomial distribution**, $W_{r} \sim NB(r,p)$ ) Let $W_{r}:=\text{the waiting time for r successes}$, then $f_{W_{r}}(k)={k-1 \choose r-1} p^{r-1} (1-p)^{k-r}p ,k=1, 2, \dots$
 
 > Def. (**Poisson distribution**, $X \sim poisson(\lambda)$ ) $f_{X}(k):= \frac{\lambda^{k}}{k!} e^{-\lambda}, k=1, 2, \dots$ The Poisson distribution is an approximation of a binomial distribution of a rare event in the case that n is large, p is small, and $\lambda=np$ is moderate.
 
@@ -292,7 +296,7 @@ Lemma. (3.6.6) Let $X,Y$ be two r.v.s. jointly discrete, and $g(X,Y)$ is still a
 
 Rmk. Expectation has finite linearity.
 
-> Def. (**Uncorrelated**) $\text{I\kern-0.15em E}(XY)=\text{I\kern-0.15em E}(X)E(Y) \iff X \perp Y$. Independence implies uncorrelation.
+> Def. (**Uncorrelated**) $\text{I\kern-0.15em E}(XY)=\text{I\kern-0.15em E}(X)E(Y)$. Independence implies uncorrelation.
 
 ## 3.3 Variance of discrete r.v.
 > Def. (**k-th moments**) $m_{k}:=\text{I\kern-0.15em E} X^k$.
@@ -324,12 +328,11 @@ Rmk. $\psi_{Y}(X)$ is from the same probability space as $X$, and it's our best 
 > Def. (**Conditional expectation** of Y given a $\sigma$-field) skipped.
 
 
-
-> Thm. (**Law of total expectation**) $\text{I\kern-0.15em E}\text{I\kern-0.15em E} (Y|X)=\text{I\kern-0.15em E} \psi_{Y}(X)=\sum_{x} \text{I\kern-0.15em P}(X=x) \cdot \text{I\kern-0.15em E}(Y|X=x)=\text{I\kern-0.15em E} Y$. 
+> Thm. (**Law of total expectation**) $\text{I\kern-0.15em E}\text{I\kern-0.15em E} (Y|X)=\text{I\kern-0.15em E} \psi_{Y}(X)=\sum_{x} \text{I\kern-0.15em P}(X=x) \cdot \text{I\kern-0.15em E}(Y|X=x)=\text{I\kern-0.15em E} Y$.
 
 Rmk. $\text{I\kern-0.15em E}(\text{I\kern-0.15em E}(Y|X)g(X))=\text{I\kern-0.15em E}(Yg(X))$.
 
-## 3.6 Sum of random variables
+## 3.6 Sum of discrete r.v.s.
 - (Convolution) If $X  \perp Y$, $f_{X+Y}(z)=\sum_{x}f_{X}(x)f_{Y}(z-x)$.
 
 # Ch4 Continuous world
@@ -365,14 +368,15 @@ $$
 
 Thm. (**Inverse transform sampling**) Given a distribution function G, we can generate a r.v. Y with $F_{Y}=G$ by only generating a r.v. $U \sim \mathcal{U}[0,1]$.
 
-Proof. We know G is non-decreasing and right continuous.
+Proof. We know G, as a distribution function, is non-decreasing and right continuous, with $G(x) \in [0,1]$.
 1. Case 1: G is strictly increasing, and therefore invertible. Claim that $Y:=G^{-1}(U)$, then
    
 $$
 F_Y(x)=\text{I\kern-0.15em P}(Y \le x)=\text{I\kern-0.15em P}(G^{-1}(U) \le x)=\text{I\kern-0.15em P}(U \le G(x))=G(x)
 $$
 
-2. Case 2: otherwise,  what we really want is the property that $G^{-1}(z) \le x \iff z \le G(x)$. Consider to construct a generalized inverse function to satisfy this property. Claim that $Y:=invG(U)$, where $invG(z):=\inf \{ t \in \mathbb{R}:G(t) \ge z \}=\inf H_{z}$. Due to right continuity and monotone, $invG(z) \in H_{z}$. We can verify the property:
+2. Case 2: otherwise,  what we really want of $G^{-1}$ is the property that $G^{-1}(z) \le x \iff z \le G(x)$. Consider to construct a generalized inverse function to satisfy this property. 
+    Claim that $Y:=invG(U)$, where $invG(z):=\inf_{t \in \mathbb{R}} \{ G(t) \ge z \}=\inf H_{z}$. Due to right continuity and monotone, $invG(z) \in H_{z}$. To preserve the $F_{Y}=G$, we only need to verify the desired property. 
 
 $$invG(z) \le x \iff \inf H_{z} \le x \iff  x \in H_{z} \iff G(x) \ge z$$
 
@@ -421,4 +425,82 @@ Rmk. By marginal distribution func, linearity of expectation can be proved.
 
 > Def. (**Correlation coefficient**) $\frac{Cov(X,Y)}{\sqrt{Var X \cdot Var Y}}$, which is invariant under scaling.
 
-## 4.5 Conditional(asymmetric)
+> Def. (**Bivariate normal**) $f_{X,Y}(x,y)=\frac{1}{2\pi \sqrt{1-\rho^{2}}} \exp ( \frac{-1}{2(1-\rho^{2})} (x^{2}-2 \rho xy+y^{2}) )$.
+
+Property. $X,Y$ are bivariate normal and uncorrelated, then they're independent.  Examples: [Wiki](https://en.wikipedia.org/wiki/Normally_distributed_and_uncorrelated_does_not_imply_independent) 
+
+## 4.5 Conditional distribution(asymmetric)
+> Def. (**Regular conditional dist**) If $f_{X}(x)>0$, $F_{Y|X}(y|x):= \text{I\kern-0.15em P}(Y \le y|X=x):=\int_{-\infty}^{y} \frac{f_{X,Y}(x,u)}{f_{X}(x)} \ \mathrm{d}u$; the cond. p.d.f $f_{Y|X}(\cdot|x)=\frac{ f_{X,Y}(x, \cdot) }{ f_{X}(x) }$.
+
+Rmk. To compute $f_{X|Y}(x|y)=\frac{f_{X,Y}(x,y)}{f_{Y}(y)}=C_{y}g_{y}(x)$, we can view it as a p.d.f. of x given fixed y, because we know that $C_{y}=\frac{1}{\int g_{y}(x)}$, so we may ignore $f_{Y}(y)$, which is included in $C_{y}$.
+
+E.g. For bivariate normal, $f_{X|Y}(x|y)$, given Y=y, $X \sim \mathcal{N}(\rho y,1-\rho^{2})$. When $\rho=0$, they're independent. In contrast, when $\rho \to 1$, $X \to Y$. In general, $X=\rho Y+\sqrt{1-\rho^{2}}Z$, where $Z \sim \mathcal{N}(0,1), Y \perp  Z$. Furthermore, 
+
+$$
+\begin{pmatrix}  
+X \\  
+Y
+\end{pmatrix}
+=
+\begin{bmatrix}  
+\rho & \sqrt{1-\rho^{2}} \\  
+1 & 0 
+\end{bmatrix}
+\begin{pmatrix}  
+Y \\  
+Z
+\end{pmatrix}
+$$
+
+> Def. (**Conditional expectation** of Y given event " $X=x:=\cdot$ ") $\psi_{Y|X}: \mathbb{R} \to \mathbb{R}$, $\psi_{Y|X}(\cdot):= \text{I\kern-0.15em E}(Y|X=\cdot):=\int y f_{Y|X}(y|\cdot) \ \mathrm{d}y$.
+> Def. (**Conditional expectation** of Y given a r.v. X) $\psi_{Y}: r.v. \to r.v.$, $\psi_{Y}(X):= \text{I\kern-0.15em E} (Y|X)=\int \mathbb{1}(X=x) \cdot \text{I\kern-0.15em E}(Y|X=x) \ \mathrm{d}x=\int \mathbb{1}(X=x) \psi_{Y|X}(x) \ \mathrm{d}x$.
+> Def. (**Conditional expectation** of Y given a $\sigma$-field) skipped.
+> Thm. (**Law of total expectation**) $\text{I\kern-0.15em E}\text{I\kern-0.15em E} (Y|X)=\text{I\kern-0.15em E} \psi_{Y}(X)=\int \text{I\kern-0.15em P}(X=x) \cdot \text{I\kern-0.15em E}(Y|X=x) \ \mathrm{d}x=\text{I\kern-0.15em E} Y$. 
+> Rmk. $\text{I\kern-0.15em E}(\text{I\kern-0.15em E}(Y|X)g(X))=\text{I\kern-0.15em E}(Yg(X))$.
+
+## 4.6 Change of variable
+$(U,V) \overset{g}{\to} (X,Y)$, where $g^{-1}$ exists. 
+Furthermore, the Jacobian $J = \det \frac{\partial(x,y)}{\partial(u,v) }  =\det \begin{bmatrix} \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\ \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}\end{bmatrix} \ne 0$. 
+Then $f_{X,Y}(x,y)=f_{U,V}(g^{-1}(x,y)) \frac{1}{\left| \det \frac{\partial(x,y)}{\partial(u,v) }\right| }$.
+
+## 4.7 Sum of continuous r.v.s.
+
+$$
+\begin{aligned}
+F_{X+Y}(z)
+=&\text{I\kern-0.15em P}(X+Y \le z)
+=\iint_{x+y\le z} f_{X,Y}(x,y) \ \mathrm{d}x \ \mathrm{d}y
+\\  \overset{t=x+y}{=}& \iint_{t\le z} f_{X,Y}(x,t-x) \left| \det \frac{\partial(x,t)}{\partial(x,y) } \right|  \ \mathrm{d}x \ \mathrm{d}t
+\\ =& \int_{-\infty}^{z}\left(\int  f_{X,Y}(x,t-x)  \ \mathrm{d}x\right)  \ \mathrm{d}t
+\\ f_{X+Y}(z)
+=& \int  f_{X,Y}(x,z-x)  \ \mathrm{d}x
+\end{aligned}
+$$
+
+Eventually, convolution if independent.
+
+Rmk. Sum of independent normal is still normal.
+
+
+# Ch5 Generating function
+Motivation. $G_{X}(s) = \text{I\kern-0.15em E} s^{X}, M_{X}(t)=\text{I\kern-0.15em E}e^{tX},\phi_{X}(t)=\text{I\kern-0.15em E}e^{itX}$. Then if $X \perp Y$, then $G_{X+Y}=G_{X}G_{Y}$.
+
+> Def. (**Generating function**) $G_{a}(s)=\sum_{i=0}^{\infty} a_{i}s^{i}$, then $a_{i}=\frac{G_{a}^{(i)}(0)}{i!}$ if within the radius of convergence.
+
+Rmk. (**Radius of convergence** R) Recall various convergence tests.
+1. When $s \in (-R,R)$, $G_{a}(s)$ is absolutely convergent and can be differentiated or integrated term by term.
+2. If $\exists R' \in (0,R], \forall s \in [-R',R'],G_{a}(s)=G_{b}(s)$, then $a_{i}=b_{i}, \forall i$.
+3. If $R>0$ for $G_{a}(s)$, then $\{a_{n}\}$ is uniquely determined.
+
+Thm. (**Abel's theorem**) If $G_{a}(s)$ has $R=1$, and $G_{a}(1)$ exists(divergent to positive infinity is included), then $G_{a}(s)$ is left continuous at $s=1$, i.e. $G_{a}(1)=\sum_{i=0}^{\infty}a_{i}=\lim_{s \uparrow 1} G_{a}(s)$.
+
+## 5.1 Probability generating function
+> Def. (**Probability generating function**) For nonnegative interger-valued discrete r.v.s. X, the p.g.f. $G_{X}(s)=\text{I\kern-0.15em E} s^{X}=\sum_{i=0}^{\infty} f_{X}(i) s^i$.
+
+Rmk. $\sum_{i=0}^{\infty} f_{X}(i) s^{i} \le \sum_{i=0}^{\infty} s^i$, so $R \ge 1$.
+
+# Ch6 Convergence
+
+
+
+# Ch7 Limiting theorm
