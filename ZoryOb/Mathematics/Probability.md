@@ -386,12 +386,14 @@ Rmk. It can help generate psuedo-random numbers following specific distribution 
 
 $$
 F_{X}(x)= 
-\begin{cases} 0, x<0 
-\\ 1-e^{-\lambda x} ,x \ge 0 
+\begin{cases}
+0, x<0 
+\\\\ 1-e^{-\lambda x} ,x \ge 0 
 \end{cases}
 ,f_{X}(x)= 
-\begin{cases} 0, x<0  
-\\ \lambda e^{-\lambda x} ,x \ge 0 
+\begin{cases}
+0, x<0  
+\\\\ \lambda e^{-\lambda x} ,x \ge 0 
 \end{cases}
 $$
 
@@ -409,8 +411,8 @@ $$
 \begin{aligned}
 I^{2}
 &=\int_{-\infty}^{\infty} \phi(x) \ \mathrm{d}x \int_{-\infty}^{\infty}\phi(y) \ \mathrm{d}y
-\\ &=\frac{1}{2\pi} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \exp(- \frac{x^{2}+y^{2}}{2} ) \ \mathrm{d}x \ \mathrm{d}y
-\\ &=\frac{1}{2\pi} \int_{0}^{2 \pi} \int_{0}^{\infty} \exp(- \frac{r^{2}}{2} ) r \ \mathrm{d}r \ \mathrm{d} \theta=1
+\\\\ &=\frac{1}{2\pi} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \exp(- \frac{x^{2}+y^{2}}{2} ) \ \mathrm{d}x \ \mathrm{d}y
+\\\\ &=\frac{1}{2\pi} \int_{0}^{2 \pi} \int_{0}^{\infty} \exp(- \frac{r^{2}}{2} ) r \ \mathrm{d}r \ \mathrm{d} \theta=1
 \end{aligned}
 $$
 
@@ -438,16 +440,16 @@ E.g. For bivariate normal, $f_{X|Y}(x|y)$, given Y=y, $X \sim \mathcal{N}(\rho y
 
 $$
 \begin{pmatrix}  
-X \\  
+X \\\\  
 Y
 \end{pmatrix}
 =
 \begin{bmatrix}  
-\rho & \sqrt{1-\rho^{2}} \\  
+\rho & \sqrt{1-\rho^{2}} \\\\  
 1 & 0 
 \end{bmatrix}
 \begin{pmatrix}  
-Y \\  
+Y \\\\  
 Z
 \end{pmatrix}
 $$
@@ -460,7 +462,7 @@ $$
 
 ## 4.6 Change of variable
 $(U,V) \overset{g}{\to} (X,Y)$, where $g^{-1}$ exists. 
-Furthermore, the Jacobian $J = \det \frac{\partial(x,y)}{\partial(u,v) }  =\det \begin{bmatrix} \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\ \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}\end{bmatrix} \ne 0$. 
+Furthermore, the Jacobian $J = \det \frac{\partial(x,y)}{\partial(u,v) }  =\det \begin{bmatrix} \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\\\ \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}\end{bmatrix} \ne 0$. 
 Then $f_{X,Y}(x,y)=f_{U,V}(g^{-1}(x,y)) \frac{1}{\left| \det \frac{\partial(x,y)}{\partial(u,v) }\right| }$.
 
 ## 4.7 Sum of continuous r.v.s.
@@ -470,9 +472,9 @@ $$
 F_{X+Y}(z)
 =&\text{I\kern-0.15em P}(X+Y \le z)
 =\iint_{x+y\le z} f_{X,Y}(x,y) \ \mathrm{d}x \ \mathrm{d}y
-\\  \overset{t=x+y}{=}& \iint_{t\le z} f_{X,Y}(x,t-x) \left| \det \frac{\partial(x,t)}{\partial(x,y) } \right|  \ \mathrm{d}x \ \mathrm{d}t
-\\ =& \int_{-\infty}^{z}\left(\int  f_{X,Y}(x,t-x)  \ \mathrm{d}x\right)  \ \mathrm{d}t
-\\ f_{X+Y}(z)
+\\\\  \overset{t=x+y}{=}& \iint_{t\le z} f_{X,Y}(x,t-x) \left| \det \frac{\partial(x,t)}{\partial(x,y) } \right|  \ \mathrm{d}x \ \mathrm{d}t
+\\\\ =& \int_{-\infty}^{z}\left(\int  f_{X,Y}(x,t-x)  \ \mathrm{d}x\right)  \ \mathrm{d}t
+\\\\ f_{X+Y}(z)
 =& \int  f_{X,Y}(x,z-x)  \ \mathrm{d}x
 \end{aligned}
 $$
