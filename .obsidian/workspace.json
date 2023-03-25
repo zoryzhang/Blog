@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "0c494438fce02608",
+        "id": "5c2e46d85db07134",
         "type": "tabs",
         "children": [
           {
-            "id": "8b87deb19a119901",
+            "id": "6d4e2d8915d70340",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#TODO",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,13 +65,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "4e91a60b37e791d5",
@@ -155,14 +153,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8b87deb19a119901",
+  "active": "3d93ab568e75cd17",
   "lastOpenFiles": [
+    "ZoryOb/Mathematics/Statistic.md",
     "ZoryOb/TCS/Randomized Algorithm.md",
     "ZoryOb/Mathematics/Probability.md",
     "Zory🫤/zotero.json",
     "Zory🫤",
     "Knowledge graph.md",
-    "ZoryOb/Mathematics/Statistic.md",
     "ZoryOb/FML/Kernel.md",
     "ZoryOb/att",
     "Zory🫤/FML/Kernel.md",
