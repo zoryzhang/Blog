@@ -331,7 +331,7 @@ Rmk. $\sigma(Y) \subset \sigma(\sigma(Y),\sigma(Z))$, here we use the above defi
 
 > Def. (**Conditional expectation** of Y given a $\sigma$-field) skipped.
 
-Rmk. (**Tower property**) Consider two $\sigma$-field $H_{1}\subset H_{2} \subset \mathcal{F}$, then $\text{I\kern-0.15em E}(\text{I\kern-0.15em E}(X|H_{1})|H_{2})=\text{I\kern-0.15em E}(\text{I\kern-0.15em E}(X|H_{2})|H_{1})=\text{I\kern-0.15em E}(X|H_{1})$.
+Rmk. (**Tower property**) Consider two $\sigma$-field $H_{1}\subset H_{2} \subset \mathcal{F}$, then $\text{I\kern-0.15em E}(\text{I\kern-0.15em E}(X|H_{1})|H_{2})=\text{I\kern-0.15em E}(\text{I\kern-0.15em E}(X|H_{2})|H_{1})=\text{I\kern-0.15em E}(X|H_{1})$. It's reasonable if we consider $\text{I\kern-0.15em E} (Y|X):=\psi_{Y}(X)$ as a function that maps a r.v. X to another r.v. in the same probability space. Then $\sigma(\psi_{Y}(X)) \subset \sigma(X)$ because there will at most no information lost during mapping.
 
 > Thm. (**Law of total expectation**) $\text{I\kern-0.15em E}\text{I\kern-0.15em E} (Y|X)=\text{I\kern-0.15em E} \psi_{Y}(X)=\sum_{x} \text{I\kern-0.15em P}(X=x) \cdot \text{I\kern-0.15em E}(Y|X=x)=\text{I\kern-0.15em E} Y$.
 
@@ -499,14 +499,36 @@ Motivation. $G_{X}(s) = \text{I\kern-0.15em E} s^{X}, M_{X}(t)=\text{I\kern-0.15
 Rmk. (**Radius of convergence** R) Recall various convergence tests.
 1. When $s \in (-R,R)$, $G_{a}(s)$ is absolutely convergent and can be differentiated or integrated term by term.
 2. If $\exists R' \in (0,R], \forall s \in [-R',R'],G_{a}(s)=G_{b}(s)$, then $a_{i}=b_{i}, \forall i$.
-3. If $R>0$ for $G_{a}(s)$, then $\{a_{n}\}$ is uniquely determined.
+3. If $R>0$ for $G_{a}(s)$, then $\{a_{n}\}$ is **uniquely determined** by taking derivative.
 
-Thm. (**Abel's theorem**) If $G_{a}(s)$ has $R=1$, and $G_{a}(1)$ exists(divergent to positive infinity is included), then $G_{a}(s)$ is left continuous at $s=1$, i.e. $G_{a}(1)=\sum_{i=0}^{\infty}a_{i}=\lim_{s \uparrow 1} G_{a}(s)$.
+Thm. (**Abel's theorem**) If $a_i>0$, $G_{a}(s)$ has $R=1$, and $G_{a}(1)$ exists(divergent to positive infinity is included), then $G_{a}(s)$ is left continuous at $s=1$, i.e. $G_{a}(1)=\sum_{i=0}^{\infty}a_{i}=\lim_{s \uparrow 1} G_{a}(s)$.
 
 ## 5.1 Probability generating function
-> Def. (**Probability generating function**) For nonnegative interger-valued discrete r.v.s. X, the p.g.f. $G_{X}(s)=\text{I\kern-0.15em E} s^{X}=\sum_{i=0}^{\infty} f_{X}(i) s^i$.
+> Def. (**Probability generating function**) For nonnegative interger-valued discrete r.v. X, the p.g.f. $G_{X}(s)=\text{I\kern-0.15em E} s^{X}=\sum_{i=0}^{\infty} f_{X}(i) s^i$.
 
-Rmk. $\sum_{i=0}^{\infty} f_{X}(i) s^{i} \le \sum_{i=0}^{\infty} s^i$, so $R \ge 1$.
+Rmk. 
+1. $\sum_{i=0}^{\infty} f_{X}(i) s^{i} \le \sum_{i=0}^{\infty} s^i$, so $R \ge 1$.
+2. $\text{I\kern-0.15em E}X=\lim_{s \uparrow 1} G_{X}'(s):=G_{X}'(1)$.
+3. $\text{I\kern-0.15em E}X^{\underline k}:=\text{I\kern-0.15em E}[X(X-1)\dots (X-k+1)]=\lim_{s \uparrow 1} G_{X}^{(k)}(s):=G_{X}^{(k)}(1)$.
+
+Thm. (Sum of a random number of r.v.s.) N i.i.d. , $T=\sum_{i=1}^{N} X_{i}$, then $G_{T}(s)=G_{N}(G_{X}(s))$
+
+Proof. #TODO 
+
+Prop. The sum of a poisson number of i.i.d. Bernoulli r.v.s. is still poisson.
+
+> Def. (**Joint probability generating function**) For nonnegative interger-valued discrete r.v.s. $X_{1},X_{2}$, the j.p.g.f. $G_{X,Y}(s,t)=\text{I\kern-0.15em E} s^{X} t^{Y}=\sum_{i=0}^{\infty} \sum_{j=0}^{\infty} f_{X,Y}(i,j) s^{i}t^{j}$.
+
+Thm. $X \perp Y \iff G_{X,Y}(s,t)=G_{X}(s)G_{Y}(t)$.
+
+E.g. (**Recurrence of random walk**) $S_{0}=0,S_{n}=\sum_{i=1}^{n} X_{i}$, where $X_{i}$ is i.i.d.  $Be(p)$ r.v.s. within $\{-1,1\}$. $T_{0}:=\min \{ i \ge 1:S_{i}=0 \}$. Notice that $T_{0}$ can be $\infty$, therefore it's a defective r.v.. Q: the transience $\text{I\kern-0.15em P}(T_{0}=\infty)$.
+
+Sol. $f_{0}(n):=\text{I\kern-0.15em P}(S_{1} \dots S_{n-1}=0;S_{n} \ne 0)=\text{I\kern-0.15em P}(T_{0}=n)$. Then $\text{I\kern-0.15em P}(T_{0}=\infty)=1-G_{f_{0}}(1)$.
+
+
+## 5.2 Moment generating function
+
+
 
 # Ch6 Convergence
 
