@@ -2,43 +2,45 @@
 
 # Ch1 Events
 ## 1.1 Space
-Def. (**Sample space** $\Omega$) The set of all outcomes of an experiment.
+> Def. (**Sample space** $\Omega$) The set of all possible outcomes of an experiment(elementary events).
 
-Rmk. Set of all possible outcomes(elementary events)
+> Def. (**Event**) A subset of the sample space.
 
-Def. (**Event**) A subset of the sample space.
-
-Def. (**Field** $\mathcal{F}$) A collection of subsets of $\Omega$ which satisfies
-1. $\emptyset \in \mathcal{F}$
-2. If $A \in \mathcal{F}$, then $\overline A \in \mathcal{F}$
-3. If $A, B \in \mathcal{F}$, then $A \cup B \in \mathcal{F}$
+> Def. (**Field** $\mathcal{F}$) A collection of subsets of $\Omega$ which satisfies
+>    1. $\emptyset \in \mathcal{F}$
+>    2. If $A \in \mathcal{F}$, then $\overline A \in \mathcal{F}$
+>    3. If $A, B \in \mathcal{F}$, then $A \cup B \in \mathcal{F}$
 
 Corollary. If $A, B \in \mathcal{F}$, then $A \cap B \in \mathcal{F}$; $\Omega \in \mathcal{F}$; **Field is closed under finite unions & intersections.**
 
 Rmk. Field is a collection of events that are of interest.
 
-Def. (**$\sigma$-Field** $\mathcal{F}$) A Field satisfies that (closed under countable unions & intersections)
+> Def. (**$\sigma$-Field** $\mathcal{F}$) A Field satisfies that (closed under countable unions & intersections)
+> 
 $$A_{1}, A_{2}, \dots \in \mathcal{F} \implies \bigcup_{i=1}^ {\infty} A_{i} \in \mathcal{F}$$
+
 E.g. The smallest $\sigma\text{-Field}=\{\emptyset, \Omega\}$, largest= $2^{\Omega}$ .
 
 Rmk. With any experiment, we may associate a pair $(\Omega, \mathcal{F})$.
+> Def. (**Measurable space**) A pair $(\Omega, \mathcal{F})$.
 
 ![[proba1.png]]
 
 ## 1.2 Assignment
-Def. (**Measurable space**) A pair $(\Omega, \mathcal{F})$.
+> Def. (**General measure**) Given a measurable space $(\Omega, \mathcal{F})$, a measure $\mu$ is a set function $\mu: \mathcal{F} \to [0,  \infty]$, s.t. 
+    1. $\mu(\emptyset)=0$
+    2. (**countable additivity**) If $A_{1}, A_{2}, \dots$ is a collection of **disjoint** members of $\mathcal{F}$, i.e. $A_{i} \cap A_{j} = \emptyset$ for all $i \ne j$, then $\mu(\bigcup_{i=1}^ {\infty} A_{i})=\sum_{i=1}^ {\infty} \mu(A_{i})$.
 
-Def. (**General measure**) Given a measurable space $(\Omega, \mathcal{F})$, a measure $\mu$ is a set function $\mu: \mathcal{F} \to [0,  \infty]$, s.t. 
-1. $\mu(\emptyset)=0$
-2. (countable additivity) If $A_{1}, A_{2}, \dots$ is a collection of disjoint members of $\mathcal{F}$, i.e. $A_{i} \cap A_{j} = \emptyset$ for all $i \ne j$, then $\mu(\bigcup_{i=1}^ {\infty} A_{i})=\sum_{i=1}^ {\infty} \mu(A_{i})$.
+> Def. (**Measure space**) A triple $(\Omega, \mathcal{F}, \mu)$.
 
-Def. (**Measure space**) A triple $(\Omega, \mathcal{F}, \mu)$.
+> Def. (**Probability measure**) A function $\text{I\kern-0.15em P}: \mathcal{F} \to [0,1]$ satisfying
+    1. $\text{I\kern-0.15em P}(\emptyset)=0, \text{I\kern-0.15em P}(\Omega)=1$.
+    2. (**countable additivity**) If $A_{1}, A_{2}, \dots$ is a collection of **disjoint** members of $\mathcal{F}$, i.e. $A_{i} \cap A_{j} = \emptyset$ for all $i \ne j$, then $\text{I\kern-0.15em P}(\bigcup_{i=1}^ {\infty} A_{i})=\sum_{i=1}^ {\infty} \text{I\kern-0.15em P}(A_{i})$.
 
-Def. (**Probability measure**) A function $\text{I\kern-0.15em P}: \mathcal{F} \to [0,1]$ satisfying
-1. $\text{I\kern-0.15em P}(\emptyset)=0, \text{I\kern-0.15em P}(\Omega)=1$.
-2. (countable additivity) If $A_{1}, A_{2}, \dots$ is a collection of **disjoint** members of $\mathcal{F}$, i.e. $A_{i} \cap A_{j} = \emptyset$ for all $i \ne j$, then $\text{I\kern-0.15em P}(\bigcup_{i=1}^ {\infty} A_{i})=\sum_{i=1}^ {\infty} \text{I\kern-0.15em P}(A_{i})$.
-
-Ext. A measure $\mu$ is probability measure if $\mu(\Omega)=1$. Probability measure is a finite measure. Lebesgue measure is a $\sigma$-finite measure.
+Ext.
+    1. A measure $\mu$ is probability measure iff $\mu(\Omega)=1$. 
+    2. Probability measure is a finite measure. 
+    3. Lebesgue measure is a $\sigma$-finite measure.
 
 Def. (**Probability space**) A triple $(\Omega, \mathcal{F}, \text{I\kern-0.15em P})$.
 
@@ -207,7 +209,7 @@ Proof. (countable additivity) Notice that $X^{-1}(B_{n})=\{ \omega : X(\omega ) 
 ## 2.4 Distribution function
 Rmk. Because of the continuity, it's enough to know the **(cumulative) distribution function** $F_X(x):=\text{I\kern-0.15em P} \circ X^{-1}((- \infty, x]), \forall x$, given Caratheodory's extension theorem, to understand the prabability distribution of a random variable.
 
-Prop. c.d.f is right continuous.
+Prop. c.d.f is **right continuous**.
 
 Proof. Given the monotonicity of $F_X$,
 
@@ -250,7 +252,7 @@ Rmk. We can replace all Borel sets by all "rectangles".
 
 Rmk. The marginal distribution of a subset of a collection of random variables is the probability distribution of the variables contained in the subset. It gives the probabilities of various values of the variables in the subset without reference to the values of the other variables.
 
-> Def. (**Jointly (absolutely) continuous r.v.s.**) distribution func $F_{X,Y}(x,y)$ can be written as an double integral of some Lebesgue integrable functions $f:\mathbb{R^2} \to [0, \infty)$. $f$ is called **joint probability density function**.
+> Def. (**Jointly (absolutely) continuous r.v.s.**) distribution func $F_{X,Y}(x,y)$ can be written as an double integral of some Lebesgue integrable functions $f:\mathbb{R}^{2} \to [0, \infty)$. $f$ is called **joint probability density function**.
 
 Rmk. If $X=Y$, they're not jointly continuous.
 
@@ -341,7 +343,8 @@ Rmk. $\text{I\kern-0.15em E}(\text{I\kern-0.15em E}(Y|X)g(X))=\text{I\kern-0.15e
 - (Convolution) If $X  \perp Y$, $f_{X+Y}(z)=\sum_{x}f_{X}(x)f_{Y}(z-x)$.
 
 # Ch4 Continuous world
-The probability at u is $f_{X}(u) \ \mathrm{d}u$.
+$\text{I\kern-0.15em P}(u \le x \le u + \mathrm{d} u)=f_{X}(u) \ \mathrm{d}u$. 
+More generally, borel set $B \in \mathbb{R}^{n},\text{I\kern-0.15em P} ( \vec X \in B )=\text{I\kern-0.15em P} \circ \vec X^{-1}(B) =\int_{B}  f_{X}(u) \ \mathrm{d}u$.
 
 ## 4.1 Expectation of continuous r.v.
 > Def. (**Expectation of continuous r.v.** X)  $\text{I\kern-0.15em E}X:=\int_{- \infty}^ {\infty} x f_{X}(x) \ \mathrm{d}x$. It exists if absolutely convergent.
@@ -521,13 +524,35 @@ Prop. The sum of a poisson number of i.i.d. Bernoulli r.v.s. is still poisson.
 
 Thm. $X \perp Y \iff G_{X,Y}(s,t)=G_{X}(s)G_{Y}(t)$.
 
-E.g. (**Recurrence of random walk**) $S_{0}=0,S_{n}=\sum_{i=1}^{n} X_{i}$, where $X_{i}$ is i.i.d.  $Be(p)$ r.v.s. within $\{-1,1\}$. $T_{0}:=\min \{ i \ge 1:S_{i}=0 \}$. Notice that $T_{0}$ can be $\infty$, therefore it's a defective r.v.. Q: the transience $\text{I\kern-0.15em P}(T_{0}=\infty)$.
+E.g. (**Recurrence of random walk**) $S_{0}=0,S_{n}=\sum_{i=1}^{n} X_{i}$, where $X_{i}$ is i.i.d.  $Be(p)$ r.v.s. within $\{-1,1\}$. $T_{0}:=\min \{ i \ge 1:S_{i}=0 \}$. Notice that $T_{0}$ can be $\infty$, therefore it's a defective r.v.; Q: the transience $\text{I\kern-0.15em P}(T_{0}=\infty)$, if none, $\text{I\kern-0.15em E}T_{0}$.
 
-Sol. $f_{0}(n):=\text{I\kern-0.15em P}(S_{1} \dots S_{n-1}=0;S_{n} \ne 0)=\text{I\kern-0.15em P}(T_{0}=n)$. Then $\text{I\kern-0.15em P}(T_{0}=\infty)=1-G_{f_{0}}(1)$.
+Sol. $f_{T_{0}}(n):=\text{I\kern-0.15em P}(S_{1} \dots S_{n-1} \ne 0;S_{n} = 0)$, then $\text{I\kern-0.15em P}(T_{0}=\infty)=1-G_{f_{0}}(1)$. Consider $f_{p_{0}}(n)=\text{I\kern-0.15em P}(S_{n} = 0)=\mathbb{1}(\text{n is even}) {n \choose n/2} (pq)^{n/2}$, and $G_{p_{0}}(s)$
+
+
+
+#TODO 
+
+$P(T_{0}=\infty)=|p-q|$. If $p=q=\frac{1}{2}$, then 
+
+
+E.g. (**Branching process(Galton-Watson tree)**)
+- $Z_{0}=1,Z_{n+1}=X_{1}^{(n)}+X_{2}^{(n)}+\dots+X_{Z_{n}}^{(n)}$, where X are i.i.d. Once $Z_{n}=0$, then $Z_{n+1}=0$. Denote $\mu:=\text{I\kern-0.15em E} X_{i}^{(m)}, \sigma^{2}=Var(X_{i}^{(m)})$. 
+- What's the expectation and variance?
+    - $G_{Z_{n}}=G_{Z_{1}}(G_{Z_{n-1}})=G(G_{Z_{n-1}})$.
+    - $\text{I\kern-0.15em E} Z_{n}= \frac{\ \mathrm{d}}{\ \mathrm{d}s} G(G_{Z_{n-1}}(s)) |_{s=1}=\mu \text{I\kern-0.15em E} Z_{n-1}$.
+    - $Var Z_{n}=\frac{\ \mathrm{d^{2}}}{\ \mathrm{d}s^{2}} G(G_{Z_{n-1}}(s)) |_{s=1}+\frac{\ \mathrm{d}}{\ \mathrm{d}s} G_{Z_{n}}(s)|_{s=1}-(\frac{\ \mathrm{d}}{\ \mathrm{d}s} G_{Z_{n}}(s) |_{s=1})^{2}$
+- Does the process eventually extinct?
+    - $\text{ \{ultimate extinction\} }=\bigcup_{n} \{Z_{n}=0\}=\lim_{n \to \infty} \{Z_{n}=0\}$, as an increasing sequence. Therefore $\text{I\kern-0.15em P}(\text{extinction})=\lim_{n \to \infty} \text{I\kern-0.15em P}(Z_{n}=0)=\lim_{n \to \infty} G_{Z_{n}}(0)$. Let $\eta_{n}:=G_{Z_{n}}(0) \to \eta$.
+    - $\eta=G(\eta)$ by continuity. Claim that $\eta$ is the smallest non-negative number that makes $s=G(s)$. Proof is that, suppose 
+    - $G(s)$ is convex on $[0,1]$ #TODO 
 
 
 ## 5.2 Moment generating function
+> Notation. (Expectation for general r.v.) $\text{I\kern-0.15em E}g(X)=\int g(x) \ \mathrm{d} F_{X}(x)=\int g(x) \text{I\kern-0.15em P} \circ X^{-1}(\mathrm{d}x)$.
 
+
+
+## 5.3 Characteristic function
 
 
 # Ch6 Convergence

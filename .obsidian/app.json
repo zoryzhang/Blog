@@ -5,7 +5,7 @@
   "vimMode": true,
   "legacyEditor": false,
   "showIndentGuide": false,
-  "strictLineBreaks": false,
+  "strictLineBreaks": true,
   "readableLineLength": true,
   "showFrontmatter": true,
   "pdfExportSettings": {
