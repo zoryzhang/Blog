@@ -34,15 +34,15 @@ Rmk. With any experiment, we may associate a pair $(\Omega, \mathcal{F})$.
 > Def. (**Measure space**) A triple $(\Omega, \mathcal{F}, \mu)$.
 
 > Def. (**Probability measure**) A function $\text{I\kern-0.15em P}: \mathcal{F} \to [0,1]$ satisfying
-    1. $\text{I\kern-0.15em P}(\emptyset)=0, \text{I\kern-0.15em P}(\Omega)=1$.
-    2. (**countable additivity**) If $A_{1}, A_{2}, \dots$ is a collection of **disjoint** members of $\mathcal{F}$, i.e. $A_{i} \cap A_{j} = \emptyset$ for all $i \ne j$, then $\text{I\kern-0.15em P}(\bigcup_{i=1}^ {\infty} A_{i})=\sum_{i=1}^ {\infty} \text{I\kern-0.15em P}(A_{i})$.
+>     1. $\text{I\kern-0.15em P}(\emptyset)=0, \text{I\kern-0.15em P}(\Omega)=1$.
+>     2. (**countable additivity**) If $A_{1}, A_{2}, \dots$ is a collection of **disjoint** members of $\mathcal{F}$, i.e. $A_{i} \cap A_{j} = \emptyset$ for all $i \ne j$, then $\text{I\kern-0.15em P}(\bigcup_{i=1}^ {\infty} A_{i})=\sum_{i=1}^ {\infty} \text{I\kern-0.15em P}(A_{i})$.
 
 Ext.
-    1. A measure $\mu$ is probability measure iff $\mu(\Omega)=1$. 
-    2. Probability measure is a finite measure. 
-    3. Lebesgue measure is a $\sigma$-finite measure.
+1. A measure $\mu$ is probability measure iff $\mu(\Omega)=1$. 
+2. Probability measure is a finite measure. 
+3. Lebesgue measure is a $\sigma$-finite measure.
 
-Def. (**Probability space**) A triple $(\Omega, \mathcal{F}, \text{I\kern-0.15em P})$.
+> Def. (**Probability space**) A triple $(\Omega, \mathcal{F}, \text{I\kern-0.15em P})$.
 
 Rmk. 
 1. $\text{I\kern-0.15em P}(\overline A)=1-\text{I\kern-0.15em P}(A)$
@@ -56,19 +56,22 @@ Recall:
 1. $f$ is continuous at x if $\forall \{x_{n}\}, x_{n} \to x, n \to  \infty \Longrightarrow \lim_{n \to  \infty} f(x_{n})= f(\lim_{n\to\infty} x_{n} ) = f(x)$.
 2. $\limsup_{n}x_{n}=\lim_{m \to  \infty} \sup_{n \ge m} x_{n}=\lim_{m \to  \infty} c_{m}$, where $c_m$ is monotonic, so that it must converge if we include $\pm \infty$.
 
-Def. (**Set limit**) Given $A_{1}, A_{2}, \dots \in \mathcal{F}$, 
+> Def. (**Set limit**) Given $A_{1}, A_{2}, \dots \in \mathcal{F}$, 
 $$\limsup_{n \to  \infty}A_{n}:=\bigcap_{m=1}^{\infty} \bigcup_{n=m}^{ \infty} A_{n}=\bigcap_{m=1}^{\infty} B_m=\{\omega \in \Omega : \omega \in  A_{n} \text{ for infinitely many n}\}$$
 
-Proof. Consider $\omega \in RHS$ or not. If yes, $\omega \in B_{m}, \forall m$; if not, disappear eventually.
+Proof. 
+Consider $\omega \in RHS$ or not. If yes, $\omega \in B_{m}, \forall m$; if not, disappear eventually.
 $$\liminf_{n\to  \infty}A_{n}:=\bigcup_{m=1}^{  \infty} \bigcap_{n=m}^{ \infty} A_{n}=\bigcup_{m=1}^{\infty} C_m=\{\omega \in \Omega : \omega \in  A_{n} \text{ for all but finitely many n}\}$$
 
-Proof. Consider $\omega \in RHS$ or not. If yes, appear eventually; otherwise fail.
+Proof. 
+Consider $\omega \in RHS$ or not. If yes, appear eventually; otherwise fail.
 
 Rmk. $\liminf A_{n} \subset \limsup A_{n}$, if equal, we say $A_{n}$ converges.
 
 E.g. Monotonic set sequence converges (if including inf).
 
-Def. (**Continuity of general measure**) $\mu$ is continuous if $\forall \{A_{n}\}, A_{n} \to A, n \to  \infty \longrightarrow \lim_{n \to  \infty} \mu(A_{n}) = \mu(\lim_{n \to  \infty} A_n)=\mu(A)$.
+> Def. (**Continuity of general measure**) $\mu$ is continuous if $\forall \{A_{n}\}, A_{n} \to A, n \to  \infty \longrightarrow \lim_{n \to  \infty} \mu(A_{n}) = \mu(\lim_{n \to  \infty} A_n)=\mu(A)$.
+
 Rmk. Notice the closeness under union&intersection gives that $A:=\limsup_{n}A_{n} \in \mathcal{F}$.
 
 Thm. (**Countable additivity implies continuity**)
@@ -91,8 +94,10 @@ $$
 =\lim_{n \to  \infty} \mu(A_n)
 \end{aligned}
 $$
+
 2. Case2: monotonic decreasing An ($A_{n-1} \supset A_{n}$)
 Construct $E_{n}=A_{n} \setminus A_{n+1}$, then 
+
 $$
 \begin{aligned}
 \mu(A)
