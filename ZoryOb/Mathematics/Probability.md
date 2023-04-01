@@ -11,7 +11,7 @@
 >    2. If $A \in \mathcal{F}$, then $\overline A \in \mathcal{F}$
 >    3. If $A, B \in \mathcal{F}$, then $A \cup B \in \mathcal{F}$
 
-Corollary. If $A, B \in \mathcal{F}$, then $A \cap B \in \mathcal{F}$; $\Omega \in \mathcal{F}$; **Field is closed under finite unions & intersections.**
+Corollary. If $A, B \in \mathcal{F}$, then $A \cap B \in \mathcal{F}$; $\Omega \in \mathcal{F}$; i.e. **Field is closed under finite unions & intersections.**
 
 Rmk. Field is a collection of events that are of interest.
 
@@ -28,8 +28,8 @@ Rmk. With any experiment, we may associate a pair $(\Omega, \mathcal{F})$.
 
 ## 1.2 Assignment
 > Def. (**General measure**) Given a measurable space $(\Omega, \mathcal{F})$, a measure $\mu$ is a set function $\mu: \mathcal{F} \to [0,  \infty]$, s.t. 
-    1. $\mu(\emptyset)=0$
-    2. (**countable additivity**) If $A_{1}, A_{2}, \dots$ is a collection of **disjoint** members of $\mathcal{F}$, i.e. $A_{i} \cap A_{j} = \emptyset$ for all $i \ne j$, then $\mu(\bigcup_{i=1}^ {\infty} A_{i})=\sum_{i=1}^ {\infty} \mu(A_{i})$.
+> 1. $\mu(\emptyset)=0$
+> 2. (**countable additivity**) If $A_{1}, A_{2}, \dots$ is a collection of **disjoint** members of $\mathcal{F}$, i.e. $A_{i} \cap A_{j} = \emptyset$ for all $i \ne j$, then $\mu(\bigcup_{i=1}^ {\infty} A_{i})=\sum_{i=1}^ {\infty} \mu(A_{i})$.
 
 > Def. (**Measure space**) A triple $(\Omega, \mathcal{F}, \mu)$.
 
