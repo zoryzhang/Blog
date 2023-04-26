@@ -1,4 +1,7 @@
->  The note of HKUST course MATH2431 Honors Probability, by Zory ZHANG.
+>  The note of HKUST course MATH2431 Honors Probability in Spring 2023, by Zory ZHANG.
+
+# Reminder
+- Expectation exists: absolutely convergence.
 
 # Ch1 Events
 ## 1.1 Space
@@ -34,12 +37,12 @@ Rmk. With any experiment, we may associate a pair $(\Omega, \mathcal{F})$.
 > Def. (**Measure space**) A triple $(\Omega, \mathcal{F}, \mu)$.
 
 > Def. (**Probability measure**) A function $\text{I\kern-0.15em P}: \mathcal{F} \to [0,1]$ satisfying
->     1. $\text{I\kern-0.15em P}(\emptyset)=0, \text{I\kern-0.15em P}(\Omega)=1$.
->     2. (**countable additivity**) If $A_{1}, A_{2}, \dots$ is a collection of **disjoint** members of $\mathcal{F}$, i.e. $A_{i} \cap A_{j} = \emptyset$ for all $i \ne j$, then $\text{I\kern-0.15em P}(\bigcup_{i=1}^ {\infty} A_{i})=\sum_{i=1}^ {\infty} \text{I\kern-0.15em P}(A_{i})$.
+> 1. $\text{I\kern-0.15em P}(\emptyset)=0, \text{I\kern-0.15em P}(\Omega)=1$.
+> 2. (**countable additivity**) If $A_{1}, A_{2}, \dots$ is a collection of **disjoint** members of $\mathcal{F}$, i.e. $A_{i} \cap A_{j} = \emptyset$ for all $i \ne j$, then $\text{I\kern-0.15em P}(\bigcup_{i=1}^ {\infty} A_{i})=\sum_{i=1}^ {\infty} \text{I\kern-0.15em P}(A_{i})$.
 
 Ext.
 1. A measure $\mu$ is probability measure iff $\mu(\Omega)=1$. 
-2. Probability measure is a finite measure. 
+2. Probability measure is a finite measure.
 3. Lebesgue measure is a $\sigma$-finite measure.
 
 > Def. (**Probability space**) A triple $(\Omega, \mathcal{F}, \text{I\kern-0.15em P})$.
@@ -66,9 +69,9 @@ $$\liminf_{n\to  \infty}A_{n}:=\bigcup_{m=1}^{  \infty} \bigcap_{n=m}^{ \infty} 
 Proof. 
 Consider $\omega \in RHS$ or not. If yes, appear eventually; otherwise fail.
 
-Rmk. $\liminf A_{n} \subset \limsup A_{n}$, if equal, we say $A_{n}$ converges.
+Rmk. $\liminf A_{n} \subset \limsup A_{n}$; if equal, we say $A_{n}$ converges.
 
-E.g. Monotonic set sequence converges (if including inf).
+E.g. Monotonic set sequence converges (if including $\infty$).
 
 > Def. (**Continuity of general measure**) $\mu$ is continuous if $\forall \{A_{n}\}, A_{n} \to A, n \to  \infty \longrightarrow \lim_{n \to  \infty} \mu(A_{n}) = \mu(\lim_{n \to  \infty} A_n)=\mu(A)$.
 
@@ -150,20 +153,20 @@ $$
 $$
 
 E.g. $\Omega= \mathbb{R}$, $\mathcal{F}$ is some $\sigma$-field including all intervals. If we know $\text{I\kern-0.15em P}([a,b])$ for all $[a,b] \subset \mathbb{R}$, then 
-$$\lim_{n \to  \infty} \text{I\kern-0.15em P}([a+ \frac{1}{n}, b- \frac{1}{n} ])=\text{I\kern-0.15em P}(\lim_{n \to  \infty}  [a+ \frac{1}{n}, b- \frac{1}{n} ])=\text{I\kern-0.15em P}((a,b))$$, which uniquely extend all open intervals.
+$$\lim_{n \to  \infty} \text{I\kern-0.15em P}([a+ \frac{1}{n}, b- \frac{1}{n} ])=\text{I\kern-0.15em P}(\lim_{n \to  \infty}  [a+ \frac{1}{n}, b- \frac{1}{n} ])=\text{I\kern-0.15em P}((a,b))$$, which uniquely extends all open intervals.
 
 ## 1.4 Conditional probability, independence
-Rmk. "B has occurred" means $\omega \in B$. We may consider B as another sample space.
+Rmk. "B has occurred" means $\omega \in B$. We may consider B as another adjusted sample space.
 
-Def. (**Conditional probability**) If $\text{I\kern-0.15em P}(B)>0$, then $\text{I\kern-0.15em P}(A|B)= \frac{\text{I\kern-0.15em P}(A \cap B)}{\text{I\kern-0.15em P}(B)}$(pronounced as probability of A given B).
+> Def. (**Conditional probability**) If $\text{I\kern-0.15em P}(B)>0$, then $\text{I\kern-0.15em P}(A|B)= \frac{\text{I\kern-0.15em P}(A \cap B)}{\text{I\kern-0.15em P}(B)}$(pronounced as probability of A given B).
 
-Lemma. (**Law of total probability**) Let $B_{1}, B_{2}, \dots, B_{n}$ be a partition of $\Omega$(disjoint $B_i$, $\cup B_i=\Omega$). If $\text{I\kern-0.15em P}(B_{i}) >0$, then $\text{I\kern-0.15em P}(A)=\sum_{i=1}^{n} \text{I\kern-0.15em P}(A|B_{i}) \text{I\kern-0.15em P}(B_{i})$.
+Lemma. (**Law of total probability**) Let $B_{1}, B_{2}, \dots, B_{n}$ be a partition of $\Omega$(disjoint $B_i$, $\sqcup B_i=\Omega$) and $\text{I\kern-0.15em P}(B_{i}) >0$, then $\text{I\kern-0.15em P}(A)=\sum_{i=1}^{n} \text{I\kern-0.15em P}(A|B_{i}) \text{I\kern-0.15em P}(B_{i})$.
 
-Rmk. $\text{I\kern-0.15em P}(\cdot | B)=\mathbb{Q}(\cdot)$ is also a probability measure.
+Rmk. $\text{I\kern-0.15em P}(\cdot | B)=\mathbb{Q}(\cdot)$ is also a probability measure, therefore B can be viewed as another adjusted sample space.
 
-Cor. **Bayes' Theorm**
+Cor. (**Bayes' Theorm**) Skipped.
 
-Def. (**Independence of events**) Let $A, B \in \mathcal{F}$, that $\text{I\kern-0.15em P}(A \cap B)=\text{I\kern-0.15em P}(A)\text{I\kern-0.15em P}(B)$, denoted as $A  \perp B$.
+> Def. (**Independence of events**) Let $A, B \in \mathcal{F}$, that $\text{I\kern-0.15em P}(A \cap B)=\text{I\kern-0.15em P}(A)\text{I\kern-0.15em P}(B)$, denoted as $A  \perp B$.
 
 > Def. (**Mutually independence**) Let $\{A_{i}\}, A_{i} \in \mathcal{F}$, that $\text{I\kern-0.15em P}(\bigcap_{i \in J} A_{i}) = \prod_{i \in J} \text{I\kern-0.15em P}(A_{i}), \forall J \subset I$.
 
@@ -175,7 +178,7 @@ Cor. If A, B, and C are mutually independent, then A is independent of whatever 
 
 > Def. (**Generated $\sigma$-field**) $\sigma(A)$ is the smallest $\sigma$-field generated by A, a collection of subset of $\Omega$, by keeping taking countable union, intersection, or complement.
 
-> vDef. (**Product space**) Given $(\Omega_1, \mathcal{F_1},  \text{I\kern-0.15em P} 1)$ and $(\Omega_{2}, \mathcal{F_{2}},  \text{I\kern-0.15em P}2)$, then their product space is $(\Omega, \mathcal{F},  \text{I\kern-0.15em P})$, where $\Omega=\Omega_{1} \times \Omega_{2}, \mathcal{F}= \sigma(\mathcal{F_{1}} \times \mathcal{F_{2}}),  \text{I\kern-0.15em P}$ is defined on $\Omega$ by $\text{I\kern-0.15em P}(A_{1}\times A_{2})= \text{I\kern-0.15em P}(A_{1})  \text{I\kern-0.15em P}(A_{2})$ and then continuity.
+> Def. (**Product space**) Given $(\Omega_1, \mathcal{F_1},  \text{I\kern-0.15em P} 1)$ and $(\Omega_{2}, \mathcal{F_{2}},  \text{I\kern-0.15em P}2)$, then their product space is $(\Omega, \mathcal{F},  \text{I\kern-0.15em P})$, where $\Omega=\Omega_{1} \times \Omega_{2}, \mathcal{F}= \sigma(\mathcal{F_{1}} \times \mathcal{F_{2}}),  \text{I\kern-0.15em P}$ is defined on $\Omega$ by $\text{I\kern-0.15em P}(A_{1}\times A_{2})= \text{I\kern-0.15em P}1(A_{1})  \text{I\kern-0.15em P}2(A_{2})$ and then continuity.
 
 > Def. (**Independent trials**) If a combined experiment is modeled by the product space, the two sub-experiments are independent.
 
@@ -257,24 +260,22 @@ Rmk. We can replace all Borel sets by all "rectangles".
 
 Rmk. The marginal distribution of a subset of a collection of random variables is the probability distribution of the variables contained in the subset. It gives the probabilities of various values of the variables in the subset without reference to the values of the other variables.
 
-> Def. (**Jointly (absolutely) continuous r.v.s.**) distribution func $F_{X,Y}(x,y)$ can be written as an double integral of some Lebesgue integrable functions $f:\mathbb{R}^{2} \to [0, \infty)$. $f$ is called **joint probability density function**.
+> Def. (**Jointly (absolutely) continuous r.v.s.**) distribution func $F_{X,Y}(x,y)$ can be written as an Lebesgue double integral of some functions $f:\mathbb{R}^{2} \to [0, \infty)$. $f$ is called **joint probability density function**.
 
-Rmk. If $X=Y$, they're not jointly continuous.
+Rmk. (important) If $X=Y$, they're not jointly continuous, because $\iint f(x) \mathbb{1}(x=y) \ \mathrm{d}x \ \mathrm{d}y=\int f(x) \left[\int \mathbb{1}(x=y) \ \mathrm{d}y\right]\ \mathrm{d}x=0$.
 
 ## 2.6 Independence of r.v.s.
 > Def. (**Independence of r.v.s.**) $X,Y:\Omega\to \mathbb{R}$ are independent($X  \perp Y$) if $\text{I\kern-0.15em P}(X \in E, Y \in F)=\text{I\kern-0.15em P}(X \in E) \text{I\kern-0.15em P}(Y \in F),\forall E,F \in B(\mathbb{R})$.
 
 Rmk. The following two are also equivalent to the definition:
 1. Holding on all half spaces is enough: $F_{X,Y}(x,y)=F_{X}(x)F_{Y}(y)$.
-2. Holding on all single points is enough: p.m.f if discrete; otherwise p.d.f, i.e., $f_{X,Y}(x,y)=f_{X}(x)f_{Y}(y)$.
+2. (important) Holding on all single points is enough: p.m.f if discrete; otherwise p.d.f, i.e., $f_{X,Y}(x,y)=f_{X}(x)f_{Y}(y)$.
 
 > Def. (**Mutually independence of r.v.s.**) $F_{X_{1},X_{2}, \dots, X_{n}}(x_{1}, x_{2}, \dots, x_{n})=F_{X_{1}}(x_{1})F_{X_{2}}(x_{2}) \dots F_{X_{n}}(x_{n})$. By choosing $x_i= \infty$, we have the freedom to restrict on all subsets of r.v.s, not only all of them.
 
 Rmk. Independence of events is a special case of indepence of r.v., given that $A  \perp B \iff I_{A}  \perp I_{B}$.
 
-Thm. If $X  \perp Y$, and two Borel measurable functions $g,h: \mathbb{R} \to \mathbb{R}$, then $g(X), h(Y)$ are still r.v.s., and that $g(X)  \perp h(Y)$.
-
-Proof. By measure theory.
+Thm. If $X  \perp Y$, and two Borel measurable functions $g,h: \mathbb{R} \to \mathbb{R}$, then $g(X), h(Y)$ are still r.v.s., and that $g(X)  \perp h(Y)$. Prove by measure theory.
 
 E.g. $\omega=(\omega_{1}, \omega_{2}), X_{1}(\omega) \equiv \tilde X_{1}(\omega_{1}), X_{2}(\omega) \equiv \tilde X_{2}(\omega_{2})$, where $X_{1}, X_{2}$ are defined on the product space, then $X_{1}  \perp X_{2}$.
 
@@ -286,9 +287,9 @@ E.g. $\omega=(\omega_{1}, \omega_{2}), X_{1}(\omega) \equiv \tilde X_{1}(\omega_
 
 > Def. (**Geometric distribution**, $W \sim Geom(p)$ ) Keep performing Bernoulli trials until the first success, and let $W:=\text{the waiting time}$, then $f_{W}(k)=(1-p)^{k-1}p,k=1, 2, \dots$
 
-> Def. (**Negative Binomial distribution**, $W_{r} \sim NB(r,p)$ ) Let $W_{r}:=\text{the waiting time for r successes}$, then $f_{W_{r}}(k)={k-1 \choose r-1} p^{r-1} (1-p)^{k-r}p ,k=1, 2, \dots$
+> Def. (**Negative Binomial distribution**, $W_{r} \sim NB(r,p)$ ) Let $W_{r}:=\text{the waiting time for r successes}$, then $f_{W_{r}}(k)={k-1 \choose k-r} p^{r-1} (1-p)^{k-r}p ,k=1, 2, \dots$
 
-> Def. (**Poisson distribution**, $X \sim poisson(\lambda)$ ) $f_{X}(k):= \frac{\lambda^{k}}{k!} e^{-\lambda}, k=1, 2, \dots$ The Poisson distribution is an approximation of a binomial distribution of a rare event in the case that n is large, p is small, and $\lambda=np$ is moderate.
+> Def. (**Poisson distribution**, $X \sim poisson(\lambda)$ ) $f_{X}(k):= \frac{\lambda^{k}}{k!} e^{-\lambda}, k=1, 2, \dots$ The Poisson distribution is an approximation of a binomial distribution of a rare event in the case that **n is large, p is small**, and $\lambda=np$ is moderate.
 
 ## 3.2 Expectation of discrete r.v.
 > Def. (**Expectation**) A discrete r.v. X taking values from ${x_{1}, x_{2}, \dots}$ with p.m.f. $f_{X}(x)$. The expectation $\text{I\kern-0.15em E}X:=\sum_{i} x_{i} f_{X}(x_{i})=\sum_{x:f_{X}(x)>0} xf_{X}(x)$ exists if the sum is absolutely convergent. The summation range is indicating the countability.
@@ -334,7 +335,7 @@ Rmk. $\psi_{Y}(X)$ is from the same probability space as $X$, and it's our best 
 
 > Def. (**$\sigma$-field induced by a r.v. X**) $\sigma(X):=\{X^{-1}(B):\forall B \in \mathbb{B}(\mathbb{R})\}$, which characterizes all information that can be obtained by observing the value of X.
 
-Rmk. $\sigma(Y) \subset \sigma(\sigma(Y),\sigma(Z))$, here we use the above defined concept of generated $\sigma$-field.
+Rmk. $\sigma(Y) \subset \sigma(\sigma(Y),\sigma(Z))$, here we use the above defined concept of generated $\sigma$-field. The meaning is that the information from both Y and Z is more than the information from Y.
 
 > Def. (**Conditional expectation** of Y given a $\sigma$-field) skipped.
 
@@ -370,11 +371,11 @@ $$
 =\int_{-\infty}^{\infty} g(y) f_{X}(y) \ \mathrm{d}y
 \end{aligned}
 $$
+
 ## 4.2 Variance of continuous r.v.
 > Def. (**k-th moments**) $m_{k}:=\text{I\kern-0.15em E} X^{k}=\int x^{k} f_{X}(x) \ \mathrm{d}x$.
 
 > Def. (**k-th central moments**) $\sigma_{k}:=\text{I\kern-0.15em E} (X-\text{I\kern-0.15em E} X)^{k}=\int (x-\text{I\kern-0.15em E} X)^{k} f_{X}(x) \ \mathrm{d}x$.
-
 
 ## 4.3 Continuous distributions
 > Def. (**Uniform distribution** $X \sim \mathcal{U}[0,1]$ ) $f_{X}(x)=1, F_{X}(x)=x$ over $[0,1]$, otherwise nature.
@@ -429,7 +430,7 @@ I^{2}
 \end{aligned}
 $$
 
-> Def. (**(standard) Cauchy distribution**, $X \sim \mathcal{N}(\mu,\sigma^{2})$ ) p.d.f. $f_{X}(x)=\frac{1}{\pi (1+x^{2})}$.
+> Def. (**(standard) Cauchy distribution**, $X \sim \mathcal{N}(\mu,\sigma^{2})$ ) p.d.f. $f_{X}(x)=\frac{1}{\pi (1+x^{2})}, F_{X}(x)=\arctan(x)+\frac{\pi}{2}$.
 
 Rmk. (Heavy tail distribution without moment) Notice the $\text{I\kern-0.15em E}X=\int_{-\infty}^{\infty} |x| f_{X}(x) \ \mathrm{d}x=\infty$ does not exist.
 
@@ -442,7 +443,7 @@ Rmk. By marginal distribution func, linearity of expectation can be proved.
 
 > Def. (**Bivariate normal**) $f_{X,Y}(x,y)=\frac{1}{2\pi \sqrt{1-\rho^{2}}} \exp ( \frac{-1}{2(1-\rho^{2})} (x^{2}-2 \rho xy+y^{2}) )$.
 
-Property. $X,Y$ are bivariate normal and uncorrelated, then they're independent.  Examples: [Wiki](https://en.wikipedia.org/wiki/Normally_distributed_and_uncorrelated_does_not_imply_independent) 
+Property. $X,Y$ are bivariate normal and uncorrelated($\rho=0$), then they're independent. Examples: [Wiki](https://en.wikipedia.org/wiki/Normally_distributed_and_uncorrelated_does_not_imply_independent) 
 
 ## 4.5 Conditional distribution(asymmetric)
 > Def. (**Regular conditional dist**) If $f_{X}(x)>0$, $F_{Y|X}(y|x):= \text{I\kern-0.15em P}(Y \le y|X=x):=\int_{-\infty}^{y} \frac{f_{X,Y}(x,u)}{f_{X}(x)} \ \mathrm{d}u$; the cond. p.d.f $f_{Y|X}(\cdot|x)=\frac{ f_{X,Y}(x, \cdot) }{ f_{X}(x) }$.
@@ -500,7 +501,7 @@ Rmk. Sum of independent normal is still normal.
 
 
 # Ch5 Generating function
-Motivation. $G_{X}(s) = \text{I\kern-0.15em E} s^{X}, M_{X}(t)=\text{I\kern-0.15em E}e^{tX},\phi_{X}(t)=\text{I\kern-0.15em E}e^{itX}$. Then if $X \perp Y$, then $G_{X+Y}=G_{X}G_{Y}$.
+Motivation. $G_{X}(s) = \text{I\kern-0.15em E} s^{X}, M_{X}(t)=\text{I\kern-0.15em E}e^{tX},\phi_{X}(t)=\text{I\kern-0.15em E}e^{itX}$. Then $X \perp Y$, we have $G_{X+Y}=G_{X}G_{Y}$. The converse may not be true.
 
 > Def. (**Generating function**) $G_{a}(s)=\sum_{i=0}^{\infty} a_{i}s^{i}$, then $a_{i}=\frac{G_{a}^{(i)}(0)}{i!}$ if within the radius of convergence.
 
@@ -509,29 +510,39 @@ Rmk. (**Radius of convergence** R) Recall various convergence tests.
 2. If $\exists R' \in (0,R], \forall s \in [-R',R'],G_{a}(s)=G_{b}(s)$, then $a_{i}=b_{i}, \forall i$.
 3. If $R>0$ for $G_{a}(s)$, then $\{a_{n}\}$ is **uniquely determined** by taking derivative.
 
-Thm. (**Abel's theorem**) If $a_i>0$, $G_{a}(s)$ has $R=1$, and $G_{a}(1)$ exists(divergent to positive infinity is included), then $G_{a}(s)$ is left continuous at $s=1$, i.e. $G_{a}(1)=\sum_{i=0}^{\infty}a_{i}=\lim_{s \uparrow 1} G_{a}(s)$.
+Thm. (**Abel's theorem**) If $a_i>0$, $G_{a}(s)$ has $R=1$, and $G_{a}(1)$ exists(diverging to positive infinity is included), then $G_{a}(s)$ is left continuous at $s=1$, i.e. $G_{a}(1)=\sum_{i=0}^{\infty}a_{i}=\lim_{s \uparrow 1} G_{a}(s)$.
 
 ## 5.1 Probability generating function
-> Def. (**Probability generating function**) For nonnegative interger-valued discrete r.v. X, the p.g.f. $G_{X}(s)=\text{I\kern-0.15em E} s^{X}=\sum_{i=0}^{\infty} f_{X}(i) s^i$.
+> Def. (**Probability generating function**) For nonnegative interger-valued discrete r.v. X, the p.g.f. $G_{X}(s)=\text{I\kern-0.15em E} s^{X}=\sum_{i=0}^{\infty} f_{X}(i) s^i$ is the g.f. of $a_{i}=f_{X}(i)$.
 
 Rmk. 
 1. $\sum_{i=0}^{\infty} f_{X}(i) s^{i} \le \sum_{i=0}^{\infty} s^i$, so $R \ge 1$.
 2. $\text{I\kern-0.15em E}X=\lim_{s \uparrow 1} G_{X}'(s):=G_{X}'(1)$.
 3. $\text{I\kern-0.15em E}X^{\underline k}:=\text{I\kern-0.15em E}[X(X-1)\dots (X-k+1)]=\lim_{s \uparrow 1} G_{X}^{(k)}(s):=G_{X}^{(k)}(1)$.
+4. Limitation: hard to directly generate moment. E.g. $Var X = G''(1)+G'(1)-G'(1)^{2}$.
 
-Thm. (Sum of a random number of r.v.s.) N i.i.d. , $T=\sum_{i=1}^{N} X_{i}$, then $G_{T}(s)=G_{N}(G_{X}(s))$
+E.g.
+1. $X \sim Be(p), G_{X}(s)=1-p+ps$.
+2. $Y \sim Bin(n,p), G_Y(s)=G_{X}^{n}(s)$.
+3. $W \sim Geom(p), G_{W}(s)=\frac{ps}{1-s(1-p)}$.
+4. $X \sim poisson(\lambda), G_{X}(s)=e^{\lambda(s-1)}$.
 
-Proof. #TODO 
+Thm. (**Sum of a random number of r.v.s.**) N i.i.d. r.v. $X_{i}$ are independent of N, $T=\sum_{i=1}^{N} X_{i}$, then $G_{T}(s)=G_{N}(G_{X}(s))$. Prove by the law of total expectation.
 
-Prop. The sum of a poisson number of i.i.d. Bernoulli r.v.s. is still poisson.
+E.g. The sum of a poisson number of i.i.d. Bernoulli r.v.s. is still poisson.
 
 > Def. (**Joint probability generating function**) For nonnegative interger-valued discrete r.v.s. $X_{1},X_{2}$, the j.p.g.f. $G_{X,Y}(s,t)=\text{I\kern-0.15em E} s^{X} t^{Y}=\sum_{i=0}^{\infty} \sum_{j=0}^{\infty} f_{X,Y}(i,j) s^{i}t^{j}$.
 
-Thm. $X \perp Y \iff G_{X,Y}(s,t)=G_{X}(s)G_{Y}(t)$.
+Thm. $X \perp Y \iff G_{X,Y}(s,t)=G_{X}(s)G_{Y}(t)$. 
 
-E.g. (**Recurrence of random walk**) $S_{0}=0,S_{n}=\sum_{i=1}^{n} X_{i}$, where $X_{i}$ is i.i.d.  $Be(p)$ r.v.s. within $\{-1,1\}$. $T_{0}:=\min \{ i \ge 1:S_{i}=0 \}$. Notice that $T_{0}$ can be $\infty$, therefore it's a defective r.v.; Q: the transience $\text{I\kern-0.15em P}(T_{0}=\infty)$, if none, $\text{I\kern-0.15em E}T_{0}$.
+E.g. (**Recurrence of random walk**) 
+- $S_{0}=0,S_{n}=\sum_{i=1}^{n} X_{i}$, where $X_{i}$ are i.i.d. $Be(p)$ r.v.s. within $\{-1,1\}$.
+- Define $T_{0}:=\min \{ i \ge 1:S_{i}=0 \}$. Notice that $T_{0}$ can be $\infty$, therefore it's a defective r.v. if $\text{I\kern-0.15em P}(T_{0}=\infty)>0$; 
+- Qes: the transience $\text{I\kern-0.15em P}(T_{0}=\infty)$; if none, the $\text{I\kern-0.15em E}T_{0}$.
 
-Sol. $f_{T_{0}}(n):=\text{I\kern-0.15em P}(S_{1} \dots S_{n-1} \ne 0;S_{n} = 0)$, then $\text{I\kern-0.15em P}(T_{0}=\infty)=1-G_{f_{0}}(1)$. Consider $f_{p_{0}}(n)=\text{I\kern-0.15em P}(S_{n} = 0)=\mathbb{1}(\text{n is even}) {n \choose n/2} (pq)^{n/2}$, and $G_{p_{0}}(s)$
+Sol. 
+- $f_{T_{0}}(n):=\text{I\kern-0.15em P}(S_{1} \dots S_{n-1} \ne 0;S_{n} = 0)$, then $\text{I\kern-0.15em P}(T_{0}=\infty)=1-G_{T_{0}}(1)$. 
+- Consider $p_{0}(n)=\text{I\kern-0.15em P}(S_{n} = 0)=\mathbb{1}(\text{n is even}) {n \choose n/2} (pq)^{n/2}$, and $G_{p_{0}}(s)$
 
 
 
@@ -553,15 +564,226 @@ E.g. (**Branching process(Galton-Watson tree)**)
 
 
 ## 5.2 Moment generating function
-> Notation. (Expectation for general r.v.) $\text{I\kern-0.15em E}g(X)=\int g(x) \ \mathrm{d} F_{X}(x)=\int g(x) \text{I\kern-0.15em P} \circ X^{-1}(\mathrm{d}x)$.
+Limitation of p.g.f is that it only applys to nonnegative interger-valued discrete r.v.. We ask for a unified framework.
 
+> Notation. (**Expectation for general r.v.**) $\text{I\kern-0.15em E}g(X)=\int g(x) \ \mathrm{d} F_{X}(x)=\int g(x) \text{I\kern-0.15em P} \circ X^{-1}(\mathrm{d}x)$.
 
+E.g. $g(x)$ is the Dirichlet function.
+
+Motivation. (**Lebesgue integral**) We ask for intervals such that function value in this interval is quite close. But we don't have to decompose the domain into intervals according to the natural ordering. Instead, we can decompose according to the function value using measure theory.
+
+> Def. (**Moment generating function**) $M_{X}(t)=\text{I\kern-0.15em E}e^{tX}$.
+
+Rmk. $\frac{\mathrm{d}^{k}}{\mathrm{d} t^{k}} M_{X}(t) |_{t=0}=\int x^{k} \ \mathrm{d} F_{X}(x)$. When k is even, we can directly claim existence.
 
 ## 5.3 Characteristic function
+Motivation. We need to keep x on the exponential. But m.g.f. easily requires X to decay fast. The only left choice is to make the exponential complex. By Euler's formula, $e^{iy}=\cos y + i \sin y$, therefore bounded. Essentially it becomes Fourier transform.
+
+> Def. (**Characteristic function**) $\phi_{X}(t)=\text{I\kern-0.15em E}e^{itX}=\int e^{itx} \ \mathrm{d} F_{X}(x)=\int (\cos tx + i \sin tx) \ \mathrm{d} F_{X}(x)$. 
+> (**Cumulants generating function**) $\log \phi_{X}(t)=\sum_{j} \frac{i^{j} c_{j}t^{j}}{j!}$.
+
+Rmk.
+1. $\phi(0)=1,|\phi(t)|=|\int e^{itx} \ \mathrm{d} F_{X}(x)| \le \int |e^{itx}| \ \mathrm{d} F_{X}(x) \le \int \ \mathrm{d} F_{X}(x) = 1$.
+2. $\phi(t)$ is uniformly continuous. Proved by dominant convergence thm.
+3. $\phi^{(k)}(t)=\int (ix)^{k} e^{itx} \ \mathrm{d} F_X(t)$. Therefore if $\text{I\kern-0.15em E} X^{k}$ exists, then $\phi^{(k)}(t)$ exists at $t=0$. By Taylor expansion, $\phi(t)=\sum_{j=0}^{k} \phi^{(j)}(0)\frac{t^{j}}{j!}+o(t^{k})$.
+
+Thm. $\phi_{X,Y}(s,t)=\phi_{X}(s)\phi_{Y}(t) \iff X \perp Y$.
+
+E.g.
+- $X \sim N(0,\sigma^2)$, $\phi(t)=\exp(-\frac{1}{2} \sigma^{2} t^{2})$.
+
+Prop. Normal distribution is the only one whose cumulants expansion has finitely many non-zero terms. $\log \phi_{X}(t)=i \mu t -\frac{1}{2} \sigma^{2} t^{2}$.
+
+Thm. (**Inverse Fourier transform**) At all points where f is differentiable, $f_{X}(x)=\frac{1}{2\pi} \int e^{-itx} \phi_{X}(t) \ \mathrm{d}t$.
+
+Proof(heuristic). textbook
+$$
+I(x):=\frac{1}{2\pi} \int e^{-itx} \phi_{X}(t) \ \mathrm{d}t=
+$$
+#TODO 
 
 
-# Ch6 Convergence
 
 
+Thm. (**Inverse theorem**)
+$\bar F(x):=\frac{1}{2}(F(x)+F(x-))$. Notice that there's a one-to-one correspondence between $F, \bar F$.
 
-# Ch7 Limiting theorm
+$$
+\bar F(b)-\bar F(a):=\lim_{N \to \infty} \int_{-N}^N \frac{e^{-ita}-e^{-itb}}{2\pi i t} \phi_{X}(t) \ \mathrm{d}t
+$$
+
+> Def. (**Convergence of distribution function sequence**) $F_{X_{n}} \Rightarrow F_{X}$ if $F_{X_{n}}(x) \to F_{X}(x)$ at every point x where $F_{X}$ is continuous (*weak convergence*).
+
+> Def. (**Convergence of r.v. in distribution**) $X_{n}$ converges to $X$ in distribution/weakly/in law (denoted as $X_{n} \overset{D}{\to} X$ or $X_{n} \Rightarrow X$) if $F_{X_{n}} \Rightarrow F_{X}$.
+
+> Def. (**Vague convergence**) Given a set of d.f. $F_{n}$, if $F_{n}(x) \to G(x)$ at all continuous point of G, then $F_{n}$ converges to $G$ vaguely (because $G$ may be not a d.f.).
+
+E.g. $X_{n}(\omega) \in \{\frac{1}{n},n\}$. 
+
+Thm. (**Lévy’s Continuity theorem**) 
+1. If $F_{n} \Rightarrow F$ vaguely and $F$ is a d.f. with c.f. $\phi$ , then $\phi_{n}\to \phi$ pointwise.
+2. If $\phi_{n}\to \phi$ pointwise and the c.f. $\phi$ is continuous at 0 with d.f. $F$, then $F_{n} \Rightarrow F$.
+
+Rmk. the statement "$\phi$ is continuous at 0" can be replaced by
+1. $\phi$ is continuous (as a pointwise limit of c.f., 0 is the only point that can become discontinuous).
+2. $\phi$ is a c.f. with d.f. $F$.
+3. $\{ F_{n} \}_{n=0}^\infty$ is tight, i.e. tail probability is uniformly bounded, $\forall \epsilon >0, \exists M_{\epsilon}>0, s.t. \sup_{n}[F_{n}(-M_{\epsilon})+1-F_{n}(M_{\epsilon})] \le \epsilon$.
+
+E.g. $X_{n} \sim N(0,n^2)$, $\phi_{n}(t)=\exp(-\frac{1}{2} n^{2} t^{2})$.
+
+Thm. n i.i.d. r.v. $X_n$:
+1. (**Weak law of large number**) $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{D}{\to } \text{I\kern-0.15em E}X$.
+2. (**Central limit thm 1**) $\sqrt n \left(\frac{1}{n} \sum_{i=1}^{n} X_{i} - \text{I\kern-0.15em E} X\right) \overset{D}{\to } N(0,\text{I\kern-0.15em E}^{2} X_{1})$.
+3. In other word, $\frac{1}{n} \sum_{i=1}^{n} X_{i} \sim \text{I\kern-0.15em E}X + \frac{1}{\sqrt n} N(0,\text{I\kern-0.15em E}^{2} X_{1})$.
+
+#TODO 
+
+> When every error is minor that doesn't dominate the total error.
+
+Thm. (**A general CLT**) Let $X_{1}, X_{2} \dots$ be independent, with $\text{I\kern-0.15em E} X_{j}=0$
+
+
+# Ch6 Markov
+Skipped.
+
+# Ch7 Convergence
+
+Convergence in distribution only reflects one aspect of r.v. It's reasonable to consider nature of r.v.: a function from $[0,1]$ to $\mathbb{R}$.
+
+Recall. Convergence of real functions $f_{n}, f: [0,1] \to \mathbb{R}$,
+1. (**Pointwise convergence**) $\forall x, f_{n}(x) \to f(x)$ as $n \to \infty$.
+2. (**Convergence in norm**) $||f_{n} - f|| \to 0$ as $n \to \infty$. (bad point is not too bad in norm)
+3. (**Convergence in Lebesgue/uniform measure**) 
+    - For $\epsilon>0, E_{\epsilon}=\{u\in[0,1]: |g(u)-h(u)| > \epsilon \}$, $d_{\epsilon}(g,h)=\int_{E} \ \mathrm{d}x$.
+    - $d_{\epsilon} (f_{n} , f) \to 0$ as $n \to \infty$ for all $\epsilon>0$.
+    - (bad point is not too much)
+    - Uniform measure: $\int \ \mathrm{d} x$ instead of $\int \ \mathrm{d} g(x)$.
+
+Rmk. 
+1. Convergence in $L_{p}$ norm is stronger than convergence in Lebesgue/uniform measure.
+
+---
+## 7.1 Convergence of r.v.s.
+Now let's go into the convergence of r.v.s. We have introduced convergence in distribution, which is the only one that allows r.v.s. living in different probability spaces.
+
+> Def. (**Almost sure convergence** $X_{n} \overset{a.s.}{\to} X$) $X_{n}$ converges to $X$ almost surely, or almost everywhere, or with probability 1, when  $\text{I\kern-0.15em P}(\{ \omega \in \Omega: X_{n}(\omega) \to X(\omega) \text{ as } n \to \infty \})=1$.
+
+> Def. (**Convergence in r-th mean** $X_{n} \overset{r}{\to} X$)  $\text{I\kern-0.15em E}|X_{n} - X |^{r} \to 0$ as $n \to \infty$. Here $\text{I\kern-0.15em E}|Y|^{r}= \int_{\Omega} |y|^{r} \ \mathrm{d} F_{Y}$, and $(\text{I\kern-0.15em E}|Y|^{r})^{\frac{1}{r}}$ is a norm. (Care about the degree of badness of bad events)
+
+> Def. (**Convergence in probability (measure)** $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$)  $\exists \delta>0, \forall \epsilon \in (0,\delta)$, $\text{I\kern-0.15em P}(\{ \omega \in \Omega: |X_{n}(\omega) - X(\omega)| \ge \epsilon \}) \to 0$ as $n \to \infty$. (Care about the size of bad events)
+
+Rmk. Convergence in probability is actually using $d_{\epsilon}(g,h)=\int_\text{I\kern-0.15em E} \ \mathrm{d} \text{I\kern-0.15em P}(x)$ in the convergence in measure.
+
+Thm. 
+1. $X_{n} \overset{a.s.}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$.
+2. $X_{n} \overset{r}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$.
+3. $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ implies $X_{n} \overset{D}{\to} X$.
+4. $X_{n} \overset{r}{\to} X$ implies $X_{n} \overset{s}{\to} X$, if $r \ge s \ge 1$.
+5. No other implication hold in general.
+
+Proof.
+5. (No other implication hold in general).
+    - ($X_{n} \overset{D}{\to} X$ doesn't imply $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$): trivial.
+    - ($X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$): tiny bad point with very bad value. E.g. pick $X_{n}:=n^{3}$ with proba $n^{-2}$, otherwise 0.
+    - ($X_{n} \overset{\text{s}}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$, if $r > s \ge 1$): we want small s-th moment with large r-th moment. E.g. pick $X_{n}:=n$ with proba $n^{-\frac{1}{2}(r+s)}$, otherwise 0.
+    - ($X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ doesn't imply $X_{n} \overset{a.s.}{\to} X$):
+        - $I_{i,j}:=[\frac{j}{i},\frac{j+1}{i}], I_n:=ordering_{n}(I_{i,j})=(I_{1,0},I_{2,0},I_{2,1},I_{3,0}, \dots)_{n}$.
+        - $X_{n}:=\mathbb{1}_{I_{n}}, X:=0$.
+        - Take $\delta=1$, $\text{I\kern-0.15em P}(\{ \omega \in \Omega: |X_{n}(\omega) - X(\omega)| \ge \epsilon \})=\text{I\kern-0.15em P}(I_{n}) \to 0$.
+        - For no $\omega$, $X_{n}(\omega) \to X(\omega) \text{ as } n \to \infty$, i.e. $\text{I\kern-0.15em P}=0$ instead.
+        - Intuition: a.s. convergence want to make sure many $\omega$ that can run away from bad events in a limiting sence.
+    - ($X_{n} \overset{r}{\to} X$ doesn't imply $X_{n} \overset{a.s.}{\to} X$) 
+    - ($X_{n} \overset{a.s.}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$) 
+1. ($X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ implies $X_{n} \overset{D}{\to} X$)
+$$
+\begin{align*}
+\text{I\kern-0.15em P}(X_{n} \le x)&=\text{I\kern-0.15em P}(X_{n} \le x, X \le x+\epsilon)+\text{I\kern-0.15em P}(X_{n} \le x, X > x+\epsilon) \\\\
+&\le \text{I\kern-0.15em P}(X \le x+\epsilon)+\text{I\kern-0.15em P}(|X_{n}-X|>\epsilon) \\\\
+
+\text{I\kern-0.15em P}(X \le y)&=\text{I\kern-0.15em P}(X \le y, X_{n} \le y+\epsilon)+\text{I\kern-0.15em P}(X \le y, X_{n} > y+\epsilon) \\\\
+&\le \text{I\kern-0.15em P}(X_{n} \le y+\epsilon)+\text{I\kern-0.15em P}(|X_{n}-X|>\epsilon) \\\\
+\text{Let } y=x-\epsilon& ,\\
+\text{I\kern-0.15em P}(X \le x-\epsilon)-&\text{I\kern-0.15em P}(|X_{n}-X|>\epsilon) 
+\le \text{I\kern-0.15em P}(X_{n} \le x) \\
+&\le \text{I\kern-0.15em P}(X \le x+\epsilon)+\text{I\kern-0.15em P}(|X_{n}-X|>\epsilon)\\
+
+F_{X}(x-\epsilon)
+-&\text{I\kern-0.15em P}(|X_{n}-X|>\epsilon) 
+\le F_n(x) 
+\le F_{X}(x+\epsilon)
++\text{I\kern-0.15em P}(|X_{n}-X|>\epsilon)
+\end{align*}
+$$
+    When x is continuous, limit exists; letting $\epsilon \to 0$ concludes the proof.
+
+2. ($X_{n} \overset{1}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$) direct result from Markov's inequality.
+
+$$
+\begin{gather}
+\text{Markov’s inequality } X \ge 0, \forall a>0, P(X \ge a) \le E(X)/a \\ \text{Chebyshev's inequality } \forall k>0, P(|X-\mu| \ge k \sigma) \le 1/k^2 
+\end{gather}
+$$
+4. ($X_{n} \overset{r}{\to} X$ implies $X_{n} \overset{s}{\to} X$) 
+$$
+\begin{gather}
+\text{Lyapunov's inequality } (\text{I\kern-0.15em E} |Z|^{r})^{\frac{1}{r}} \ge (\text{I\kern-0.15em E} |Z|^{s})^{\frac{1}{s}}, r \ge s>0 \\
+\text{Hölder's inequality } ||fg||_{1} \le ||f||_{p}||g||_{q}, \frac{1}{p}+\frac{1}{q}=1\\
+\text{Jensen's inequality } \phi(\text{I\kern-0.15em E}X) \le \text{I\kern-0.15em E}(\phi(X)), \phi\text{ is convex}
+\end{gather}
+$$
+    In Hölder, let $X:=|Z|^{s}, Y=1, p=\frac{r}{s}, q=\frac{r}{r-s}$.
+    In Jensen, let $X:=|Z|^{s}, \phi(x)=x^{\frac{r}{s}}$.
+1. ($X_{n} \overset{a.s.}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$) Let $A_{n}(\epsilon):=\{\omega:|X_{n}(\omega)-X(\omega)| > \epsilon \}, B_{m}(\epsilon ):=\bigcup_{n \ge m} A_{n}(\epsilon)$. $\{B_{m}\}$ is decreasing.
+   - (1) $X_{n} \overset{a.s.}{\to} X \iff \forall \epsilon>0, \lim_{m \to \infty} \text{I\kern-0.15em P}(B_{m}(\epsilon))=0$.
+        $R.H.S.= \text{I\kern-0.15em P}( \bigcap_{m=0}^{\infty} \bigcup_{n \ge m} A_{n}(\epsilon) )=\text{I\kern-0.15em P}(\limsup_{m} A_{m}(\epsilon))$.
+        Notice that $A(\epsilon)= \limsup_{n} A_{n}(\epsilon) = \{ \omega: X_{n}(\omega)-X(\omega)| > \epsilon \text{ infinitely many n} \}$ is decreasing as $\epsilon$ getting larger.
+$$
+\begin{aligned}
+&\text{I\kern-0.15em P}(\{ \omega \in \Omega: X_{n}(\omega) \to X(\omega) \text{ as } n \to \infty \})=1 
+\\ \iff &\text{I\kern-0.15em P}(\{ \omega \in \Omega: \forall \epsilon>0, \exists n_{0}, \forall n>n_{0,} |X_{n}(\omega)-X(\omega)| \le \epsilon\})=1
+\\ \iff &\text{I\kern-0.15em P}(\{ \omega \in \Omega: \exists \epsilon_{0}>0, \forall n_{0}, \exists n>n_{0,} |X_{n}(\omega)-X(\omega)|>\epsilon_{0}\})=0
+\\ \iff &\text{I\kern-0.15em P}( \cup_{\epsilon>0} \{ \omega \in \Omega: \forall n_{0}, \exists n>n_{0,} |X_{n}(\omega)-X(\omega)|>\epsilon\})=0
+\\ \iff &\text{I\kern-0.15em P}( \cup_{\epsilon>0} \{ \omega \in \Omega: |X_{n}(\omega)-X(\omega)| > \epsilon \text{ for infinitely many n}\})=0
+\\ \iff &\text{I\kern-0.15em P}( \cup_{\epsilon>0} \limsup_{n} A_{n}(\epsilon) )=0
+\end{aligned}
+$$
+    From left to right. Notice that $\forall \epsilon>0, \text{I\kern-0.15em P}(\limsup_{n} A_{n}(\epsilon)) \le \text{I\kern-0.15em P}(\cup_{\epsilon>0} \limsup_{n} A_{n}(\epsilon))=0$. From right to left is obvious too.
+
+   - (2) $X_{n} \overset{a.s.}{\to} X \Leftarrow \forall \epsilon>0, \sum_{n=1}^{\infty} \text{I\kern-0.15em P}(A_{n}(\epsilon)) < \infty$. 
+       $\text{I\kern-0.15em P}(B_{m}(\epsilon)) \le \sum_{n=m}^{\infty} \text{I\kern-0.15em P}(A_{n}(\epsilon))$, and the latter goes to 0 as m go to infinity.
+   - (3) $X_{n} \overset{a.s.}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$.
+    $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X \iff \exists \delta>0, \forall 0<\epsilon<\delta, \text{I\kern-0.15em P}( A_{n}(\epsilon)) \to 0$ is true whenever $\text{I\kern-0.15em P}(B_{n}(\epsilon)) \to 0$ is true, which holds iff $X_{n} \overset{a.s.}{\to} X$ by (1).
+
+## 7.2 Partial converse statements
+1. If $X_{n} \overset{D}{\to} c$, where c is a constant, then $X_{n} \overset{\text{I\kern-0.15em P}}{\to} c$. (Because no way to switch the $\omega$. if only one possible choice) #TODO 
+   Application. to prove the law of large number, no need to prove the convergence in probability anymore.
+2. If $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$, $\text{I\kern-0.15em P}(|X_{n}| \le k)=1$ for all n and some constant k, then $X_{n} \overset{r}{\to} X, r \ge 1$. #TODO 
+3. If $X_{n} \overset{\text{I\kern-0.15em P}}{\to} c$, then $\exists \delta>0, \forall \epsilon \in (0,\delta)$, $\text{I\kern-0.15em P}(\{ \omega \in \Omega: |X_{n}(\omega) - X(\omega)| \ge \epsilon \}) \to 0$ as $n \to \infty$.
+4. If $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$, there's a non-random increasing sequence of integers $n_{1}, n_{2}, \dots$ such that $X_{n_{i}} \overset{a.s.}{\to} X$ as $i \to \infty$.
+
+## 7.3 Other versions of WLLN
+Thm (**Continuous mapping theorm**) Suppose function $g$ has the discontinuity points $D_{g}$ such that $\text{I\kern-0.15em P}(X \in D_{g})=0$, then:
+$$
+\begin{aligned}
+X_{n} \overset{D}{\to} X \implies g(X_{n}) \overset{D}{\to} g(X) \\
+X_{n} \overset{\text{I\kern-0.15em P}}{\to} X \implies g(X_{n}) \overset{\text{I\kern-0.15em P}}{\to} g(X) \\
+X_{n} \overset{a.s.}{\to} X \implies g(X_{n}) \overset{a.s.}{\to} g(X)
+\end{aligned}
+$$
+
+
+Thm. (**$L^2-WLLN$**) Let $X_{1}, X_{2}, \dots$ be uncorrelated r.v.s. with $\text{I\kern-0.15em E}X_{i}=\mu, Var X_{i} \le c_{i} < \infty$, for all i. Then $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{2}{\to } \mu$ and $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{\text{I\kern-0.15em P}}{\to } \mu$.
+
+Application. (Bernstein approximation) Let $f$ be continuous on $[0,1]$ (uniform continuous and bounded). Let:
+
+$$
+f_{n}(x)=\sum_{m=0}^{n} {n \choose m} x^{m}(1-x)^{n-m} f(\frac{n}{m})
+$$
+
+Then $\sup_{x} |f_{n}(x)-f(x)| \to 0$ as $n \to \infty$.
+
+Proof. Let $X_{i,x} \sim Be(x), S_{n,x}:=\sum_{i=1}^{n} X_{i,x}$, then $f_{n}(x)=\text{I\kern-0.15em E} f(\frac{S_{n,x}}{n})$.
+
+Partial converse statement 2.
+
+# Ch8 Limiting theorm
