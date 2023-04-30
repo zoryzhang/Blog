@@ -510,16 +510,17 @@ Rmk. (**Radius of convergence** R) Recall various convergence tests.
 2. If $\exists R' \in (0,R], \forall s \in [-R',R'],G_{a}(s)=G_{b}(s)$, then $a_{i}=b_{i}, \forall i$.
 3. If $R>0$ for $G_{a}(s)$, then $\{a_{n}\}$ is **uniquely determined** by taking derivative.
 
-Thm. (**Abel's theorem**) If $a_i>0$, $G_{a}(s)$ has $R=1$, and $G_{a}(1)$ exists(diverging to positive infinity is included), then $G_{a}(s)$ is left continuous at $s=1$, i.e. $G_{a}(1)=\sum_{i=0}^{\infty}a_{i}=\lim_{s \uparrow 1} G_{a}(s)$.
+Thm. (**Abel's theorem**) If $a_i>0$, $G_{a}(s)$ has $R=1$, and $G_{a}(1)$ exists (diverging to positive infinity is included), then $G_{a}(s)$ is left continuous at $s=1$, i.e. $G_{a}(1):=\sum_{i=0}^{\infty}a_{i}=\lim_{s \uparrow 1} G_{a}(s)$.
 
 ## 5.1 Probability generating function
 > Def. (**Probability generating function**) For nonnegative interger-valued discrete r.v. X, the p.g.f. $G_{X}(s)=\text{I\kern-0.15em E} s^{X}=\sum_{i=0}^{\infty} f_{X}(i) s^i$ is the g.f. of $a_{i}=f_{X}(i)$.
 
 Rmk. 
-1. $\sum_{i=0}^{\infty} f_{X}(i) s^{i} \le \sum_{i=0}^{\infty} s^i$, so $R \ge 1$.
-2. $\text{I\kern-0.15em E}X=\lim_{s \uparrow 1} G_{X}'(s):=G_{X}'(1)$.
-3. $\text{I\kern-0.15em E}X^{\underline k}:=\text{I\kern-0.15em E}[X(X-1)\dots (X-k+1)]=\lim_{s \uparrow 1} G_{X}^{(k)}(s):=G_{X}^{(k)}(1)$.
-4. Limitation: hard to directly generate moment. E.g. $Var X = G''(1)+G'(1)-G'(1)^{2}$.
+1. $\sum_{i=0}^{\infty} f_{X}(i) s^{i} \le \sum_{i=0}^{\infty} s^i$, therefore $R \ge 1$.
+2. $G_X(1)=\sum_{i} \text{I\kern-0.15em P}(X=i)=1-\text{I\kern-0.15em P}(X=\infty)$. If not 1, we say that X is **defective** with defective distribution func, and all moments equal $+\infty$.
+3. $\text{I\kern-0.15em E}X=\lim_{s \uparrow 1} G_{X}'(s):=G_{X}'(1)$.
+4. $\text{I\kern-0.15em E}X^{\underline k}:=\text{I\kern-0.15em E}[X(X-1)\dots (X-k+1)]=\lim_{s \uparrow 1} G_{X}^{(k)}(s):=G_{X}^{(k)}(1)$.
+5. Limitation: hard to directly generate moment. E.g. $Var X = G''(1)+G'(1)-G'(1)^{2}$.
 
 E.g.
 1. $X \sim Be(p), G_{X}(s)=1-p+ps$.
@@ -527,41 +528,63 @@ E.g.
 3. $W \sim Geom(p), G_{W}(s)=\frac{ps}{1-s(1-p)}$.
 4. $X \sim poisson(\lambda), G_{X}(s)=e^{\lambda(s-1)}$.
 
-Thm. (**Sum of a random number of r.v.s.**) N i.i.d. r.v. $X_{i}$ are independent of N, $T=\sum_{i=1}^{N} X_{i}$, then $G_{T}(s)=G_{N}(G_{X}(s))$. Prove by the law of total expectation.
+Thm 5.1.1. (**Sum of a random number of i.i.d. r.v.s.**) N i.i.d. r.v. $X_{i}$ are independent of N, $T=\sum_{i=1}^{N} X_{i}$, then $G_{T}(s)=G_{N}(G_{X}(s))$. Prove by the law of total expectation.
 
 E.g. The sum of a poisson number of i.i.d. Bernoulli r.v.s. is still poisson.
 
 > Def. (**Joint probability generating function**) For nonnegative interger-valued discrete r.v.s. $X_{1},X_{2}$, the j.p.g.f. $G_{X,Y}(s,t)=\text{I\kern-0.15em E} s^{X} t^{Y}=\sum_{i=0}^{\infty} \sum_{j=0}^{\infty} f_{X,Y}(i,j) s^{i}t^{j}$.
 
-Thm. $X \perp Y \iff G_{X,Y}(s,t)=G_{X}(s)G_{Y}(t)$. 
+Thm  5.1.2. $X \perp Y \iff G_{X,Y}(s,t)=G_{X}(s)G_{Y}(t)$. 
 
-E.g. (**Recurrence of random walk**) 
+### 5.1.1 Application 1: Recurrence of random walk
+Problem.
 - $S_{0}=0,S_{n}=\sum_{i=1}^{n} X_{i}$, where $X_{i}$ are i.i.d. $Be(p)$ r.v.s. within $\{-1,1\}$.
-- Define $T_{0}:=\min \{ i \ge 1:S_{i}=0 \}$. Notice that $T_{0}$ can be $\infty$, therefore it's a defective r.v. if $\text{I\kern-0.15em P}(T_{0}=\infty)>0$; 
-- Qes: the transience $\text{I\kern-0.15em P}(T_{0}=\infty)$; if none, the $\text{I\kern-0.15em E}T_{0}$.
+- Define $T_{0}:=\min \{ i \ge 1:S_{i}=0 \}$. Notice that $T_{0}$ technically can be $\infty$, therefore it's a defective r.v. if $\text{I\kern-0.15em P}(T_{0}=\infty)>0$; 
+
+Qes. The transience $\text{I\kern-0.15em P}(T_{0}=\infty)$; if none, the $\text{I\kern-0.15em E}T_{0}$.
 
 Sol. 
-- $f_{T_{0}}(n):=\text{I\kern-0.15em P}(S_{1} \dots S_{n-1} \ne 0;S_{n} = 0)$, then $\text{I\kern-0.15em P}(T_{0}=\infty)=1-G_{T_{0}}(1)$. 
-- Consider $p_{0}(n)=\text{I\kern-0.15em P}(S_{n} = 0)=\mathbb{1}(\text{n is even}) {n \choose n/2} (pq)^{n/2}$, and $G_{p_{0}}(s)$
+1. $f_{T_{0}}(n):=\text{I\kern-0.15em P}(S_{1} \dots S_{n-1} \ne 0;S_{n} = 0)$, then $\text{I\kern-0.15em P}(T_{0}=\infty)=1-G_{T_{0}}(1)$. 
+2. Consider $p_{0}(n)=\text{I\kern-0.15em P}(S_{n} = 0)=\mathbb{1}(\text{n is even}) {n \choose n/2} (pq)^{n/2}$, then $G_{p_{0}}(s)=(1-4pqs^{2})^{-1/2}$.
+3. By law of total probability, that first return happens at the k-th step, then
 
+$$
+\begin{gather}
+p_{0}(n)=\sum_{k=1}^{n} p_{0}(n-k) f_{T_{0}}(k) \\
+\implies
+G_{p_{0}}(s)=1+G_{p_{0}}(s) G_{T_{0}}(s)
+\end{gather}
+$$
 
+4. $G_{T_{0}}(s)=1-(1-4pqs^{2})^{1/2}$, following (2) and (3).
+5. $P(T_{0}=\infty)=|p-q|$. If $p=q=\frac{1}{2}$, then transience is none. In such case, $G_{T_{0}}(s)=1-(1-s^{2})^{1/2}$, and $\text{I\kern-0.15em E} T_{0}=G_{T_{0}}'(1)=+\infty$.
 
-#TODO 
+### 5.1.2 Application 2: Branching process (Galton-Watson tree)
+Problem.
+- Each member of the n-th generation gives birth to a family of members of the (n+1)-th generation.
+- $Z_{0}=1,Z_{n+1}=X_{1}^{(n)}+X_{2}^{(n)}+\dots+X_{Z_{n}}^{(n)}$, where the branching r.v. X are i.i.d.
+- Once $Z_{n}=0$, then $Z_{n+1}=0$. 
+- $X_{i}^{(m)}$ is identical to $Z_{1}:=Z$.
 
-$P(T_{0}=\infty)=|p-q|$. If $p=q=\frac{1}{2}$, then 
+Qes. What's the expectation and variance of $Z_{n}$?
 
+Sol.
+1. Denote $\mu:=\text{I\kern-0.15em E} Z=\mu, \sigma^{2}=Var Z$. 
+2. p.g.f. $G_{n}=G_{1}(G_{n-1})=G(G_{n-1})$ by Thm 5.1.1.
+3. $\text{I\kern-0.15em E} Z_{n}= \frac{\ \mathrm{d}}{\ \mathrm{d}s} G(G_{{n-1}}(s)) |_{s=1}=\mu \text{I\kern-0.15em E} Z_{n-1}$, i.e. $\text{I\kern-0.15em E} Z_{n}=\mu^n$.
+4. $Var Z_{n}=\frac{\ \mathrm{d^{2}}}{\ \mathrm{d}s^{2}} G(G_{{n-1}}(s)) |_{s=1}+\frac{\ \mathrm{d}}{\ \mathrm{d}s} G_{{n}}(s)|_{s=1}-(\frac{\ \mathrm{d}}{\ \mathrm{d}s} G_{{n}}(s) |_{s=1})^{2}$.
+5. If $\mu=1$, $Var Z_{n}=n \sigma^2$.
+6. If $\mu \ne 1$, $Var Z_{n}=\frac{\sigma^{2} (\mu^{n}-1)\mu^{n-1} }{\mu-1}$.
 
-E.g. (**Branching process(Galton-Watson tree)**)
-- $Z_{0}=1,Z_{n+1}=X_{1}^{(n)}+X_{2}^{(n)}+\dots+X_{Z_{n}}^{(n)}$, where X are i.i.d. Once $Z_{n}=0$, then $Z_{n+1}=0$. Denote $\mu:=\text{I\kern-0.15em E} X_{i}^{(m)}, \sigma^{2}=Var(X_{i}^{(m)})$. 
-- What's the expectation and variance?
-    - $G_{Z_{n}}=G_{Z_{1}}(G_{Z_{n-1}})=G(G_{Z_{n-1}})$.
-    - $\text{I\kern-0.15em E} Z_{n}= \frac{\ \mathrm{d}}{\ \mathrm{d}s} G(G_{Z_{n-1}}(s)) |_{s=1}=\mu \text{I\kern-0.15em E} Z_{n-1}$.
-    - $Var Z_{n}=\frac{\ \mathrm{d^{2}}}{\ \mathrm{d}s^{2}} G(G_{Z_{n-1}}(s)) |_{s=1}+\frac{\ \mathrm{d}}{\ \mathrm{d}s} G_{Z_{n}}(s)|_{s=1}-(\frac{\ \mathrm{d}}{\ \mathrm{d}s} G_{Z_{n}}(s) |_{s=1})^{2}$
-- Does the process eventually extinct?
-    - $\text{ \{ultimate extinction\} }=\bigcup_{n} \{Z_{n}=0\}=\lim_{n \to \infty} \{Z_{n}=0\}$, as an increasing sequence. Therefore $\text{I\kern-0.15em P}(\text{extinction})=\lim_{n \to \infty} \text{I\kern-0.15em P}(Z_{n}=0)=\lim_{n \to \infty} G_{Z_{n}}(0)$. Let $\eta_{n}:=G_{Z_{n}}(0) \to \eta$.
-    - $\eta=G(\eta)$ by continuity. Claim that $\eta$ is the smallest non-negative number that makes $s=G(s)$. Proof is that, suppose 
-    - $G(s)$ is convex on $[0,1]$ #TODO 
+Qes. Does the process eventually extinct?
 
+Sol.
+1. $\text{ \{ultimate extinction\} }=\bigcup_{n} \{Z_{n}=0\}=\lim_{n \to \infty} \{Z_{n}=0\}$, as an increasing sequence. Therefore $\text{I\kern-0.15em P}(\text{extinction})=\lim_{n \to \infty} \text{I\kern-0.15em P}(Z_{n}=0)=\lim_{n \to \infty} G_{{n}}(0)$. Let $\eta_{n}:=G_{{n}}(0) \to \eta:=\text{I\kern-0.15em P}(\text{extinction})$, then $\mu_{n}=G(\mu_{n-1})$.
+2. Take limit, then $\eta=G(\eta)$ by continuity. Claim that $\eta$ is the smallest non-negative number that makes $s=G(s)$. Proof can be done by induction.
+3. $G(s)$ is convex on $[0,1]$ because $G''(s):=\text{I\kern-0.15em E}(Z(Z-1)s^{Z-2})>0$ if $s \ge 0$.
+4. When $\mu=1$, then $\eta=1$, i.e. must extinct given $\sigma>0$.
+5. When $\mu<1$, then $\eta=1$, i.e. must extinct.
+6. When $\mu>1$, then $\eta<1$.
 
 ## 5.2 Moment generating function
 Limitation of p.g.f is that it only applys to nonnegative interger-valued discrete r.v.. We ask for a unified framework.
@@ -590,7 +613,8 @@ Rmk.
 Thm. $\phi_{X,Y}(s,t)=\phi_{X}(s)\phi_{Y}(t) \iff X \perp Y$.
 
 E.g.
-- $X \sim N(0,\sigma^2)$, $\phi(t)=\exp(-\frac{1}{2} \sigma^{2} t^{2})$.
+- $X \sim N(\mu,\sigma^2)$, $\phi(t)=\exp( it \mu  -\frac{1}{2} \sigma^{2} t^{2})$.
+- 
 
 Prop. Normal distribution is the only one whose cumulants expansion has finitely many non-zero terms. $\log \phi_{X}(t)=i \mu t -\frac{1}{2} \sigma^{2} t^{2}$.
 
@@ -762,7 +786,7 @@ $$
 4. If $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$, there's a non-random increasing sequence of integers $n_{1}, n_{2}, \dots$ such that $X_{n_{i}} \overset{a.s.}{\to} X$ as $i \to \infty$.
 
 ## 7.3 Other versions of WLLN
-Thm (**Continuous mapping theorm**) Suppose function $g$ has the discontinuity points $D_{g}$ such that $\text{I\kern-0.15em P}(X \in D_{g})=0$, then:
+Thm. (**Continuous mapping theorm**) Suppose function $g$ has the discontinuity points $D_{g}$ such that $\text{I\kern-0.15em P}(X \in D_{g})=0$, then:
 $$
 \begin{aligned}
 X_{n} \overset{D}{\to} X \implies g(X_{n}) \overset{D}{\to} g(X) \\
@@ -771,10 +795,11 @@ X_{n} \overset{a.s.}{\to} X \implies g(X_{n}) \overset{a.s.}{\to} g(X)
 \end{aligned}
 $$
 
+Thm. (**$L^2-WLLN$**) Let $X_{1}, X_{2}, \dots$ be uncorrelated r.v.s. independent with n and with $\text{I\kern-0.15em E}X_{i}=\mu, Var X_{i} \le c_{i} < \infty$, for all i. Then $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{2}{\to } \mu$ and $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{\text{I\kern-0.15em P}}{\to } \mu$.
 
-Thm. (**$L^2-WLLN$**) Let $X_{1}, X_{2}, \dots$ be uncorrelated r.v.s. with $\text{I\kern-0.15em E}X_{i}=\mu, Var X_{i} \le c_{i} < \infty$, for all i. Then $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{2}{\to } \mu$ and $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{\text{I\kern-0.15em P}}{\to } \mu$.
+Proof. #TODO 
 
-Application. (Bernstein approximation) Let $f$ be continuous on $[0,1]$ (uniform continuous and bounded). Let:
+Application. 1 (Bernstein approximation) Let $f$ be continuous on $[0,1]$ (uniform continuous and bounded). Let:
 
 $$
 f_{n}(x)=\sum_{m=0}^{n} {n \choose m} x^{m}(1-x)^{n-m} f(\frac{n}{m})
@@ -785,5 +810,29 @@ Then $\sup_{x} |f_{n}(x)-f(x)| \to 0$ as $n \to \infty$.
 Proof. Let $X_{i,x} \sim Be(x), S_{n,x}:=\sum_{i=1}^{n} X_{i,x}$, then $f_{n}(x)=\text{I\kern-0.15em E} f(\frac{S_{n,x}}{n})$.
 
 Partial converse statement 2.
+
+#TODO 
+
+Application 2. (Borel's geometric concentration) Let $\mu_{n}$ be the uniform probability measure on the n-dimentional cube $[-1,1]^{n}$. Let $H$ be a hyperplane that's orthogonal to a principal diagonal of $[-1,1]^{n}$, i.e. $H = (1,1, \dots, 1)^{\perp}$. Let $H_{r}=\{ x \in [-1,1]^{n}: dist(x,H) \le r \}$. Then $\forall \epsilon>0, \lim_{n \to \infty} \mu_{n}(H_{\epsilon \sqrt n}) = 1$.
+
+Proof. 
+$$
+\begin{gather}
+\mu_{n}(H_{\epsilon \sqrt n})
+=\text{I\kern-0.15em P}(dist(\vec x,H) \le \epsilon\sqrt n ) \\
+=\text{I\kern-0.15em P}\left( \frac{|<\vec x,(1,1,\dots,1)>|}{\sqrt n}\le \epsilon\sqrt n \right) 
+=\text{I\kern-0.15em P}( \frac{|\sum x_{i}|}{n} \le \epsilon )
+\end{gather}
+$$
+
+Thm. (**WLLN for triangular array**) Let $\{ X_{n,i} \}$ be a triangular array. Let $S_n:=\sum_{i=1}^{n} X_{n,i}, \mu_{n}:=\text{I\kern-0.15em E}S_{n}, \sigma_{n}^{2}:=Var(S_{n})$. Suppose $\frac{\sigma_{n}^{2}}{b_{n}^{2}} \to 0$ for some $b_{n}$, #TODO 
+
+Motivation: $\frac{S_{n}-n \mu}{n^{1/2+\epsilon}} \overset{\text{I\kern-0.15em P}}{\to} 0 \Rightarrow S_{n}=n \mu+o_{\text{I\kern-0.15em P}}(n^{1/2+\epsilon})$. The principle is that if possible, we shall not choose $b_{n} >> \text{I\kern-0.15em E}S_{n}$.
+
+E.g. 1. (Coupon collection problem) $Y_{n,i}$: i.i.d. uniform on $\{1,2,\dots, n\}$. Let $\psi_{k}^{n}:=\inf_{m}\{ |\{Y_{n,1},Y_{n,2} \dots Y_{n,m}\}|=k \}$, $X_{n,k}:=\psi_{k}^{n}-\psi_{k-1}^{n} \sim Geom(1-\frac{k-1}{n})$ and $X_{n,k}$ are independent.
+#TODO 
+By WLLN for triangular array, 
+
+
 
 # Ch8 Limiting theorm

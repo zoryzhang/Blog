@@ -4,23 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "5c2e46d85db07134",
+        "id": "103b53fbae353d89",
         "type": "tabs",
         "children": [
           {
-            "id": "6d4e2d8915d70340",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ZoryOb/TCS/Randomized Algorithm.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "b22814be9e661d83",
+            "id": "18fb9ba53c30a75f",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -31,8 +19,7 @@
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -167,10 +154,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b22814be9e661d83",
+  "active": "18fb9ba53c30a75f",
   "lastOpenFiles": [
-    "ZoryOb/TCS/Randomized Algorithm.md",
     "ZoryOb/Mathematics/Probability.md",
+    "ZoryOb/TCS/Randomized Algorithm.md",
     "ZoryOb/Mathematics/Statistic.md",
     "Zory🫤/zotero.json",
     "Zory🫤",
