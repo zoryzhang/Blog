@@ -600,53 +600,58 @@ Motivation. (**Lebesgue integral**) We ask for intervals such that function valu
 Rmk. $\frac{\mathrm{d}^{k}}{\mathrm{d} t^{k}} M_{X}(t) |_{t=0}=\int x^{k} \ \mathrm{d} F_{X}(x)$. When k is even, we can directly claim existence.
 
 ## 5.3 Characteristic function
-Motivation. We need to keep x on the exponential. But m.g.f. easily requires X to decay fast. The only left choice is to make the exponential complex. By Euler's formula, $e^{iy}=\cos y + i \sin y$, therefore bounded. Essentially it becomes Fourier transform.
+Motivation. We need to keep x on the exponential. But convergence of m.g.f. easily requires X to decay fast. The only left choice is to make the exponential complex. By Euler's formula, $e^{iy}=\cos y + i \sin y \implies \text{I\kern-0.15em E} e^{itx}=\text{I\kern-0.15em E}(\cos tX)+\text{I\kern-0.15em E}(\sin tX)$, therefore bounded. Essentially it becomes Fourier transform.
 
-> Def. (**Characteristic function**) $\phi_{X}(t)=\text{I\kern-0.15em E}e^{itX}=\int e^{itx} \ \mathrm{d} F_{X}(x)=\int (\cos tx + i \sin tx) \ \mathrm{d} F_{X}(x)$. 
+> Def. (**Characteristic function**) $\phi_{X}(t)=\text{I\kern-0.15em E}e^{itX}=\int e^{itx} \ \mathrm{d} F=\int (\cos tx + i \sin tx) \ \mathrm{d} F$. 
 > (**Cumulants generating function**) $\log \phi_{X}(t)=\sum_{j} \frac{i^{j} c_{j}t^{j}}{j!}$.
 
-Rmk.
-1. $\phi(0)=1,|\phi(t)|=|\int e^{itx} \ \mathrm{d} F_{X}(x)| \le \int |e^{itx}| \ \mathrm{d} F_{X}(x) \le \int \ \mathrm{d} F_{X}(x) = 1$.
-2. $\phi(t)$ is uniformly continuous. Proved by dominant convergence thm.
-3. $\phi^{(k)}(t)=\int (ix)^{k} e^{itx} \ \mathrm{d} F_X(t)$. Therefore if $\text{I\kern-0.15em E} X^{k}$ exists, then $\phi^{(k)}(t)$ exists at $t=0$. By Taylor expansion, $\phi(t)=\sum_{j=0}^{k} \phi^{(j)}(0)\frac{t^{j}}{j!}+o(t^{k})$.
+Thm. (Bochner's thm) A function is a characteristic func of some r.v. iff (1), (2), (3) hold.
+1. $\phi(0)=1,|\phi(t)|=|\int e^{itx} \ \mathrm{d} F| \le \int |e^{itx}| \ \mathrm{d} F \le \int \ \mathrm{d} F= 1$.
+2. $\phi(t)$ is uniformly continuous. 
+   $|\phi(t+h)-\phi(t)| \le \text{I\kern-0.15em E} |e^{itX}(e^{ihX}-1)| \le \text{I\kern-0.15em E} |e^{ihX}-1|$.
+   Proved by dominated convergence thm.
+3. $\phi$ is non-negative definite.
 
-Thm. $\phi_{X,Y}(s,t)=\phi_{X}(s)\phi_{Y}(t) \iff X \perp Y$.
+Thm. (c.f. can generate moments) $\phi^{(k)}(t)=\int (ix)^{k} e^{itx} \ \mathrm{d} F$. 
+1. If $\phi^{(k)}(0)$ exists, which is $i^{k} \text{I\kern-0.15em E}X^{k}$, then $\text{I\kern-0.15em E} X^{\lfloor \frac{k}{2} \rfloor *2 }$ exists. 
+2. If $\text{I\kern-0.15em E} X^{k}$ exists, then $\phi^{(k)}(0)$ exists. Then by Taylor expansion, $\phi(t)=\sum_{j=0}^{k} \phi^{(j)}(0)\frac{t^{j}}{j!}+o(t^{k})=\sum_{j=0}^{k} \text{I\kern-0.15em E}X^{j} \frac{ (it)^{j}}{j!}+o(t^{k})$.
+
+Thm. $\forall s,t,\phi_{X,Y}(s,t)=\phi_{X}(s)\phi_{Y}(t) \iff X \perp Y$.
 
 E.g.
-- $X \sim N(\mu,\sigma^2)$, $\phi(t)=\exp( it \mu  -\frac{1}{2} \sigma^{2} t^{2})$.
-- 
+- $X \sim Be(p)$, $\phi(t)=q+pe^{it}$.
+- $X \sim Exp(\lambda)$, $\phi(t)=\frac{\lambda}{{\lambda-it}}$.
+- $X \sim Cauchy$, $\phi(t)=e^{-|t|}$.
+- $X \sim N(\mu,\sigma^2)$, $\phi(t)=\exp( i \mu t  -\frac{1}{2} \sigma^{2} t^{2})$.
 
-Prop. Normal distribution is the only one whose cumulants expansion has finitely many non-zero terms. $\log \phi_{X}(t)=i \mu t -\frac{1}{2} \sigma^{2} t^{2}$.
+Prop. Normal distribution is the only one whose cumulants expansion has finitely many non-zero terms: $\log \phi_{X}(t)=i \mu t -\frac{1}{2} \sigma^{2} t^{2}$.
 
-Thm. (**Inverse Fourier transform**) At all points where f is differentiable, $f_{X}(x)=\frac{1}{2\pi} \int e^{-itx} \phi_{X}(t) \ \mathrm{d}t$.
+## 5.3.1 Inversion thm
+Thm. (**Fourier inversion thm**) At all points where f is differentiable, $f_{X}(x)=\frac{1}{2\pi} \int e^{-itx} \phi_{X}(t) \ \mathrm{d}t$. If the integral fails to converge absolutely, we interpret it as its principal value.
 
-Proof(heuristic). textbook
-$$
-I(x):=\frac{1}{2\pi} \int e^{-itx} \phi_{X}(t) \ \mathrm{d}t=
-$$
-#TODO 
-
-
-
-
-Thm. (**Inverse theorem**)
-$\bar F(x):=\frac{1}{2}(F(x)+F(x-))$. Notice that there's a one-to-one correspondence between $F, \bar F$.
+Thm. (**Inversion thm**)
+$\bar F(x):=\frac{1}{2}(F(x)+F(x-))$. Notice that there's a one-to-one correspondence between $F, \bar F$. Then, 
 
 $$
 \bar F(b)-\bar F(a):=\lim_{N \to \infty} \int_{-N}^N \frac{e^{-ita}-e^{-itb}}{2\pi i t} \phi_{X}(t) \ \mathrm{d}t
 $$
 
-> Def. (**Convergence of distribution function sequence**) $F_{X_{n}} \Rightarrow F_{X}$ if $F_{X_{n}}(x) \to F_{X}(x)$ at every point x where $F_{X}$ is continuous (*weak convergence*).
+## 5.3.2 Lévy’s continuity theorem
+Motiv. In certain sense, the function that maps probability measure on $\mathbb{R}$ to its c.f. is continuous and has a continuous inverse. Hence the convergence of probability measures can be checked with the aid of the c.f.
 
-> Def. (**Convergence of r.v. in distribution**) $X_{n}$ converges to $X$ in distribution/weakly/in law (denoted as $X_{n} \overset{D}{\to} X$ or $X_{n} \Rightarrow X$) if $F_{X_{n}} \Rightarrow F_{X}$.
+> Def. (**Convergence of distribution function sequence**) $F_{X_{n}} \to F_{X}$ if $F_{X_{n}}(x) \to F_{X}(x)$ at every point x where $F_{X}$ is continuous (*weak convergence*). We say  $X_{n}$ converges to $X$ in distribution/weakly/in law (denoted as $X_{n} \overset{D}{\to} X$ or $X_{n} \Rightarrow X$).
+
+Motiv. We expect that $X_{n}(\omega)=\frac{1}{n}$ and $Y_{n}(\omega)=\frac{-1}{n}$ have the same limit. Therefore we drop the requirement at discontinuous points.
 
 > Def. (**Vague convergence**) Given a set of d.f. $F_{n}$, if $F_{n}(x) \to G(x)$ at all continuous point of G, then $F_{n}$ converges to $G$ vaguely (because $G$ may be not a d.f.).
 
-E.g. $X_{n}(\omega) \in \{\frac{1}{n},n\}$. 
+E.g. $X_{n}(\omega) \in \{\frac{1}{n},n\}$, G is not a d.f.
 
-Thm. (**Lévy’s Continuity theorem**) 
-1. If $F_{n} \Rightarrow F$ vaguely and $F$ is a d.f. with c.f. $\phi$ , then $\phi_{n}\to \phi$ pointwise.
-2. If $\phi_{n}\to \phi$ pointwise and the c.f. $\phi$ is continuous at 0 with d.f. $F$, then $F_{n} \Rightarrow F$.
+Rmk. Convergence in distribution is equivalent to convergence with respect to the Lévy metric.
+
+Thm. (**Lévy’s continuity theorem**) 
+1. If $F_{n} \to F$ vaguely and $F$ is a d.f. with c.f. $\phi$ , then $\phi_{n}\to \phi$ pointwise.
+2. If $\phi_{n}\to \phi$ pointwise and the c.f. $\phi$ is continuous at 0 with d.f. $F$, then $F_{n} \to F$. 
 
 Rmk. the statement "$\phi$ is continuous at 0" can be replaced by
 1. $\phi$ is continuous (as a pointwise limit of c.f., 0 is the only point that can become discontinuous).
@@ -655,11 +660,13 @@ Rmk. the statement "$\phi$ is continuous at 0" can be replaced by
 
 E.g. $X_{n} \sim N(0,n^2)$, $\phi_{n}(t)=\exp(-\frac{1}{2} n^{2} t^{2})$.
 
+## 5.3.3 Two limiting thm
 Thm. n i.i.d. r.v. $X_n$:
 1. (**Weak law of large number**) $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{D}{\to } \text{I\kern-0.15em E}X$.
 2. (**Central limit thm 1**) $\sqrt n \left(\frac{1}{n} \sum_{i=1}^{n} X_{i} - \text{I\kern-0.15em E} X\right) \overset{D}{\to } N(0,\text{I\kern-0.15em E}^{2} X_{1})$.
 3. In other word, $\frac{1}{n} \sum_{i=1}^{n} X_{i} \sim \text{I\kern-0.15em E}X + \frac{1}{\sqrt n} N(0,\text{I\kern-0.15em E}^{2} X_{1})$.
 
+Proof.
 #TODO 
 
 > When every error is minor that doesn't dominate the total error.
@@ -677,18 +684,18 @@ Convergence in distribution only reflects one aspect of r.v. It's reasonable to 
 Recall. Convergence of real functions $f_{n}, f: [0,1] \to \mathbb{R}$,
 1. (**Pointwise convergence**) $\forall x, f_{n}(x) \to f(x)$ as $n \to \infty$.
 2. (**Convergence in norm**) $||f_{n} - f|| \to 0$ as $n \to \infty$. (bad point is not too bad in norm)
-3. (**Convergence in Lebesgue/uniform measure**) 
-    - For $\epsilon>0, E_{\epsilon}=\{u\in[0,1]: |g(u)-h(u)| > \epsilon \}$, $d_{\epsilon}(g,h)=\int_{E} \ \mathrm{d}x$.
-    - $d_{\epsilon} (f_{n} , f) \to 0$ as $n \to \infty$ for all $\epsilon>0$.
-    - (bad point is not too much)
-    - Uniform measure: $\int \ \mathrm{d} x$ instead of $\int \ \mathrm{d} g(x)$.
+3. (**Convergence in measure**) 
+    - Lebesgue measure: bad point is not too much
+        - For $\epsilon>0, E_{\epsilon}=\{u\in[0,1]: |g(u)-h(u)| > \epsilon \}$, $d_{\epsilon}(g,h)=\int_{E} \ \mathrm{d}x$.
+        - $d_{\epsilon} (f_{n} , f) \to 0$ as $n \to \infty$ for all $\epsilon>0$.
+    - Uniform measure: $d(g,h)= \int \ \mathrm{d} x$ instead of $\int \ \mathrm{d} g(x)$.
 
 Rmk. 
 1. Convergence in $L_{p}$ norm is stronger than convergence in Lebesgue/uniform measure.
 
 ---
 ## 7.1 Convergence of r.v.s.
-Now let's go into the convergence of r.v.s. We have introduced convergence in distribution, which is the only one that allows r.v.s. living in different probability spaces.
+We have introduced convergence in distribution, which is the only one that allows r.v.s. living in different probability spaces. Now let's go into the convergence of r.v.s. 
 
 > Def. (**Almost sure convergence** $X_{n} \overset{a.s.}{\to} X$) $X_{n}$ converges to $X$ almost surely, or almost everywhere, or with probability 1, when  $\text{I\kern-0.15em P}(\{ \omega \in \Omega: X_{n}(\omega) \to X(\omega) \text{ as } n \to \infty \})=1$.
 
@@ -836,3 +843,4 @@ By WLLN for triangular array,
 
 
 # Ch8 Limiting theorm
+Skipped.

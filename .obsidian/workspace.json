@@ -64,6 +64,14 @@
               "type": "starred",
               "state": {}
             }
+          },
+          {
+            "id": "657f55401e73119d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
         ]
       }
@@ -154,7 +162,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "18fb9ba53c30a75f",
+  "active": "3d93ab568e75cd17",
   "lastOpenFiles": [
     "ZoryOb/Mathematics/Probability.md",
     "ZoryOb/TCS/Randomized Algorithm.md",
