@@ -1,4 +1,4 @@
->  The note of HKUST course MATH2431 Honors Probability in Spring 2023, by Zory ZHANG.
+>  The note of HKUST course MATH2431 Honors Probability in Spring 2023, by Zory ZHANG. In case of any broken math renderring in Github preview, please open this markdown file using your own markdown editor. PDF version (may not up-to-date) can be found [here](noyet).
 
 # Reminder
 - Expectation exists: absolutely convergence.
@@ -236,7 +236,8 @@ In contrast, for $\lim_{h\to0^-} F_{X}(x+h)=\text{I\kern-0.15em P} \circ X^{-1}(
 
 > Def. (**Constant r.v.**) for some constant c, $\text{I\kern-0.15em P}(X=c)=\text{I\kern-0.15em P}(\omega \in \Omega: X(\omega)=c)=1$.
 
-> Def. (**Bernoulli/indicator r.v.**) $A \in \mathcal{F}$, r.v. $\mathbb{1}_{A}$ that $\mathbb{1}_{A}(\omega)=[\omega\in A]$.
+> Def. (**Bernoulli/indicator r.v.**) $A \in \mathcal{F}$, r.v. $\mathbb{1_A}$ that $\mathbb{1_A}(\omega)=[ \omega\in A ]$.
+
 
 > Def. (**Discrete r.v.**) X takes values in some countable subset of $\mathbb{R}$, as a property of distribution func.
 > 
@@ -454,15 +455,14 @@ E.g. For bivariate normal, $f_{X|Y}(x|y)$, given Y=y, $X \sim \mathcal{N}(\rho y
 
 $$
 \begin{pmatrix}  
-X \\ Y
+X \\\\ Y
 \end{pmatrix}
-=
-\begin{bmatrix}  
+=\begin{bmatrix}  
 \rho & \sqrt{1-\rho^{2}} \\
 1 & 0 
 \end{bmatrix}
 \begin{pmatrix}  
-Y \\ Z
+Y \\\\ Z
 \end{pmatrix}
 $$
 
@@ -626,7 +626,7 @@ E.g.
 
 Prop. Normal distribution is the only one whose cumulants expansion has finitely many non-zero terms: $\log \phi_{X}(t)=i \mu t -\frac{1}{2} \sigma^{2} t^{2}$.
 
-## 5.3.1 Inversion thm
+### 5.3.1 Inversion thm
 Thm. (**Fourier inversion thm**) At all points where f is differentiable, $f_{X}(x)=\frac{1}{2\pi} \int e^{-itx} \phi_{X}(t) \ \mathrm{d}t$. If the integral fails to converge absolutely, we interpret it as its principal value.
 
 Thm. (**Inversion thm**)
@@ -636,8 +636,8 @@ $$
 \bar F(b)-\bar F(a):=\lim_{N \to \infty} \int_{-N}^N \frac{e^{-ita}-e^{-itb}}{2\pi i t} \phi_{X}(t) \ \mathrm{d}t
 $$
 
-## 5.3.2 Lévy’s continuity theorem
-Motiv. In certain sense, the function that maps probability measure on $\mathbb{R}$ to its c.f. is continuous and has a continuous inverse. Hence the convergence of probability measures can be checked with the aid of the c.f.
+### 5.3.2 Lévy’s continuity theorem
+Motiv. In certain sense, the function that maps probability measure on $\mathbb{R}$ to its c.f. (Fourier transform) is continuous and has a continuous inverse. Hence the convergence of probability measures can be checked with the aid of the c.f.
 
 > Def. (**Convergence of distribution function sequence**) $F_{X_{n}} \to F_{X}$ if $F_{X_{n}}(x) \to F_{X}(x)$ at every point x where $F_{X}$ is continuous (*weak convergence*). We say  $X_{n}$ converges to $X$ in distribution/weakly/in law (denoted as $X_{n} \overset{D}{\to} X$ or $X_{n} \Rightarrow X$).
 
@@ -656,78 +656,104 @@ Thm. (**Lévy’s continuity theorem**)
 Rmk. the statement "$\phi$ is continuous at 0" can be replaced by
 1. $\phi$ is continuous (as a pointwise limit of c.f., 0 is the only point that can become discontinuous).
 2. $\phi$ is a c.f. with d.f. $F$.
-3. $\{ F_{n} \}_{n=0}^\infty$ is tight, i.e. tail probability is uniformly bounded, $\forall \epsilon >0, \exists M_{\epsilon}>0, s.t. \sup_{n}[F_{n}(-M_{\epsilon})+1-F_{n}(M_{\epsilon})] \le \epsilon$.
+3. $\{ F_{n} \}_{n=0}^\infty$ is tight, i.e. the tail probability is uniformly bounded, $\forall \epsilon >0, \exists M_{\epsilon}>0, s.t. \sup_{n}[F_{n}(-M_{\epsilon})+(1-F_{n}(M_{\epsilon}))] \le \epsilon$.
 
 E.g. $X_{n} \sim N(0,n^2)$, $\phi_{n}(t)=\exp(-\frac{1}{2} n^{2} t^{2})$.
 
-## 5.3.3 Two limiting thm
-Thm. n i.i.d. r.v. $X_n$:
-1. (**Weak law of large number**) $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{D}{\to } \text{I\kern-0.15em E}X$.
-2. (**Central limit thm 1**) $\sqrt n \left(\frac{1}{n} \sum_{i=1}^{n} X_{i} - \text{I\kern-0.15em E} X\right) \overset{D}{\to } N(0,\text{I\kern-0.15em E}^{2} X_{1})$.
-3. In other word, $\frac{1}{n} \sum_{i=1}^{n} X_{i} \sim \text{I\kern-0.15em E}X + \frac{1}{\sqrt n} N(0,\text{I\kern-0.15em E}^{2} X_{1})$.
+### 5.3.3 Two limiting thm %% fold %% 
+###### Thm. 
+n i.i.d. r.v. $X_n$ with $\mu:=\text{I\kern-0.15em E}X < \infty$:
+1. (**Weak law of large number**, WLLN) $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{D}{\to } \mu$.
+2. (**Central limit thm**, CLT) Suppose $Var X_{1}=\sigma$, then $\sqrt n \left(\frac{1}{n} \sum_{i=1}^{n} X_{i} - \mu\right) \overset{D}{\to } N(0,\sigma^{2})$.
+3. In other word, $\frac{1}{n} S_{n}:=\frac{1}{n} \sum_{i=1}^{n} X_{i} \sim N(\mu,\frac{\sigma^{2}}{n})$.
 
-Proof.
+###### Proof. 
+$$
+\begin{aligned}
+\phi_{X_{1}}(t)
+&:=\text{I\kern-0.15em E} e^{itX_{1}}
+=[k \le 1] \sum_{j=0}^{k} \text{I\kern-0.15em E} X_{1}^{j} \frac{(it)^{j}}{j!} +o(t^{k})
+=1+i \mu  t+o(t)
+\\
+\phi_{n}(t)
+&:= \text{I\kern-0.15em E} e^{it \frac{1}{n} S_{1}}
+=(\text{I\kern-0.15em E} e^{it \frac{1}{n} X_{1}})^n
+=\left(\phi_{X_{1}}\left(\frac{t}{n}\right)\right)^{n} \\
+&=\left( 1+i \mu  \frac{t}{n}+o(\frac{t}{n}) \right)^{n}
+\to e^{i t \mu}=\phi_{\mu}(t), \forall t
+\end{aligned}
+$$
+
+$\phi_\mu$ is continuous at 0, by Lévy’s continuity theorem, $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{D}{\to } \mu$. Same trick for Central limit thm.
+
+
+###### Thm. (**A general CLT**) 
+Motiv. When every error is so minor that doesn't dominate the total error.
+Thm. Let $X_{1}, X_{2} \dots$ be independent; define $\sigma(n)=Var(S_{n})=\sum_{j=1}^{n} \sigma_{j}^{2}$ with $\text{I\kern-0.15em E} X_{j}=0, Var X_{j}=\sigma_{j}^{2}, \text{I\kern-0.15em E} |X_{j}^{3}|<\infty$,  and such that 
+$$
+\frac{1}{\sigma^{3}(n)}\sum_{j=1}^{n} \text{I\kern-0.15em E} |X_{j}^{3}| \to 0
+$$
+Then $\frac{1}{\sigma(n)}S_{n} \to N(0,1)$.
+
 #TODO 
-
-> When every error is minor that doesn't dominate the total error.
-
-Thm. (**A general CLT**) Let $X_{1}, X_{2} \dots$ be independent, with $\text{I\kern-0.15em E} X_{j}=0$
-
 
 # Ch6 Markov
 Skipped.
 
 # Ch7 Convergence
-
-Convergence in distribution only reflects one aspect of r.v. It's reasonable to consider nature of r.v.: a function from $[0,1]$ to $\mathbb{R}$.
+Convergence in distribution only reflects one aspect of r.v. It's reasonable to consider the nature of r.v.: a function from $[0,1]$ to $\mathbb{R}$.
 
 Recall. Convergence of real functions $f_{n}, f: [0,1] \to \mathbb{R}$,
-1. (**Pointwise convergence**) $\forall x, f_{n}(x) \to f(x)$ as $n \to \infty$.
+1. (**Pointwise convergence**) $\forall x, f_{n}(x) \to f(x)$ as $n \to \infty$. 
 2. (**Convergence in norm**) $||f_{n} - f|| \to 0$ as $n \to \infty$. (bad point is not too bad in norm)
-3. (**Convergence in measure**) 
-    - Lebesgue measure: bad point is not too much
-        - For $\epsilon>0, E_{\epsilon}=\{u\in[0,1]: |g(u)-h(u)| > \epsilon \}$, $d_{\epsilon}(g,h)=\int_{E} \ \mathrm{d}x$.
-        - $d_{\epsilon} (f_{n} , f) \to 0$ as $n \to \infty$ for all $\epsilon>0$.
-    - Uniform measure: $d(g,h)= \int \ \mathrm{d} x$ instead of $\int \ \mathrm{d} g(x)$.
+3. (**Convergence in measure $\mu$**) Bad point is not too much.
+    - For $\epsilon>0, E_{\epsilon}=\{u\in[0,1]: |g(u)-h(u)| > \epsilon \}$, $d_{\epsilon}(g,h)=\mu(E_\epsilon):=\int_{E_{\epsilon}} \ \mathrm{d} \mu$.
+    - $d_{\epsilon} (f_{n} , f) \to 0$ as $n \to \infty$ for all $\epsilon>0$.
+    - Notice that proving on $\exists \delta>0, \forall \epsilon \in (0,\delta)$ will be sufficient.
 
 Rmk. 
-1. Convergence in $L_{p}$ norm is stronger than convergence in Lebesgue/uniform measure.
+1. Convergence in $L_{p}$ norm is stronger than convergence in measure.
+2. Convergence pointwise is stronger than convergence in measure.
+3. The pointwise convergence and convergence in $L_{1}$ norm are not comparable.
 
 ---
-## 7.1 Convergence of r.v.s.
+## 7.1 Convergence mode of r.v.s.
 We have introduced convergence in distribution, which is the only one that allows r.v.s. living in different probability spaces. Now let's go into the convergence of r.v.s. 
 
-> Def. (**Almost sure convergence** $X_{n} \overset{a.s.}{\to} X$) $X_{n}$ converges to $X$ almost surely, or almost everywhere, or with probability 1, when  $\text{I\kern-0.15em P}(\{ \omega \in \Omega: X_{n}(\omega) \to X(\omega) \text{ as } n \to \infty \})=1$.
+> Def. (**Almost sure convergence** $X_{n} \overset{a.s.}{\to} X$, $X_{n} \overset{a.e.}{\to} X$, or $X_{n} {\to} X$ w.p. 1) $X_{n}$ converges to $X$ almost surely, or almost everywhere, or with probability 1, when  $\text{I\kern-0.15em P}(\{ \omega \in \Omega: X_{n}(\omega) \to X(\omega) \text{ as } n \to \infty \})=1$.
 
-> Def. (**Convergence in r-th mean** $X_{n} \overset{r}{\to} X$)  $\text{I\kern-0.15em E}|X_{n} - X |^{r} \to 0$ as $n \to \infty$. Here $\text{I\kern-0.15em E}|Y|^{r}= \int_{\Omega} |y|^{r} \ \mathrm{d} F_{Y}$, and $(\text{I\kern-0.15em E}|Y|^{r})^{\frac{1}{r}}$ is a norm. (Care about the degree of badness of bad events)
+> Def. (**Convergence in r-th mean** $X_{n} \overset{r}{\to} X$)  $\text{I\kern-0.15em E}|X_{n} - X |^{r} \to 0$ as $n \to \infty$. Note that $\text{I\kern-0.15em E}|Y|^{r}= \int_{\Omega} |y|^{r} \ \mathrm{d} F_{Y}$, and $(\text{I\kern-0.15em E}|Y|^{r})^{\frac{1}{r}}$ is $L_{r}$ norm. (Care about the degree of badness of bad events)
 
 > Def. (**Convergence in probability (measure)** $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$)  $\exists \delta>0, \forall \epsilon \in (0,\delta)$, $\text{I\kern-0.15em P}(\{ \omega \in \Omega: |X_{n}(\omega) - X(\omega)| \ge \epsilon \}) \to 0$ as $n \to \infty$. (Care about the size of bad events)
 
-Rmk. Convergence in probability is actually using $d_{\epsilon}(g,h)=\int_\text{I\kern-0.15em E} \ \mathrm{d} \text{I\kern-0.15em P}(x)$ in the convergence in measure.
+Rmk. Almost sure convergence is an adoption of pointwise convergence, where the requirement of convergence over zero-probability events is drop.
 
-Thm. 
+Rmk. Convergence in probability is essentially using $d_{\epsilon}(g,h)=\int_\text{I\kern-0.15em E} \ \mathrm{d} \text{I\kern-0.15em P}(x)$ in the convergence in measure.
+
+###### Thm
 1. $X_{n} \overset{a.s.}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$.
 2. $X_{n} \overset{r}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$.
 3. $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ implies $X_{n} \overset{D}{\to} X$.
 4. $X_{n} \overset{r}{\to} X$ implies $X_{n} \overset{s}{\to} X$, if $r \ge s \ge 1$.
 5. No other implication hold in general.
 
-Proof.
-5. (No other implication hold in general).
-    - ($X_{n} \overset{D}{\to} X$ doesn't imply $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$): trivial.
-    - ($X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$): tiny bad point with very bad value. E.g. pick $X_{n}:=n^{3}$ with proba $n^{-2}$, otherwise 0.
-    - ($X_{n} \overset{\text{s}}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$, if $r > s \ge 1$): we want small s-th moment with large r-th moment. E.g. pick $X_{n}:=n$ with proba $n^{-\frac{1}{2}(r+s)}$, otherwise 0.
-    - ($X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ doesn't imply $X_{n} \overset{a.s.}{\to} X$):
-        - $I_{i,j}:=[\frac{j}{i},\frac{j+1}{i}], I_n:=ordering_{n}(I_{i,j})=(I_{1,0},I_{2,0},I_{2,1},I_{3,0}, \dots)_{n}$.
-        - $X_{n}:=\mathbb{1}_{I_{n}}, X:=0$.
-        - Take $\delta=1$, $\text{I\kern-0.15em P}(\{ \omega \in \Omega: |X_{n}(\omega) - X(\omega)| \ge \epsilon \})=\text{I\kern-0.15em P}(I_{n}) \to 0$.
-        - For no $\omega$, $X_{n}(\omega) \to X(\omega) \text{ as } n \to \infty$, i.e. $\text{I\kern-0.15em P}=0$ instead.
-        - Intuition: a.s. convergence want to make sure many $\omega$ that can run away from bad events in a limiting sence.
-    - ($X_{n} \overset{r}{\to} X$ doesn't imply $X_{n} \overset{a.s.}{\to} X$) 
-    - ($X_{n} \overset{a.s.}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$) 
-1. ($X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ implies $X_{n} \overset{D}{\to} X$)
+###### Proof of 5: (No other implication hold in general)
+- ($X_{n} \overset{D}{\to} X$ doesn't imply $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$): trivial.
+- ($X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$): tiny bad point with very bad value. E.g. pick $X_{n}:=n^{3}$ with proba $n^{-2}$, otherwise 0.
+- ($X_{n} \overset{\text{s}}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$, if $r > s \ge 1$): we want small s-th moment with large r-th moment. E.g. pick $X_{n}:=n$ with proba $n^{-\frac{1}{2}(r+s)}$, otherwise 0.
+- ($X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ doesn't imply $X_{n} \overset{a.s.}{\to} X$):
+    - $I_{i,j}:=[\frac{j}{i},\frac{j+1}{i}], I_n:=ordering_{n}(I_{i,j})=(I_{1,0},I_{2,0},I_{2,1},I_{3,0}, \dots)_{n}$.
+    - $X_{n}:=\mathbb{1}_{I_{n}}, X:=0$.
+    - Take $\delta=1$, $\text{I\kern-0.15em P}(\{ \omega \in \Omega: |X_{n}(\omega) - X(\omega)| \ge \epsilon \})=\text{I\kern-0.15em P}(I_{n}) \to 0$.
+    - For no $\omega$, $X_{n}(\omega) \to X(\omega) \text{ as } n \to \infty$, i.e. $\text{I\kern-0.15em P}=0$ instead.
+    - Intuition: a.s. convergence want to make sure many $\omega$ that can run away from bad events in a limiting sence.
+- ($X_{n} \overset{r}{\to} X$ doesn't imply $X_{n} \overset{a.s.}{\to} X$) 
+- ($X_{n} \overset{a.s.}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$) 
+
+###### Proof of 1: ($X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ implies $X_{n} \overset{D}{\to} X$)
 $$
 \begin{align*}
+\forall \epsilon>0,
 \text{I\kern-0.15em P}(X_{n} \le x)&=\text{I\kern-0.15em P}(X_{n} \le x, X \le x+\epsilon)+\text{I\kern-0.15em P}(X_{n} \le x, X > x+\epsilon) \\\\
 &\le \text{I\kern-0.15em P}(X \le x+\epsilon)+\text{I\kern-0.15em P}(|X_{n}-X|>\epsilon) \\\\
 
@@ -735,26 +761,29 @@ $$
 &\le \text{I\kern-0.15em P}(X_{n} \le y+\epsilon)+\text{I\kern-0.15em P}(|X_{n}-X|>\epsilon) \\\\
 \text{Let } y=x-\epsilon& ,\\
 \text{I\kern-0.15em P}(X \le x-\epsilon)-&\text{I\kern-0.15em P}(|X_{n}-X|>\epsilon) 
-\le \text{I\kern-0.15em P}(X_{n} \le x) \\
-&\le \text{I\kern-0.15em P}(X \le x+\epsilon)+\text{I\kern-0.15em P}(|X_{n}-X|>\epsilon)\\
+\le \text{I\kern-0.15em P}(X_{n} \le x) 
+ \le \text{I\kern-0.15em P}(X \le x+\epsilon)+\text{I\kern-0.15em P}(|X_{n}-X|>\epsilon)\\
 
 F_{X}(x-\epsilon)
 -&\text{I\kern-0.15em P}(|X_{n}-X|>\epsilon) 
 \le F_n(x) 
 \le F_{X}(x+\epsilon)
-+\text{I\kern-0.15em P}(|X_{n}-X|>\epsilon)
++\text{I\kern-0.15em P}(|X_{n}-X|>\epsilon)\\
+n \to \infty &, F_{X}(x-\epsilon) \le \liminf_{n} F_n(x) \le \limsup_{n} F_n(x) \le F_{X}(x+\epsilon)
 \end{align*}
 $$
-    When x is continuous, limit exists; letting $\epsilon \to 0$ concludes the proof.
 
-2. ($X_{n} \overset{1}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$) direct result from Markov's inequality.
+When $F_{x}$ is continuous at x, let $\epsilon \to 0$, we get $F_{n}(x) \to F_{X}(x)$ and concludes the proof.
+
+###### Proof of 2: ($X_{n} \overset{1}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$) 
+Directly result from Markov's inequality.
 
 $$
 \begin{gather}
 \text{Markov’s inequality } X \ge 0, \forall a>0, P(X \ge a) \le E(X)/a \\ \text{Chebyshev's inequality } \forall k>0, P(|X-\mu| \ge k \sigma) \le 1/k^2 
 \end{gather}
 $$
-4. ($X_{n} \overset{r}{\to} X$ implies $X_{n} \overset{s}{\to} X$) 
+###### Proof of 4:  ($X_{n} \overset{r}{\to} X$ implies $X_{n} \overset{s}{\to} X$) 
 $$
 \begin{gather}
 \text{Lyapunov's inequality } (\text{I\kern-0.15em E} |Z|^{r})^{\frac{1}{r}} \ge (\text{I\kern-0.15em E} |Z|^{s})^{\frac{1}{s}}, r \ge s>0 \\
@@ -762,9 +791,11 @@ $$
 \text{Jensen's inequality } \phi(\text{I\kern-0.15em E}X) \le \text{I\kern-0.15em E}(\phi(X)), \phi\text{ is convex}
 \end{gather}
 $$
-    In Hölder, let $X:=|Z|^{s}, Y=1, p=\frac{r}{s}, q=\frac{r}{r-s}$.
-    In Jensen, let $X:=|Z|^{s}, \phi(x)=x^{\frac{r}{s}}$.
-1. ($X_{n} \overset{a.s.}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$) Let $A_{n}(\epsilon):=\{\omega:|X_{n}(\omega)-X(\omega)| > \epsilon \}, B_{m}(\epsilon ):=\bigcup_{n \ge m} A_{n}(\epsilon)$. $\{B_{m}\}$ is decreasing.
+In Hölder, let $X:=|Z|^{s}, Y=1, p=\frac{r}{s}, q=\frac{r}{r-s}$.
+In Jensen, let $X:=|Z|^{s}, \phi(x)=x^{\frac{r}{s}}$.
+
+###### Proof of 1: ($X_{n} \overset{a.s.}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$) 
+Let $A_{n}(\epsilon):=\{\omega:|X_{n}(\omega)-X(\omega)| > \epsilon \}, B_{m}(\epsilon ):=\bigcup_{n \ge m} A_{n}(\epsilon)$. $\{B_{m}\}$ is decreasing.
    - (1) $X_{n} \overset{a.s.}{\to} X \iff \forall \epsilon>0, \lim_{m \to \infty} \text{I\kern-0.15em P}(B_{m}(\epsilon))=0$.
         $R.H.S.= \text{I\kern-0.15em P}( \bigcap_{m=0}^{\infty} \bigcup_{n \ge m} A_{n}(\epsilon) )=\text{I\kern-0.15em P}(\limsup_{m} A_{m}(\epsilon))$.
         Notice that $A(\epsilon)= \limsup_{n} A_{n}(\epsilon) = \{ \omega: X_{n}(\omega)-X(\omega)| > \epsilon \text{ infinitely many n} \}$ is decreasing as $\epsilon$ getting larger.
@@ -778,7 +809,7 @@ $$
 \\ \iff &\text{I\kern-0.15em P}( \cup_{\epsilon>0} \limsup_{n} A_{n}(\epsilon) )=0
 \end{aligned}
 $$
-    From left to right. Notice that $\forall \epsilon>0, \text{I\kern-0.15em P}(\limsup_{n} A_{n}(\epsilon)) \le \text{I\kern-0.15em P}(\cup_{\epsilon>0} \limsup_{n} A_{n}(\epsilon))=0$. From right to left is obvious too.
+From left to right. Notice that $\forall \epsilon>0, \text{I\kern-0.15em P}(\limsup_{n} A_{n}(\epsilon)) \le \text{I\kern-0.15em P}(\cup_{\epsilon>0} \limsup_{n} A_{n}(\epsilon))=0$. From right to left is obvious too.
 
    - (2) $X_{n} \overset{a.s.}{\to} X \Leftarrow \forall \epsilon>0, \sum_{n=1}^{\infty} \text{I\kern-0.15em P}(A_{n}(\epsilon)) < \infty$. 
        $\text{I\kern-0.15em P}(B_{m}(\epsilon)) \le \sum_{n=m}^{\infty} \text{I\kern-0.15em P}(A_{n}(\epsilon))$, and the latter goes to 0 as m go to infinity.
@@ -786,11 +817,20 @@ $$
     $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X \iff \exists \delta>0, \forall 0<\epsilon<\delta, \text{I\kern-0.15em P}( A_{n}(\epsilon)) \to 0$ is true whenever $\text{I\kern-0.15em P}(B_{n}(\epsilon)) \to 0$ is true, which holds iff $X_{n} \overset{a.s.}{\to} X$ by (1).
 
 ## 7.2 Partial converse statements
-1. If $X_{n} \overset{D}{\to} c$, where c is a constant, then $X_{n} \overset{\text{I\kern-0.15em P}}{\to} c$. (Because no way to switch the $\omega$. if only one possible choice) #TODO 
-   Application. to prove the law of large number, no need to prove the convergence in probability anymore.
-2. If $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$, $\text{I\kern-0.15em P}(|X_{n}| \le k)=1$ for all n and some constant k, then $X_{n} \overset{r}{\to} X, r \ge 1$. #TODO 
-3. If $X_{n} \overset{\text{I\kern-0.15em P}}{\to} c$, then $\exists \delta>0, \forall \epsilon \in (0,\delta)$, $\text{I\kern-0.15em P}(\{ \omega \in \Omega: |X_{n}(\omega) - X(\omega)| \ge \epsilon \}) \to 0$ as $n \to \infty$.
+###### Thm.
+1. If $X_{n} \overset{D}{\to} c$, where c is a constant, then $X_{n} \overset{\text{I\kern-0.15em P}}{\to} c$. 
+2. If $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$, $\text{I\kern-0.15em P}(|X_{n}| \le k)=1$ for all n and some constant k, then $X_{n} \overset{r}{\to} X, r \ge 1$.
+3. If $X_{n} \overset{\text{I\kern-0.15em P}}{\to} c$, then $\exists \delta>0, \forall \epsilon \in (0,\delta)$, $\text{I\kern-0.15em P}(\{ \omega \in \Omega: |X_{n}(\omega) - X(\omega)| \ge \epsilon \}) \to 0$ as $n \to \infty$. WTF?
 4. If $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$, there's a non-random increasing sequence of integers $n_{1}, n_{2}, \dots$ such that $X_{n_{i}} \overset{a.s.}{\to} X$ as $i \to \infty$.
+5. If $\forall \epsilon>0, \sum_{n} \text{I\kern-0.15em P}(|X_{n}-X| > \epsilon)<\infty$, 
+
+###### Proof of 1: (If $X_{n} \overset{D}{\to} c$, where c is a constant, then $X_{n} \overset{\text{I\kern-0.15em P}}{\to} c$)
+(Because no way to switch the $\omega$. if only one possible choice) #TODO 
+   Application. to prove the law of large number, no need to prove the convergence in probability anymore.
+
+###### Proof of 2: (If $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$, $\text{I\kern-0.15em P}(|X_{n}| \le k)=1$ for all n and some constant k, then $X_{n} \overset{r}{\to} X, r \ge 1$)
+
+
 
 ## 7.3 Other versions of WLLN
 Thm. (**Continuous mapping theorm**) Suppose function $g$ has the discontinuity points $D_{g}$ such that $\text{I\kern-0.15em P}(X \in D_{g})=0$, then:
@@ -806,7 +846,7 @@ Thm. (**$L^2-WLLN$**) Let $X_{1}, X_{2}, \dots$ be uncorrelated r.v.s. independe
 
 Proof. #TODO 
 
-Application. 1 (Bernstein approximation) Let $f$ be continuous on $[0,1]$ (uniform continuous and bounded). Let:
+Application. 1 (Bernstein approximation) Let $f$ be continuous on $[0,1]$ (i.e. uniform continuous and bounded). Let:
 
 $$
 f_{n}(x)=\sum_{m=0}^{n} {n \choose m} x^{m}(1-x)^{n-m} f(\frac{n}{m})
@@ -839,8 +879,6 @@ Motivation: $\frac{S_{n}-n \mu}{n^{1/2+\epsilon}} \overset{\text{I\kern-0.15em P
 E.g. 1. (Coupon collection problem) $Y_{n,i}$: i.i.d. uniform on $\{1,2,\dots, n\}$. Let $\psi_{k}^{n}:=\inf_{m}\{ |\{Y_{n,1},Y_{n,2} \dots Y_{n,m}\}|=k \}$, $X_{n,k}:=\psi_{k}^{n}-\psi_{k-1}^{n} \sim Geom(1-\frac{k-1}{n})$ and $X_{n,k}$ are independent.
 #TODO 
 By WLLN for triangular array, 
-
-
 
 # Ch8 Limiting theorm
 Skipped.

@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Recurrence",
+                "query": "tag:#TODO",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -73,7 +73,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -162,8 +163,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "3d93ab568e75cd17",
+  "active": "18fb9ba53c30a75f",
   "lastOpenFiles": [
+    "ZoryOb/Mathematics/Probability.pdf",
     "ZoryOb/Mathematics/Probability.md",
     "ZoryOb/TCS/Randomized Algorithm.md",
     "ZoryOb/Mathematics/Statistic.md",
