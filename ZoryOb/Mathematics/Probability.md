@@ -1,4 +1,4 @@
->  The note of HKUST course MATH2431 Honors Probability in Spring 2023, by Zory ZHANG. In case of any broken math renderring in Github preview, please open this markdown file using your own markdown editor. PDF version (may not up-to-date) can be found [here](noyet).
+>  The note of HKUST course MATH2431 Honors Probability in Spring 2023, by Zory ZHANG. In case of any broken math renderring in Github preview, please open this markdown file using your own markdown editor. PDF version (may not up-to-date) can be found [here](probability.pdf).
 
 # Reminder
 - Expectation exists: absolutely convergence.
@@ -378,6 +378,8 @@ $$
 
 > Def. (**k-th central moments**) $\sigma_{k}:=\text{I\kern-0.15em E} (X-\text{I\kern-0.15em E} X)^{k}=\int (x-\text{I\kern-0.15em E} X)^{k} f_{X}(x) \ \mathrm{d}x$.
 
+E.g. for normal distribution, $\sigma_i=\begin{cases} 0, \text{ if i odd}, \\  \sigma^{i}(i-1)!!, \text{ o.w.} \end{cases}$
+
 ## 4.3 Continuous distributions
 > Def. (**Uniform distribution** $X \sim \mathcal{U}[0,1]$ ) $f_{X}(x)=1, F_{X}(x)=x$ over $[0,1]$, otherwise nature.
 
@@ -660,14 +662,14 @@ Rmk. the statement "$\phi$ is continuous at 0" can be replaced by
 
 E.g. $X_{n} \sim N(0,n^2)$, $\phi_{n}(t)=\exp(-\frac{1}{2} n^{2} t^{2})$.
 
-### 5.3.3 Two limiting thm %% fold %% 
+### 5.3.3 Two limiting thm
 ###### Thm. 
-n i.i.d. r.v. $X_n$ with $\mu:=\text{I\kern-0.15em E}X < \infty$:
+n i.i.d. r.v. $X_n$ with $\mu:=\text{I\kern-0.15em E}X < \infty$: (Abuse of notation here)
 1. (**Weak law of large number**, WLLN) $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{D}{\to } \mu$.
 2. (**Central limit thm**, CLT) Suppose $Var X_{1}=\sigma$, then $\sqrt n \left(\frac{1}{n} \sum_{i=1}^{n} X_{i} - \mu\right) \overset{D}{\to } N(0,\sigma^{2})$.
 3. In other word, $\frac{1}{n} S_{n}:=\frac{1}{n} \sum_{i=1}^{n} X_{i} \sim N(\mu,\frac{\sigma^{2}}{n})$.
 
-###### Proof. 
+###### Proof: characteristics function
 $$
 \begin{aligned}
 \phi_{X_{1}}(t)
@@ -684,18 +686,107 @@ $$
 \end{aligned}
 $$
 
-$\phi_\mu$ is continuous at 0, by Lévy’s continuity theorem, $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{D}{\to } \mu$. Same trick for Central limit thm.
+$\phi_\mu$ is continuous at 0, by Lévy’s continuity theorem, $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{D}{\to } \mu$. The same trick for Central limit thm.
 
+###### Alternative proof of CLT: moment method
+Say $\mu=0, \sigma=1, \text{I\kern-0.15em E}|X_{i}|^{k} <\infty$ for simplicity, then it becomes showing $Y_{n}:=\frac{1}{\sqrt n} \sum_{i=1}^{n} X_{i} \overset{D}{\to } N(0,1) \sim Y$.
 
-###### Thm. (**A general CLT**) 
+Thm. (**Portmanteau thm**) Let $X_{1}, X_{2}, \dots$ be r.v.s. with d.f. $F_{1}, F_{2}, \dots$, then $X_{n} \overset{D}{\to} X$ iff $\forall \text{bounded continuous func } g:\mathbb{R} \to \mathbb{R}$, $\text{I\kern-0.15em E} g(X_{n}):= \int g(x)\ \mathrm{d} F_{n}(x) \to \int g(x)\ \mathrm{d} F_{X}(x):=\text{I\kern-0.15em E} g(X)$ as $n\to \infty$.
+
+Rmk. It's sufficient to only check for all Lipschitz continuious functions.
+
+Thm. (**Carleman's thm**) It's sufficient to only check for $\forall k \in \mathbb{N}, g_{k}(x):=x^{k}$ if given X satisfies $\sum_{k=1}^{\infty} (\int g_{2k}(x)\ \mathrm{d} F_{X}(x))^{-\frac{1}{2k}}=\infty$.
+
+Alternative proof for CLT:
+It's suffices to show $\forall k \in \mathbb{N},\text{I\kern-0.15em E} Y_{n}^{2k} \to  (2k-1)!!, \text{I\kern-0.15em E} Y_{n}^{2k+1}  \to 0$.
+$$
+\text{I\kern-0.15em E} Y_{n}^{p}=n^{ -\frac{p}{2}} \sum_{S \in 2^{[n]}} \text{I\kern-0.15em E} \left( \prod_{j=1}^{p} X_{S_{j}} \right) 
+$$
+Due to independence and $\text{I\kern-0.15em E}X_{j}=0$, this become a combinatorics problem. Some terms are negligible. Details are skipped.
+
+###### Alternative proof of CLT: comparison method(Lindeberg swapping)
+Say $\mu=0, \sigma=1, \text{I\kern-0.15em E}|X_{i}|^{3} \le C_{3} <\infty$ for simplicity, then it becomes showing  $Y_{n}:=\frac{1}{\sqrt n} \sum_{i=1}^{n} X_{i} \overset{D}{\to } N(0,1)$. 
+
+Construct $g_{i} \sim N(0,1)$ as i.i.d., and let $Z_{n}:=\frac{1}{\sqrt n} \sum_{i=1}^{n} g_{i} \sim N(0,1)$.
+It suffices to show $\forall t, F_{Y_{n}}(t)-F_{Z_{n}}(t) \to 0$ as $n \to \infty$.
+
+$$
+\begin{aligned}
+&\forall t, F_{Y_{n}}(t)-F_{Z_{n}}(t) \to 0  \text{ as } n \to \infty \\
+
+\Leftarrow &\forall t, \text{I\kern-0.15em E} \mathbb{1}(Y_{n}\le t)
+-\text{I\kern-0.15em E} \mathbb{1}(Z_{n}\le t) \to 0  \text{ as } n \to \infty \\
+
+\Leftarrow &\forall t, \phi_{t}(\cdot):=\mathbb{1}(\cdot \le t), \text{I\kern-0.15em E} \phi_{t}(Y_{n})-\phi_{t}(Z_{n}) \to 0  \text{ as } n \to \infty \\
+
+\Leftarrow &\forall \text{bounded smooth func with bounded derivative } \phi, \\ & \text{I\kern-0.15em E} \phi(Y_{n})-\phi(Z_{n}) \to 0  \text{ as } n \to \infty
+\end{aligned}
+$$
+
+Construct $H_{n,i}:=n^{-\frac{1}{2}}(g_{1}+g_{2} \dots g_{i} + X_{i+1}+\dots+X_{n})$, then $Y_{n}=H_{n,0}, Z_{n}=H_{n,n}$. Through this construction, we can bounded the difference between the two summations term by term. 
+
+$$
+\begin{align*}
+& \text{I\kern-0.15em E} \phi(Y_{n})-\phi(Z_{n})\\
+&= \text{I\kern-0.15em E} \phi(H_{n,0})-\text{I\kern-0.15em E} \phi(H_{n,n})\\
+&= \sum_{i=0}^{n-1} \text{I\kern-0.15em E}\phi(H_{n,i})-\text{I\kern-0.15em E}\phi(H_{n,i+1}) \in o(1)\\
+& \Leftarrow \forall n,i, \text{I\kern-0.15em E}\phi(H_{n,i})-\text{I\kern-0.15em E}\phi(H_{n,i+1}) \in o(\frac{1}{n})\\
+\end{align*}
+$$
+
+Notice that the consecutive two terms $\phi(H_{n,i}), \phi(H_{n,i+1})$ only differ in the $i+1$-th entry. We can estimate by Tarlor expansion (with Lagrange remainder) w.r.t. this entry.
+
+$$
+\begin{aligned}
+& H_{n,i}^{\circ}:=n^{-\frac{1}{2}}(g_{1}+g_{2} \dots g_{i} + 0+ X_{i+2}+\dots+X_{n})\\
+& \phi(H_{n,i})
+=\phi(H_{n,i}^{\circ})
++\phi'(H_{n,i}^{\circ})(\frac{X_{i+1}}{\sqrt{n}})
++\frac{1}{2} \phi''(H_{n,i}^{\circ})(\frac{X_{i+1}}{\sqrt{n}})^{2}
++\frac{1}{3!}\phi'''(t_{1})(\frac{X_{i+1}}{\sqrt{n}})^{3}\\
+& \phi(H_{n,i+1})
+=\phi(H_{n,i}^{\circ})
++\phi'(H_{n,i}^{\circ})(\frac{g_{i+1}}{\sqrt{n}})
++\frac{1}{2} \phi''(H_{n,i}^{\circ})(\frac{g_{i+1}}{\sqrt{n}})^{2}
++\frac{1}{3!}\phi'''(t_{2})(\frac{g_{i+1}}{\sqrt{n}})^{3}\\
+
+& \text{I\kern-0.15em E}\phi(H_{n,i})-\text{I\kern-0.15em E}\phi(H_{n,i+1}) \le C_{3} \sup_{x \in \mathbb{R}} |\phi'''(x)| n^{-\frac{3}{2}} \in O\left(n^{-\frac{3}{2}}\right)\in o(\frac{1}{n})
+\end{aligned}
+$$
+
+###### Alternative proof of CLT: Stein's method
+A powerful method to show weak convergence to certain dist, especially Gaussian.
+
+Prop. $X \sim N(0,1)$ iff $\forall f:\mathbb{R} \to \mathbb{R}$ continuously differentiable with bounded $f, f'$, $\text{I\kern-0.15em E}[f'(X)-Xf(X)]=0$.
+
+Thm. (**Stein continuity thm**) $X_{n}$ is a sequence of real. r.v.s. with $\text{I\kern-0.15em E}|X_{i}|^{2} \le C_{2} <\infty$, then $X_{n}  \overset{D}{\to} N(0,1)$ iff $\forall f:\mathbb{R} \to \mathbb{R}$ continuously differentiable with bounded $f, f'$, $\text{I\kern-0.15em E}[f'(X_{n})-X_{n}f(X_{n})]\to 0  \text{ as } n \to \infty$.
+
+Again, define $Y_{n}:=\frac{1}{\sqrt n} \sum_{i=1}^{n} X_{i}$. We assume $\text{I\kern-0.15em E}|Y_{i}|^{2} \le C_{2} <\infty$ required by the thm. Then, to show the convergence between $f$ and $f'$, we estimate by Tarlor expansion (with Lagrange remainder) again:
+
+$$
+\begin{aligned}
+Y_{n}^{(j)}&:=\frac{1}{\sqrt n} \sum_{j \ne i} X_{i} \\
+
+&\text{I\kern-0.15em E} Y_{n}f(Y_{n}) \\
+=& \text{I\kern-0.15em E} \frac 1 {\sqrt{n}} \sum_{j} X_{j} f(Y_{n}) \\
+=& \frac 1 {\sqrt{n}} \sum_{j} \text{I\kern-0.15em E}  X_{j} (\sum_{k=0}^\infty f^{(k)}(Y_{n}^{(j)})(\frac{X_{j}}{\sqrt{n}})^{k}) \\
+\sim & \sum_{j} \sum_{k=0}^{\infty} n^{-\frac{k+1}{2}} \text{I\kern-0.15em E} f^{(k)}(Y_{n}^{(j)})X_{j}^{k+1} \\
+= & \sum_{j} \sum_{k=0}^{\infty} n^{-\frac{k+1}{2}} \text{I\kern-0.15em E} f^{(k)}(Y_{n}^{(j)})\text{I\kern-0.15em E}X_{j}^{k+1}, \text{due the independence} \\
+=& \sum_{j} \sum_{\text{odd }k} n^{-\frac{k+1}{2}} \text{I\kern-0.15em E} f^{(k)}(Y_{n}^{(j)})\text{I\kern-0.15em E}X_{j}^{k+1}, \text{ because odd order moment are 0} \\
+=& \sum_{j} (n^{-1} \text{I\kern-0.15em E} f'(Y_{n}^{(j)})+O(n^{-3/2})) \\
+=& O(n^{-1/2})+n^{-1} (\sum_{j} \text{I\kern-0.15em E} f'(Y_{n}^{(j)})-\text{I\kern-0.15em E} f'(Y_{n})+\sum_{j} \text{I\kern-0.15em E} f'(Y_{n})) \\
+=& O(n^{-1/2})+\text{I\kern-0.15em E} f'(Y_{n}),\text{due to bounded }f' \\
+\end{aligned}
+$$
+
+###### Thm: A general CLT
 Motiv. When every error is so minor that doesn't dominate the total error.
-Thm. Let $X_{1}, X_{2} \dots$ be independent; define $\sigma(n)=Var(S_{n})=\sum_{j=1}^{n} \sigma_{j}^{2}$ with $\text{I\kern-0.15em E} X_{j}=0, Var X_{j}=\sigma_{j}^{2}, \text{I\kern-0.15em E} |X_{j}^{3}|<\infty$,  and such that 
-$$
-\frac{1}{\sigma^{3}(n)}\sum_{j=1}^{n} \text{I\kern-0.15em E} |X_{j}^{3}| \to 0
-$$
-Then $\frac{1}{\sigma(n)}S_{n} \to N(0,1)$.
 
-#TODO 
+Thm. Let $X_{1}, X_{2} \dots$ be independent; define $\sigma^{2}_{n}=Var(S_{n})=\sum_{j=1}^{n} \sigma_{j}^{2}$ with $\text{I\kern-0.15em E} X_{j}=0, Var X_{j}=\sigma_{j}^{2}, \text{I\kern-0.15em E} |X_{j}^{3}|<\infty$,  and such that 
+$$
+\frac{1}{\sigma_{n}^{3}}\sum_{j=1}^{n} \text{I\kern-0.15em E} |X_{j}^{3}| \to 0 \text{ as } n\to \infty 
+$$
+Then $\frac{1}{\sigma_{n}}S_{n} \overset{D}{\to} N(0,1)$. 
 
 # Ch6 Markov
 Skipped.
@@ -737,7 +828,8 @@ Rmk. Convergence in probability is essentially using $d_{\epsilon}(g,h)=\int_\te
 4. $X_{n} \overset{r}{\to} X$ implies $X_{n} \overset{s}{\to} X$, if $r \ge s \ge 1$.
 5. No other implication hold in general.
 
-###### Proof of 5: (No other implication hold in general)
+###### Proof of 5
+(No other implication hold in general)
 - ($X_{n} \overset{D}{\to} X$ doesn't imply $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$): trivial.
 - ($X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$): tiny bad point with very bad value. E.g. pick $X_{n}:=n^{3}$ with proba $n^{-2}$, otherwise 0.
 - ($X_{n} \overset{\text{s}}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$, if $r > s \ge 1$): we want small s-th moment with large r-th moment. E.g. pick $X_{n}:=n$ with proba $n^{-\frac{1}{2}(r+s)}$, otherwise 0.
@@ -747,10 +839,11 @@ Rmk. Convergence in probability is essentially using $d_{\epsilon}(g,h)=\int_\te
     - Take $\delta=1$, $\text{I\kern-0.15em P}(\{ \omega \in \Omega: |X_{n}(\omega) - X(\omega)| \ge \epsilon \})=\text{I\kern-0.15em P}(I_{n}) \to 0$.
     - For no $\omega$, $X_{n}(\omega) \to X(\omega) \text{ as } n \to \infty$, i.e. $\text{I\kern-0.15em P}=0$ instead.
     - Intuition: a.s. convergence want to make sure many $\omega$ that can run away from bad events in a limiting sence.
-- ($X_{n} \overset{r}{\to} X$ doesn't imply $X_{n} \overset{a.s.}{\to} X$) 
-- ($X_{n} \overset{a.s.}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$) 
+- ($X_{n} \overset{r}{\to} X$ doesn't imply $X_{n} \overset{a.s.}{\to} X$) Skipped.
+- ($X_{n} \overset{a.s.}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$) Skipped.
 
-###### Proof of 1: ($X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ implies $X_{n} \overset{D}{\to} X$)
+###### Proof of 3
+($X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ implies $X_{n} \overset{D}{\to} X$)
 $$
 \begin{align*}
 \forall \epsilon>0,
@@ -775,7 +868,8 @@ $$
 
 When $F_{x}$ is continuous at x, let $\epsilon \to 0$, we get $F_{n}(x) \to F_{X}(x)$ and concludes the proof.
 
-###### Proof of 2: ($X_{n} \overset{1}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$) 
+###### Proof of 2
+($X_{n} \overset{1}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$) 
 Directly result from Markov's inequality.
 
 $$
@@ -783,7 +877,8 @@ $$
 \text{Markov’s inequality } X \ge 0, \forall a>0, P(X \ge a) \le E(X)/a \\ \text{Chebyshev's inequality } \forall k>0, P(|X-\mu| \ge k \sigma) \le 1/k^2 
 \end{gather}
 $$
-###### Proof of 4:  ($X_{n} \overset{r}{\to} X$ implies $X_{n} \overset{s}{\to} X$) 
+###### Proof of 4
+($X_{n} \overset{r}{\to} X$ implies $X_{n} \overset{s}{\to} X$) 
 $$
 \begin{gather}
 \text{Lyapunov's inequality } (\text{I\kern-0.15em E} |Z|^{r})^{\frac{1}{r}} \ge (\text{I\kern-0.15em E} |Z|^{s})^{\frac{1}{s}}, r \ge s>0 \\
@@ -794,7 +889,8 @@ $$
 In Hölder, let $X:=|Z|^{s}, Y=1, p=\frac{r}{s}, q=\frac{r}{r-s}$.
 In Jensen, let $X:=|Z|^{s}, \phi(x)=x^{\frac{r}{s}}$.
 
-###### Proof of 1: ($X_{n} \overset{a.s.}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$) 
+###### Proof of 1
+($X_{n} \overset{a.s.}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$) 
 Let $A_{n}(\epsilon):=\{\omega:|X_{n}(\omega)-X(\omega)| > \epsilon \}, B_{m}(\epsilon ):=\bigcup_{n \ge m} A_{n}(\epsilon)$. $\{B_{m}\}$ is decreasing.
    - (1) $X_{n} \overset{a.s.}{\to} X \iff \forall \epsilon>0, \lim_{m \to \infty} \text{I\kern-0.15em P}(B_{m}(\epsilon))=0$.
         $R.H.S.= \text{I\kern-0.15em P}( \bigcap_{m=0}^{\infty} \bigcup_{n \ge m} A_{n}(\epsilon) )=\text{I\kern-0.15em P}(\limsup_{m} A_{m}(\epsilon))$.
@@ -820,20 +916,27 @@ From left to right. Notice that $\forall \epsilon>0, \text{I\kern-0.15em P}(\lim
 ###### Thm.
 1. If $X_{n} \overset{D}{\to} c$, where c is a constant, then $X_{n} \overset{\text{I\kern-0.15em P}}{\to} c$. 
 2. If $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$, $\text{I\kern-0.15em P}(|X_{n}| \le k)=1$ for all n and some constant k, then $X_{n} \overset{r}{\to} X, r \ge 1$.
-3. If $X_{n} \overset{\text{I\kern-0.15em P}}{\to} c$, then $\exists \delta>0, \forall \epsilon \in (0,\delta)$, $\text{I\kern-0.15em P}(\{ \omega \in \Omega: |X_{n}(\omega) - X(\omega)| \ge \epsilon \}) \to 0$ as $n \to \infty$. WTF?
-4. If $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$, there's a non-random increasing sequence of integers $n_{1}, n_{2}, \dots$ such that $X_{n_{i}} \overset{a.s.}{\to} X$ as $i \to \infty$.
-5. If $\forall \epsilon>0, \sum_{n} \text{I\kern-0.15em P}(|X_{n}-X| > \epsilon)<\infty$, 
+3. If $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$, there's a non-random subsequence such that $X_{n_{i}} \overset{a.s.}{\to} X$ as $i \to \infty$.
+4. If $\forall \epsilon>0, \sum_{n} \text{I\kern-0.15em P}(|X_{n}-X| > \epsilon)<\infty$, then $X_{n}  \overset{a.s.}{\to} X$.
 
-###### Proof of 1: (If $X_{n} \overset{D}{\to} c$, where c is a constant, then $X_{n} \overset{\text{I\kern-0.15em P}}{\to} c$)
-(Because no way to switch the $\omega$. if only one possible choice) #TODO 
-   Application. to prove the law of large number, no need to prove the convergence in probability anymore.
+###### Proof of 1
+(If $X_{n} \overset{D}{\to} c$, where c is a constant, then $X_{n} \overset{\text{I\kern-0.15em P}}{\to} c$)
+Intuition from counter example: because no way to switch the $\omega$ if only one possible choice, i.e. $c$.
 
-###### Proof of 2: (If $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$, $\text{I\kern-0.15em P}(|X_{n}| \le k)=1$ for all n and some constant k, then $X_{n} \overset{r}{\to} X, r \ge 1$)
+Application. to prove the law of large number, no need to prove the convergence in probability anymore.
 
+###### Proof of 2
+(If $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$, $\text{I\kern-0.15em P}(|X_{n}| \le k)=1$ for all n and some constant k, then $X_{n} \overset{r}{\to} X, r \ge 1$)
 
+###### Proof of 3
+#TODO 
 
-## 7.3 Other versions of WLLN
-Thm. (**Continuous mapping theorm**) Suppose function $g$ has the discontinuity points $D_{g}$ such that $\text{I\kern-0.15em P}(X \in D_{g})=0$, then:
+###### Proof of 4
+#TODO 
+
+## 7.3 Applications of WLLN
+###### Thm. (**Continuous mapping theorm**) 
+Suppose function $g$ has the discontinuity points $D_{g}$ such that $\text{I\kern-0.15em P}(X \in D_{g})=0$, then:
 $$
 \begin{aligned}
 X_{n} \overset{D}{\to} X \implies g(X_{n}) \overset{D}{\to} g(X) \\
@@ -842,16 +945,11 @@ X_{n} \overset{a.s.}{\to} X \implies g(X_{n}) \overset{a.s.}{\to} g(X)
 \end{aligned}
 $$
 
-Thm. (**$L^2-WLLN$**) Let $X_{1}, X_{2}, \dots$ be uncorrelated r.v.s. independent with n and with $\text{I\kern-0.15em E}X_{i}=\mu, Var X_{i} \le c_{i} < \infty$, for all i. Then $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{2}{\to } \mu$ and $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{\text{I\kern-0.15em P}}{\to } \mu$.
-
-Proof. #TODO 
-
-Application. 1 (Bernstein approximation) Let $f$ be continuous on $[0,1]$ (i.e. uniform continuous and bounded). Let:
-
+###### Application. 1 (**Bernstein approximation**)
+Let $f$ be continuous on $[0,1]$ (i.e. uniform continuous and bounded). Let:
 $$
-f_{n}(x)=\sum_{m=0}^{n} {n \choose m} x^{m}(1-x)^{n-m} f(\frac{n}{m})
+f_{n}(x)=\sum_{m=0}^{n} {n \choose m} x^{m}(1-x)^{n-m} f(\frac{m}{n})
 $$
-
 Then $\sup_{x} |f_{n}(x)-f(x)| \to 0$ as $n \to \infty$.
 
 Proof. Let $X_{i,x} \sim Be(x), S_{n,x}:=\sum_{i=1}^{n} X_{i,x}$, then $f_{n}(x)=\text{I\kern-0.15em E} f(\frac{S_{n,x}}{n})$.
@@ -860,7 +958,8 @@ Partial converse statement 2.
 
 #TODO 
 
-Application 2. (Borel's geometric concentration) Let $\mu_{n}$ be the uniform probability measure on the n-dimentional cube $[-1,1]^{n}$. Let $H$ be a hyperplane that's orthogonal to a principal diagonal of $[-1,1]^{n}$, i.e. $H = (1,1, \dots, 1)^{\perp}$. Let $H_{r}=\{ x \in [-1,1]^{n}: dist(x,H) \le r \}$. Then $\forall \epsilon>0, \lim_{n \to \infty} \mu_{n}(H_{\epsilon \sqrt n}) = 1$.
+###### Application 2. (Borel's geometric concentration) 
+Let $\mu_{n}$ be the uniform probability measure on the n-dimentional cube $[-1,1]^{n}$. Let $H$ be a hyperplane that's orthogonal to a principal diagonal of $[-1,1]^{n}$, i.e. $H = (1,1, \dots, 1)^{\perp}$. Let $H_{r}=\{ x \in [-1,1]^{n}: dist(x,H) \le r \}$. Then $\forall \epsilon>0, \lim_{n \to \infty} \mu_{n}(H_{\epsilon \sqrt n}) = 1$.
 
 Proof. 
 $$
@@ -872,13 +971,26 @@ $$
 \end{gather}
 $$
 
-Thm. (**WLLN for triangular array**) Let $\{ X_{n,i} \}$ be a triangular array. Let $S_n:=\sum_{i=1}^{n} X_{n,i}, \mu_{n}:=\text{I\kern-0.15em E}S_{n}, \sigma_{n}^{2}:=Var(S_{n})$. Suppose $\frac{\sigma_{n}^{2}}{b_{n}^{2}} \to 0$ for some $b_{n}$, #TODO 
+
+## 7.4 Other versions of WLLN
+###### Thm. (**$L^2-WLLN$**) 
+Let $X_{1}, X_{2}, \dots$ be **uncorrelated** r.v.s. with $\forall i,\text{I\kern-0.15em E}X_{i}=\mu, Var X_{i} \le C < \infty$ Then $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{2}{\to } \mu$ and $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{\text{I\kern-0.15em P}}{\to } \mu$.
+
+Proof. By def, $\text{I\kern-0.15em E} (\frac{S_{n}}{n}-\mu)^{2}=Var(\frac{S_{n}}{n})=\frac{1}{n^{2}}\sum_{i=1}^{n} Var(X_{i}) \le \frac{C}{n}\to 0  \text{ as } n \to \infty$.
+
+###### Thm. (**WLLN for triangular array**) 
+Let $\{ X_{n,i} \}$ be a triangular array. Let $S_n:=\sum_{i=1}^{n} X_{n,i}, \mu_{n}:=\text{I\kern-0.15em E}S_{n}, \sigma_{n}^{2}:=Var(S_{n})$. Suppose $\frac{\sigma_{n}^{2}}{b_{n}^{2}} \to 0$ for some real sequence(non-random) $\{b_{n}\}$, then $\frac{S_{n}-\mu_{n}}{b_{n}}  \overset{\text{I\kern-0.15em P}}{\to} 0$.
+
+Proof. We prove the convergence in 2-nd mean instead. $\text{I\kern-0.15em E}(\frac{S_{n}-\mu_{n}}{b_{n}})=0$, and $\text{I\kern-0.15em E} (\frac{S_{n}-\mu_{n}}{b_{n}}-0)^{2}=b_{n}^{-2} Var(S_{n}) \to 0  \text{ as } n \to \infty$.
 
 Motivation: $\frac{S_{n}-n \mu}{n^{1/2+\epsilon}} \overset{\text{I\kern-0.15em P}}{\to} 0 \Rightarrow S_{n}=n \mu+o_{\text{I\kern-0.15em P}}(n^{1/2+\epsilon})$. The principle is that if possible, we shall not choose $b_{n} >> \text{I\kern-0.15em E}S_{n}$.
 
-E.g. 1. (Coupon collection problem) $Y_{n,i}$: i.i.d. uniform on $\{1,2,\dots, n\}$. Let $\psi_{k}^{n}:=\inf_{m}\{ |\{Y_{n,1},Y_{n,2} \dots Y_{n,m}\}|=k \}$, $X_{n,k}:=\psi_{k}^{n}-\psi_{k-1}^{n} \sim Geom(1-\frac{k-1}{n})$ and $X_{n,k}$ are independent.
+### E.g.1 Coupon collection problem
+$Y_{n,i}$: i.i.d. uniform on $\{1,2,\dots, n\}$. Let $\psi_{k}^{n}:=\inf_{m}\{ |\{Y_{n,1},Y_{n,2} \dots Y_{n,m}\}|=k \}$, $X_{n,k}:=\psi_{k}^{n}-\psi_{k-1}^{n} \sim Geom(1-\frac{k-1}{n})$ and $X_{n,k}$ are independent.
 #TODO 
 By WLLN for triangular array, 
+
+#TODO 
 
 # Ch8 Limiting theorm
 Skipped.
