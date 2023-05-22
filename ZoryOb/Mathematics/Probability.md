@@ -3,6 +3,10 @@
 # Reminder
 - Expectation exists: absolutely convergence.
 
+# Ch0 Notations
+$A \setminus B$: the set difference/minus.
+$A \triangle B$: the symmetric difference, $(A\setminus B) \cup (B\setminus A)$.
+
 # Ch1 Events
 ## 1.1 Space
 > Def. (**Sample space** $\Omega$) The set of all possible outcomes of an experiment(elementary events).
@@ -334,7 +338,9 @@ Rmk. Our best guess of Y to minimize $(Y-\text{I\kern-0.15em E}Y)^{2}$, after kn
 
 Rmk. $\psi_{Y}(X)$ is from the same probability space as $X$, and it's our best guess of the "strategy" of Y to minimize $(Y-\text{I\kern-0.15em E}Y)^{2}$, after knowing the distribution of $X$.
 
-> Def. (**$\sigma$-field induced by a r.v. X**) $\sigma(X):=\{X^{-1}(B):\forall B \in \mathbb{B}(\mathbb{R})\}$, which characterizes all information that can be obtained by observing the value of X.
+> Def. (**$\sigma$-field induced by a r.v. X**) $\sigma(X):=\{X^{-1}(B):\forall B \in \mathcal{B}(\mathbb{R})\}$, which characterizes all information that can be obtained by observing the value of X.
+
+E.g. For dice rolling, $X(\omega):=\mathbb{1}(\omega \text{ is odd})$, then $\sigma(X):=\{\emptyset, \Omega, \{1,3,5\}, \{2,4,6\}\}$.
 
 Rmk. $\sigma(Y) \subset \sigma(\sigma(Y),\sigma(Z))$, here we use the above defined concept of generated $\sigma$-field. The meaning is that the information from both Y and Z is more than the information from Y.
 
@@ -791,7 +797,7 @@ Then $\frac{1}{\sigma_{n}}S_{n} \overset{D}{\to} N(0,1)$.
 # Ch6 Markov
 Skipped.
 
-# Ch7 Convergence
+# Ch7 Convergence of r.v.
 Convergence in distribution only reflects one aspect of r.v. It's reasonable to consider the nature of r.v.: a function from $[0,1]$ to $\mathbb{R}$.
 
 Recall. Convergence of real functions $f_{n}, f: [0,1] \to \mathbb{R}$,
@@ -821,26 +827,59 @@ Rmk. Almost sure convergence is an adoption of pointwise convergence, where the 
 
 Rmk. Convergence in probability is essentially using $d_{\epsilon}(g,h)=\int_\text{I\kern-0.15em E} \ \mathrm{d} \text{I\kern-0.15em P}(x)$ in the convergence in measure.
 
-###### Thm
+###### Thm. 7.1.1
+Let $A_{n}(\epsilon):=\{\omega:|X_{n}(\omega)-X(\omega)| > \epsilon \}, B_{m}(\epsilon ):=\bigcup_{n \ge m} A_{n}(\epsilon)$. Here $\{B_{m}\}$ is decreasing, and therefore we denote by $A(\epsilon):=\lim_{m \to \infty} B_{m}(\epsilon)=\bigcap_{m=0}^{\infty} \bigcup_{n \ge m} A_{n}(\epsilon)=\limsup_{n} A_{n}(\epsilon)$, and denoted by $A(\epsilon):=\{A_{n}(\epsilon) \text{ i.o.}\}$, standing for infinitely often. Then the following hold:
+1.  $X_{n} \overset{a.s.}{\to} X \iff \forall \epsilon>0, \text{I\kern-0.15em P}(A(\epsilon))=0$.
+2. $X_{n} \overset{a.s.}{\to} X \Leftarrow \forall \epsilon>0, \sum_{n=1}^{\infty} \text{I\kern-0.15em P}(A_{n}(\epsilon)) < \infty$.
+
+###### Proof.
+Proof of 1.
+Notice that $A(\epsilon)$ is decreasing as $\epsilon$ getting larger.
+$$
+\begin{aligned}
+&\text{I\kern-0.15em P}(\{ \omega \in \Omega: X_{n}(\omega) \to X(\omega) \text{ as } n \to \infty \})=1 
+\\ \iff &\text{I\kern-0.15em P}(\{ \omega \in \Omega: \forall \epsilon>0, \exists n_{0}, \forall n>n_{0,} |X_{n}(\omega)-X(\omega)| \le \epsilon\})=1
+\\ \iff &\text{I\kern-0.15em P}(\{ \omega \in \Omega: \exists \epsilon_{0}>0, \forall n_{0}, \exists n>n_{0,} |X_{n}(\omega)-X(\omega)|>\epsilon_{0}\})=0
+\\ \iff &\text{I\kern-0.15em P}( \cup_{\epsilon>0} \{ \omega \in \Omega: \forall n_{0}, \exists n>n_{0,} |X_{n}(\omega)-X(\omega)|>\epsilon\})=0
+\\ \iff &\text{I\kern-0.15em P}( \cup_{\epsilon>0} \{ \omega \in \Omega: |X_{n}(\omega)-X(\omega)| > \epsilon \text{ for infinitely many n}\})=0
+\\ \iff &\text{I\kern-0.15em P}( \cup_{\epsilon>0} \limsup_{n} A_{n}(\epsilon) )=0
+\end{aligned}
+$$
+From left to right: notice that $\forall \epsilon>0, \text{I\kern-0.15em P}(\limsup_{n} A_{n}(\epsilon)) \le \text{I\kern-0.15em P}(\cup_{\epsilon>0} \limsup_{n} A_{n}(\epsilon))=0$. From right to left is obvious too.
+
+Proof of 2.
+$\text{I\kern-0.15em P}(B_{m}(\epsilon)) \le \sum_{n=m}^{\infty} \text{I\kern-0.15em P}(A_{n}(\epsilon))$, and the latter goes to 0 as m go to infinity.
+
+###### Thm. 7.1.2
 1. $X_{n} \overset{a.s.}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$.
 2. $X_{n} \overset{r}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$.
 3. $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ implies $X_{n} \overset{D}{\to} X$.
 4. $X_{n} \overset{r}{\to} X$ implies $X_{n} \overset{s}{\to} X$, if $r \ge s \ge 1$.
 5. No other implication hold in general.
 
-###### Proof of 5
-(No other implication hold in general)
-- ($X_{n} \overset{D}{\to} X$ doesn't imply $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$): trivial.
-- ($X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$): tiny bad point with very bad value. E.g. pick $X_{n}:=n^{3}$ with proba $n^{-2}$, otherwise 0.
-- ($X_{n} \overset{\text{s}}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$, if $r > s \ge 1$): we want small s-th moment with large r-th moment. E.g. pick $X_{n}:=n$ with proba $n^{-\frac{1}{2}(r+s)}$, otherwise 0.
-- ($X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ doesn't imply $X_{n} \overset{a.s.}{\to} X$):
-    - $I_{i,j}:=[\frac{j}{i},\frac{j+1}{i}], I_n:=ordering_{n}(I_{i,j})=(I_{1,0},I_{2,0},I_{2,1},I_{3,0}, \dots)_{n}$.
-    - $X_{n}:=\mathbb{1}_{I_{n}}, X:=0$.
-    - Take $\delta=1$, $\text{I\kern-0.15em P}(\{ \omega \in \Omega: |X_{n}(\omega) - X(\omega)| \ge \epsilon \})=\text{I\kern-0.15em P}(I_{n}) \to 0$.
-    - For no $\omega$, $X_{n}(\omega) \to X(\omega) \text{ as } n \to \infty$, i.e. $\text{I\kern-0.15em P}=0$ instead.
-    - Intuition: a.s. convergence want to make sure many $\omega$ that can run away from bad events in a limiting sence.
-- ($X_{n} \overset{r}{\to} X$ doesn't imply $X_{n} \overset{a.s.}{\to} X$) Skipped.
-- ($X_{n} \overset{a.s.}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$) Skipped.
+###### Proof of 5 (No other implication hold in general)
+($X_{n} \overset{D}{\to} X$ doesn't imply $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$)
+Trivial.
+
+($X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$)
+Tiny bad point with very bad value. E.g. pick $X_{n}:=n^{3}$ with proba $n^{-2}$, otherwise 0.
+
+($X_{n} \overset{\text{s}}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$, if $r > s \ge 1$)
+We want small s-th moment with large r-th moment. E.g. pick $X_{n}:=n$ with proba $n^{-\frac{1}{2}(r+s)}$, otherwise 0.
+
+($X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ doesn't imply $X_{n} \overset{a.s.}{\to} X$):
+- $I_{i,j}:=[\frac{j}{i},\frac{j+1}{i}], I_n:=ordering_{n}(I_{i,j})=(I_{1,0},I_{2,0},I_{2,1},I_{3,0}, \dots)_{n}$.
+- $X_{n}:=\mathbb{1}_{I_{n}}, X:=0$.
+- Take $\delta=1$, $\text{I\kern-0.15em P}(\{ \omega \in \Omega: |X_{n}(\omega) - X(\omega)| \ge \epsilon \})=\text{I\kern-0.15em P}(I_{n}) \to 0$.
+- For no $\omega$, $X_{n}(\omega) \to X(\omega) \text{ as } n \to \infty$, i.e. $\text{I\kern-0.15em P}=0$ instead.
+- Intuition: a.s. convergence want to make sure many $\omega$ that can run away from bad events in a limiting sence.
+
+($X_{n} \overset{r}{\to} X$ doesn't imply $X_{n} \overset{a.s.}{\to} X$) 
+$X_{n}=\begin{cases} 1, w.p. n^{-1} \\ 0, w.p. 1-n^{-1} \end{cases}$
+
+($X_{n} \overset{a.s.}{\to} X$ doesn't imply $X_{n} \overset{r}{\to} X$)
+$X_{n}=\begin{cases} n^{3}, w.p. n^{-2} \\ 0, w.p. 1-n^{-2} \end{cases}$
+
 
 ###### Proof of 3
 ($X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$ implies $X_{n} \overset{D}{\to} X$)
@@ -878,7 +917,7 @@ $$
 \end{gather}
 $$
 ###### Proof of 4
-($X_{n} \overset{r}{\to} X$ implies $X_{n} \overset{s}{\to} X$) 
+($X_{n} \overset{r}{\to} X$ implies $X_{n} \overset{s}{\to} X$)
 $$
 \begin{gather}
 \text{Lyapunov's inequality } (\text{I\kern-0.15em E} |Z|^{r})^{\frac{1}{r}} \ge (\text{I\kern-0.15em E} |Z|^{s})^{\frac{1}{s}}, r \ge s>0 \\
@@ -891,26 +930,7 @@ In Jensen, let $X:=|Z|^{s}, \phi(x)=x^{\frac{r}{s}}$.
 
 ###### Proof of 1
 ($X_{n} \overset{a.s.}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$) 
-Let $A_{n}(\epsilon):=\{\omega:|X_{n}(\omega)-X(\omega)| > \epsilon \}, B_{m}(\epsilon ):=\bigcup_{n \ge m} A_{n}(\epsilon)$. $\{B_{m}\}$ is decreasing.
-   - (1) $X_{n} \overset{a.s.}{\to} X \iff \forall \epsilon>0, \lim_{m \to \infty} \text{I\kern-0.15em P}(B_{m}(\epsilon))=0$.
-        $R.H.S.= \text{I\kern-0.15em P}( \bigcap_{m=0}^{\infty} \bigcup_{n \ge m} A_{n}(\epsilon) )=\text{I\kern-0.15em P}(\limsup_{m} A_{m}(\epsilon))$.
-        Notice that $A(\epsilon)= \limsup_{n} A_{n}(\epsilon) = \{ \omega: X_{n}(\omega)-X(\omega)| > \epsilon \text{ infinitely many n} \}$ is decreasing as $\epsilon$ getting larger.
-$$
-\begin{aligned}
-&\text{I\kern-0.15em P}(\{ \omega \in \Omega: X_{n}(\omega) \to X(\omega) \text{ as } n \to \infty \})=1 
-\\ \iff &\text{I\kern-0.15em P}(\{ \omega \in \Omega: \forall \epsilon>0, \exists n_{0}, \forall n>n_{0,} |X_{n}(\omega)-X(\omega)| \le \epsilon\})=1
-\\ \iff &\text{I\kern-0.15em P}(\{ \omega \in \Omega: \exists \epsilon_{0}>0, \forall n_{0}, \exists n>n_{0,} |X_{n}(\omega)-X(\omega)|>\epsilon_{0}\})=0
-\\ \iff &\text{I\kern-0.15em P}( \cup_{\epsilon>0} \{ \omega \in \Omega: \forall n_{0}, \exists n>n_{0,} |X_{n}(\omega)-X(\omega)|>\epsilon\})=0
-\\ \iff &\text{I\kern-0.15em P}( \cup_{\epsilon>0} \{ \omega \in \Omega: |X_{n}(\omega)-X(\omega)| > \epsilon \text{ for infinitely many n}\})=0
-\\ \iff &\text{I\kern-0.15em P}( \cup_{\epsilon>0} \limsup_{n} A_{n}(\epsilon) )=0
-\end{aligned}
-$$
-From left to right. Notice that $\forall \epsilon>0, \text{I\kern-0.15em P}(\limsup_{n} A_{n}(\epsilon)) \le \text{I\kern-0.15em P}(\cup_{\epsilon>0} \limsup_{n} A_{n}(\epsilon))=0$. From right to left is obvious too.
-
-   - (2) $X_{n} \overset{a.s.}{\to} X \Leftarrow \forall \epsilon>0, \sum_{n=1}^{\infty} \text{I\kern-0.15em P}(A_{n}(\epsilon)) < \infty$. 
-       $\text{I\kern-0.15em P}(B_{m}(\epsilon)) \le \sum_{n=m}^{\infty} \text{I\kern-0.15em P}(A_{n}(\epsilon))$, and the latter goes to 0 as m go to infinity.
-   - (3) $X_{n} \overset{a.s.}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$.
-    $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X \iff \exists \delta>0, \forall 0<\epsilon<\delta, \text{I\kern-0.15em P}( A_{n}(\epsilon)) \to 0$ is true whenever $\text{I\kern-0.15em P}(B_{n}(\epsilon)) \to 0$ is true, which holds iff $X_{n} \overset{a.s.}{\to} X$ by (1).
+$X_{n} \overset{\text{I\kern-0.15em P}}{\to} X \iff \exists \delta>0, \forall 0<\epsilon<\delta, \text{I\kern-0.15em P}( A_{n}(\epsilon)) \to 0$ is true whenever $\text{I\kern-0.15em P}(B_{n}(\epsilon)) \to 0$ is true, which holds iff $X_{n} \overset{a.s.}{\to} X$ by Thm 7.1.1(1).
 
 ## 7.2 Partial converse statements
 ###### Thm.
@@ -934,7 +954,7 @@ Application. to prove the law of large number, no need to prove the convergence 
 ###### Proof of 4
 #TODO 
 
-## 7.3 Applications of WLLN
+## 7.3 More applications of WLLN
 ###### Thm. (**Continuous mapping theorm**) 
 Suppose function $g$ has the discontinuity points $D_{g}$ such that $\text{I\kern-0.15em P}(X \in D_{g})=0$, then:
 $$
@@ -945,18 +965,39 @@ X_{n} \overset{a.s.}{\to} X \implies g(X_{n}) \overset{a.s.}{\to} g(X)
 \end{aligned}
 $$
 
-###### Application. 1 (**Bernstein approximation**)
-Let $f$ be continuous on $[0,1]$ (i.e. uniform continuous and bounded). Let:
+###### Application. 1 (Bernstein approximation)
+Let $f$ be continuous on $[0,1]$ (i.e. uniform continuous and bounded). Define the Bernstein polynomial of degree n:
 $$
 f_{n}(x)=\sum_{m=0}^{n} {n \choose m} x^{m}(1-x)^{n-m} f(\frac{m}{n})
 $$
-Then $\sup_{x} |f_{n}(x)-f(x)| \to 0$ as $n \to \infty$.
+Then $\sup_{x \in [0,1]} |f_{n}(x)-f(x)| \to 0$ as $n \to \infty$ (uniform convergence).
 
-Proof. Let $X_{i,x} \sim Be(x), S_{n,x}:=\sum_{i=1}^{n} X_{i,x}$, then $f_{n}(x)=\text{I\kern-0.15em E} f(\frac{S_{n,x}}{n})$.
+Proof. 
+1. For $x \in [0,1]$, define $X_{x,i} \sim Be(x), S_{x,n}:=\sum_{i=1}^{n} X_{x,i} \sim Bin(n,x)$, then $f_{n}(x)=\text{I\kern-0.15em E} f(\frac{S_{x,n}}{n})$. Now we want to show $\text{I\kern-0.15em E} f\left(\frac{S_{x,n}}{n}\right) \rightrightarrows f(x)$. 
+2. By WLLN and partial converse statement 1, $\frac{S_{x,n}}{n}=\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{\text{I\kern-0.15em P}}{\to } x$. By continuous mapping thm, we can get $f\left(\frac{S_{x,n}}{n}\right)  \overset{\text{I\kern-0.15em P}}{\to} f(x)$. But this's not used because such convergence depends on $x$.
+3. We look back at the uniform continuity. $\forall \epsilon>0, \exists \delta:=\delta(\epsilon)>0, \forall x,n, |\frac{S_{x,n}}{n} - x|<\delta \implies |f(\frac{S_{x,n}}{n}) - f(x)|<\epsilon$.
+4. Note that $\text{I\kern-0.15em E}\frac{S_{x,n}}{n}=x, Var(\frac{S_{x,n}}{n})=x(1-x)/n$, then:
 
-Partial converse statement 2.
+$$
+\begin{aligned}
+&\forall \epsilon>0, \exists \delta:=\delta(\epsilon)>0, \forall x,n, \\
+&\left|\text{I\kern-0.15em E}\left[ f\left(\frac{S_{x,n}}{n}\right)\right]-f(x)\right| \\
 
-#TODO 
+\le & \text{I\kern-0.15em E}\left| f\left(\frac{S_{x,n}}{n}\right)-f(x)\right| \\
+
+= &\text{I\kern-0.15em E}\left| f\left(\frac{S_{x,n}}{n}\right)-f(x)\right|  \mathbb{1}(|\frac{S_{x,n}}{n}-x|<\delta)\\
+&+\text{I\kern-0.15em E}\left| f\left(\frac{S_{x,n}}{n}\right)-f(x)\right|  \mathbb{1}(|\frac{S_{x,n}}{n}-x|\ge \delta) \\
+
+\le & \epsilon \text{I\kern-0.15em E}\mathbb{1}(|\frac{S_{x,n}}{n}-x|<\delta) +2 \sup_{x}|f| \cdot \text{I\kern-0.15em E}\mathbb{1}(|\frac{S_{x,n}}{n}-x|\ge \delta)\\
+= & \epsilon \text{I\kern-0.15em P}(|\frac{S_{x,n}}{n}-x|<\delta) +2 \sup_{x}|f| \cdot \text{I\kern-0.15em P}(|\frac{S_{x,n}}{n}-x|\ge \delta)\\
+\le & \epsilon  +2 \sup_{x}|f| \cdot \frac{Var(\frac{S_{x,n}}{n})}{\delta^{2}}, \text{by Chebyshev ineq}\\
+= & \epsilon+ 2 \sup_{x}|f| \cdot \frac{x(1-x)}{n\delta^{2}} \le \epsilon + \frac{\sup_{x}|f|}{2n\delta^{2}}
+\end{aligned}
+$$
+
+5. $\forall \epsilon>0, \exists \delta:=\delta(\epsilon)>0,\forall n,\sup_{x} \left|f_{n}(x)-f(x)\right| \le \epsilon + \frac{\sup_{x}|f|}{2n\delta^{2}}$.
+6. $\forall \epsilon>0, \exists \delta:=\delta(\epsilon)>0,\limsup_{n} \sup_{x} \left|f_{n}(x)-f(x)\right| \le \epsilon$.
+7. $\lim_{n} \sup_{x} \left|f_{n}(x)-f(x)\right| \epsilon=0$.
 
 ###### Application 2. (Borel's geometric concentration) 
 Let $\mu_{n}$ be the uniform probability measure on the n-dimentional cube $[-1,1]^{n}$. Let $H$ be a hyperplane that's orthogonal to a principal diagonal of $[-1,1]^{n}$, i.e. $H = (1,1, \dots, 1)^{\perp}$. Let $H_{r}=\{ x \in [-1,1]^{n}: dist(x,H) \le r \}$. Then $\forall \epsilon>0, \lim_{n \to \infty} \mu_{n}(H_{\epsilon \sqrt n}) = 1$.
@@ -970,27 +1011,91 @@ $$
 =\text{I\kern-0.15em P}( \frac{|\sum x_{i}|}{n} \le \epsilon )
 \end{gather}
 $$
-
+#TODO 
 
 ## 7.4 Other versions of WLLN
-###### Thm. (**$L^2-WLLN$**) 
-Let $X_{1}, X_{2}, \dots$ be **uncorrelated** r.v.s. with $\forall i,\text{I\kern-0.15em E}X_{i}=\mu, Var X_{i} \le C < \infty$ Then $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{2}{\to } \mu$ and $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{\text{I\kern-0.15em P}}{\to } \mu$.
+###### Thm. $L^2-WLLN$
+Let $X_{1}, X_{2}, \dots$ be **uncorrelated** r.v.s. with $\forall i,\text{I\kern-0.15em E}X_{i}=\mu, Var X_{i} \le C < \infty$ Then $\frac{1}{n} \sum_{i=1}^{n} X_{i} \overset{2}{\to } \mu$.
 
 Proof. By def, $\text{I\kern-0.15em E} (\frac{S_{n}}{n}-\mu)^{2}=Var(\frac{S_{n}}{n})=\frac{1}{n^{2}}\sum_{i=1}^{n} Var(X_{i}) \le \frac{C}{n}\to 0  \text{ as } n \to \infty$.
 
-###### Thm. (**WLLN for triangular array**) 
-Let $\{ X_{n,i} \}$ be a triangular array. Let $S_n:=\sum_{i=1}^{n} X_{n,i}, \mu_{n}:=\text{I\kern-0.15em E}S_{n}, \sigma_{n}^{2}:=Var(S_{n})$. Suppose $\frac{\sigma_{n}^{2}}{b_{n}^{2}} \to 0$ for some real sequence(non-random) $\{b_{n}\}$, then $\frac{S_{n}-\mu_{n}}{b_{n}}  \overset{\text{I\kern-0.15em P}}{\to} 0$.
+###### Thm. WLLN for triangular array
+Thm. Let $\{ X_{n,i} \}$ be a triangular array, where in each level, $X_{n,i}$ are i.i.d. with $Var X_{i}=\sigma^{2}$. Let $S_n:=\sum_{i=1}^{n} X_{n,i}, \mu_{n}:=\text{I\kern-0.15em E}S_{n}=n \text{I\kern-0.15em E} X_{n,1}$. Suppose $\frac{Var(S_{n})}{b_{n}^{2}} \to 0$ for some real sequence chosen by ourselves (non-random) $\{b_{n}\}$, then $\frac{S_{n}-\mu_{n}}{b_{n}}  \overset{2}{\to} 0$.
 
-Proof. We prove the convergence in 2-nd mean instead. $\text{I\kern-0.15em E}(\frac{S_{n}-\mu_{n}}{b_{n}})=0$, and $\text{I\kern-0.15em E} (\frac{S_{n}-\mu_{n}}{b_{n}}-0)^{2}=b_{n}^{-2} Var(S_{n}) \to 0  \text{ as } n \to \infty$.
+E.g. $X_{n,i}:=\frac{Y_{i}}{n}$, then $S_{n}=\sum_{i=1}^{n} \frac{Y_{i}}{n}$.
 
-Motivation: $\frac{S_{n}-n \mu}{n^{1/2+\epsilon}} \overset{\text{I\kern-0.15em P}}{\to} 0 \Rightarrow S_{n}=n \mu+o_{\text{I\kern-0.15em P}}(n^{1/2+\epsilon})$. The principle is that if possible, we shall not choose $b_{n} >> \text{I\kern-0.15em E}S_{n}$.
+Proof. $\text{I\kern-0.15em E} (\frac{S_{n}-\mu_{n}}{b_{n}}-0)^{2}=b_{n}^{-2} Var(S_{n}) \to 0  \text{ as } n \to \infty$.
 
-### E.g.1 Coupon collection problem
+Motiv. We use $b_{n}=n$ in the L2-WLLN, and eventually $\frac{C}{n}\to 0$ very fast. But we only need an $o(1)$ for it.
+
+Rmk. We can try an extreme case inspired from CLT, where $b_{n}=n^{1/2+\epsilon}$. Then $\frac{S_{n}-n \text{I\kern-0.15em E}X_{n,1}}{n^{1/2+\epsilon}} \overset{\text{I\kern-0.15em P}}{\to} 0 \Rightarrow S_{n}=n \text{I\kern-0.15em E}X_{n,1}+o_{\text{I\kern-0.15em P}}(n^{1/2+\epsilon})$. The principle is that if possible, we shall not choose $b_{n} >> \mu_{n}=n \text{I\kern-0.15em E} X_{n,1}$, otherwise meaningless.
+
+###### E.g.1 Coupon collection problem
 $Y_{n,i}$: i.i.d. uniform on $\{1,2,\dots, n\}$. Let $\psi_{k}^{n}:=\inf_{m}\{ |\{Y_{n,1},Y_{n,2} \dots Y_{n,m}\}|=k \}$, $X_{n,k}:=\psi_{k}^{n}-\psi_{k-1}^{n} \sim Geom(1-\frac{k-1}{n})$ and $X_{n,k}$ are independent.
 #TODO 
 By WLLN for triangular array, 
-
 #TODO 
 
-# Ch8 Limiting theorm
+###### E.g.2 Occupacy problem
+#TODO 
+
+## 7.5 Borel-Cantelli lemma
+###### Thm.
+For a sequence of events $A_{n}$ from the same probability space,
+$A:=\bigcap_{m=0}^{\infty} \bigcup_{n \ge m} A_{n}=\{A_{n} \text{ i.o.}\}$.
+1. $\text{I\kern-0.15em P}(A)=0$ if $\sum_{n} \text{I\kern-0.15em P}(A_{n})<\infty$.
+2. $\text{I\kern-0.15em P}(A)=1$ if $\sum_{n} \text{I\kern-0.15em P}(A_{n})=\infty$ and $A_i$ are mutually independent events.
+
+Rmk. We can state the lemma as an example of "zero-one law": when $A_i$ are mutually independent events, $\text{I\kern-0.15em P}(A)$ equals either 0 or 1.
+
+###### Proof.
+Proof of 1.
+$\forall m, A \subset \cup_{n=m}^{\infty}A_{n}$, therefore $\text{I\kern-0.15em P}(A) \le \sum_{n=m}^{\infty} \text{I\kern-0.15em P}(A_{n})$, and the latter goes to 0 as $n \to \infty$ (Cauchy criterion).
+
+Proof of 2.
+To prove $\text{I\kern-0.15em P}(A)=1$, we typically prove $\text{I\kern-0.15em P}(A^C)=0$.
+$$
+\begin{aligned}
+\text{I\kern-0.15em P}(\bigcap_{n=m}^{\infty} A_{n}^{C})
+&=\prod_{n=m}^{\infty} (1-\text{I\kern-0.15em P}(A_{n})), \text{by independence} \\
+&\le \prod_{n=m}^{\infty} \exp(-\text{I\kern-0.15em P}(A_{n})), \text{by } 1-x \le e^{-x} \\
+& = \exp(-\prod_{n=m}^{\infty} \text{I\kern-0.15em P}(A_{n})) \to 0  \text{ as } m \to \infty 
+\end{aligned}
+$$
+
+###### Application. Infinite Monkey 
+Consider an infinite-length string produced from a finite alphabet by picking each letter independently at random, uniformly from the alphabet (say the alphabet has n letters). Fix a string S of length m from the same alphabet. Let $E_{k}$ be the event "the m-substring starting at position k is the string S". Then, infinitely many of the $E_{k}$ occur with probability 1.
+
+Proof. Note that the events $\{E_{m \cdot j}\}_{j=0}^{\infty}$, a subsequence of $\{E_{k}\}$, are independent because disjoint, where $\sum_{j=1}^{\infty} \text{I\kern-0.15em P}(E_{mj})=\sum_{j=1}^{\infty} (\frac{1}{n})^{m}=\infty$ and $\text{I\kern-0.15em P}(E_{mj} \text{ i.o.})=1$. Therefore  $\text{I\kern-0.15em P}(E_{k} \text{ i.o.})=1$.
+
+###### Another zero-one law
+Thm. For a sequence of events $A_{n}$ from the same probability space, let $\mathcal{A}:=\sigma(A_{1},A_{2},\dots)$. If $A \in \mathcal{A}$ and for any n, A is independent of the finite collection $A_{1},A_{2},\dots,A_{n}$, then $P(A)$ is either 0 or 1.
+
+Proof. $A \in \mathcal{A}$ means A is definable in terms of $A_{1},A_{2},\dots$ From measure theory, that means $\exists \{C_{n}\}$ s.t. $C_{n}\in \mathcal{A_{n}}$ and $\text{I\kern-0.15em P}(A \triangle C_{n}) \to 0  \text{ as } n \to \infty$, i.e.  $\text{I\kern-0.15em P}(A \cap C_{n}) \to \text{I\kern-0.15em P}(A)$. On the other hand, A being independent of events in $\mathcal{A_{n}}$, $\text{I\kern-0.15em P}(A \cap C_{n})=\text{I\kern-0.15em P}(A) \text{I\kern-0.15em P}(C_{n})\to P(A)^{2}$, therefore $\text{I\kern-0.15em P}(A)=\text{I\kern-0.15em P}(A)^{2}$.
+
+###### Kolmogorov's zero-one law
+Def. (**Tail $\sigma$-field**): Consider a sequence of r.v.s. $X_{n}$ in the same probability space. We define $\mathcal{H}_{n}:=\sigma(X_{n}, X_{n+1},\dots )$ be the $\sigma$-field induced by r.v.s. defined above in Part 3.4. Then $\mathcal{H}_{n}$ is decreasing ($\mathcal{H_{n}} \supset \mathcal{H_{n+1}} \supset \mathcal{H_{n+2}} \dots$), as the number of r.v.s. is decreasing. $\mathcal{H}_\infty:=\cap_{n} \mathcal{H}_{n}$, called the tail $\sigma$-field.
+
+Def. (**Tail events**): Elements in $\mathcal{H}_{\infty}$, which must be events that do not refer to any finite subcollections $\{X_{1},X_{2},\dots, X_{n}\}$. For examples, $\{ X_{n}>0, \text{ i.o.} \}, \{ \limsup_{n} X_{n}=\infty \}, \{ \sum_{n} X_{n} \text{ converges} \}$.
+
+Thm. (**Kolmogorov's zero-one law**) If $\{X_{n}\}$ is a independent r.v. sequence, then $\forall H \in \mathcal{H}_{\infty}$, $\text{I\kern-0.15em P}(H)$ is either 0 or 1. 
+
+Def. (**Tail function**) A r.v. Y defined based on independent r.v. sequence $\{X_{n}\}$ that is $\mathcal{H}_{\infty}$-measurable.
+
+E.g. $Y:=\limsup_{n} X_{n}$ is a tail func, while $Y':=X_{1}+X_{2}$ is not. By Kolmogorov's zero-one law, when $\{\omega:Y<y\} \in \mathcal{H}_{\infty}$, $\text{I\kern-0.15em P}(Y \le y)$ is either 0 or 1, i.e., $Y$ is a constant r.v.
+
+Appli. Let Y be a tail func, then $\exists k, -\infty \le k \le +\infty$, s.t., $\text{I\kern-0.15em P}(Y=k)=1$.
+
+## 7.6 Strong LLN
+Motiv. In WLLN, the condition is i.i.d. sequence $\{X_{n}\}$ that $\text{I\kern-0.15em E}X_{i}=\mu, |\mu|<\infty$, and the result is $\frac{S_{n}}{n}  \overset{\text{I\kern-0.15em P}}{\to} \mu$. But what's the necessary condition?
+
+Thm. For i.i.d. sequence $\{X_{n}\}$ and some constant $\mu$, $\frac{S_{n}}{n}  \overset{\text{I\kern-0.15em P}}{\to} \mu$ iff (1) or (2).
+1. $\text{I\kern-0.15em P}(|X_{1}|>n) \in o(\frac{1}{n})$ and $\int_{[-n,n]}x \ \mathrm{d} F \to \mu  \text{ as } n \to \infty$. The latter can also be written as $\text{I\kern-0.15em E}(X_{1}\mathbb{1}(|X_{1}| \le n))$.
+2. The c.f. of $X_{j}$ is differentiable at $t=0$, and $\phi'(0)=i \mu$.
+
+Thm. (**Strong law of large number**) For i.i.d. sequence $\{X_{n}\}$,
+1. $\frac{S_{n}}{n}   \overset{a.s.}{\to} \mu$ iff $|\text{I\kern-0.15em E}X_{i}|<\infty$.
+2. $\frac{S_{n}}{n} \overset{2}{\to} \mu$ iff $|\text{I\kern-0.15em E}X_{i}^{2}|<\infty$.
+
+## 7.7 The law of the iterated logarithm
 Skipped.
