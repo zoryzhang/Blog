@@ -15,7 +15,7 @@
               "state": {
                 "file": "ZoryOb/Mathematics/Probability.md",
                 "mode": "source",
-                "source": true
+                "source": false
               }
             }
           }
@@ -164,6 +164,7 @@
   },
   "active": "53107329a92ca491",
   "lastOpenFiles": [
+    "ZoryOb/Mathematics/Prob.md",
     "ZoryOb/Mathematics/Probability.md",
     "Pasted image 20230520213543.png",
     "ZoryOb/Mathematics/Probability.pdf",
