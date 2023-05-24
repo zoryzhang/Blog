@@ -1,4 +1,4 @@
->  The note of HKUST course MATH2431 Honors Probability in Spring 2023, by Zory ZHANG. In case of any broken math renderring in Github preview, please open this markdown file using your own markdown editor. PDF version (maybe not up-to-date) can be found [here](probability.pdf).
+>  The note of HKUST course MATH2431 Honors Probability in Spring 2023, by Zory Zhang. In case of any broken math renderring in Github preview, please open this markdown file using your own markdown editor. PDF version (maybe not up-to-date) can be found [here](probability.pdf).
 
 # Reminder
 - Expectation exists: absolutely convergence.
