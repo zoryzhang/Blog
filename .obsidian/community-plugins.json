@@ -4,7 +4,8 @@
   "floating-toc",
   "obsidian-dynamic-toc",
   "quick-latex",
-  "obsidian-citation-plugin",
   "obsidian-git",
-  "creases"
+  "creases",
+  "obsidian-to-notion",
+  "table-editor-obsidian"
 ]

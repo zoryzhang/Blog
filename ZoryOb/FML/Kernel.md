@@ -1,3 +1,7 @@
+---
+link: https://zoryzhang.notion.site/Kernel-9af36d53e962475fb8ff32aa1caced92
+notionID: 9af36d53-e962-475f-b8ff-32aa1caced92
+---
 dictionary: normed textbftor space, metric space, complete metric space(Banach space).
 Reference:
 1. [Moore-Aronszajn Theorem and Mercer theorem](https://stats.stackexchange.com/questions/576815/moore-aronszajn-theorem-and-mercer-theorem-for-the-kernel-trick)

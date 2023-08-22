@@ -19,5 +19,6 @@
   "promptDelete": false,
   "newFileLocation": "current",
   "attachmentFolderPath": "ZoryOb/Mathematics/att",
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "spellcheck": false
 }

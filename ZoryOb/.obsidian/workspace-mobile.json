@@ -71,6 +71,14 @@
           "type": "starred",
           "state": {}
         }
+      },
+      {
+        "id": "68d88fd3ce78ac14",
+        "type": "leaf",
+        "state": {
+          "type": "bookmarks",
+          "state": {}
+        }
       }
     ],
     "currentTab": 0
@@ -133,6 +141,10 @@
   },
   "active": "37311f906b44f63f",
   "lastOpenFiles": [
+    "Mathematics/Statistical ML.md",
+    "Mathematics/Entrance.md",
+    "Mathematics/Robust Statistics.md",
+    "Mathematics/Analysis.md",
     "Mathematics/Probability.md",
     "att/proba1.png",
     "zotero.json",

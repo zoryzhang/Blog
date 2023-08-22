@@ -1,3 +1,13 @@
+---
+link: https://zoryzhang.notion.site/Linear-algebra-f72508632ac44d17b16ad8a2940fa662
+notionID: f7250863-2ac4-4d17-b16a-d8a2940fa662
+---
+# Textbook
+[Linear Algebra via Exterior Products](https://github.com/winitzki/linear-algebra-book) (2020)
+[Linear Algebra Done Right](https://linear.axler.net/) (2023)
+[Linear Algebra Done Wrong](https://sites.google.com/a/brown.edu/sergei-treil-homepage/linear-algebra-done-wrong) (2021)
+
+
 # Eigenvalue
 
 ## Eigenvalue, eigenvector and movement
@@ -7,14 +17,13 @@ There're totally n pairs of $(\vec u_i, \lambda_i)$ for diagonalizable linear tr
 
 If we regard matrix/transformation W as a space movement in Euclidean space, we need to apply it on certain vector to examine its feature. What if we try to apply it multiple times?
 $$
-\begin{gather}
-\vec v=\sum_i \alpha_i \vec  u_i
-\\\\
+\begin{aligned}
+\vec v&=\sum_i \alpha_i \vec  u_i
+\\
 W^k \vec v
-=\sum_i \alpha_i  W^k \vec  u_i
+&=\sum_i \alpha_i  W^k \vec  u_i
 =\sum_i \alpha_i  \lambda_i^k \vec  u_i
-
-\end{gather}
+\end{aligned}
 $$
 We find out that the largest eigenvalue corresponding eigenvector will eventually dominate as k getting larger and larger. That's why we would like to conclude:
 - first principle eigenvalue(largest) indicates the movement speed
