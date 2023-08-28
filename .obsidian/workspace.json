@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "f93c27a3f1a1ac4a",
+        "id": "9a1e38289343ff8a",
         "type": "tabs",
         "children": [
           {
-            "id": "028899540bcd74fa",
+            "id": "1293afa43b7bfabe",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#TODO",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -73,11 +73,13 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "4e91a60b37e791d5",
@@ -144,6 +146,14 @@
               "type": "git-view",
               "state": {}
             }
+          },
+          {
+            "id": "3ade588b4a8da230",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
           }
         ],
         "currentTab": 4
@@ -154,27 +164,30 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "obsidian-to-notion:Share to notion": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "obsidian-to-notion:Share to notion": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "028899540bcd74fa",
+  "active": "1293afa43b7bfabe",
   "lastOpenFiles": [
     "ZoryOb/Mathematics/Probability.md",
+    "ZoryOb/Mathematics/Linear algebra.md",
     "ZoryOb/Mathematics/Real Analysis.md",
+    "ZoryOb/Mathematics/Linear algebra.pdf",
     "ZoryOb/Mathematics/Entrance.md",
-    "ZoryOb/Zettelkasten Method.md",
     "ZoryOb/Mathematics/Statistic.md",
+    "ZoryOb/Mathematics/Real Analysis.pdf",
+    "Untitled.canvas",
+    "ZoryOb/Zettelkasten Method.md",
     "Zettelkasten",
     "ZoryOb/Mathematics/Robust Statistics.md",
     "ZoryOb/Mathematics/Statistical ML.md",
     "ZoryOb/FML/Kernel.md",
-    "ZoryOb/Mathematics/Linear algebra.md",
     "ZoryOb/Graph Kernel.md",
     "ZoryOb/TCS/Randomized Algorithm.md",
     "ZoryOb/TCS/Approximation Algorithms.md",

@@ -33,3 +33,12 @@ $$
 # **Kullback–Leibler divergence**
 
 a measure of how one probability distribution _P_ is different from a second, reference probability distribution _Q_.
+
+
+
+
+
+# STAT 400
+Def. Outcome space / Sample space.
+Def. Event. Occurance.
+Def. 

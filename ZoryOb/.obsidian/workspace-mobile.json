@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mathematics/Probability.md",
-                "mode": "preview",
+                "file": "Mathematics/Real Analysis.md",
+                "mode": "source",
                 "source": false
               }
             }
@@ -93,7 +93,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "Mathematics/Probability.md",
+            "file": "Mathematics/Real Analysis.md",
             "collapseAll": true,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -110,7 +110,7 @@
         "state": {
           "type": "outgoing-link",
           "state": {
-            "file": "Mathematics/Probability.md",
+            "file": "Mathematics/Real Analysis.md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           }
@@ -122,7 +122,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "Mathematics/Probability.md"
+            "file": "Mathematics/Real Analysis.md"
           }
         }
       }
@@ -139,24 +139,26 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "37311f906b44f63f",
+  "active": "ee368e41fe4d06ff",
   "lastOpenFiles": [
+    "Mathematics/Real Analysis.pdf",
+    "FML/Kernel.md",
+    "tex.json",
+    "TCS/Randomized Algorithm.md",
+    "Mathematics/Probability.pdf",
+    "Mathematics/Probability.md",
+    "TCS/Approximation Algorithms.md",
+    "zotero.json",
+    "LICENSE",
+    "att/proba1.png",
     "Mathematics/Statistical ML.md",
     "Mathematics/Entrance.md",
     "Mathematics/Robust Statistics.md",
     "Mathematics/Analysis.md",
-    "Mathematics/Probability.md",
-    "att/proba1.png",
-    "zotero.json",
     "Mathematics/Statistic.md",
     "Graph Kernel.md",
-    "TCS/Approximation Algorithms.md",
-    "tex.json",
     "Zettelkasten Method.md",
-    "FML/Kernel.md",
-    "LICENSE",
     "readme.md",
-    "TCS/Randomized Algorithm.md",
     "Mathematics/Linear algebra.md",
     "Hello.md",
     "Approximation Algorithms.md"

@@ -2,11 +2,47 @@
 link: https://zoryzhang.notion.site/Linear-algebra-f72508632ac44d17b16ad8a2940fa662
 notionID: f7250863-2ac4-4d17-b16a-d8a2940fa662
 ---
-# Textbook
-[Linear Algebra via Exterior Products](https://github.com/winitzki/linear-algebra-book) (2020)
-[Linear Algebra Done Right](https://linear.axler.net/) (2023)
-[Linear Algebra Done Wrong](https://sites.google.com/a/brown.edu/sergei-treil-homepage/linear-algebra-done-wrong) (2021)
 
+Course MATH 416 Honor@UIUC
+# Textbook
+- [Linear Algebra via Exterior Products](https://github.com/winitzki/linear-algebra-book) (2020)
+- [Linear Algebra Done Right](https://linear.axler.net/) (2023)
+- [Linear Algebra Done Wrong](https://sites.google.com/a/brown.edu/sergei-treil-homepage/linear-algebra-done-wrong) (2021)
+- [Linear Algebra (Stephen H. Friedberg, Arnold J. Insel etc.)](https://www.pearson.com/en-us/subject-catalog/p/linear-algebra/P200000006185/9780137515424) (2021) [main]
+
+# Reminder
+1. Carefully look at "dependent" or "independent".
+
+# Ch1 Vector Spaces
+Def. (**Vector space** V on field F) A non-empty set with vector addition and scalar multiplication, with the following axioms:
+1. Additive commutativity;
+2. Additive and scalar multiplicative associativity;
+3. Additive identity and scalar multiplicative identity;
+4. Additive inverse;
+5. Vector and scalar additive distributivity.
+
+Rmk. This definition gives rise to a few special vector space, e.g. $\mathbb{R}^{n}$ and $\mathcal{P^{n}}$, which will compose others by standard procedure introduced later.
+
+Prop. Cancellation rule. By playing inverse (rule 4).
+
+Cor. $\exists ! \underline {0}$.
+
+Cor. $\exists ! \underline {-x}$.
+
+Cor. 
+a) $0 \cdot \underline {x} = \underline {0}$; 
+b) $(-\lambda) \cdot \underline {x} = - (\lambda \underline {x}) = \lambda \cdot \underline {-x}$; 
+c) $\lambda \cdot \underline {0}=\underline {0}$.
+
+Def. (**Subspace** W of vector space V) A non-empty subset of V, such that:
+1. $\underline {0} \in W$;
+2. Closed under vector addition and scalar multiplication.
+
+Prop. Subspace is closed under arbitrary intersection.
+
+Def. (**Span**) For a set $S \subset V$, $span(S):=\bigcap_{S \subset \text{subspace } W \subset V} W$.
+
+Prop. $span(S)$ is the set of linear combination of elements in $S$.
 
 # Eigenvalue
 
