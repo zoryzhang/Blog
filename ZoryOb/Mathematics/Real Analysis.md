@@ -222,3 +222,5 @@ $$
 Motiv. Given a well-behaved set E, the outer measure of A, $\mu^{*}(E)-\mu^{*}(E\cap A^{c})$, is equal to the inner measure of A, $\mu^{*}(E\cap A)$.
 
 Thm. (**Caratheodory's thm**) If $\mu^{*}$ is an outer measure on X, then the collection $\mathcal{M}$ of $\mu^{*}$-measuable sets is a $\sigma$-algebra, and $\mu^{*}|_{\mathcal{M}}$ is a measure on measuable space $(X, \mathcal{M})$.
+
+Proof.

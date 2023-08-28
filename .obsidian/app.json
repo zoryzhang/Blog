@@ -1,0 +1,24 @@
+{
+  "livePreview": false,
+  "defaultViewMode": "preview",
+  "showLineNumber": true,
+  "vimMode": true,
+  "legacyEditor": false,
+  "showIndentGuide": false,
+  "strictLineBreaks": true,
+  "readableLineLength": true,
+  "showFrontmatter": true,
+  "pdfExportSettings": {
+    "includeName": true,
+    "pageSize": "A4",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 75
+  },
+  "useTab": false,
+  "promptDelete": false,
+  "newFileLocation": "current",
+  "attachmentFolderPath": "ZoryOb/Mathematics/att",
+  "alwaysUpdateLinks": true,
+  "spellcheck": false
+}
