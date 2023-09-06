@@ -44,6 +44,32 @@ Def. (**Span**) For a set $S \subset V$, $span(S):=\bigcap_{S \subset \text{subs
 
 Prop. $span(S)$ is the set of linear combination of elements in $S$.
 
+Def. (**Linear dependent**) n distinct $s_{i}$, exists $\lambda_{1}\dots \lambda_{n}$ are not all zero, such that $\sum \lambda_{i} s_{i}=0$.
+
+Thm. $S$ are linear independent set of vectors, $v \in V \setminus S$, then $S \cup \{v\}$ are linear dep. iff $v \in span(S)$.
+
+Def. (**Basis**) Minimal (defined in a subset sence, not size sence) spanning set.
+
+Cor. $span(S)=V$, then it's basis iff it's linear indep.
+
+Thm. (**Replacement thm**) V has a basis $s_{1}, \dots, s_{n}$ of size n, let $\{ x_{1}, \dots, x_{i} \}$ of size i be linear indep. and $i \le n$, then $\{ x_{1}, \dots, x_{i}, s_{i+1}, \dots, s_{n} \}$ (some of si is replaced by xi) is a basis.
+
+Cor. card(linear indep) <= card(basis) <= card(spanning set)
+
+Cor. Basis has the same cardinality.
+
+Cor. If $|S|=\dim V$, then TFAE: a) spanning; b) linear indep; c) basis.
+
+Cor. $W \subset V, \dim W \le \dim V$, then $\dim W = \dim V$ iff $W=V$.
+
+# Ch2. Linear Transformations and Matrices
+
+
+# Ch3. Elementary Matrix Operations and Systems of Linear Equations
+
+
+
+
 # Eigenvalue
 
 ## Eigenvalue, eigenvector and movement

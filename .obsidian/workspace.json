@@ -14,8 +14,20 @@
               "type": "markdown",
               "state": {
                 "file": "ZoryOb/Mathematics/Real Analysis.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
+              }
+            }
+          },
+          {
+            "id": "244718e910bd7f39",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ZoryOb/Mathematics/Linear algebra.md",
+                "mode": "preview",
+                "source": true
               }
             }
           }
@@ -73,13 +85,11 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "4e91a60b37e791d5",
@@ -173,11 +183,11 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "3d93ab568e75cd17",
+  "active": "1293afa43b7bfabe",
   "lastOpenFiles": [
-    "ZoryOb/Mathematics/Probability.md",
     "ZoryOb/Mathematics/Linear algebra.md",
     "ZoryOb/Mathematics/Real Analysis.md",
+    "ZoryOb/Mathematics/Probability.md",
     "ZoryOb/Mathematics/Linear algebra.pdf",
     "ZoryOb/Mathematics/Entrance.md",
     "ZoryOb/Mathematics/Statistic.md",

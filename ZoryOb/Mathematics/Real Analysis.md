@@ -58,7 +58,7 @@ E.g. Monotonic set sequence converges (if including $\infty$).
 1. $E_{1}, E_{2} \in \mathcal{A} \to E_{1} \cup E_{2} \in \mathcal{A}$.
 2. $E\in \mathcal{A} \to E^{C} \in \mathcal{A}$.
 
-Rmk. a) Algebra is closed under finite intersection; b) $\emptyset, X \in \mathcal{A}$.
+Rmk. a) Algebra is closed under finite intersection; b) $\emptyset, X \in \mathcal{A}$. This is important when it comes to covering.
 
 > Def. (**$\sigma$-algebra** of sets of X) A non-empty collection $\mathcal{A}$ of subsets of X, that is closed under countable union and complements.
 E.g. $\mathcal{A}=\{ E\in X:\text{E is co-countable} \}$.
@@ -89,15 +89,15 @@ Prop. $\mathcal{M}$(G) is the same as $\mathcal{M}(\text{open intervals})$, $\ma
 
 #NotCovered Prop 1.1-1.6
 ## 1.3 Measure
-> Def. (**Measure** $\mu$ on **measurable space** (X, $\mathcal{A}$)) $\mu:\mathcal{A} \to [0,\infty]$, s.t.
+> Def. (**Measure** $\mu$ on **measurable space** (X, $\mathcal{A}$)) $\mu:\mathcal{M} \to [0,\infty]$, s.t.
 > 1. $\mu(\emptyset)=0$;
-> 2. Countable additivity ($\sigma$-additivity). If $E_{1}, E_{2}, \dots$ is a collection of **disjoint** members of $\mathcal{A}$, i.e. $E_{i} \cap E_{j} = \emptyset$ for all $i \ne j$, then $\mu(\bigcup_{i=1}^ {\infty} E_{i})=\sum_{i=1}^ {\infty} \mu(E_{i})$.
+> 2. Countable additivity ($\sigma$-additivity). If $E_{1}, E_{2}, \dots$ is a collection of **disjoint** members of $\mathcal{M}$, i.e. $E_{i} \cap E_{j} = \emptyset$ for all $i \ne j$, then $\mu(\bigcup_{i=1}^ {\infty} E_{i})=\sum_{i=1}^ {\infty} \mu(E_{i})$.
 
 > Def. (**Finite measure**) $\mu(X)<\infty$.
 > 
 > Def. (**$\sigma$-finite measure**) $X=\bigcup E_{j}, s.t., \forall j, \mu(E_{j})<\infty$.
 > 
-> Def. (**Semifinite measure**) $\forall E\in \mathcal{A}, \mu(E)=\infty \to (\exists F \subset E, 0<\mu(F)<\infty)$ .
+> Def. (**Semifinite measure**) $\forall E\in \mathcal{M}, \mu(E)=\infty \to (\exists F \subset E, 0<\mu(F)<\infty)$ .
 > 
 > Def. (**Null set and "almost everywhere (a.e.)"**) E is a null set if $\mu(E)=0$. Proposition A is true almost everywhere if it is true on all but null set.
 
@@ -108,8 +108,8 @@ E.g. Given $f: X \to [0,\infty]$, we can define a measure by $\mu(E)=\sum_{x \in
 4. It's called **point mass or Dirac measure** if $f(x)=1$.
 
 Thm. Properties of measure:
-1. (**Monotone**) $E, F \in  \mathcal{A}, E\subset F \implies \mu(E) \le \mu(F)$.
-2. (**$si$-subadditive**) $\mu(\cup_{j=1}^{\infty} E_{j}) \le \sum_{j=1}^{\infty} \mu(E_{j})$.
+1. (**Monotone**) $E, F \in  \mathcal{M}, E\subset F \implies \mu(E) \le \mu(F)$.
+2. (**$\sigma$-subadditive**) $\mu(\cup_{j=1}^{\infty} E_{j}) \le \sum_{j=1}^{\infty} \mu(E_{j})$.
 3. (**Continuity from below**) $E_{1} \subset E_{2} \dots \implies \mu(\cup E_{j})=\lim \mu(E_{j})$.
 4. (**Continuity from above**) $E_{1} \supset E_{2} \dots; \mu(E_{1})<\infty \implies \mu(\cap E_{j})=\lim \mu(E_{j})$. The $\mu(E_{1})<\infty$ is to enable $\mu(E_{1} \setminus E_{j})=\mu(E_{1})-\mu(E_{j})$, in the convertion between union and intersection.
 
@@ -117,7 +117,9 @@ Prop. $\sigma$-finite implies semifinite.
 
 Proof. For every E s.t. $\mu(E)=\infty$, given $X=\cup E_{j}$, define $F_{j}:=E_{j} \cap E$. By subadditivity, $\infty = \mu(E)=\mu(\bigcup F_{j}) \le \sum \mu(F_{j})$, then $\exists j, \mu(F_{j})>0$. By monotoncity, $\mu(F_{j}) \le \mu(E_{j}) < \infty$. These two gives the $F:=F_{j}$ as the non-trivial measure subset for each $E$.
 
-> Def. (**Complete**) A measure whose domain contains all subsets of null sets. #NotCovered  THM1.9.
+> Def. (**Complete**) A measure whose domain contains all subsets of null sets.
+
+#NotCovered  THM1.9. Completion of measure.
 
 ### Continuity
 > Def. (**Continuity of general measure**) $\mu$ is continuous if $\forall \{A_{n}\}, A_{n} \to A, n \to  \infty \longrightarrow \lim_{n \to  \infty} \mu(A_{n}) = \mu(\lim_{n \to  \infty} A_n):=\mu(A)$. Notice the closeness under union&intersection gives that $A:=\limsup_{n}A_{n} \in \mathcal{F}$.
@@ -196,8 +198,9 @@ $$
 = \lim_{n \to  \infty} \sum_{i=1}^ {n} \mu(A_{i}  )
 =\sum_{i=1}^ {\infty} \mu(A_{i})
 $$
-## 1.4 Outer measure: the tools to construct measure
-Motiv. In calculus, one defines area by marking grids inside and outside. Approximation from the outside is what we're going to build in this session.
+
+## 1.4 Tools to construct measure
+Motiv. In calculus, one defines area by marking grids inside and outside. Approximation from the outside is what we're going to build in the following.
 
 > Def. (**Outer measure** on X) $\mu^{*}: \mathcal{P}(X) \to [0,\infty]$, s.t.
 > 1. $\mu^{*}(\emptyset)=0$;
@@ -209,18 +212,87 @@ $$
 \mu^{*}(A):= \inf_{ \{E_{j}\} } \{ \sum_{j=1}^{\infty} \rho(E_{j}): E_{j} \in \mathcal{E}, A \subset \bigcup_{j=1}^{\infty} E_{j} \}
 $$
 
-Proof. The first and the second condition come immediately from the definition of infimum. For the third one, again, consider $\mu^{*}(A_{j})$ as a infimum the largest lowerbound, then for any j and $\epsilon_j>0$, $\mu^{*}(A_{j})+\epsilon_{j}$ is not a lowerbound, therefore exists $\sum_{k=1}^{\infty} \rho(E_{j,k}) < \mu^{*}(A_{j})+\epsilon_{j}$. Suming up LHS gives a value that's less than $\sum \mu^{*}(A_{j})+\sum \epsilon_{j}$ but greater than $\mu^{*}( \cup A_{j})$. Let $\epsilon_{j}=\epsilon*2^{-j}$ and send $\epsilon$ to 0 gives the desired inequality.
+Proof. The first and the second condition come immediately from the definition of infimum. For the third one, again, consider $\mu^{*}(A_{j})$ as a infimum the largest lowerbound, then for any j and $\epsilon_j>0$, $\mu^{*}(A_{j})+\epsilon_{j}$ is not a lowerbound, therefore exists $\sum_{k=1}^{\infty} \rho(E_{j,k}) < \mu^{*}(A_{j})+\epsilon_{j}$. Suming up LHS gives a value that's less than $\sum \mu^{*}(A_{j})+\sum \epsilon_{j}$ but greater than $\mu^{*}( \cup A_{j})$. Let $\epsilon_{j}=\epsilon*2^{-j}$ and sending $\epsilon$ to 0 gives the desired inequality.
 
 > Def. (**$\mu^{*}$-measuable**) A set $A \subset X$ is called $\mu^{*}$-measuable if
-> $$
-\forall E\subset X, \mu^{*}(E)=\mu^{*}(E\cap A)+\mu^{*}(E\cap A^{c})
-$$
+> $$ \forall E\subset X, \mu^{*}(E)=\mu^{*}(E\cap A)+\mu^{*}(E\cap A^{c})$$
 
-Rmk. Notice that to show a set is $\mu^{*}$-measuable, it suffices to show $$
+Motiv. This definition can be understood as, when A is "good", we can use A to evaluate any $E\subset X$, such that the inner measure of A (intersection of two, approximate from inside), $\mu^{*}(E\cap A)$, is equal to the outer measure of A, $\mu^{*}(E)-\mu^{*}(E\cap A^{c})$.
+
+Rmk. Notice that to show a set is $\mu^{*}$-measuable, due to the subadditivity, it suffices to show 
+$$
 \forall E\subset X,s.t. \mu^{*}(E)<\infty, \mu^{*}(E) \ge \mu^{*}(E\cap A)+\mu^{*}(E\cap A^{c})
 $$
-Motiv. Given a well-behaved set E, the outer measure of A, $\mu^{*}(E)-\mu^{*}(E\cap A^{c})$, is equal to the inner measure of A, $\mu^{*}(E\cap A)$.
 
-Thm. (**Caratheodory's thm**) If $\mu^{*}$ is an outer measure on X, then the collection $\mathcal{M}$ of $\mu^{*}$-measuable sets is a $\sigma$-algebra, and $\mu^{*}|_{\mathcal{M}}$ is a measure on measuable space $(X, \mathcal{M})$.
+Thm. (**Caratheodory's thm**) If $\mu^{*}$ is an outer measure on X, then the collection $\mathcal{M}$ of $\mu^{*}$-measuable sets is a $\sigma$-algebra, and $\mu^{*}|_{\mathcal{M}}$ is a complete measure on measuable space $(X, \mathcal{M})$.
 
 Proof.
+1. $\mathcal{M}$ is an algebra: the goal is, given $A, B \in \mathcal{M}$, show that $\forall E\subset X,\mu^{*}(E)= \mu^{*}(E\cap (A \cup B))+\mu^{*}(E\cap (A \cup B)^{c})$. Taking the fact that $A$ is $\mu^{*}$-measuable, and let E be the latter two respectively, 
+    $$
+    \begin{aligned}
+    \mu^{*}(E\cap (A \cup B))
+    =&\mu^{*}(E\cap (A \cup B)\cap A)+\mu^{*}(E\cap (A \cup B)\cap A^c)\\
+    =&\mu^{*}(E\cap A)+\mu^{*}(E\cap B\cap A^c)\\
+    \mu^{*}(E\cap (A \cup B)^c)
+    =&\mu^{*}(E\cap (A \cup B)^c\cap A)+\mu^{*}(E\cap (A \cup B)^c\cap A^c)\\
+    =&\mu^{*}(E\cap (A \cup B)^c)=\mu^{*}(E\cap A^c \cap B^c)
+    \end{aligned}
+    $$
+2. $\mathcal{M}$ is a $\sigma$-algebra: it suffices to prove it's closed under disjoint $\sigma$-union, and we only need to check one side of inequality. Define $B_{n}=\cup_{i=1}^{n} A_{n}$, 
+$$
+\begin{aligned}
+\mu^{*}(E\cap B_{n})
+&=\mu^{*}(E\cap B_{n}\cap A_{n})+\mu^{*}(E\cap B_{n}\cap A_{n}^{c}) \\
+\text{given disjoint}, &=\mu^{*}(E\cap A_{n})+\mu^{*}(E\cap B_{n-1}) \\
+\text{by induction}, &= \sum_{i=1}^{n} \mu^{*}(E\cap A_{i}) \\
+\mu^{*}(E)
+&=\mu^{*}(E \cap (\cup_{i=1}^{n} A_{i} ))+\mu^{*}(E \cap (\cup_{i=1}^{n} A_{i} )^{c}) \\
+&\ge\mu^{*}(E \cap B_{n})+\mu^{*}(E \cap (\cup_{i=1}^{\infty} A_{i} )^{c}) \\
+&\ge\sum_{i=1}^{n} \mu^{*}(E \cap A_{i})+\mu^{*}(E \cap (\cup_{i=1}^{\infty} A_{i} )^{c}) \\
+\text{take limit}, & \ge \sum_{i=1}^{\infty} \mu^{*}(E \cap A_{i})+\mu^{*}(E \cap (\cup_{i=1}^{\infty} A_{i} )^{c}) \\
+\text{by subadditivity}, &\ge \mu^{*}(E \cap (\cup_{i=1}^{\infty} A_{i} ))+\mu^{*}(E \cap (\cup_{i=1}^{\infty} A_{i} )^{c})
+\end{aligned}
+$$
+3. $\mu^{*}|_{\mathcal{M}}$ is a measure: we now know $\cup_{i=1}^{\infty} A_{i} \in \mathcal{M}$ is in the domain, which enable us to use the inequality above but with $\sigma$-union as E:
+$$
+\mu^{*}(\cup_{i=1}^{\infty} A_{i} ) \ge\sum_{i=1}^{n} \mu^{*}((\cup_{j=1}^{\infty} A_{j} ) \cap A_{i})+\mu^{*}((\cup_{i=1}^{\infty} A_{i} ) \cap (\cup_{i=1}^{\infty} A_{i} )^{c})
+$$
+    The other side is again by $\sigma$-subadditivity.
+4. $\mu^{*}|_{\mathcal{M}}$ is complete. Given $B \subset A,\mu^{*}(A)=\mu^{*}(B)=0$, $\forall E\subset X, \mu^{*}(E) \ge \mu^{*}(E\cap B^{c})=\mu^{*}(E\cap B)+\mu^{*}(E\cap B^{c})$.
+
+> Def. (**Premeasure**) $\mu_{0}:\mathcal{A} \to [0,\infty]$, $\mathcal{A}$ is a algebra, with:
+> 1. $\mu_{0}=0$;
+> 2. Any $\{ A_{j} \}_{j=0}^{\infty} \subset A$ that are sequence of disjoint sets s.t. $\bigcup_{j=1}^{\infty}A_{j} \in \mathcal{A}$, then $\mu_{0}(\cup A_{j})=\sum_{i=1}^{\infty} \mu_{0}(A_{j})$.
+
+Prop. Monotonicity of premeasure.
+
+Prop. (1.13) By applying Prop. 1.10 with $\rho=\mu_{0}$, one can construct outermeasure $\mu^{*}:\mathcal{P}(X) \to [0,\infty]$, which extends the domain of $\mu_{0}$. Then,
+1. $\mu^{*}|_\mathcal{A}=\mu_{0}$;
+2. $\forall A \in \mathcal{A}$, $A$ is $\mu^{*}$-measuable.
+
+Proof. 
+1. (Recall) $\mu^{*}(D):= \inf_{ \{A_{j}\} } \{ \sum_{j=1}^{\infty} \mu_{0}(A_{j}): A_{j} \in \mathcal{A}, D \subset \bigcup_{j=1}^{\infty} A_{j} \}$;
+2. $\mu^{*}|_\mathcal{A} \le \mu_{0}$ is true since LHS is a lowerbound of a set containing $\mu_{0}(A)$ induced by sequence $\{ A, \emptyset, \emptyset, \emptyset, \dots \}$.
+3. To show the other side, need to show the RHS is a lowerbound. We only have disjoint complete sequence additivity. For $A \in \mathcal{A}, \text{covering }\{A_{j}\}$, construct $B_{n}=A \cap (A_{n} \setminus \cup_{i<n} A_{i})$, then $\cup B_{i}=A \in \mathcal{A}$ given covering. Then $\mu_{0}(A)=\sum_{j} \mu_{0}(B_{j}) \le \sum_{j} \mu_{0}(A_{j})$.
+4. Want to show: $\forall A \in \mathcal{A}, E \subset X, \mu^{*}(E) \ge \mu^{*}(E\cap A)+\mu^{*}(E\cap A^{c})$. It suffices to show $\forall \epsilon>0, \mu^{*}(E)+\epsilon \ge \mu^{*}(E\cap A)+\mu^{*}(E\cap A^{c})$. The LHS isn't a lowerbound, therefore exists covering $\{A_{j}\} \subset \mathcal{A}$ s.t.
+$$
+\begin{aligned}
+\mu^{*}(E)+\epsilon 
+&>\sum_{j} \mu_{0}(A_{j}) \\
+\text{By disjoint additivity}, &= \sum_{j} \mu_{0}(A_{j} \cap A)+\mu_{0}(A_{j} \cap A^{c}) \\
+&= \sum_{j} \mu^{*}(A_{j} \cap A)+\mu^{*}(A_{j} \cap A^{c}) \\
+\text{By subadditivity}, &\ge  \mu^{*}(\cup_{j} (A_{j} \cap A))+\mu^{*}(\cup_{j} (A_{j} \cap A^{c}))\\
+&=\mu^{*}(E \cap A)+\mu^{*}(E \cap A^c)
+\end{aligned}
+$$
+
+Thm. Algebra $\mathcal{A}$, $\sigma$-algebra $\mathcal{M}:=\mathcal{M(A)}$, premeasure $\mu_{0}$ on $\mathcal{A}$, and $\mu^{*}$ the outermeasure given in last thm. Then:
+1. $\mu:=\mu^{*}|_{\mathcal{M}}$ is a measure on $\mathcal{M}$. This gives the existence of measure extending $\mu_{0}$;
+2. Any other measure $\tilde \mu$ that extends $\mu_{0}$ has $\forall E \in \mathcal{M}, \tilde \mu(E) \le \mu(E)$, with equality when $\mu(E)<\infty$.
+3. If $\mu_{0}$ is $\sigma$-finite, then $\mu$ is unique. This gives the uniqueness of measure extending $\mu_{0}$ under stronger condition;
+
+Proof. 
+1. Let $\mathcal{B}$ the collection of $\mu^{*}$-measuable sets. By C-thm, $\mathcal{B}$ is a $\sigma$-algebra and $\mu^{*}|_{\mathcal{B}}$ is a measure. By Prop 1.13, $\mathcal{A} \subset \mathcal{B}$, and $\mathcal{M}$ is the smallest $\sigma$-algebra containing A, therefore $\mathcal{M} \subset \mathcal{B}$, $\mu^{*}|_{\mathcal{M}}$ is a measure.
+2. Goal: $\forall E \in \mathcal{M}, \tilde \mu(E) \le \mu(E)$.
+3. Goal: $\forall E \in \mathcal{M}, \tilde \mu(E) \ge \mu(E)$ when $\mu(E)<\infty$.
+4. 
