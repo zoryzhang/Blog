@@ -14,41 +14,44 @@ Course MATH 416 Honor@UIUC
 1. Carefully look at "dependent" or "independent".
 
 # Ch1 Vector Spaces
-Def. (**Vector space** V on field F) A non-empty set with vector addition and scalar multiplication, with the following axioms:
-1. Additive commutativity;
-2. Additive and scalar multiplicative associativity;
-3. Additive identity and scalar multiplicative identity;
-4. Additive inverse;
-5. Vector and scalar additive distributivity.
+## 1.2 Vector Space
+> Def. (**Vector space** V on field F) A non-empty set with vector addition and scalar multiplication, with the following axioms:
+> 1. Additive commutativity;
+> 2. Additive and scalar multiplicative associativity;
+> 3. Additive identity and scalar multiplicative identity;
+> 4. Additive inverse;
+> 5. Vector and scalar additive distributivity.
 
 Rmk. This definition gives rise to a few special vector space, e.g. $\mathbb{R}^{n}$ and $\mathcal{P^{n}}$, which will compose others by standard procedure introduced later.
 
-Prop. Cancellation rule. By playing inverse (rule 4).
-
-Cor. $\exists ! \underline {0}$.
-
-Cor. $\exists ! \underline {-x}$.
+Thm. (1.1 Cancellation law for vector addition) By playing inverse (rule 4).
 
 Cor. 
-a) $0 \cdot \underline {x} = \underline {0}$; 
-b) $(-\lambda) \cdot \underline {x} = - (\lambda \underline {x}) = \lambda \cdot \underline {-x}$; 
-c) $\lambda \cdot \underline {0}=\underline {0}$.
+a) $\exists ! \underline {0}$;
+b) $\exists ! \underline {-x}$;
+c) $0 \cdot \underline {x} = \underline {0}$; 
+d) $(-\lambda) \cdot \underline {x} = - (\lambda \underline {x}) = \lambda \cdot \underline {-x}$; 
+e) $\lambda \cdot \underline {0}=\underline {0}$.
 
-Def. (**Subspace** W of vector space V) A non-empty subset of V, such that:
-1. $\underline {0} \in W$;
-2. Closed under vector addition and scalar multiplication.
+## 1.3 Subspaces
+> Def. (**Subspace** W of vector space V) A non-empty subset of V, such that:
+> 1. $\underline {0} \in W$;
+> 2. Closed under vector addition and scalar multiplication.
 
-Prop. Subspace is closed under arbitrary intersection.
+Thm. (1.4) Subspace is closed under arbitrary intersection.
 
-Def. (**Span**) For a set $S \subset V$, $span(S):=\bigcap_{S \subset \text{subspace } W \subset V} W$.
+## 1.4 Linear combination
+> Def. (**Span**) For a set $S \subset V$, $span(S):=\bigcap_{S \subset \text{subspace } W \subset V} W$.
 
 Prop. $span(S)$ is the set of linear combination of elements in $S$.
 
-Def. (**Linear dependent**) n distinct $s_{i}$, exists $\lambda_{1}\dots \lambda_{n}$ are not all zero, such that $\sum \lambda_{i} s_{i}=0$.
+## 1.5 Linear independence
+> Def. (**Linear dependent**) n distinct $s_{i}$, exists $\lambda_{1}\dots \lambda_{n}$ are not all zero, such that $\sum \lambda_{i} s_{i}=0$.
 
 Thm. $S$ are linear independent set of vectors, $v \in V \setminus S$, then $S \cup \{v\}$ are linear dep. iff $v \in span(S)$.
 
-Def. (**Basis**) Minimal (defined in a subset sence, not size sence) spanning set.
+## 1.6 Bases and dimention
+> Def. (**Basis**) Minimal (defined in the subset inclusion sence, not in size sence) spanning set.
 
 Cor. $span(S)=V$, then it's basis iff it's linear indep.
 
@@ -60,9 +63,47 @@ Cor. Basis has the same cardinality.
 
 Cor. If $|S|=\dim V$, then TFAE: a) spanning; b) linear indep; c) basis.
 
-Cor. $W \subset V, \dim W \le \dim V$, then $\dim W = \dim V$ iff $W=V$.
+Thm. (1.11) $W \subset V, \dim W \le \dim V$, then $\dim W = \dim V$ iff $W=V$.
+
+Cor. $\dim V < \infty, W \subset V$, then W posseses a compliment.
+
+> Def. (**Quotient space**) Given subspace W, define $x \sim y$ if $x-y \in W$, $[x]:=\{ y: x \sim y \}=:\{ x+w| w \in W \}=:x+W$, and $\{ [x] \}:=V_{/W}$ is a vector space called quotient space, by the intuitive definition of addition and scalar multiplication: $[v]=[\sum \lambda_{i} s_{i}]:=\sum \lambda_{i} s_{i}$ and $\lambda[x]:=[\lambda x]$, e.g. $-[x]=[-x]$.
+
+Prop. $\dim (V_{/W})=\dim V - \dim W$.
+
+Thm. Given subspace W, there's a bijection between $\{H:subspace\ H, W \subset H\}$ and $\{ \bar H \in V_{/W}: subspace\ H\}$. This together with the usage of flags give another proof for Cor 1.11.
+
+> Def. (**Direct sum**) $W_{1} \oplus W_{2}$ if $W_{1}+W_{2}=V$ and $W_{1} \cap W_{2}=\emptyset$.
+
+Cor. $\dim (W_{1}+W_{2})=\dim W_{1} + \dim W_{2} - \dim(W_{1} \cap W_{2})$, by showing $\dim \bar V = \dim \bar W_{1} + \dim \bar W_{2}$.
+
+## 1.7 Maximal linear independent subset
+> Def. (**Chain / nest / tower**) A collection of elements that are totally ordered.
+
+Thm. (**Hausdorff maximal principle / the axiom of choice**) Every partially ordered set has a maximal linearly / totally ordered subset. It's the same as the next thm.
+
+Thm. (**Zorn's lemma**) For a partially ordered set $(X, \le)$, for any $C \subset X$ be totally ordered. Suppose $\exists x_{c} \in X, s.t., \forall x \in C, x \le x_{c}$ (every chain has a top), then $\exists x_{m}, s.t. , \forall y \in X, x_{m} \le y \to x_{m}=y$ (maximum exists).
+
+> Def. (**Maximal linear independent set**) Again, maximal with respect to set inclusion.
+
+Lemma. A set is a maximal linear independent set iff it's a basis.
+
+Thm. For any linearly independent subset S of a vector space V, there's a basis that contains S.
+
+Proof. Construct X to be the collection of independent sets containing S. For any chain C in X, we need to find a top of it in X. This can be done by taking union of sets in C, which means it's a top and therefore containing S. Also, it's independent, since for any $u_{i}$ for $i=1 \dots n$, we can find a set in C such that it contains all these vectors, therefore they're linearly independent.
+
+Cor. Every vector space has basis.
+
+Thm. Subspace $W \subset V$, then $\exists W', s.t. V=W \oplus W'$.
 
 # Ch2. Linear Transformations and Matrices
+> Def. (**Linear map**) $T:V \to W$.
+
+Rmk. 
+1. $T(0)=0$.
+2. $Ker(T) \subset V, Ran(T) \subset W$ are subspaces, called **null space / kernel** and **range / image**, and their dimention is called **nullity** and **rank**.
+3. $T$ is 1-1 iff $Ker(T)=\{0\}$.
+
 
 
 # Ch3. Elementary Matrix Operations and Systems of Linear Equations
