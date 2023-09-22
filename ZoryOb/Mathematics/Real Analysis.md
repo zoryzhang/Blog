@@ -8,7 +8,7 @@ Course MATH 540@UIUC
 
 # Textbook
 Gerald B. Folland, Real Analysis
-[Sol](https://people.umass.edu/bban/Solutions.html)
+[Sol1](https://people.umass.edu/bban/Solutions.html), [Sol2](https://www.math.wustl.edu/~sawyer/m5051f09/hwindex.html)
 
 # CH0
 ## Reminder
@@ -21,7 +21,6 @@ Gerald B. Folland, Real Analysis
 - $\mathcal{P}(X)$: the power set $\{E:E\subset X\}$.
 - $\cup A_{j}$ is by default countable union(or in other symbol, summation/intersection) $\cup_{j=1}^{\infty} A_{j}$. Arbitrary union will be stressed by using $\cup_{\alpha}^{\infty} A_{\alpha}$.
 - ":=" means this is definition, or can be done by definition.
-
 ## Set theory
 Nota. $A \subset B$: A can be B.
 
@@ -55,6 +54,13 @@ Consider $\omega \in RHS$ or not. If yes, appear eventually; otherwise fail.
 Rmk. $\liminf A_{n} \subset \limsup A_{n}$; if equal, we say $A_{n}$ converges.
 
 E.g. Monotonic set sequence converges (if including $\infty$).
+
+## Elementary real analysis
+- Any open set on real line can be expressed as countable union of mutually disjoint open intervals.
+- Compact set: for any open cover of S, there's a finite subcover for S.
+- On real line: compact as long as closed + bounded, or sequentially campact.
+- Infinite union of open set still open, infinite intersection of closed set still closed.
+
 # CH1 Measure theory
 ## 1.2 $\sigma$-algebra/field
 > Def. (**Algebra** of sets of X) A non-empty collection $\mathcal{A}$ of subsets of X, that is closed under finite union and complements. In other word,
@@ -217,20 +223,20 @@ $$
 
 Proof. The first and the second condition come immediately from the definition of infimum. For the third one, again, consider $\mu^{*}(A_{j})$ as a infimum the largest lowerbound, then for any j and $\epsilon_j>0$, $\mu^{*}(A_{j})+\epsilon_{j}$ is not a lowerbound, therefore exists $\sum_{k=1}^{\infty} \rho(E_{j,k}) < \mu^{*}(A_{j})+\epsilon_{j}$. Suming up LHS gives a value that's less than $\sum \mu^{*}(A_{j})+\sum \epsilon_{j}$ but greater than $\mu^{*}( \cup A_{j})$. Let $\epsilon_{j}=\epsilon*2^{-j}$ and sending $\epsilon$ to 0 gives the desired inequality.
 
-> Def. (**$\mu^{*}$-measuable**) A set $A \subset X$ is called $\mu^{*}$-measuable if
+> Def. (**$\mu^{*}$-measurable**) A set $A \subset X$ is called $\mu^{*}$-measurable if
 > $$ \forall E\subset X, \mu^{*}(E)=\mu^{*}(E\cap A)+\mu^{*}(E\cap A^{c})$$
 
 Motiv. This definition can be understood as, when A is "good", we can use A to evaluate any $E\subset X$, such that the inner measure of A (intersection of two, approximate from inside), $\mu^{*}(E\cap A)$, is equal to the outer measure of A, $\mu^{*}(E)-\mu^{*}(E\cap A^{c})$.
 
-Rmk. Notice that to show a set is $\mu^{*}$-measuable, due to the subadditivity, it suffices to show 
+Rmk. Notice that to show a set is $\mu^{*}$-measurable, due to the subadditivity, it suffices to show 
 $$
 \forall E\subset X,s.t. \mu^{*}(E)<\infty, \mu^{*}(E) \ge \mu^{*}(E\cap A)+\mu^{*}(E\cap A^{c})
 $$
 
-Thm. (**Caratheodory's thm**) If $\mu^{*}$ is an outer measure on X, then the collection $\mathcal{M}$ of $\mu^{*}$-measuable sets is a $\sigma$-algebra, and $\mu^{*}|_{\mathcal{M}}$ is a complete measure on measuable space $(X, \mathcal{M})$.
+Thm. (**Caratheodory's thm**) If $\mu^{*}$ is an outer measure on X, then the collection $\mathcal{M}$ of $\mu^{*}$-measurable sets is a $\sigma$-algebra, and $\mu^{*}|_{\mathcal{M}}$ is a complete measure on measurable space $(X, \mathcal{M})$.
 
 Proof.
-1. $\mathcal{M}$ is an algebra: the goal is, given $A, B \in \mathcal{M}$, show that $\forall E\subset X,\mu^{*}(E)= \mu^{*}(E\cap (A \cup B))+\mu^{*}(E\cap (A \cup B)^{c})$. Taking the fact that $A$ is $\mu^{*}$-measuable, and let E be the latter two respectively, 
+1. $\mathcal{M}$ is an algebra: the goal is, given $A, B \in \mathcal{M}$, show that $\forall E\subset X,\mu^{*}(E)= \mu^{*}(E\cap (A \cup B))+\mu^{*}(E\cap (A \cup B)^{c})$. Taking the fact that $A$ is $\mu^{*}$-measurable, and let E be the latter two respectively, 
     $$
     \begin{aligned}
     \mu^{*}(E\cap (A \cup B))
@@ -271,7 +277,7 @@ Prop. Monotonicity of premeasure.
 
 Prop. (1.13) By applying Prop. 1.10 with $\rho=\mu_{0}$, one can construct outermeasure $\mu^{*}:\mathcal{P}(X) \to [0,\infty]$, which extends the domain of $\mu_{0}$. Then,
 1. $\mu^{*}|_\mathcal{A}=\mu_{0}$;
-2. $\forall A \in \mathcal{A}$, $A$ is $\mu^{*}$-measuable.
+2. $\forall A \in \mathcal{A}$, $A$ is $\mu^{*}$-measurable.
 
 Proof. 
 1. (Recall) $\mu^{*}(D):= \inf_{ \{A_{j}\} } \{ \sum_{j=1}^{\infty} \mu_{0}(A_{j}): A_{j} \in \mathcal{A}, D \subset \bigcup_{j=1}^{\infty} A_{j} \}$;
@@ -295,7 +301,7 @@ Thm. (1.14) Algebra $\mathcal{A}$, $\sigma$-algebra $\mathcal{M}:=\mathcal{M(A)}
 3. If $\mu_{0}$ is $\sigma$-finite, then $\mu$ is unique. (This gives the uniqueness of measure extending $\mu_{0}$ under stronger condition)
 
 Proof. 
-1. Let $\mathcal{B}$ the collection of $\mu^{*}$-measuable sets. By C-thm, $\mathcal{B}$ is a $\sigma$-algebra and $\mu^{*}|_{\mathcal{B}}$ is a measure. By Prop 1.13, $\mathcal{A} \subset \mathcal{B}$, and $\mathcal{M}$ is the smallest $\sigma$-algebra containing A, therefore $\mathcal{M} \subset \mathcal{B}$, $\mu^{*}|_{\mathcal{M}}$ is a measure.
+1. Let $\mathcal{B}$ the collection of $\mu^{*}$-measurable sets. By C-thm, $\mathcal{B}$ is a $\sigma$-algebra and $\mu^{*}|_{\mathcal{B}}$ is a measure. By Prop 1.13, $\mathcal{A} \subset \mathcal{B}$, and $\mathcal{M}$ is the smallest $\sigma$-algebra containing A, therefore $\mathcal{M} \subset \mathcal{B}$, $\mu^{*}|_{\mathcal{M}}$ is a measure.
 2. Goal: $\forall E \in \mathcal{M}, \tilde \mu(E) \le \mu(E)$. Notice that for any covering $\{A_{j}\} \subset \mathcal{A}$ of E, $\tilde \mu(E) \le \tilde \mu(\cup A_{j}) \le \sum \tilde \mu(A_{j})=\sum \mu_{0}(A_{j})=\sum \mu(A_{j})$, therefore a lowerbound, which is not greater than the greatest lowerbound $\mu^{*}$.
 3. Claim $\mu^{*}(\cup A_{j})=\tilde \mu(\cup A_{j})$: since both are measure extending $\mu_{0}$ defined on $\mathcal{A}$ where finite union is closed, consider using contituity by $$\begin{aligned}\mu^{*}(\cup A_{j})=\lim \mu^{*}(\cup_{j=1}^{\infty} A_{j})=\lim \mu^{*}(\cup_{j=1}^{\infty} A_{j}) \\ =\lim \mu_{0}(\cup_{j=1}^{\infty} A_{j})=\lim \tilde \mu(\cup_{j=1}^{\infty} A_{j})=\tilde \mu(\cup_{j=1}^{\infty} A_{j}) \end{aligned}$$.
 4. Goal: $\forall E \in \mathcal{M}, \tilde \mu(E) \ge \mu(E)$ when $\mu(E)<\infty$. Notice that for any covering $\{A_{j}\} \subset \mathcal{A}$ of E, $\mu^{*}(E) \le \mu^{*}(\cup A_{j})=\tilde \mu(\cup A_{j})=\tilde \mu(E)+\tilde \mu(\cup A_{j} \setminus E)$. It suffices to show that $\tilde \mu(\cup A_{j} \setminus E) \le \epsilon$ for any $\epsilon>0$, and further more, $\mu^{*}(\cup A_{j} \setminus E) \le \epsilon$, given part 2. Consider adding $\epsilon$ to the infimum, i.e.  $\forall\epsilon>0$, there's a covering $\{A_{j}\} \subset \mathcal{A}$ of E, s.t. $\mu^{*}(E)+\mu^{*}(\cup A_{j} \setminus E)=\mu^{*}(\cup A_{j}) \le \sum \mu_{0}(A_{j}) < \mu^{*}(E)+\epsilon$. When $\mu(E)<\infty$, subtracting it on both sides gives the desired.
@@ -311,13 +317,88 @@ Recall. $\mathcal{B_{\mathbb{R}}}:=\mathcal{M}(G)$.
 
 Prop. $\mathcal{M(A_{0})}=\mathcal{M(A_{h})}=\mathcal{M(A_{2})}=\mathcal{M}(G):=\mathcal{B_\mathbb{R}}$.
 
-Proof. By lemma 1.1, it suffices to show that $\mathcal{A_{0}}, \mathcal{A_{h}},\mathcal{A_{2}} \subset \mathcal{M}(G), \mathcal{A}(G) \subset \mathcal{M(A_{0})} \cap \mathcal{M(A_{h})}\cap \mathcal{M(A_{2})}$. There're results in elementary mathematical analysis, e.g. $\forall I \in G, I=\cup_{j=1}^{\infty} (a_{i}, b_{i})$.
+Proof. By lemma 1.1, it suffices to show that $\mathcal{A_{0}}, \mathcal{A_{h}},\mathcal{A_{2}} \subset \mathcal{M}(G), \mathcal{A}(G) \subset \mathcal{M(A_{0})} \cap \mathcal{M(A_{h})}\cap \mathcal{M(A_{2})}$.
 
 Prop. $\mathcal{A_{2}}$ is a algebra.
 
 Thm. $F:\mathbb{R} \to \mathbb{R}$ (non-strictly) increasing and right-continuous. We can construct premeasure $\mu_{0}$ by $\mu_{0}(\emptyset)=0$ and $\mu_{0}(\cup_{j=1}^{n} (a_{j},b_{j}])=\sum_{i=1}^{n} F(b_{j})-F(a_{j})$ where $(a_{j}, b_{j}]$ are disjoint.
 
 Proof.
-1. $\mu_{0}$ is well-defined (consistent with different union partition). Not hard.
-2. For any disjoint sequence s.t. $\cup_{j=1}^{\infty} I_{j} \in \mathcal{A_{2}}$, we have $\mu_{0}(\cup_{j=1}^{\infty} I_{j}) \ge \sum_{j=1}^{\infty} \mu_{0}(I_{j})$: since in $\mathcal{A_{2}}$, it can be expressed in a finite union of disjoint h-intervals. By partition of I, we can consider one trunk of h-interval at a time, i.e., WOLG, say $\cup_{j=1}^{\infty} I_{j}):=(a,b]$. Then it's obvious given monotonicity.
-3. $\mu_{0}(\cup I_{j}) \le \sum \mu_{0}(I_{j})$: Now we make use of right-continuity.
+1. Goal: $\mu_{0}$ is well-defined (consistent with different union partition). Draw diagram.
+2. Goal: For any disjoint sequence s.t. $\cup_{j=1}^{\infty} I_{j} \in \mathcal{A_{2}}$, we have $\mu_{0}(\cup_{j=1}^{\infty} I_{j}) = \sum_{j=1}^{\infty} \mu_{0}(I_{j})$. Since the union is in $\mathcal{A_{2}}$, it can be expressed in a finite union of disjoint h-intervals. By considering each h-interval as a trunk, the sequence can be partitioned into **finitely many subsequences**, each is with a trunk and disjoint to others. With finite additivity and relabelling, consider each trunk and corresponding subsequence seperately, WOLG, say $I:=\cup_{j=1}^{\infty} I_{j}:=(a,b]$.  For $I_{j}=(a_{j}, b_{j}]$, discard contained ones to get disjoint intervals.
+3. Goal: For $I:=\cup_{j=1}^{\infty} I_{j}:=(a,b]$, show $\mu_{0}(\cup_{j=1}^{\infty} I_{j}) \le \sum_{j=1}^{\infty} \mu_{0}(I_{j})$. It's obvious given monotonicity.
+4. Goal: For $I:=\cup_{j=1}^{\infty} I_{j}:=(a,b]$, show $\mu_{0}(\cup_{j=1}^{\infty} I_{j}) \ge \sum_{j=1}^{\infty} \mu_{0}(I_{j})$.
+    - First suppose a and b  are finite. Recall that any open set on real line can be expressed as countable union of disjoint open intervals, and a open cover of a compact set on real line (closed) can be reduced to a finite yet valid subcover. 
+    - To have open interval and compact set from h-interval, we make use of right-continuity, which gives us that $\forall \epsilon>0, \exists \delta>0, F(a+\delta)-F(a) < \epsilon$, and further more, $\forall j, \exists \delta_{j}, F(b_{j}+\delta_{j})-F(b_{j}) < \epsilon \cdot 2^{-j}$. Now we can adjust the boundary of sets.
+    - Extend $I$ from $(a,b]$ into $[a+\delta, b]$, which is compact, and extend $I_{j}$ from $(a_{j}, b_{j}]$ into $(a_{j}, b_{j}+\delta_{j})$. To simpify, we can adjust so that we have $b_{j}+\delta_{j} \in (a_{j+1}, b_{j+1})$. Now that we have an open cover $I \subset \cup_{j=1}^{\infty} (a_{j}, b_{j}+\delta_{j})$, we obtain a finite subcover (with relabelling) $I \subset \cup_{j=1}^{n} (a'_{j}, b'_{j}+\delta_{j})$. Summing up $$\begin{aligned} \mu_{0}((a'_{j}, b'_{j}])&=F(b'_{j})-F(a'_{j}) \\&\ge F(b'_{j}+\delta_{j})-F(a'_{j})-\epsilon \cdot 2^{-j} \\&\ge F(a'_{j+1})-F(a'_{j})-\epsilon \cdot 2^{-j} \end{aligned}$$, we get $$\begin{aligned}\sum_{j=1}^{\infty} \mu_{0}(I_{j}) &\ge \sum_{j=1}^{n} \mu_{0}((a'_{j}, b'_{j}]) \\&\ge F(b'_{n}+\delta_{n})-F(a'_{1})-\epsilon \\&\ge F(b)-F(a+\delta)-\epsilon \\&\ge F(b)-F(a)-2\epsilon \\&=\mu_{0}(I)-2\epsilon\end{aligned}$$.
+    - Corner case of a, b being infinite is omitted.
+
+Thm. Given F increasing and right-continuous, then
+1. There's a unique Borel measure $\mu_{F}$ on $\mathbb{R}$ s.t. $\mu_{F}((a,b])=F(b)-F(a)$. To be explicit, $\mu_{F}=\inf \{ \sum_{j=1}^{\infty} \mu_{0}((a_{j}, b_{j}]) : E \subset \cup_{j=1}^{\infty} (a_{j}, b_{j}] \}$.
+2. If other distribution function G, then $\mu_{F}=\mu_{G}$ iff $F-G$ is constant.
+3. Conversely, if $\mu$ is a Borel measure on $\mathbb{R}$ that is finite on all bounded Borel sets, and we define $F(x)=\mu((0,x]), x>0$, $F(0)=0$, $F(x)=-\mu((x,0]), x<0$, then F is increasing and right continuous, and $\mu=\mu_F$.
+
+Proof.
+1. The constructed $\mu_{0}$ is $\sigma$-finite, since $\mathbb{R}=\cup_{-\infty}^{\infty} (j, j+1]$. Then it follows from the Thm 1.14;
+2. $\mu_{F}=\mu_{G} \iff \forall a,b, F(b)-G(b)=F(a)-G(a)$.
+3. Take $x>0$ as example. The monotonicity is from the monotonicity of F, and the right-continuous can be get from the continuity. $\mu$ and $\mu_{F}$ is the same on $\mathcal{A_{2}}$, therefore the same on $\mathcal{B_{\mathbb{R}}}$.
+
+Rmk. 
+1. The collection $\mathcal{M}_\mu$ of $\mu^{*}$-measurable in Caratheodory's thm is the largest (in fact strictly larger than $\mathcal{B_\mathbb{R}}$, denoted as $\mathcal{E}$) gives the domain of the completion of $\mu_{F}$ (Ex22a), which is called the **Lebesgue-Stieltjes measure** associated to F.
+2. When $F(x)=x$, the Lebesgue-Stieltjes measure associated is called the **Lebesgue measure** $m$. The domain is denoted as $\mathcal{L}$.
+
+Lemma. (1.17) $\mu|_\mathcal{E}(E)=\inf \{ \sum_{j=1}^{\infty} \mu((a_{j}, b_{j})): E \subset \cup_{j=1}^{\infty} (a_{j}, b_{j}) \}$.
+
+Proof. Say the RHS is $\tilde \mu(E)$.
+1. Goal: $\mu(E) \le \tilde \mu(E)$. Since $(a, b)=\cup_{n=1}^{\infty} (a, b-\frac{1}{n}]$, $E \subset \cup (a_{j}, b_{j}) \subset \cup \cup (a_{j}, b_{j}- \frac{1}{n})$, therefore the set in left contains the set in right;
+2. Goal: $\mu(E) +\epsilon \ge \tilde \mu(E), \forall \epsilon>0$. Use right-continuity. $$\begin{aligned}\exists \{(a_{j}, b_{j}]\}, \mu(E)+\epsilon &\ge \sum \mu_{0}((a_{j}, b_{j}])=\sum  F(b_{j})-F(a_{j}) \\&\ge \sum  F(b_{j}+\delta_{j})-F(a_{j})-\epsilon \cdot 2^{-j} \\&=-\epsilon+\sum  \mu_{0}((a_{j}, b_{j}+\delta_{j}]) \\& \ge -\epsilon+\sum  \mu((a_{j}, b_{j}+\delta_{j})) \\& \ge -\epsilon + \tilde \mu(E) \end{aligned}$$
+
+Thm. (1.18) $\mu|_\mathcal{E}(E)=\inf\{ \mu(U):U \supset E, U\ open \}=\sup\{ \mu(K):K \subset E, K\ compact \}$. This is so important that it's used as definition in some textbooks.
+
+Proof. Say, to show $\mu(E)=\tilde \mu(E)=\mu'(E)$, with the formula given in lemma 1.17:
+1. Goal: $\mu(E) \le \tilde \mu(E)$. This is because $\mu(E) \le \mu(U), \forall U$;
+2. Goal: $\mu(E) +\epsilon \ge \tilde \mu(E), \forall \epsilon>0$. Again, $\exists \{(a_{j}, b_{j}]\}, \mu(E)+\epsilon \ge \sum \mu((a_{j}, b_{j})) \ge \mu(\cup (a_{j}, b_{j})) \ge \tilde \mu(E)$.
+3. Goal: $\mu(E) \ge \mu'(E)$. The same as 1.
+4. Goal: $\mu(E) \le \mu'(E)$. Use the first equality.
+    1. If E is bounded:
+        1. Subcase: If E is compact. Just take K:=E.
+        2. Subcase: If otherwise. Consider $\bar E \setminus E$, then by the first equality, $\exists open\ U \supset \bar E \setminus E, s.t. \mu(\bar E \setminus E)+\epsilon > \mu(U)$. Let $K=\bar E \setminus U$, then it's compact and $K \subset E$. $$\begin{aligned}\mu(K)&=\mu(E)-\mu(E \cap U)=\mu(E)-(\mu(U)-\mu(U \setminus E))\\&=\mu(E)-\mu(U)+\mu(U \setminus E) \\&\ge \mu(E)-\mu(U)+\mu(\bar E \setminus E) \ge \mu(E)-\epsilon \end{aligned}$$
+    2. If E is unbounded, partition it as $E_{j}=E \cap (j, j+1]$. By case 1, $\forall \epsilon>0, \exists K_{j}\subset E_{j}, s.t. \mu(K_{j})\ge \mu(E_{j})-\epsilon \cdot 2^{-|j|}$. $\mu'(E) \ge \mu(\cup_{-n}^{n} K_{j}) \ge \mu(\cup_{-n}^{n} E_{j}) -\epsilon$.
+
+Thm. (1.19) If $E \subset \mathbb{R}$, then TFAE:
+1. $E \in \mathcal{E}$;
+2. $E=V \setminus N_{1}$, where $V \in G_{\delta}, \mu(N_{1})=0$;
+3. $E=H \cup N_{2}$, where $H \in F_{\sigma}, \mu(N_{2})=0$.
+
+Proof. We know $V, H \in \mathcal{E}$. Since $\mu$ is complete on $\mathcal{E}$, all $N_{1}, N_{2} \in \mathcal{E}$, and $\sigma$-algebra is closed under countable union and intersection, (2) and (3) each imply (1). Now to show the converse,
+1. Suppose $\mu(E)<\infty$. Based on thm 1.18, for $j \in \mathbb{N}$, we can have open $U_{j} \supset E$ and compact $K_{j} \subset E$, s.t. $\mu(U_{j})-2^{-j} \le \mu(E) \le \mu(K_{j})+ 2^{-j}$. Let $V:= \cap U_{j}, H:=\cup K_{j}$, then $H \subset E \subset V$. While $\mu(E) \le \mu(V) \le \mu(U_{j}) \le \mu(E)+2^{-j}, \forall j$ and $\mu(E)-2^{-j} \le \mu(K_{j}) \le \mu(H) \le \mu(E)$, we can have $\mu(H)=\mu(E)=\mu(V)<\infty$. $N_{1}:=V \setminus E, N_{2}:=E \setminus H$, then $\mu(N_{1})=\mu(V)-\mu(E)=0, \mu(N_{2})=\mu(E)-\mu(H)=0$.
+2. Otherwise. Again, the constructed $\mu_{0}$, is $\sigma$-finite, since $\mathbb{R}=\cup_{-\infty}^{\infty} (j, j+1]$, and therefore $E_{j}:=E \cap (j, j+1], \mu(E_{j})<\infty, E=\cup E_{j}$.
+    1. Notice that (1)->(3) implies (1)->(2). So we only need to show the former.
+    2. Consider the partition, in which we have $E_{j}=H_{j} \cup N_{j}$. Let $H:=\cup H_{j}, N=\cup N_{j}$. Then $E=\cup (H_{j} \cup N_{j})=H \cup N$.
+
+Prop. (1.20) If $E \in \mathcal{E}, \mu(E)<\infty$, then $\forall \epsilon>0, \exists A$ that is a finite union of open intervals such that $\mu(E \bigtriangleup A) < \epsilon$.
+
+Proof. Based on thm 1.18, we can have open $U \supset E$ and compact $K \subset E$, s.t. $\mu(U) \le \mu(E) \le \mu(K)+ \epsilon$. Since $U=\cup_{j=1}^{\infty} (a_{j}, b_{j})$ gives a open cover of compact set K, we can have the subcover $A:=\cup_{j=1}^{n} (a_{j}, b_{j}) \supset K$. Then $\mu(E)-\epsilon \le \mu(K) \le \mu(A) \le \mu(U) \le \mu(E)+\epsilon$ and $\mu(E)-\epsilon \le \mu(K) \le \mu(A \cap E) \le \mu(U) \le \mu(E)+\epsilon$. Then $|\mu(E)-\mu(A)| \le \epsilon, |\mu(E)-\mu(A \cap E)| \le \epsilon$, which means $$\begin{aligned}&\mu(E \bigtriangleup A)\\&\le \mu(E \setminus A)+\mu(A \setminus E)\\&=\mu(A)-\mu(E)+\mu(E)-\mu(A \cap E)+\mu(E)-\mu(A \cap E) \\&\le 3\epsilon\end{aligned}$$.
+
+Prop. For any $E \in \mathcal{L}$, we have $E+s, rE \in \mathcal{L}$, and $\mu(E+s)=\mu(E), \mu(rE)=|r|\mu(E)$. 
+
+Proof. They agree on the algebra, and by uniqueness of thm 1.14 (3), they also agree on $\mathcal{B_{\mathbb{R}}}$. Further more, since Lebesgue measure zero is preserved by translations and diluations, by thm 1.19, they agree on $\mathcal{L}$. #TODO 
+
+E.g. (**Cantor set** C) Repeadly remove the middle thirds open interval, starting from $[0,1]$. It's compact, totally disconnected, no where dense, no isolated points, $m(C)=0$, and $0, 1 \in C$. Moreover, it's uncountable and with the cardinality of $\mathbb{R}$. This can be proved by constructing $f:C \to [0,1]$ and let it onto. $f: \sum a_{j} 3^{-j} \mapsto \sum \frac{a_{j}}{2}2^{-j}$.
+
+Thm. If $F \subset \mathbb{R}$, s.t. $\forall G \subset F, G \in \mathcal{L}$, then $m(F)=0$.
+
+Cor. (**Existence of non-measurable set**) For F that $m(F)>0$, $\exists G \subset F, G \notin \mathcal{L}$.
+
+> Def. (**Coset**) A coset of $\mathbb{Q}$ in additive group $(\mathbb{R}, +)$ is $\mathbb{Q}+x$, where $x \in \mathbb{R}$.
+
+Proof of Thm.
+1. Let E be the set that contains exactly one point from each coset. The existence of E is given by the axiom of choice.
+2. Claim: $\forall r_{1}, r_{2} \in \mathbb{Q}, r_{1} \ne r_{2} \to (E+r_{1}) \cap (E+r_{2})=\emptyset$. Otherwise, that means $e_{1}, e_{2}\in E, e_{1}\ne e_{2}, e_{1}-e_{2}\in \mathbb{Q}$, contradicts with the "exactly one point".
+3. Claim: $\mathbb{R} = \cup_{r \in \mathbb{Q}} (E+r)$. For any $x \in \mathbb{R}$, there's a coset $\mathbb{Q}+x$, in which E contains exactly an element $q+x$. Then $x=q+x+(-q)$ will be contained in $E+(-q)$, which is when $r=-q$, in the union.
+4. Now $F=F \cap \mathbb{R}=\cup_{r \in \mathbb{Q}} (F \cap (E+r))=\cup F_{r}$, it suffices to show $m(F_{r})=0$. Given that $m(F_{r})=\sup\{ m(K): compact\ K \subset F_{r} \}$, this holds iff $\forall compact\ K\subset F_{r},m(K)=0$. We're going to use the fact that K is bounded.
+5. Suppose not, i.e. there's a K, s.t. $m(K)>0$. Due to to the same reason as 2, we have $\forall r_{1}, r_{2} \in \mathbb{Q}, r_{1} \ne r_{2} \to (K+r_{1}) \cap (K+r_{2}) = \emptyset$. Note that it's still bounded after translation. Further more, let's bound the translation scale. Let $H=\cup_{r \in \mathbb{Q} \cap [0,1]} (K+r)$, which is a disjoint union of bounded set and should be bounded as a whole (within the union of $(-M_{r}, M_{r})$). Yet since every summand in this $\sigma$-additivity (infinite) summation, $m(K+r)>0$, we have $m(H)=\infty$, contradict.
+
+# Ch2 Integration
+## 2.1 Measurable function
+Rmk. Random variables are special cases of measurable function.

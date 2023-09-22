@@ -43,10 +43,11 @@ Thm. (1.4) Subspace is closed under arbitrary intersection.
 ## 1.4 Linear combination
 > Def. (**Span**) For a set $S \subset V$, $span(S):=\bigcap_{S \subset \text{subspace } W \subset V} W$.
 
-Prop. $span(S)$ is the set of linear combination of elements in $S$.
+Rmk. If $S_{1} \subset S_{2}$, then $span(S_{1}) \subset span(S_{2})$.
 
+Prop. $span(S)$ is the set of linear combination of elements in $S$.
 ## 1.5 Linear independence
-> Def. (**Linear dependent**) n distinct $s_{i}$, exists $\lambda_{1}\dots \lambda_{n}$ are not all zero, such that $\sum \lambda_{i} s_{i}=0$.
+> Def. (**Linear dependent**) $n$ distinct $s_{i}$, there exists $\lambda_{1}\dots \lambda_{n}$ that are not all zero, such that $\sum \lambda_{i} s_{i}=0$.
 
 Thm. $S$ are linear independent set of vectors, $v \in V \setminus S$, then $S \cup \{v\}$ are linear dep. iff $v \in span(S)$.
 
@@ -71,7 +72,9 @@ Cor. $\dim V < \infty, W \subset V$, then W posseses a compliment.
 
 Prop. $\dim (V_{/W})=\dim V - \dim W$.
 
-Thm. Given subspace W, there's a bijection between $\{H:subspace\ H, W \subset H\}$ and $\{ \bar H \in V_{/W}: subspace\ H\}$. This together with the usage of flags give another proof for Cor 1.11.
+Thm. Given subspace W, there's a bijection between $\{H:subspace\ H, W \subset H\}$ and $\{ \bar H \in V_{/W}: subspace\ H\}$, where the $\bar H:=H_{/W}=\{[x]\in V_{/W}:x\in H\}$.
+
+Rmk. This together with the usage of flags give another proof for Cor 1.11.
 
 > Def. (**Direct sum**) $W_{1} \oplus W_{2}$ if $W_{1}+W_{2}=V$ and $W_{1} \cap W_{2}=\emptyset$.
 
@@ -102,7 +105,33 @@ Thm. Subspace $W \subset V$, then $\exists W', s.t. V=W \oplus W'$.
 Rmk. 
 1. $T(0)=0$.
 2. $Ker(T) \subset V, Ran(T) \subset W$ are subspaces, called **null space / kernel** and **range / image**, and their dimention is called **nullity** and **rank**.
-3. $T$ is 1-1 iff $Ker(T)=\{0\}$.
+3. (2.4) $T$ is 1-1 iff $Ker(T)=\{0\}$.
+
+Thm. (**Dimension thm**) For linear $T:V \to W$, and V is finite-dimensional, then $nullity(T)+rank(T)=\dim(V)$.
+
+Thm. T is isomorphic iff $\exists T^{-1}, s.t., T \circ T^{-1}=id_{V}. T^{-1} \circ T=id_{W}, T^{-1}\ linear$.
+
+Lemma. Isomorphic T, $\dim V=n$, then $\dim W=n$.
+
+Cor. Subspace $V' \subset V$, then $T|_{V'}:V' \to T(V')$ is still isomorphic.
+
+Thm. $T:V \to W$ induces linear $\bar T: V_{/KerT}\to R(T)$ by letting $\bar T:=[x] \mapsto T(x)$.
+
+Cor. $\dim V < \infty, \dim KerT + \dim R(T)=\dim V$.
+
+Cor. If $V=R(T)+Ker(T)$, then it's direct sum. 
+
+Ex. If $T \circ T=T$, then the above is true, and further more, $T=\pi_{R(T)}$.
+
+Ex. Consider subspace $W' \subset W$, then $T^{-1}(W') \subset V$ is a subspace, and another induced linear quotient map $\bar T: V_{/ T^{-1}(W') }\to W_{/W'}$ can be given by $\bar T: [x] \to [T(x)]$. When T is onto, it's bijective.
+
+Lemma. For linear map $T:F^{n} \to F$, there's a unique tuple $(a_{i})$, such that $T(x)=\sum_{i=1}^{n} a_{i}x_{i}$. Constructively, $a_{i}=T(e_{i})$.
+
+Thm. For linear map $T:F^{n} \to F^{m}$, there's a unique $m \times n$ matrix $A=(a_{ji})$ such that $T(x)=(T_{1}(x), T_{2}(x), \dots)$ and $T_{j}(x)=\sum_{j=1}^{n} a_{ji} x_{i}$. Further more, $T(e_{i})=(a_{1i}, a_{2i}, \dots)$ is the i-th column of A.
+
+Thm. $T: V \to W$, V and W respectively possess ordered bases $\beta=(\beta_{1}, \beta_{2}, \dots, \beta_{n})$ and $\alpha=(\alpha_{1}, \alpha_{2}, \dots, \alpha_{m})$, then $T(\beta_{i})=\sum_{j=1}^{m}a_{ji} \alpha_{j}$.
+
+Ex. Given a complete flag $\mathcal{F}$: $\{0\} = V_{0} \subset V_{1} \subset \dots \subset V_{n}=V$ in V so that $\dim(V_{i} / V_{i-1})=1, \forall i$. We say T is **upper triangular** w.r.t. $\mathcal{F}$ if $T(V_{i}) \subset V_{i}, \forall i$. In this case, let $\beta$ be any ordered basis that can generate the flag, then matrix $[T]_{\beta}$ will also be **upper triangular** in matrix sense. At the same time, the induced quotient map $\bar T_{i} : V_{i} / V_{i-1} \to V_{i} / V_{i-1}, \bar T_{i}:[x]\mapsto [T(x)]$ is given by multiplication by a unique $\lambda_{i} \in F$. In this case, T is invertible iff $\forall i, \lambda_{i} \ne 0$, or $a_{ii} \ne 0$ for $[T]_{\beta}$. If invertible, $T^{-1}$ and $[T^{-1}]_{\beta}$ also upper triangular w.r.t. $\mathcal{F}$.
 
 
 
@@ -110,6 +139,10 @@ Rmk.
 
 
 
+
+
+
+---
 
 # Eigenvalue
 

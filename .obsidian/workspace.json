@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "9a1e38289343ff8a",
+        "id": "9c4d0f751978c96d",
         "type": "tabs",
         "children": [
           {
-            "id": "1293afa43b7bfabe",
+            "id": "02ab79400929543c",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -18,21 +18,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "244718e910bd7f39",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ZoryOb/Mathematics/Linear algebra.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -107,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ZoryOb/Mathematics/Linear algebra.md",
+                "file": "ZoryOb/Mathematics/Real Analysis.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +111,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ZoryOb/Mathematics/Linear algebra.md",
+                "file": "ZoryOb/Mathematics/Real Analysis.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -147,7 +134,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ZoryOb/Mathematics/Linear algebra.md"
+                "file": "ZoryOb/Mathematics/Real Analysis.md"
               }
             }
           },
@@ -185,14 +172,94 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "244718e910bd7f39",
+  "floating": {
+    "id": "65995e628b3d622e",
+    "type": "floating",
+    "children": [
+      {
+        "id": "d2ace6876a82c1f3",
+        "type": "window",
+        "children": [
+          {
+            "id": "5cd6d242dff75ca9",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "244718e910bd7f39",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "ZoryOb/Mathematics/Linear algebra.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              },
+              {
+                "id": "e800507ebbbe95eb",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "ZoryOb/Mathematics/Probability.md",
+                    "mode": "preview",
+                    "source": true
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 164,
+        "y": 38,
+        "width": 1558,
+        "height": 1079,
+        "maximize": false,
+        "zoom": -1
+      },
+      {
+        "id": "ea5c85ec430ce985",
+        "type": "window",
+        "children": [
+          {
+            "id": "cef71b1480d35745",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "7702a1fcbefaee20",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "ZoryOb/Mathematics/Statistic.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": 959,
+        "y": 39,
+        "width": 768,
+        "height": 1077,
+        "maximize": false,
+        "zoom": -1
+      }
+    ]
+  },
+  "active": "02ab79400929543c",
   "lastOpenFiles": [
-    "ZoryOb/Mathematics/Real Analysis.md",
     "ZoryOb/Mathematics/Linear algebra.md",
+    "ZoryOb/Mathematics/Real Analysis.md",
+    "ZoryOb/Mathematics/Statistic.md",
     "ZoryOb/Mathematics/Probability.md",
     "ZoryOb/Mathematics/Linear algebra.pdf",
     "ZoryOb/Mathematics/Entrance.md",
-    "ZoryOb/Mathematics/Statistic.md",
     "ZoryOb/Mathematics/Real Analysis.pdf",
     "Untitled.canvas",
     "ZoryOb/Zettelkasten Method.md",
