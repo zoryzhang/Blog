@@ -111,7 +111,7 @@ Thm. (**Dimension thm**) For linear $T:V \to W$, and V is finite-dimensional, th
 
 Thm. T is isomorphic iff $\exists T^{-1}, s.t., T \circ T^{-1}=id_{V}. T^{-1} \circ T=id_{W}, T^{-1}\ linear$.
 
-Lemma. Isomorphic T, $\dim V=n$, then $\dim W=n$.
+Thm. (2.19) $T:V \to W$, $\dim V=n<\infty$, then T is isomorphism iff $\dim W=n$.
 
 Cor. Subspace $V' \subset V$, then $T|_{V'}:V' \to T(V')$ is still isomorphic.
 
@@ -129,9 +129,30 @@ Lemma. For linear map $T:F^{n} \to F$, there's a unique tuple $(a_{i})$, such th
 
 Thm. For linear map $T:F^{n} \to F^{m}$, there's a unique $m \times n$ matrix $A=(a_{ji})$ such that $T(x)=(T_{1}(x), T_{2}(x), \dots)$ and $T_{j}(x)=\sum_{j=1}^{n} a_{ji} x_{i}$. Further more, $T(e_{i})=(a_{1i}, a_{2i}, \dots)$ is the i-th column of A.
 
-Thm. $T: V \to W$, V and W respectively possess ordered bases $\beta=(\beta_{1}, \beta_{2}, \dots, \beta_{n})$ and $\alpha=(\alpha_{1}, \alpha_{2}, \dots, \alpha_{m})$, then $T(\beta_{i})=\sum_{j=1}^{m}a_{ji} \alpha_{j}$.
+Thm. (2.20) $T: V \to W$, V and W respectively possess ordered bases $\beta=(\beta_{1}, \beta_{2}, \dots, \beta_{n})$ and $\alpha=(\alpha_{1}, \alpha_{2}, \dots, \alpha_{m})$, then $T(\beta_{i})=\sum_{j=1}^{m}a_{ji} \alpha_{j}$. Further more, given $\beta,\alpha$, there's an isomorphism between T and $[T]_{\beta}^{\alpha}=(a_{ji})$. This can be done since $\phi_{\beta}: V \to F^{n}, \phi_{\alpha}: W \to F^{n}$, we have $L_{A} \phi_{\beta} = \phi_{\alpha} T$.
 
 Ex. Given a complete flag $\mathcal{F}$: $\{0\} = V_{0} \subset V_{1} \subset \dots \subset V_{n}=V$ in V so that $\dim(V_{i} / V_{i-1})=1, \forall i$. We say T is **upper triangular** w.r.t. $\mathcal{F}$ if $T(V_{i}) \subset V_{i}, \forall i$. In this case, let $\beta$ be any ordered basis that can generate the flag, then matrix $[T]_{\beta}$ will also be **upper triangular** in matrix sense. At the same time, the induced quotient map $\bar T_{i} : V_{i} / V_{i-1} \to V_{i} / V_{i-1}, \bar T_{i}:[x]\mapsto [T(x)]$ is given by multiplication by a unique $\lambda_{i} \in F$. In this case, T is invertible iff $\forall i, \lambda_{i} \ne 0$, or $a_{ii} \ne 0$ for $[T]_{\beta}$. If invertible, $T^{-1}$ and $[T^{-1}]_{\beta}$ also upper triangular w.r.t. $\mathcal{F}$.
+
+Thm. (2.11) $[S \circ T]_{\beta}^{\beta''} = [S]_{\beta'}^{\beta''} [T]_{\beta}^{\beta'}$.
+
+Def. (**Nilpotent**) For a non-zero matrix A, it's called nilpotent if  $\exists n \in \mathbb{N}, s.t., A^{n}=0$.
+
+Prop. Multiplicative property of A: non-communative, no cancellation, and there exist nilpotent matrix.
+
+Prop. If $T:V \to W, \dim V=\dim W=n$, T.F.A.E:
+1. T is an isomorphism;
+2. $\exists \beta$ as a basis of V, s.t. $T(\beta)$ is a basis of W.
+3. $\forall \beta$ as a basis of V, $T(\beta)$ is a basis of W.
+
+Proof. (1->3) We know $card(T(\beta)) \le n$, and since T is onto, $T(\beta)$ spans W.
+
+Thm. (2.22 **Change of basis**) Say $\dim V=n$,
+1. $A=[Id_{V}]_{\beta}^{\alpha} \in M_{n \times n}$ is invertible;
+2. Fix $\beta / \alpha$, then any invertible A is $[Id_{V}]_{\beta}^{\alpha}$ for some unique $\alpha / \beta$.
+
+Proof.
+1. The inverse is $[Id_{V}]_{\alpha}^{\beta}$;
+2. Say fix $\beta=(s_{1}, \dots, s_{n})$, for invertible $A=[A_{1}, \dots, A_{n}]$, find unique $\alpha=(t_{1}, \dots, t_{n})$. Let $\phi_{\beta}, \phi_{\alpha}: F^{n} \to V$ be the translators. Since $\{ A_{j} \}$ is a basis of $F^{n}$, $\phi_{\beta}(\{ A_{j} \})$ is a basis of $F^{n}$. Let $t_{i}=\phi_{\beta}(A_{i})=\phi_{\beta}(A_{i})=\sum_{j} a_{ji} s_{j}$.
 
 
 

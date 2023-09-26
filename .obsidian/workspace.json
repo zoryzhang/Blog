@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "9c4d0f751978c96d",
+        "id": "66543cef6f360ad2",
         "type": "tabs",
         "children": [
           {
-            "id": "02ab79400929543c",
+            "id": "55f260abab993963",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "ZoryOb/Mathematics/Real Analysis.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -159,7 +155,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -197,6 +194,18 @@
                 }
               },
               {
+                "id": "02ab79400929543c",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "ZoryOb/Mathematics/Real Analysis.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              },
+              {
                 "id": "e800507ebbbe95eb",
                 "type": "leaf",
                 "state": {
@@ -208,14 +217,15 @@
                   }
                 }
               }
-            ]
+            ],
+            "currentTab": 1
           }
         ],
         "direction": "vertical",
-        "x": 164,
-        "y": 38,
-        "width": 1558,
-        "height": 1079,
+        "x": 303,
+        "y": 194,
+        "width": 1546,
+        "height": 965,
         "maximize": false,
         "zoom": -1
       },
@@ -243,10 +253,10 @@
           }
         ],
         "direction": "vertical",
-        "x": 959,
-        "y": 39,
+        "x": 991,
+        "y": 25,
         "width": 768,
-        "height": 1077,
+        "height": 965,
         "maximize": false,
         "zoom": -1
       }

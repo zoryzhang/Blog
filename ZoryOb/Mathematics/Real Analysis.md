@@ -56,10 +56,11 @@ Rmk. $\liminf A_{n} \subset \limsup A_{n}$; if equal, we say $A_{n}$ converges.
 E.g. Monotonic set sequence converges (if including $\infty$).
 
 ## Elementary real analysis
-- Any open set on real line can be expressed as countable union of mutually disjoint open intervals.
+- Any open set on real line can be expressed as **countable** union of mutually **disjoint** open intervals.
 - Compact set: for any open cover of S, there's a finite subcover for S.
 - On real line: compact as long as closed + bounded, or sequentially campact.
-- Infinite union of open set still open, infinite intersection of closed set still closed.
+- Arbitrary union of open set still open, arbitrary intersection of closed set still closed.
+- $f:X \to Y$ is continuous on X iff for any open set U in Y, $f^{-1}(U)$ is open in X.
 
 # CH1 Measure theory
 ## 1.2 $\sigma$-algebra/field
@@ -69,8 +70,7 @@ E.g. Monotonic set sequence converges (if including $\infty$).
 
 Rmk. a) Algebra is closed under finite intersection; b) $\emptyset, X \in \mathcal{A}$. This is important when it comes to covering.
 
-> Def. (**$\sigma$-algebra** of sets of X) A non-empty collection $\mathcal{A}$ of subsets of X, that is closed under countable union and complements.
-E.g. $\mathcal{A}=\{ E\in X:\text{E is co-countable} \}$.
+> Def. (**$\sigma$-algebra** of sets of X) A non-empty collection $\mathcal{A}$ of subsets of X, that is closed under countable union and complements. E.g. $\mathcal{A}=\{ E\in X:\text{E is co-countable} \}$.
 
 Prop. $\mathcal{A}$ is a $\sigma$-algebra iff (a) $\mathcal{A}$ is a algebra; (b)$$E_{j} \text{ mutually disjoint}, E_{j}\in \mathcal{A} \to \bigcup_{j=1}^{\infty} E_{j} \in \mathcal{A}$$
 
@@ -86,11 +86,11 @@ Lemma. (1.1) $\mathcal{E\subset M(F) \implies M(E) \subset M(F)}$.
 > 
 > Def. (**Toplogical space**) A pair $(X, \mathcal{F})$.
 
-Nota. $G$ is the family of open sets in X; $F$ is the family of closed sets; $G_{\delta}$ is the countable intersection of open sets; $F_{\delta \sigma}$ is the countable union of  $F_{\delta}$ ... G is a toplogy.
+Nota. $G$ is the family of open sets in X; $F$ is the family of closed sets; $G_{\delta}$ is the countable intersection of open sets; $F_{\delta \sigma}$ is the countable union of  $F_{\delta}$ ... **G is a toplogy**.
 
 > Def. (**Borel $\sigma$-algebra** of $(X, \mathcal{F})$) The $\mathcal{M}$(G), denoted as $\mathcal{B}_X$, where G is the aforementioned family of open sets. 
 
-Rmk. $\mathcal{M}$(G) is the same as $\mathcal{M}(\text{open intervals})$, $\mathcal{M}(F)$, $\mathcal{M}(\text{the open rays } \{(a, \infty)\})$, etc. These will be shown in 1.5.
+Prop. (1.2) $\mathcal{M}$(G) is the same as $\mathcal{M}(\text{open intervals})$, $\mathcal{M}(F)$, $\mathcal{M}(\text{the open rays } \{(a, \infty)\})$, $\mathcal{M}(\text{the closed rays } \{[a, \infty)\})$, etc. These will be shown in 1.5.
 
 > Def. (**Borel set**) A Borel set is a member of $\mathcal{B}_X$. E.g. $G_{\delta}, F_{\sigma}$ are Borel set. (Many sets look like either one of these two.)
 
@@ -401,4 +401,32 @@ Proof of Thm.
 
 # Ch2 Integration
 ## 2.1 Measurable function
-Rmk. Random variables are special cases of measurable function.
+Motiv. $f^{-1}(E)=\{ x \in X:f(x) \in E \}$ preserves unions, intersections, and complements. $f^{-1}(\mathcal{B})$ and $\mathcal{M}=\{ E \in \mathcal{B} : f^{-1}(E) \in \mathcal{A} \}$ are $\sigma$-algebra.
+
+> Def. (**Measurable function**) Measurable space $(X, \mathcal{A}), (Y, \mathcal{B})$, we say $f:X \to Y$ is $(\mathcal{A,B})$-measurable if $\mathcal{f^{-1}(\mathcal{B}) \subset A}$, or equivalently, $\mathcal{M} \supset \mathcal{B}$.
+
+Rmk. 
+1. Random variables are special cases of measurable function.
+2. Composition of measurable mappings are measurable.
+
+Prop. (2.1) $f:X \to Y$ is $(\mathcal{A,B})$-measurable iff $\mathcal{M} \supset \mathcal{B_{0}}$, where $\mathcal{M}( B_{0})=\mathcal{B}$.
+
+Proof. $\mathcal{M}$ is a $\sigma$-algebra, and $\mathcal{M \supset B_{0}} \implies \mathcal{M \supset \mathcal{M}( B_{0})=B}$.
+
+Cor. Let X, Y be metric or topological spaces, then every continuous $f:X \to Y$ is $(\mathcal{B}_{X},  \mathcal{B}_{Y} )$-measuable.
+
+Proof. Recall that $f:X \to Y$ is continuous on X iff for any open set U in Y, $f^{-1}(U)$ is open in X. By prop 2.1, it follows.
+
+Thm. Based on prop 1.2 and 2.1, T.F.A.E:
+1. $f:X \to \mathbb{R}$ is $\mathcal{A}$-measuable.
+2. $\{(a, \infty): \forall a \in \mathbb{R}\} \subset \mathcal{M}$.
+3. $\{[a, \infty): \forall a \in \mathbb{R}\} \subset \mathcal{M}$.
+4. $\{(-\infty, a): \forall a \in \mathbb{R}\} \subset \mathcal{M}$.
+5. $\{(-\infty, a]: \forall a \in \mathbb{R}\} \subset \mathcal{M}$.
+6. If $f: X \to \bar{ \mathbb{R}}$, change the above as including infinity.
+
+Thm. If $f, g$ are $\mathcal{A}$-measurable, then $f+g, fg$ are $\mathcal{A}$-measurable.
+
+Proof. Work on level sets. Consider $fg=\frac{1}{2}((f+g)^{2} -f^{2} -g^{2})$.
+
+Def. $\mathcal{B}_{\bar{\mathbb{R}}}=\{ E \subset \bar{\mathbb{R}} : E \cap \mathbb{R} \subset \mathcal{B}_{\mathbb{R}} \}$.
