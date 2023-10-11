@@ -564,5 +564,5 @@ Proof.
 > [!important] Thm. Monotone convergence thm (MCT)
 > If $f_{j} \in L^{+}, \{ f_{j}\} \nearrow$ and $\forall x, f_{n}(x) \to f(x)$, then $\int f=\lim_{n \to \infty} \int f_{n}$.
 
-Proof. d
+Proof. 
 
