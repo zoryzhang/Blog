@@ -505,23 +505,33 @@ Proof. Recall that $f:X \to Y$ is continuous on X iff for any open set U in Y, $
 > [!note] Def. (**Measurable on subset of X**)
 > $f$ is measurable on $E \in \mathcal{M}$, if $f|_{E}$ is $\mathcal{M}_{E}$-measurable, i.e. $\forall B \in \mathcal{B}_{ \mathbb{R}}, f^{-1}(B) \cap E \in \mathcal{M}$.
 
+> [!important] Prop. (2.4)
+> Let $(X, \mathcal{M})$ and $(Y_{\alpha}, \mathcal{N}_{\alpha})$ be measurable spaces, and $Y:=\prod_{\alpha} Y_{\alpha}, \mathcal{N}:=\otimes \mathcal{N}_{\alpha}$, and $\pi_\alpha$ the coordinate maps. Then $f:X \to Y$ is measurable iff $f_{\alpha}:=\pi_{\alpha} \circ f$ is $(\mathcal{M, N_\alpha})$-measurable for all $\alpha$.
+
+Cor. $f: X \to \mathbb{C}$ is measurable iff $Re f, Im f$ are measurable.
+
 > [!important] Thm. (2.6)
-> If $f, g$ are $\mathcal{A}$-measurable, then $f+g, fg$ are $\mathcal{A}$-measurable.
+> If $f, g: X \to \mathbb{C}$ are $\mathcal{A}$-measurable, then $f+g, fg$ are $\mathcal{A}$-measurable.
 
 Proof. Work on level sets. Consider $fg=\frac{1}{2}((f+g)^{2} -f^{2} -g^{2})$.
 
 > [!note] Def. 
 > $\mathcal{B}_{\bar{\mathbb{R}}}=\{ E \subset \bar{\mathbb{R}} : E \cap \mathbb{R} \subset \mathcal{B}_{\mathbb{R}} \}$. 
 
-> [!important] Prop. 2.8, 2.9
+> [!important] Prop. 2.7
 > In $\bar{\mathbb{R}}$, $\liminf, \limsup$ exist. Let $\{f_{j}\}$ be a sequence of $\mathcal{A}$-measurable function, then $g_{1}=\sup f_{j}, g_{2}=\inf f_{j}, g_{3}=\limsup f_{j}, g_{4}=\liminf g_{j}$ are measurable. Thus, if $f,g$ are measurable, then $\max(f,g), \min(f,g)$ are measurable.
 
 Proof. $\limsup_{j} = \inf_{k} \sup_{j>k}$.
 
 Rmk. We prefer to work on $\bar{\mathbb{R}}$ from now on since the limsup and liminf always exists.
 
-> [!note] Def. 
-> $f^{+}:=\max (f(x),0),f^{-}:=\max (-f(x),0)$, then $f=f^{+}-f^{-}, |f|=f^{+}+f^{-}$.
+> [!note] Def. (Decomposition of real-valued func)
+> $f^{+}:=\max (f(x),0),f^{-}:=\max (-f(x),0)$, then $f=f^{+}-f^{-}, |f|=f^{+}+f^{-}$. By Prop. 2.7, if f is measurable, so are $f^{+}, f^{-}$.
+
+> [!note] Def. (Polar decomposition of complex-valued func)
+> $f=(sgn f) |f|$, where $sgn z=\frac{z}{|z|}\mathbb{1}(z \ne 0)$. If f is measurable, so are $|f|, sgn (f)$.
+
+Proof. 
 
 > [!note] Def. (**Simple function**)
 > A finite linear combination of $\mathbb{1}_{E}$ of sets in A as the E, i.e. $$f=\sum_{j=1}^{m} a_{j} \mathbb{1}_{E_{j}}, E_{j}\in \mathcal{A}$$
