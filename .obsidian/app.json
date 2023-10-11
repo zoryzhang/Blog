@@ -20,5 +20,6 @@
   "newFileLocation": "current",
   "attachmentFolderPath": "ZoryOb/Mathematics/att",
   "alwaysUpdateLinks": true,
-  "spellcheck": false
+  "spellcheck": false,
+  "autoPairMarkdown": false
 }

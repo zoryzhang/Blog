@@ -306,7 +306,7 @@ Rmk. Our best guess of X to minimize $(X-\text{I\kern-0.15em E}X)^{2}$.
 Rmk. Absolutely convergence ensures the reorderability.
 
 Lemma. (**Change of variable for Lebesgue integral**) $\text{I\kern-0.15em E}g(X)=\sum_{x:f_{X}(x)>0} g(x)f_{X}(x)$.
-
+I
 Lemma. (3.6.6) Let $X,Y$ be two r.v.s. jointly discrete, and $g(X,Y)$ is still a r.v, then $\text{I\kern-0.15em E}g(X,Y)=\sum_{x,y:f_{X,Y}(x,y)>0} g(x,y) f_{X,Y}(x,y)$.
 
 Rmk. Expectation has finite linearity.

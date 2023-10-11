@@ -11,11 +11,52 @@
             "id": "55f260abab993963",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "ZoryOb/Mathematics/Linear algebra.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "a18bb34af9ed529d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ZoryOb/Mathematics/Real Analysis.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "db740e8b06484844",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ZoryOb/Mathematics/Probability.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c4b871a06ab8305a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ZoryOb/Mathematics/Statistics.md",
+                "mode": "source",
+                "source": true
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -90,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ZoryOb/Mathematics/Real Analysis.md",
+                "file": "ZoryOb/Mathematics/Statistics.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -107,7 +148,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ZoryOb/Mathematics/Real Analysis.md",
+                "file": "ZoryOb/Mathematics/Statistics.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -130,7 +171,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ZoryOb/Mathematics/Real Analysis.md"
+                "file": "ZoryOb/Mathematics/Statistics.md"
               }
             }
           },
@@ -155,8 +196,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -169,108 +209,18 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "floating": {
-    "id": "65995e628b3d622e",
-    "type": "floating",
-    "children": [
-      {
-        "id": "d2ace6876a82c1f3",
-        "type": "window",
-        "children": [
-          {
-            "id": "5cd6d242dff75ca9",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "244718e910bd7f39",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "ZoryOb/Mathematics/Linear algebra.md",
-                    "mode": "source",
-                    "source": false
-                  }
-                }
-              },
-              {
-                "id": "02ab79400929543c",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "ZoryOb/Mathematics/Real Analysis.md",
-                    "mode": "source",
-                    "source": false
-                  }
-                }
-              },
-              {
-                "id": "e800507ebbbe95eb",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "ZoryOb/Mathematics/Probability.md",
-                    "mode": "preview",
-                    "source": true
-                  }
-                }
-              }
-            ],
-            "currentTab": 1
-          }
-        ],
-        "direction": "vertical",
-        "x": 303,
-        "y": 194,
-        "width": 1546,
-        "height": 965,
-        "maximize": false,
-        "zoom": -1
-      },
-      {
-        "id": "ea5c85ec430ce985",
-        "type": "window",
-        "children": [
-          {
-            "id": "cef71b1480d35745",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "7702a1fcbefaee20",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "ZoryOb/Mathematics/Statistic.md",
-                    "mode": "source",
-                    "source": false
-                  }
-                }
-              }
-            ]
-          }
-        ],
-        "direction": "vertical",
-        "x": 991,
-        "y": 25,
-        "width": 768,
-        "height": 965,
-        "maximize": false,
-        "zoom": -1
-      }
-    ]
-  },
-  "active": "02ab79400929543c",
+  "active": "c4b871a06ab8305a",
   "lastOpenFiles": [
+    "ZoryOb/Mathematics/Statistics.pdf",
+    "ZoryOb/Mathematics/statistics.pdf.md",
+    "ZoryOb/Mathematics/Statistics.md",
+    "ZoryOb/Mathematics/Probability.md",
     "ZoryOb/Mathematics/Linear algebra.md",
     "ZoryOb/Mathematics/Real Analysis.md",
-    "ZoryOb/Mathematics/Statistic.md",
-    "ZoryOb/Mathematics/Probability.md",
+    "ZoryOb/Mathematics/Real Analysis.pdf",
+    "ZoryOb/Mathematics/real.md",
     "ZoryOb/Mathematics/Linear algebra.pdf",
     "ZoryOb/Mathematics/Entrance.md",
-    "ZoryOb/Mathematics/Real Analysis.pdf",
     "Untitled.canvas",
     "ZoryOb/Zettelkasten Method.md",
     "Zettelkasten",
@@ -300,8 +250,6 @@
     "Zory🫤/TCS/Untitled.canvas",
     "Zory🫤/TCS/Randomized Algorithm.md",
     "Zory🫤/Zettelkasten Method.md",
-    "Zory🫤/Mathematics/Linear algebra.md",
-    "Zory🫤/Graph Kernel.md",
-    "Zory🫤/Mathematics/Statistic.md"
+    "Zory🫤/Mathematics/Linear algebra.md"
   ]
 }
