@@ -15,6 +15,7 @@ notionID: f7250863-2ac4-4d17-b16a-d8a2940fa662
 
 # Notation
 1.  $\epsilon_{n}$ is the standard basis of $F^{n}$.
+2.  $a_{ij}$ stands for entries of A; $A_{ij}$ stands for minor; $\hat a_{ij}$ stands for cofactor of entry $a_{ij}$.
 
 # Ch1 Vector Spaces
 ## 1.2 Vector Space
@@ -77,7 +78,7 @@ Thm. (1.11) $W \subset V, \dim W \le \dim V$, then $\dim W = \dim V$ iff $W=V$.
 Cor. $\dim V < \infty, W \subset V$, then W posseses a compliment.
 
 > [!note] Def. (**Quotient space**) 
-> Given subspace W, define $x \sim y$ if $x-y \in W$, $[x]:=\{ y: x \sim y \}=:\{ x+w| w \in W \}=:x+W$, and $\{ [x] \}:=V_{/W}$ is a vector space called quotient space, by the intuitive definition of addition and scalar multiplication: $[v]=[\sum \lambda_{i} s_{i}]:=\sum \lambda_{i} s_{i}$ and $\lambda[x]:=[\lambda x]$, e.g. $-[x]=[-x]$.
+> Given subspace W, define $x \sim y$ if $x-y \in W$, $[x]:=\{ y: x \sim y \}=:\{ x+w| w \in W \}=:x+W$, and $\{ [x] \}:=V_{/W}$ is a vector space called quotient space, by the intuitive definition of addition and scalar multiplication: $[v]=[\sum \lambda_{i} s_{i}]:=\sum \lambda_{i} [s_{i}]$ and $\lambda[x]:=[\lambda x]$, e.g. $-[x]=[-x]$.
 
 Prop. $\dim (V_{/W})=\dim V - \dim W$.
 
@@ -115,7 +116,7 @@ Thm. Subspace $W \subset V$, then $\exists W', s.t. V=W \oplus W'$.
 
 ## 2.1 Rank-nullity
 > [!note] Def. (**Linear map**) 
-> $T:V \to W$.
+> $T:V \to W$ with $T(av+bw)=a T(v)+b T(w)$.
 
 Rmk. 
 1. $T(0)=0$.
@@ -125,13 +126,13 @@ Rmk.
 > [!important] Thm. (**Dimension thm**) 
 > For linear $T:V \to W$, and V is finite-dimensional, then $nullity(T)+rank(T)=\dim(V)$.
 
-Thm. T is isomorphic iff $\exists T^{-1}, s.t., T \circ T^{-1}=id_{V}. T^{-1} \circ T=id_{W}, T^{-1}\ linear$.
+Thm. T is isomorphism iff $\exists T^{-1}, s.t., T \circ T^{-1}=id_{V}. T^{-1} \circ T=id_{W}, T^{-1}\ linear$.
 
-Thm. (2.19) $T:V \to W$, $\dim V=n<\infty$, then T is isomorphism iff $\dim W=n$.
+Thm. (2.19) $T:V \to W$, $\dim V=n<\infty$, then V is isomorphic to W iff $\dim W=n$.
 
-Cor. Subspace $V' \subset V$, then $T|_{V'}:V' \to T(V')$ is still isomorphic.
+Cor. T is isomorphism, subspace $V' \subset V$, then $T|_{V'}:V' \to T(V')$ is still isomorphism.
 
-Thm. $T:V \to W$ induces linear $\bar T: V_{/KerT}\to R(T)$ by letting $\bar T:=[x] \mapsto T(x)$.
+Thm. $T:V \to W$ induces isomorphism $\bar T: V_{/KerT}\to R(T)$ by letting $\bar T:=[x] \mapsto T(x)$.
 
 Cor. $\dim V < \infty, \dim KerT + \dim R(T)=\dim V$.
 
@@ -186,11 +187,8 @@ Rmk. $V \overset{T}{\to} W, \dim V=n, \dim W=m$, then $B:=[T]_{\beta'}^{\alpha'}
 
 > Prop. 
 > If $rk (A)=r$, then there're invertible matrices P, Q s.t.
-> $$
-> PAQ
-> =\begin{bmatrix}  I_{r} & 0 \\ 0 & 0 \end{bmatrix}
-> \in M_{m \times n}$$
-That means there's only $\min(n,m)$ many equivalence classes. Also, that means $rk A \le \min(n,m)$. This result will be justified later.
+> $$PAQ=\begin{bmatrix}  I_{r} & 0 \\ 0 & 0 \end{bmatrix} \in M_{m \times n}$$
+> That means there's only $\min(n,m)$ many equivalence classes. Also, that means $rk A \le \min(n,m)$. This result will be justified later.
 
 Proof. 
 1. By replacement thm, we can pick $\alpha$ so that $R(L_{A})=span(t_{1}, \dots, t_{r})$. For $i \le r$, since $t_{i} \in R(L_{A})$, we can find $s_{i}$ s.t. $L_{A}(s_{i})=t_{i}$.
@@ -202,7 +200,7 @@ Proof.
 > [!note] Def. (**Dual space**) 
 > $V^{*}:=\mathcal{L}(V,F)$.
 
-Rmk. 
+Rmk.
 1. $(F^{n})^{*} \cong F^{n}$. 
 2. Further more, when $\dim V=n$ and a basis is given, $V^{*}:=\mathcal{L}(V, F) \cong \mathcal{L}(F^{n}, F)=:(F^{n})^{*} \cong F^{n}$.
 3. Which means although the "all linear functionals" looks scary, the cardinality doesn't increase.
@@ -218,7 +216,7 @@ E.g. $e_{i}^{*}(e_{j})=\mathbb{1}(i=j)=:\delta_{ij}$. Then $e_{i}^{*}$ is the fu
 Rmk. $V(=span(\beta)) \overset{T}{\to} W(=span(\alpha)) \overset{\phi \in W^{*}}{\to} F$.
 
 > [!Important] Thm. (Transpose)
-  $A^{T}=[T^{*}]_{\alpha^{*}}^{\beta^{*}}$.
+  If $A=[T]_{\beta}^{\alpha}$, then $A^{T}=[T^{*}]_{\alpha^{*}}^{\beta^{*}}$.
 
 Proof. 
 1. It suffices to show $T^{*}(t_{i}^{*})=\sum_{i} (A^{T})_{ji} s_{j}^{*}=\sum_{i} a_{ij} s_{j}^{*}$.
@@ -233,9 +231,9 @@ Proof. Since $R(T)=R(T \circ \varphi_{\beta})=R(\varphi_{\alpha}\circ L_{A})=R(L
 > $rk A=rk A^{T}$.
 
 Proof.
-1. It suffices to show that $rk T=rk T^{*}$.
-2. $ker T^{*}=\{ \varphi \in W^{*}: \varphi \circ T=0 \}$. Write $\varphi=\sum_{i} a_{i}t_{i}^{*}$.
-3. $\varphi \circ T=0$ iff $\varphi(R(T))=0$, pick basis so that $R(T)=span(t_{1} \dots t_{r})$, then iff $a_{1} \dots a_{r}=0$ iff $ker T^{*}=span(t_{r+1} \dots t_{m})$. Then $rk T^{*}=rk T$.
+1. It suffices to show that $rk T=rk T^{*}$, where $T:V \to W$.
+2. $ker T^{*}=\{ \varphi \in W^{*}: \varphi \circ T=0 \}$. It's usually denoted as $W^{\perp}$. Write $\varphi=\sum_{i} a_{i}t_{i}^{*}$.
+3. $\varphi \circ T=0$ iff $\varphi(R(T))=0$, pick basis so that $R(T)=span(t_{1} \dots t_{r})$, then iff $a_{1} \dots a_{r}=0$ iff $ker T^{*}=span(t_{r+1} \dots t_{m})$. Then $rk T^{*}=m-r=rk T$.
 
 > [!important] Thm. (Double dual)
 > There's a canonical isomorphism between $V$ and $V^{**}$ that doesn't depends on choice of bases, given by $hat:V \to \mathcal{L}(V^{*}, F)$ and $hat: x \mapsto \hat x$, where $\hat x: V^{*} \to F$, $\hat x: \varphi \mapsto \varphi(x)$.
@@ -245,33 +243,32 @@ Proof.
 2. $hat$ is linear;
 3. $hat$ is bijective. The case of infinite dimension is #NotCovered . Otherwise, $\dim V^{**}=\dim V$, we need only 1-1 or onto. We show 1-1 here. Whenever $\hat x=0$, i.e. $\forall \varphi \in \mathcal{L}(V, F), \varphi(x)=0$. Suppose $\exists x_{0} \ne 0$ follows the above condition. When it's non-zero, one thing we can tell by replacement thm is that we can pick a basis in V as $\beta:=(x_{0}, \dots)$, then we got $x_{0}^{*}(x_{0})=1 \ne 0, x_{0}^{*} \in \mathcal{L}(V, F)$, contradicts.
 
-Cor. If $\dim V<\infty$, then for any basis $\gamma$ of V*, there's a basis $\beta$ of V, s.t. $\beta^{*}=\gamma$.
+> Cor. If $\dim V<\infty$, then for any basis $\gamma$ of V*, there's a basis $\beta$ of V, s.t. $\beta^{*}=\gamma$.
 
 Proof. It's nice to be able to regard linear transformation as elements of vector space. For $\gamma:=(\varphi_{1}, \dots)$, we can generate $\gamma^{*}:=(\varphi_{1}^{*}, \dots)$, and find unique $\beta:=(x_{1}, \dots), s.t. \hat x_{i}=\varphi_{i}^{*}$. It's what suggested by the notation since $\varphi_{i}(x_{j})=:\hat x_{j}(\varphi_{i})=\varphi_{j}^{*}(\varphi_{i}):=\delta_{ji}=\delta_{ij}$.
 
 # Ch3. Elementary Matrix Operations and Systems of Linear Equations
-
-> [!note] Def. (**System of linear equations**) 
-> $A x=b$, where $x$ is the variable vector.
-
-Prop. Given an invertible matrix P, then $A x=b$ iff $PAx=Pb$.
-
-Rmk. Based on results from Ch2, we know the system of linear equations has a solution if $b \in R(L_{A})$. If so, i.e., $\exists s, s.t. As=b$, then the solution space as a preimage of b is $s + Ker L_{A}$.
-
+## 3.1 Elementary Matrix Operations
 > [!note] Def. (**Elementary operations on row**) 
 > $A \in M_{m \times n}$,
 > 1. Interchanging two rows;
 > 2. Multiplying each element in a row by a non-zero number;
 > 3. Adding a scalar $\lambda$ multiple of j-th row to i-row ($E=I_{m}+\lambda e_{ij}$, A'=EA).
+> 
+> Elementary matrix is a matrix obtained by performing an elementary operation on $I_{n}$.
 
-Prop. Inverse and transpose of elementary matrix are still elementary.
+> [!important] Thm. (3.1) 
+> Performing an elementary operation on a matrix is equivalent to multiplying the matrix by an elementary matrix.
 
-Lemma. If $P, Q$ are invertible, then $rk(PAQ)=rk(A)$.
+> [!important] Thm. (3.2)
+> Inverse and transpose of elementary matrix are still elementary of the same type.
+
+> Lemma. If $P, Q$ are invertible, then $rk(PAQ)=rk(A)$.
 
 Proof. We can express PAQ into $[Id]_{\epsilon}^{\alpha} [L_{A}]_{\epsilon}^{\epsilon'} [Id]_{\beta}^{\epsilon'}$, where $\alpha, \beta$ can be given by thm2.22. Then $PAQ=[L_{A}]_{\beta}^{\alpha}$, and then $rk (PAQ)=rk(A)$.
 
-> [!important] Thm. 
-> There're invertible matrix P, Q that are product of elementary matrices, s.t. $PAQ=\begin{pmatrix} I_{r}& 0  \\ 0 & 0 \end{pmatrix}$.
+> [!important] Thm. (Rank-preserving)
+> There're invertible matrix P, Q that are product of elementary matrices, s.t. $PAQ=\begin{pmatrix} I_{r}& 0  \\ 0 & 0 \end{pmatrix}$, where $r=rk A$. Thus we have rank-preserving matrix operations.
 
 Proof. Constructive induction. Transform A into $\begin{pmatrix} 1 & 0  \\ 0 & B \end{pmatrix}$, then $R(A)=span(e_{1}) \oplus R(B)$, and doing row and column transformations on B won't affect the first row and column, thus induction works. 
 
@@ -279,18 +276,206 @@ Proof. Constructive induction. Transform A into $\begin{pmatrix} 1 & 0  \\ 0 & B
 
 Proof. $PAQ=I_{n}$, then $A=Q^{-1} I_{n} P^{-1}$ is a product of them.
 
-> Cor. $rk A=rk A^{T}$. 
+> Cor. $rk A=rk A^{T}$. Thus rows and columns generate subspaces of the same dimension.
 
 Proof. Since transposing $PAQ=\begin{pmatrix} I_{r}& 0  \\ 0 & 0 \end{pmatrix}$ gives $Q^{T} A^{T} P^{T}=\begin{pmatrix} I_{r}& 0  \\ 0 & 0 \end{pmatrix}$.
 
-> Cor. $rk(AB) \le rk(A), rk(B)$. 
+> Cor. (3.7) $rk(AB) \le rk(A), rk(B)$. 
 
 Proof. The first is trivial, and second is because $rk(AB)=rk(B^{T}A^{T}) \le rk(B^{T}) = rk(B)$.
+## 3.2 Systems of Linear Equations
+> [!note] Def. (**System of linear equations**) 
+> $A x=b$, where $x$ is the variable vector. 
+
+Rmk. Based on results from Ch2, we know the system of linear equations has a solution if $b \in R(L_{A})$. If so, i.e., $\exists s, s.t. As=b$, then the solution space as a preimage of b is $s + Ker L_{A}$.
+
+> Thm. (3.11) If the solution set is nonempty, the system is called **consistent**. It's consistent iff $rkA=rk(A|b)$.
+
+> Thm. (3.13) Given an invertible matrix P, then $A x=b$ iff $PAx=Pb$.
+
+> [!note] Def. (**Row Reduced Echelon Form(RREF)**) 
+> 1. Any nonzero row precedes zero row;
+> 2. The first nonzero entry in each row is 1;
+> 3. The first nonzero entry in each row is the only nonzero entry in its column and to the right of the first 1 in the preceding row.
+
+> [!important] Thm. (3.16)
+> $\forall A \in M_{n \times n}$ with rank r:
+> 1. $\exists P, s.t. PA$ is RREF;
+> 2. Say $B=PA$ with $rk B=r$. For each $i=1 \dots r$, there's a column $b_{j_{i}}=e_{i}$. We claim that $\{ a_{j_{i}} \}$ is a basis of column space of A;
+> 3. If both $P_{1}A, P_{2}A$ are RREF, then $P_{1}A=P_{2}A$.
+
+Proof.
+1. Gaussian elimination produce a product of elementary matrices;
+2. $\sum_{i} c_{i} a_{j_{i}}=0 \implies \sum_{i} c_{i} M a_{j_{i}}=0 \implies \sum_{i} c_{i} e_{i}=0$, thus $c_{i}=0$.
+3. Since B has only r nonzero rows, every column of $B=(Pa_{1}, P a_{2}, \dots)$ has the form $b_{k}=Pa_{k}=(d_{1}, \dots d_{r}, 0, \dots)$, then $a_{k}=P^{-1} b_{k}=P^{-1}(\sum_{i=1}^{r} d_{i} e_{i})=P^{-1}(\sum_{i=1}^{r} d_{i} b_{j_{i}})=\sum_{i=1}^{r} d_{i} a_{j_{i}}$. Since  $d_{i}$ are uniquely dependent on A, B is unique.
+# Ch4 Determinant
+> [!note] Def. (**Bilinear, alternating**) 
+> $B: V \times W \to F$ s.t. $\forall w \in W, v \mapsto B(v,w)$ and $\forall v \in V, w \mapsto B(v,w)$ are linear. E.g. Dot product.
+> When B is bilinear with $V=W$, if $\forall v, B(v,v)=0$, then it's **alternating**.
+
+> Lemma. If $B$ is bilinear alternating, then $\forall v_{1}, v_{2} \in V, B(v_{1}, v_{2})=-B(v_{2}, v_{1})$. The converse is true if $\frac{1}{2} \in F$.
+
+> [!note] Def. (**Multilinear, alternating**) 
+> If it's linear on each entry.
+> When B is multilinear with $V_{1} = V_{2} \dots$, it's **alternating** if $(\exists i, v_{i}=v_{i+1}) \implies \delta(v_{1} \dots v_{n})=0$.
+
+> Prop. Say H is the vector space of all function of the form $V_{1} \dots \times V_{n} \to F$, then S the set of multilinear func is a subspace of H with dimension $\prod_{i} dim V_{i}$.
+
+> Lemma. (1) -> (2) -> (3), and (3) -> (1) if $\frac{1}{2} \in F$.
+1. $(\exists i, v_{i}=v_{i+1}) \implies \delta(v_{1} \dots v_{n})=0$;
+2. $(\exists i, j, v_{i}=v_{j}) \implies \delta(v_{1} \dots v_{n})=0$;
+3. $\forall i,j, \delta(v_{1}, \dots, v_{i}, \dots, v_{j}, \dots, v_{n})=-\delta(v_{1}, \dots, v_{j}, \dots, v_{i}, \dots, v_{n})$
+
+> [!note] Def. (**Determinant**)
+> Multilinear, alternating, and $\det I_{n}=1$.
+
+> Lemma. A is invertible iff $\det A \ne 0$.
+
+> Lemma. $\det AE=\det A \det E$.
+
+> Cor. $d(E)=-1, \lambda, 1$ respectively if E is of type 1, 2, and 3.
+
+> Cor. $\det AB = \det A \det B$.
+
+> Cor. (Uniqueness) There's at most one determinant for each n.
+
+> Lemma. $\det A = \det A^{T}$. Since $\det E=\det E^T$.
+
+> [!important] Thm. (Cumer's rule)
+> For $Ax=b$, consider $M_{k}:=(A_{1}, \dots, A_{k-1}, b, A_{k+1}, A_{n})$, then $x_{k}=\frac{\det  M_{k}}{ \det A}$.
+
+> [!note] Def. (Minor matrix, cofactor of entry)
+> $A \in M_{n \times n}$, then a **minor** matrix is $A_{ij} \in M_{n-1, n-1}$ that removes i-th row and j-th column of A, and the **cofactor of entry** $a_{ij}$ is $\hat a_{ij}:=(-1)^{i+j} \det A_{ij}$.
+
+> [!important] Thm. (Existence)
+> For fixed j, $\det A=\sum_{i=1}^{n} (-1)^{i+j} a_{ji} \det A_{ji}=\sum_{\sigma} (-1)^{sgn \sigma} \prod a_{\sigma(i), i}$.
+
+Proof. Expend the first row first, and then the column: 
+   $$
+   \begin{aligned} 
+   \det A&=\det \begin{pmatrix} \sum_{i} a_{1i} e_{i}^{T} \\ r_{2} \dots \\ r_{n} \end{pmatrix}=\sum_{i} a_{1i} \det \begin{pmatrix} e_{i}^{T} \\ r_{2} \\ \dots \\ r_{n} \end{pmatrix} ,\\ \det \begin{pmatrix} e_{i}^{T} \\ r_{2} \\ \dots \\ r_{n} \end{pmatrix}
+   &=\det \begin{pmatrix} c_{1}, \dots, e_{1}+\sum_{j=2}^{n} a_{ji}e_{j}, \dots, c_{n} \end{pmatrix}\\ 
+   &= \det \begin{pmatrix} c_{1}, \dots, e_{1}, \dots, c_{n} \end{pmatrix} \\
+   &= (-1)^{i-1} \det \begin{pmatrix} e_{1}, c_{1}, \dots, c_{n} \end{pmatrix},   \\
+   &\text{where } c_{10}, \dots c_{n0}=0, \\
+   \text{ thus} \begin{pmatrix} e_{1}, c_{1}, \dots, c_{n} \end{pmatrix} & \text{ is multilinear alternating, thus is determinant}\\
+   \det A&=\sum_{i=1}^{n} (-1)^{i+1} a_{1i} \det(A_{1i})
+   \end{aligned}
+   $$
+
+> Cor. For upper triangular matrix A, $\det A =\prod a_{ii}$.
+
+> Thm. $\det T := \det [ T]_{\alpha}^{\alpha}$ for any choice of $\alpha$, since $\det [T]_{\alpha}^{\alpha}=\det ([I]_{\alpha}^{\beta} [T]_{\beta}^{\beta} [I]_{\beta}^{\alpha}) = \det [T]_{\beta}^{\beta}$.
+
+> Thm. $\det \begin{pmatrix} B & C \\ 0 & D \end{pmatrix} = \det B \det D$.
+
+> Cor. Subspace $W \subset V, \beta=(s_{1}, \dots, s_{r}, \dots, s_{n})$ is a basis of V while $\alpha=(s_{1}, \dots, s_{r})$ is a basis of W and $\bar \alpha=([s_{r+1}], \dots, [s_{n}])$ is a basis of $V/W$. Let $[T]_{\beta}^{\beta} = \begin{pmatrix} B & C \\ 0 & D \end{pmatrix}$. Then $B=[T]_{\alpha}^\alpha, D=[\bar T]_{\bar \alpha}^{\bar \alpha}$, and thus $\det T=\det (T|_{W}) \det \bar T$.
+
+#TODO  Determinant notes
+
+# Ch5 Eigenvalue
+## 5.1 Polynomials
+> [!note] Def. (Irreducible over $F$)
+> Polynomial $p(t)$ is irreducible over $F$ if $p(t)=q(t) s(t) \to$ "either $q(t)$ or $s(t)$ is constant". E.g. the polynomial $x^{2}-2$ is irreducible over the integers but not over the reals.
+
+> Prop. $\forall p(t), \exists q(t), s(t), s.t. q(t) s(t)=p(t)$ and $q(t), s(t)$ are irreducible. If all $p(t), q(t),s(t)$ have leading $1$, then $q(t), s(t)$ are unique up to reordering.
+
+> [!note] Def. (**Split**)
+> A polynomial over F is split if there is a factorization $p(t)=a (t-\lambda_{1}) \dots (t-\lambda)$ for some $a \in F \setminus \{0\}, \lambda_{i}\in F$.
+
+> [!important] (Fundamental Theorem of Algebra, FTOA)
+> 1. If $F=\mathbb{C}$, then $p(t)$ is irreducible iff $p(t)$ is linear;
+> 2. If $F=\mathbb{R}$, then $p(t)$ is irreducible iff $p(t)$ is linear or a degree 2 polynomial with no real solution;
+
+> Lemma. (**Polynomial division**)
+> For polynomials $p,s$, $\exists ! q,r$, s.t., $p=q \cdot s+r, (r=0 \wedge deg(r)<deg(s))$.
+
+> Cor. $p(\lambda)=0 \iff p=(t-\lambda) \cdot q$.
+
+> Cor. $p(\lambda)=0, p \ne 0$, then $\exists !k \ge 1, s.t., p=(t-\lambda)^{k} \cdot q, q(\lambda) \ne 0$. $k$ is called the **multiplicity** of $\lambda$.
+
+> Lemma. If $p$ split, $p=q \cdot r$, then $q,r$ are split.
+
+> Cor. If $p$ split, say $p=a_{n} \prod (t-\lambda_{i})^{k_{i}}$, then $\sum k_{i}=n$.
+
+## 5.2 Eigenvalue
+> [!note] Def. (**Eigenline**)
+> An eigenline of a linear transformation is a subspace charaterized by $span(\{v\})$, s.t., $\exists \lambda, Tv=\lambda v$. Such $v \in span(\{v\})$ is called **eigenvecter**, and $\lambda$ is called **eigenvalue**.
+
+> [!note] Def. (Charateristic polynomial) 
+> $P_{A}(t):=\det(A-t I_{n})$, a polynomial of $t$.
+
+Rmk.
+1. $P_{A}(t)$ can be written as $(-1)^{t^{n}}+\sum_{i=1}^{n-2} a_{i} t^{i}+\det A \cdot t^{0}$.
+2. If $B=PAP^{-1}$, then $P_{B}(t)=\det(PAP^{-1}-\lambda I_{n})=\det(P(A-\lambda I_{n})P^{-1})=P_{A}(t)$.
+3. (Characteristic polynimial of linear map) $P_{T}(t):=\det([T]_{\beta}^{\beta}-t I_{n})$ for any choice of $\beta$.
+4. $\begin{aligned}\exists  v, Tv=\lambda v \iff \exists v, (T-\lambda I)v=0 \iff Ker(T-\lambda I) \ne 0 \\ \iff \det(A-\lambda I_{n})=0 \iff P_{A}(t) \text{ has root }\lambda. \end{aligned}$ 
+
+> [!note] Def. (Generalized eigenvector)
+> $v$ is a **generalized eigenvector** of $\lambda\in F$ if $(T-\lambda I)^{k} v=0$ for some $k \ge 1$.
+
+Rmk.
+1. If $k=1, v\ne 0$, then $v$ is an eigenvector;
+2. If $v \ne 0$, then $\lambda$ is an eigenvalue, since $\exists k' \in [0,k-1], w:=(T-\lambda I)^{k'}v \ne 0, (T-\lambda I)w=0$.
+
+> [!note] Def. (Eigenspace)
+> Subspace $E_{\lambda}:=\{ v \in V: (T-\lambda I) v=0 \}$ is the **eigenspace** for $\lambda$; Subspace $V_{\lambda}:=\{ v \in V: \exists k \ge 1, s.t., (T-\lambda I)^{k} v=0 \}$ is the generalized eigenspace for $\lambda$. Note that $E_{\lambda}\subset V_{\lambda}$, $T(V_{\lambda})\subset V_{\lambda}$.
+
+> Lemma. $\dim V<\infty, \exists ! W$ with decomposition $V=V_{0} \oplus W$, s.t. $T|_{W}:W \to W$ is an isomorphism, where $V_{0}$ is the generalized eigenspace for $0$. In fact, $W=R(T^{n}), V_{0}=Ker T^{n}$.
+
+Proof. 
+1. (Existence) Consider the flag $V \supset R(T) \supset \dots \supset R(T^{n}) \supset \{0\}$. If all n+1 containing relations are strict, it contradicts with $dim V=n$. Thus $\exists k$ s.t. $R(T^{k-1})=R(T^{k})$. Since $T:R(T^{k-1}) \to R(T^{k})$ is also onto, it is an isomorphism. Thus we can take $W:=R(T^{n})$, where $R(T^{n}) = \dots R(T^{k})$ due to the same dimension. It's a decomposition because $R(T^{n}) \cap Ker(T^{n})=0$, thus $R(T^{n}) \oplus Ker(T^{n})$. According to rank-nullity thm, their direct sum have the same dim as V. Thus $Ker T^{n} \oplus W=V$. By definition, $KerT^{n} \subset V_{0}$. $\forall v \in V, v=v_{0}+w$ where $v_{0}\in Ker T^{n}, w \in W$ based on the decomposition. Now suppose $T^{n}v=0$, then $0=T^{n} v = T^{n} v_{0}+T^{n}w=T^{n}w$, then $w=0$, thus $T^{n}v=0 \to v \in V_{0}$, that is $KerT^{n} \subset V_{0}$, thus $KerT^{n} = V_{0}$.
+2. (Uniqueness) Suppose W is not unique, i.e. exists $W' \ne W, V=V_{0} \oplus W', T(W') \subset W'$. Then $\forall v, v=v_{0}+w'$, then $T^{n}v=T^{n}w'$, yet LHS in W and RHS in W', thus $W \subset W'$.
+
+> Cor. $\dim V<\infty$. For any eigenvalue $\lambda$, $\exists !$ decomposition $V=V_{\lambda} \oplus W$, s.t. $(T-\lambda I)|_{W}:W \to W$ is an isomorphism and $T(W) \subset W$, where $V_{\lambda}$ is the generalized eigenspace for eigenvalue $\lambda$. In fact, $W=R((T-\lambda I)^{n}), V_{\lambda}=Ker (T-\lambda I)^{n}$.
+
+Proof. Let $S:=T-\lambda I$, apply the lemma, we get $W=R(S^{n})$, $S|_{W}: W \to W$ is isomorphism, $V=V_{\lambda} \oplus W, V_{\lambda}=Ker((T-\lambda I)^{n})$. What we need to show is $T(W) \subset W$, which is trivial.
+
+> Prop. $T(V_{\lambda})\subset V_{\lambda}$.
+
+Proof. $\forall v, s.t. (T-\lambda I)^{n} v=0$, then $(T-\lambda I)^{n} (Tv)=T((T-\lambda I)^{n} v)=0$. The commutivity comes from the nature of polynomial of transformation.
+
+> [!important] Thm. 
+> $\dim V=n < \infty$, $T:V \to V$, T.F.A.E:
+> 1. $p_{T}(t)=(-1)^{n} \prod_{i=1}^{r} (t-\lambda_{i})^{n_{i}}$ split;
+> 2. $V=\bigoplus_{i=1}^{r} V_{\lambda_{i}}$;
+> 3. T is **triangulizable**, i.e. $\exists$ ordered basis $\beta$, $[T]_{\beta}^{\beta}$ is uppertriangular.
+
+Proof. 
+1. (1=>2)
+2. (2=>3)
+3. (3=>1) Note that $p_{T}(t)=\prod (a_{ii}-t)$, thus split.
+
+Cor. If $p_{T}(t)$ split, $p_{T}(t)=\prod (\lambda_{i}-t)^{\dim V_{\lambda_{i}}}$, i.e. $\dim V_{\lambda_{i}}=multi_{p}(\lambda_{i})$.
+
+> [!important] Thm. 
+> $\dim V=n < \infty$, $T:V \to V$, T.F.A.E:
+> 1. $p_{T}(t)=(-1)^{n} \prod_{i}^{r} (t-\lambda_{i})^{n_{i}}$ split, and $\forall  \lambda \in F,\dim(E_\lambda)=multi(\lambda)$;
+> 2. $V=\bigoplus_{i=1}^{r} E_{\lambda_{i}}$;
+> 3. T is **diagonalizable**, i.e. $\exists$ ordered basis $\beta$, $[T]_{\beta}^{\beta}$ is diagonal.
+
+Proof. #TODO 
+
+> Lemma. $\exists$ polynomial $q(t)$ over F s.t. $q(T)=0$.
+
+Proof. $q(T) \in \mathcal{L}(V,V)$. #TODO 
+
+> Def. (**T-cyclic subspace of V generated by x**) 
+
+> [!important] Thm. (**Cayley-Hamilton thm**)
+> $Ann(T):=\{ q(t) \in F(t) : q(T)=0 \}$. Then $P_{T}(t) \in Ann(T)$. 
+> 
+> E.g. If $V=V_{\lambda}$, $P_{T}(t)=\det (T-tI)^{n}=(t-\lambda)^{n} \in Ann(T)$.
+
+Proof.
+1. Method 1: prove it on $F=\mathbb{C}$ first.
+2. Method 2: more elementary.
+
+# Ch6 Inner Product
 
 
----
 
-# Eigenvalue
+
 
 ## Eigenvalue, eigenvector and movement
 For a matrix $A_{n \times n}$, consider all $(\vec u,\lambda)$ pair such that: $A \vec u=\lambda \vec u$
