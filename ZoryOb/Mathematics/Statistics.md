@@ -176,16 +176,15 @@ E.g.
    $$\begin{aligned}&\text{I\kern-0.15em P}(-z_{\frac{\alpha}{2}} \le \frac{\hat p - p}{ \sqrt{\frac{p(1-p)}{n}}}  \le z_{\frac{\alpha}{2}} )=1-\alpha \\ \iff& \text{I\kern-0.15em P}\left(\frac{Y}{n}-z_{\frac{\alpha}{2}}\sqrt{\frac{p(1-p)}{n}}  \le p \le \frac{Y}{n}+z_{\frac{\alpha}{2}}\sqrt{\frac{p(1-p)}{n}}  \right)=1-\alpha\end{aligned}$$
     - Make additional approximation by replace $p$ in end points with $\hat p:=\frac{Y}{n}$.
 6. (**CI for variance**) 
-    
-
-
-
-
-
+    #TODO 
 ## 2.3 Hypothesis testing
+Partition the parameter space into two nonoverlapping disjoint subsets and then use the ovserved data to decide which set the parameter belongs to. The two cases are called **null hypothesis** $H_{0}$ and **alternative hypothesis** $H_{1}$. 
 
+The result of hypothesis testing is either to reject or fail to reject. Hence, it is necesssary to partition the sample spaces into two part, say $C, C'$. The rejection region for $H_{0}$ is called **critical region**. Often, the partition is specified in terms of the values of a statistic called the **test statistic** (should convert into standard normal/t-distribution).
 
-
+- **Type 1 error**: $H_{0}$ is true but $(X_{i}) \in C$, i.e. get rejected. The probability of this case, denoted as $\alpha:=\text{I\kern-0.15em P}((X_{i}) \in C | H_{0})$, is called the **significance level**. We may pick suitable critical region for specified significance level.
+- **Type 2 error**: $H_{1}$ is true but $(X_{i}) \in C'$, i.e. fail to reject $H_{0}$. The probability of this case is denoted as $\beta:=\text{I\kern-0.15em P}((X_{i})\in C' | H_{1})$.
+- **p-value**: the tail-end probability, under $H_{0}$, of the distribution of the test statistic beyond the observed value. The "beyond" means at least as extreme as the observed value so that away from $H_{0}$ in the direction(s) of $H_{1}$. When $H_{1}$ is two-sided, it is generally taken to be $2 \min(\text{I\kern-0.15em P}(\text{smaller than the observed}), \text{I\kern-0.15em P}(\text{greater than the observed}))$. The smaller the p-value, the less we believe in $H_{0}$. When p-value$<\alpha$, we reject.
 
 
 ---

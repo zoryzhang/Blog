@@ -71,6 +71,9 @@ E.g. Monotonic set sequence converges (if including $\infty$).
 
 # Ch1 Measure theory
 ## 1.2 Some algebraic structures
+
+^f3e312
+
 > [!note] Def. (**Algebra** of sets of X) 
 > A non-empty collection $\mathcal{A}$ of subsets of X, that is closed under finite union and complement. In other word,
 > 1. $E_{1}, E_{2} \in \mathcal{A} \to E_{1} \cup E_{2} \in \mathcal{A}$.
@@ -149,8 +152,8 @@ Rmk.
 E.g. Given $f: X \to [0,\infty]$, we can define a measure by $\mu(E)=\sum_{x \in E} f(x)$.
 1. It's semifinite iff $f(x)<\infty$.
 2. It's $\sigma$-finite iff it's semifinite and $\{x:f(x)>0\}$ is countable.
-3. It's called **counting measure** if for some $x_{0}\in X$, $f(x)=\mathbb{1}(x=x_{0})$.
-4. It's called **point mass or Dirac measure** if $f(x)=1$.
+3. It's called **counting measure** if $f(x)=1$.
+4. It's called **point mass or Dirac measure** if for some $x_{0}\in X$, $f(x)=\mathbb{1}(x=x_{0})$.
 
 > [!important] Thm. Properties of measure:
 > 1. (**Monotone**) $E, F \in  \mathcal{M}, E\subset F \implies \mu(E) \le \mu(F)$.
@@ -354,6 +357,8 @@ $$
 > 2. Any other measure $\tilde \mu$ that extends $\mu_{0}$ has $\forall E \in \mathcal{M}, \tilde \mu(E) \le \mu(E)$, with equality when $\mu(E)<\infty$.
 > 3. If $\mu_{0}$ is $\sigma$-finite, then $\mu$ is unique. (This gives the uniqueness of measure extending $\mu_{0}$ under stronger condition)
 
+^63f1c6
+
 Proof. 
 1. Let $\mathcal{B}$ the collection of $\mu^{*}$-measurable sets. By C-thm, $\mathcal{B}$ is a $\sigma$-algebra and $\mu^{*}|_{\mathcal{B}}$ is a measure. By Prop 1.13, $\mathcal{A} \subset \mathcal{B}$, and $\mathcal{M}$ is the smallest $\sigma$-algebra containing A, therefore $\mathcal{M} \subset \mathcal{B}$, $\mu^{*}|_{\mathcal{M}}$ is a measure.
 2. Goal: $\forall E \in \mathcal{M}, \tilde \mu(E) \le \mu(E)$. Notice that for any covering $\{A_{j}\} \subset \mathcal{A}$ of E, $\tilde \mu(E) \le \tilde \mu(\cup A_{j}) \le \sum \tilde \mu(A_{j})=\sum \mu_{0}(A_{j})=\sum \mu(A_{j})$, therefore a lowerbound, which is not greater than the greatest lowerbound $\mu^{*}$.
@@ -528,7 +533,7 @@ Proof. Recall that $f:X \to Y$ is continuous on X iff for any open set U in Y, $
 > [!important] Prop. (2.4)
 > Let $(X, \mathcal{M})$ and $(Y_{\alpha}, \mathcal{N}_{\alpha})$ be measurable spaces, and $Y:=\prod_{\alpha} Y_{\alpha}, \mathcal{N}:=\otimes \mathcal{N}_{\alpha}$, and $\pi_\alpha$ the coordinate maps. Then $f:X \to Y$ is measurable iff $f_{\alpha}:=\pi_{\alpha} \circ f$ is $(\mathcal{M, N_\alpha})$-measurable for all $\alpha$.
 
-Cor. $f: X \to \mathbb{C}$ is measurable iff $Re f, Im f$ are measurable.
+> Cor. $f: X \to \mathbb{C}$ is measurable iff $Re f, Im f$ are measurable.
 
 > [!important] Thm. (2.6)
 > If $f, g: X \to \mathbb{C}$ are $\mathcal{A}$-measurable, then $f+g, fg$ are $\mathcal{A}$-measurable.
@@ -832,6 +837,8 @@ Proof. Lemma, and then $|f(x)| \le |f(x)-\phi(x)| + |\phi(x)| = : M$.
 
 Proof. #TODO thm2.26
 
+we can turn simple func into cts func
+
 > [!important] Thm. (Lusin's thm)
 > $\mu$ is Lebesgue-Stieltjes measure, $f:E \to \mathbb{C}$ where $\mu(E)<\infty$. Then $\forall \epsilon>0, \exists$ continuous func $g, F \in \mathcal{M}, F \subset E$, s.t. $m(E \setminus F)<\epsilon, \forall x, |f(x)-g(x)|<\epsilon$.
 
@@ -843,14 +850,17 @@ Rmk. (Littlewood's three principles of real analysis)
 3. Every convergent sequence of measurable functions on finite measure set is nearly uniformly convergent (Lusin's).
 
 ## 2.5 Product measure
+In this part, we mainly talk about product of two spaces. But all in fact can generalize to any finite dimension.
+
 > [!note] Def. (Rectangle)
-> Consider measure spaces $(X, \mathcal{A}, \mu)$ and $(Y, \mathcal{B}, v)$, a rectangle is in the form $A \times B:=\{ (x,y): x \in A, y \in B \}$, where $A \in \mathcal{A}, B \in \mathcal{B}$. Let $\mathcal{R_{0}}$ be the collection of finite disjoint union of rectangles. 
+> Consider measure spaces $(X, \mathcal{A}, \mu)$ and $(Y, \mathcal{B}, v)$, a rectangle is in the form $A \times B:=\{ (x,y): x \in A, y \in B \}$, where $A \in \mathcal{A}, B \in \mathcal{B}$. Let $\mathcal{R_{0}}$ be the collection of **finite disjoint union of rectangles**. 
 
 Rmk.
 1. $(A \times B) \cap (E \times F)=(A \cap E) \times (B \cap F)$ is still rectangle;
 2. $(A \times B)^{c}=(X \times B^{c}) \cup (A^{c} \times B) \in \mathcal{R_{0}}$;
 3. The rectangle set is a elementary family;
-4. By prop1.7([[Real Analysis#^668d67]]), $\mathcal{R_{0}}$ is an algebra that can generate the product $\sigma$-algebra $\mathcal{A \otimes B}$.
+4. By prop1.7 ([[Real Analysis#^668d67]]), $\mathcal{R_{0}}$ is an algebra.
+5. $\mathcal{R_{0}}$ can generate the product $\sigma$-algebra $\mathcal{A \otimes B}$, which is defined in ch1.2 ([[Real Analysis#^f3e312]]).
 
 > Prop. (**Product measure**)
 > 1. $\forall E = \cup_{j=1}^{m} (A_{j} \times B_{j}) \in \mathcal{R_{0}}$, define $\pi(E):=\sum_{j=1}^{m} \mu(A_{j})v(B_{j})$. (Again, $0 \cdot \infty=0$)
@@ -859,51 +869,95 @@ Rmk.
 > 4. The induced outermeasure $\pi^{*}(E):=\inf_{ \{R_{j}\} }\{ \sum_{j=1}^{\infty} \pi(R_{j}) : R_{j}\in \mathcal{R_{0}}, \cup R_{j} \supset E  \}$;
 > 5. The **product measure** $\mu \times v$ on $\mathcal{A \otimes B}$ can be defined as $\pi^{*}|_{\mathcal{A \otimes B}}$.
 
-> Prop. If $\mu, v$ are $\sigma$-finite, then 1) $\mu \times v$ is $\sigma$-finite; 2) therefore, $\mu \times v$ is the unique that extends $\pi|_{\mathcal{R_{0}}}$ .
+> Prop. If $\mu, v$ are $\sigma$-finite, then 1) $\mu \times v$ is $\sigma$-finite; 2) therefore, by thm1.14 ([[Real Analysis#^63f1c6]]), $\mu \times v$ is the unique one among those that extend $\pi|_{\mathcal{R_{0}}}$ , i.e. $(\mu \times v)(\cup_{j=1}^{m} (A_{j} \times B_{j})):=\sum_{j=1}^{m} \mu(A_{j})v(B_{j})$.
+
+Proof. $X \times Y=\cup_{j=1}^{\infty} \cup_{k=1}^{\infty} (X_{j} \times Y_{k})$ is a big union, and $(\mu \times v)(X_{j} \times Y_{k})<\infty$.
+
+#TODO extend results in 2.1-2.3
 
 > [!note] Def.
 > 1. x-session of E: $E_{x}:=\{ y \in Y : (x,y) \in E \}$, y-session of E: $E^{y}$.
 > 2. x-session of f: $f_{x}:=y \mapsto f(x,y)$, y-session of f: $f^{y}$.
-> 3. In other word, say $f: E \to H$, then $f_{x}: E_{x} \to H$.
+> 3. E.g. say $f: E \to H$, then $f_{x}: E_{x} \to H$; $\mathcal{X}_{E}^{y}=\mathcal{X}_{E^{y}}$.
 
 > Prop.
 > 1. If $E \in \mathcal{A \otimes B}$, then $E_{x} \in \mathcal{B}, E^{y} \in \mathcal{A}$;
 > 2. If $f$ is $\mathcal{A \otimes B}$-measurable, then $f_{x}$ is $\mathcal{B}$-measurable, $f^{y}$ is $\mathcal{A}$-measurable.
 
-Proof. #TODO 
+Proof.
+1. It suffices to show $\mathcal{R}:=\{ E \subset X \times Y: E \in \mathcal{A} \otimes \mathcal{B}; \forall x\in X, E_{x}\in \mathcal{B} \} \supset \mathcal{A} \otimes \mathcal{B}$. Note that it is a $\sigma$-algebra, and it contains $\mathcal{R_{0}}$, thus contains $\mathcal{M(R_{0})}=\mathcal{A} \otimes \mathcal{B}$.
+2. #TODO 
 
 > [!note] Def. (**Monotone class**) 
 > $\mathcal{C} \subset P(X)$, s.t.,
 > 1. Closed under countable increasing union;
 > 2. Closed under countable decreasing intersection.
-> 
-> The motivation is to make use of the continuity of measure.
 
-> [!important] Lemma. (**The monotone class lemma**)
+Rmk.
+1. The motivation is to make use of the continuity of measure.
+2. Every $\sigma$-algebra is a monotone class for sure.
+3. The intersection of any family of monotone classses is a monotone class. Thus the unique smallest monotone class containing $\mathcal{E}$ is generated by $\mathcal{E}$.
+
+> [!important] Lemma. (**Monotone class lemma**)
 > If $\mathcal{A}$ is an algebra, then the generated monotone class coincides with the generated $\sigma$-algebra.
 
 Proof. #TODO 
 
 > Prop.
-> If $\mu_{1}, \mu_{2}$ are finite measure, $E \in \mathcal{A \otimes B}$, and $f(x)=\mu_{2}(E_{x})$ are $\mathcal{A}$-measurable, $g(x)=\mu_{1}(E^{y})$ are $\mathcal{B}$-measurable, then $$\begin{aligned}(\mu_{1} \times \mu_{2})(E)&=\int_{X} \mu_{2}(E) \ \mathrm{d} \mu_{1}=\int_{X}\left(\int _{Y} \mathcal{X}_{E_{x}} \ \mathrm{d} \mu_{2} \right) \ \mathrm{d} \mu_{1}\\&=\int_{Y} \mu_{1}(E) \ \mathrm{d} \mu_{2}=\int_{Y}\left(\int _{X} \mathcal{X}_{E^{y}} \ \mathrm{d} \mu_{1} \right) \ \mathrm{d} \mu_{2}\end{aligned}$$
+> If $\mu_{1}, \mu_{2}$ are finite measure, $E \in \mathcal{A \otimes B}$, and $f= x \mapsto \mu_{2}(E_{x})$ are $\mathcal{A}$-measurable, $g= x\mapsto \mu_{1}(E^{y})$ are $\mathcal{B}$-measurable, then $$\begin{aligned}(\mu_{1} \times \mu_{2})(E)&=\int_{X} \mu_{2}(E) \ \mathrm{d} \mu_{1}=\int_{X}\left(\int _{Y} \mathcal{X}_{E_{x}} \ \mathrm{d} \mu_{2} \right) \ \mathrm{d} \mu_{1}\\&=\int_{Y} \mu_{1}(E) \ \mathrm{d} \mu_{2}=\int_{Y}\left(\int _{X} \mathcal{X}_{E^{y}} \ \mathrm{d} \mu_{1} \right) \ \mathrm{d} \mu_{2}\end{aligned}$$
+> If $\mu_{1}, \mu_{2}$ are $\sigma$-finite measure, the above still holds.
 
-Proof. #TODO 
-
-> Prop.
-> If $\mu_{1}, \mu_{2}$ are $\sigma$-finite measure, $E \in \mathcal{A \otimes B}$, and $f:= x\mapsto \mu_{2}(E_{x})$ are $\mathcal{A}$-measurable, $g:= y \mapsto \mu_{1}(E^{y})$ are $\mathcal{B}$-measurable, then $$\begin{aligned}(\mu_{1} \times \mu_{2})(E)&=\int_{X} \mu_{2}(E) \ \mathrm{d} \mu_{1}=\int_{X}\left(\int _{Y} \mathcal{X}_{E_{x}} \ \mathrm{d} \mu_{2} \right) \ \mathrm{d} \mu_{1}\\&=\int_{Y} \mu_{1}(E) \ \mathrm{d} \mu_{2}=\int_{Y}\left(\int _{X} \mathcal{X}_{E^{y}} \ \mathrm{d} \mu_{1} \right) \ \mathrm{d} \mu_{2}\end{aligned}$$
-
-Proof. #TODO 
+Proof.
+1. It suffices to show that $\mathcal{C}:=\{ E \subset X \times Y: \text{ satisfy all 3 conditions} \} \supset \mathcal{A \otimes B}$. According to the monotone class lemma, $\mathcal{A \otimes B=M(R_{0})=C(R_{0})}$. Now it suffices to show $\mathcal{C}$ is a monotone class and $C \supset R_{0}$.
+2. $\mathcal{C}$ is a monotone class:
+3. #TODO 
+4. $\sigma$-finite case:
 
 > [!important] Thm. (**Funibi-Tonelli thm**)
 > If $\mu_{1}, \mu_{2}$ are $\sigma$-finite measure,
-> 1. (Tonelli) If $f \in L^{+}(X \times Y)$, then $x \mapsto \int f_{x} \ \mathrm{d} \mu_{2} \in L^{+}(X), y \mapsto \int f^{y} \ \mathrm{d} \mu_{1} \in L^{+}(Y)$, and  $$\begin{aligned} \int f \ \mathrm{d} (\mu_{1} \times \mu_{2})&=\int_{X} \mu_{2}(E) \ \mathrm{d} \mu_{1}=\int_{X}\left(\int _{Y} \mathcal{X}_{E_{x}} \ \mathrm{d} \mu_{2} \right) \ \mathrm{d} \mu_{1}\\&=\int_{Y} \mu_{1}(E) \ \mathrm{d} \mu_{2}=\int_{Y}\left(\int _{X} \mathcal{X}_{E^{y}} \ \mathrm{d} \mu_{1} \right) \ \mathrm{d} \mu_{2}\end{aligned}$$
-> 2. (Fubini)
+> 1. (**Tonelli**) If $f \in L^{+}(X \times Y)$, then $x \mapsto \int f_{x} \ \mathrm{d} \mu_{2} \in L^{+}(X), y \mapsto \int f^{y} \ \mathrm{d} \mu_{1} \in L^{+}(Y)$, and  $$\begin{aligned} \int f \ \mathrm{d} (\mu_{1} \times \mu_{2})&=\int_{X} ( \int_{Y} f(x,y) \ \mathrm{d} \mu_{2}(y) ) \ \mathrm{d} \mu_{1}(x)\\&=\int_{Y} ( \int_{X} f(x,y) \ \mathrm{d} \mu_{1}(x) ) \ \mathrm{d} \mu_{2}(y)\end{aligned}(*)$$
+> 2. (**Fubini**) If $f \in L^{1}(\mu_{1} \times \mu_{2})$, then $f_{x} \in L^{1}(\mu_{2})$ for a.e. $x$, $f_{y} \in L^{1}(\mu_{1})$ for a.e. $y$ , the a.e.-defined functions $x \mapsto \int f_{x} \ \mathrm{d} \mu_{2} \in L^{1}(X), y \mapsto \int f^{y} \ \mathrm{d} \mu_{1} \in L^{1}(Y)$ and $(*)$ holds.
 
-E.g. Show that $\int_{0}^{\infty} \frac{\sin x}{x} \ \mathrm{d}x=\frac{\pi}{2}$. 
-1. Note that $\frac{1}{x}=\int_{0}^{\infty} \exp(-xt) \ \mathrm{d}t, \forall x \ge 0$. #TODO 
+Proof. #TODO 
+
+E.g. Show that $\int_{0}^{\infty} \frac{\sin x}{x} \ \mathrm{d}x=\frac{\pi}{2}$.  Note that $\frac{1}{x}=\int_{0}^{\infty} \exp(-xt) \ \mathrm{d}t, \forall x \ge 0$. #TODO 
+
+## 2.6 Lebesgue Differential Thm, LDT
+In this part, remember that $n$ refers to the dimension. We may use $c_{n}$ to denote a constant that only depends on $n$.
+
+> [!note] Def. 
+> 1. (**Locally integrable**) $f: \mathbb{R}^{n} \to \mathbb{C}, s.t., \int_{K} |f| \ \mathrm{d} m < \infty$ for any compact $K$. The set of it is denoted as $L_{loc}^{1}(\mathbb{R}^{n})$, which is a superset of $L^{1}(\mathbb{R}^{n})$;
+> 2. (**Hardy-littlewood max function**) $M_{f}:= x \mapsto \sup_{r>0} \frac{1}{m(B_{r}(x))} \int_{B_{r}(x)} |f| \ \mathrm{d}m$;
+> 3. (**Variants**) **Uncentered max func** $\tilde M_{f}:=x \mapsto \sup_{B} \{ \frac{1}{m(B)} \int_{B} |f| \ \mathrm{d}m : x \in B \}$. **Rectangle version** $M^{*}_{f}:=x \mapsto \sup_{R} \{ \dots : x \in R, R\text{ is rectangle with any direction} \}$. **Kakeya/Besicovitch set**: a set containing unit line segments pointing all possible directions.
+
+Rmk.
+1. $m(B_{r}(x))=r^{n} \cdot m(B_{1}(0))=: c_{n} \cdot m(B_{1}(0))$;
+2. $M_{f} \le \tilde M_{f} \le 2^{n} M_{f}$;
+3. There is Kakeya set with zero measure, resulting failure of Vitali Covering lemma, thus LDT, on the rectangle version.
+
+> Lemma. (**Vitali Covering lemma**)
+> Suppose measurable $E \subset \cup_{\alpha \in A} B_{\alpha}$, where $\sup_{\alpha \in A} r(B_\alpha)<\infty$. Then there is a disjoint countable subcollection $\alpha_{1}, \dots \alpha_{k} \dots$, s.t.  $m(E) \le c_{n} \sum_{k=1}^{\infty} m(B_{\alpha_{k}})$. 
+
+Proof.
+1. When RHS is infinite, we are done. WLOG, $\sum_{k=1}^{\infty} m(B_{\alpha_{k}}) < \infty$, which means $\lim_{k \to \infty} m(B_{\alpha_{k}})=0$, i.e. $\lim_{k \to \infty} r(B_{\alpha_{k}})=0$.
+2. It sufficient to show that $\forall  \alpha, B_\alpha \subset \cup_{k=1}^{\infty} 5B_{\alpha_{k}}$. Here the dilution of ball $5B_{r}(x):=B_{5r}(x)$. The heuristic is that we keep choosing the largest available ball and then cross out all overlapping balls to get a disjoint collection. Then we need to show the dilution of these balls can still cover the whole set;
+4. The largest ball may not exists. An operational construction makes use of supremum. Pick $\alpha_{k+1}$, s.t.  $r(B_{\alpha_{k+1}}) > \frac 1 2 \sup_{\beta}\{ r(B_{\beta}): B_{\beta} \cap (\cup_{j=1}^{k} B_{\alpha_{j}})= \emptyset \}$, which is finite.
+5. Now $\forall \alpha$, find the first $k, s.t. r(B_{\alpha_{k+1}}) < \frac{1}{2} r(B_{\alpha})$, i.e. $\forall j \le k, r(B_{\alpha_{k+1}}) \ge \frac{1}{2} r(B_{\alpha})$. If we can find an overlaping one, we are done, because the dilution of it will cover $B_{\alpha}$.
+6. Note that $B_{\alpha}$ is itself not a potential option for supremum when getting $\alpha_{k+1}$, otherwise won't get a smaller one: $B_{\alpha_{k+1}}$. Hence we know $B_{\alpha} \cap (\cup_{j=1}^{k} B_{\alpha_{j}}) \ne \emptyset$. Find any $j, s.t. B_{\alpha}\cap B_{\alpha_{j}} \ne \emptyset$,then we are done.
+
+> [!important] Thm.
+> The H-L max func is of weak(1,1). In other word, let $E_{\lambda}:=\{ x \in \mathbb{R}^{n}: M_{f}(x)>\lambda \}$, then $\exists c_{n} \in \mathbb{R}^{ >0}, \forall \lambda >0, \forall f \in L^{1}$, $m(E_{\lambda})\le \frac{ c_{n} \cdot ||f||_{1} }{\lambda}$.
+
+Proof.
+1. $\forall x \in E_{\lambda}, M_{f}(x) := \sup_{r} \frac{1}{m(B_{x}(r))} \int_{B_{x}(r)} |f|  > \lambda$. Then $\exists B_{x}, s.t. \frac{1}{m(B_{x})} \int_{B_{x}} |f|  > \lambda$ and $E_{\lambda} \subset \cup_{x \in E_{\lambda}} B_{x}$.
+2. Note that $m(B_{x}) \le \frac{1}{\lambda} \int_{B_{x}} |f| \le \frac{||f||_{1}}{\lambda}<\infty$, we can take supremum. Then by covering lemma, $m(E_{\lambda}) \le c_{n} \sum_{k=1}^{\infty} m(B_{x_{k}}) \le c_{n}\sum_{k=1}^{\infty}  \frac{1}{\lambda} \int_{B_{x}} |f|=\frac{c_{n}}{\lambda} \int_{\cup B_{x}} |f| \le c_{n} \frac{||f||_{1}}{\lambda}$.
 
 
+> [!important] Thm. (Lebesgue Differential Thm, LDT)
+> For $f \in L_{loc}^{1}(\mathbb{R}^{n}), \lim_{r\to 0} \frac{1}{m(B_{r}(x))} \int_{B_{r}(x)} f \ \mathrm{d}m=f(x)$ a.e.
 
+Proof. #TODO 
 
-
-
+> Cor.
+> 1. **Lebesgue set** $L_{f}:=\{x: \lim_{r\to 0} \frac{1}{m(B_{r}(x))} \int_{B_{r}(x)} |f(x)-f(y)| \ \mathrm{d} y=0  \}$, then $\mu(L_{f}^{c})=0$;
+> 2. For n=1, $\frac{\ \mathrm{d}}{\ \mathrm{d} x} \int_{a}^{x} f(y) \ \mathrm{d}y = f(x)$ a.e. When f is continuous, we can drop "a.e", and get the fundamental thm of calculus.

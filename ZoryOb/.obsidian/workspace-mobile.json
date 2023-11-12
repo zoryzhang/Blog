@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Mathematics/Real Analysis.md",
+                "file": "Mathematics/Linear algebra.md",
                 "mode": "preview",
                 "source": false
               }
@@ -94,7 +94,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "Mathematics/Real Analysis.md",
+            "file": "Mathematics/Linear algebra.md",
             "collapseAll": true,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -111,7 +111,7 @@
         "state": {
           "type": "outgoing-link",
           "state": {
-            "file": "Mathematics/Real Analysis.md",
+            "file": "Mathematics/Linear algebra.md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           }
@@ -123,7 +123,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "Mathematics/Real Analysis.md"
+            "file": "Mathematics/Linear algebra.md"
           }
         }
       }
@@ -140,10 +140,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "5aba9e5e1a08e652",
+  "active": "ee368e41fe4d06ff",
   "lastOpenFiles": [
-    "Mathematics/Statistics.md",
     "Mathematics/Real Analysis.md",
+    "Mathematics/Statistics.md",
     "Mathematics/2023-01-01.md",
     "Mathematics/quote-of-the-day.md",
     "Mathematics/Statistics.pdf",
