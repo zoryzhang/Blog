@@ -139,12 +139,12 @@ Rmk. (**Maximum likelihood estimate, MLE**) For a **likelihood fun**c $L(\theta)
 
 Rmk. (**Method of moments, MOM**) Let i-th sample moment equal to i-th theoretical moment, i from 1 to the # unknown params, then solve the equations.
 
-> Def. (**Chi-squared distribution**) If k iid $Z_{i} \sim N(0,1)$, then $\sum_{i=1}^{k} Z_{i}^{2} \sim X^{2}(k) = Gamma(\alpha=k/2,\theta=2)$. $k$ is called the **degree of freedom**, DF.
+> Def. (**Chi-squared distribution**) If k iid $Z_{i} \sim N(0,1)$, then $\sum_{i=1}^{k} Z_{i}^{2} \sim X^{2}_{(k)} = Gamma(\alpha=k/2,\theta=2)$. $k$ is called the **degree of freedom**, DF.
 
-Prop. $\frac{(n-1)S^{2}}{\sigma^{2}} \sim X^{2}(n-1)$.
+> Prop. $\frac{(n-1)S^{2}}{\sigma^{2}} \sim X^{2}_{(n-1)}$.
 
 Proof.
-1. Assume 
+1. Assume #TODO 
 
 ## 2.2 Confidence Interval, CI
 > Def. (**Student's t-distribution**) $T:=\frac{Z}{\sqrt {U / r} } \sim t_{r}$, where r is the DF,  $Z \sim N(0,1), U \sim X^{2}(r), Z \perp U$. Then $f_{T}(t)=\frac {\Gamma\left( \frac{r+1}{2} \right) }{\sqrt{\pi r} \Gamma(\frac{r}{2})(1+t^{2}/r)^{(r+1)/2}}$.
@@ -162,11 +162,11 @@ E.g.
 E.g. 
 1. (**CI for $\mu$ when $\sigma$ is known**) Let $z_{\frac{\alpha}{2}}$ be the $100(1-\frac{\alpha}{2})$-percentile of $N(0,1)$, then an **approximate 2-sided** $100(1-\alpha)\%$ CI for $\mu$ when $\sigma$ is known is $\bar x \pm z_{\frac{\alpha}{2}} \frac \sigma {\sqrt{n}}$, derived from $Z=\frac{ \bar X - \mu }{ \sigma /\sqrt{n} } \sim N(0,1)$ approximately and thus $\text{I\kern-0.15em P}(-z_{\frac{\alpha}{2}} \le Z \le z_{\frac{\alpha}{2}} )\approx 1-\alpha$ . 
 2. (**CI for $\mu$ when $\sigma$ is unknown but n is large**) use $s$ as the unbiased estimator of $\sigma$**, since $\frac{ \bar x - \mu }{ s/\sqrt{n}} \sim N(0,1)$. 
-3. (**One sided CI**) Let $z_{\alpha}$ be the $100(1-\alpha)$-percentile of $N(0,1)$, then an approximate 1-sided CI for $\mu$ when $\sigma$ is known can be $(\bar x-z_{\alpha} \frac{\sigma}{\sqrt{n}}, \infty)$, from $\text{I\kern-0.15em P}( Z=\frac{ \bar X - \mu }{ \sigma /\sqrt{n} } \le z_{\alpha} )\approx 1-\alpha$ . 
+3. (**One sided CI**) Let $z_{\alpha}$ be the $100(1-\alpha)$-percentile of $N(0,1)$, then an approximate 1-sided CI for $\mu$ when $\sigma$ is known can be $(\bar x-z_{\alpha} \frac{\sigma}{\sqrt{n}}, \infty)$, from $\text{I\kern-0.15em P}( Z=\frac{ \bar X - \mu }{ \sigma /\sqrt{n} } \le z_{\alpha} )\approx 1-\alpha$ .
 4. (**CI for $\mu$ when $\sigma$ is unknown and n is small**) Let $t_{n-1, \frac{\alpha}{2}}$ be the $100(1-\frac{\alpha}{2})$-percentile of $t_{n-1}$, then when $\sigma$ is unknown (need estimation $s$), it is $\bar x \pm t_{n-1, \frac{\alpha}{2}} \frac{s}{\sqrt n}$, derived from $\text{I\kern-0.15em P}(-t_{\frac{\alpha}{2}} \le T=\frac{ \bar X - \mu }{ s /\sqrt{n} } \le t_{\frac{\alpha}{2}} )\approx 1-\alpha$ .
 5. (**Sample size for target error when $\sigma$ is known or n is large**) The question is to find a sample size so that we have high confident that the mean is within $\bar X \pm \epsilon$. In other word, the CI is within $\bar X \pm \epsilon$, where $\epsilon$ is called the **maximum error of the estimate**. Then $\epsilon:=z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt n}$. When we want to know what sample size n is needed for certain amount of error, we can solve n from that equation. 
 6. (**Sample size for target error when $\sigma$ is unknown and n is small**) Note that $\text{I\kern-0.15em P}(\mu \in \bar X \pm t_{n-1, \frac{\alpha}{2}} \frac{S}{\sqrt n } )=1-\alpha$, and $\text{I\kern-0.15em E} (t_{n-1, \frac{\alpha}{2}} \frac{S}{\sqrt n } )^{2}=t_{n-1, \frac{\alpha}{2}} \frac{\sigma^{2}}{\sqrt n }$. Now if we hope $\text{I\kern-0.15em E} \epsilon^{2} := \text{I\kern-0.15em E} (t_{n-1, \frac{\alpha}{2}} \frac{S}{\sqrt n } )^{2}  \le \epsilon_{u}^{2}$, then we want $\frac{n}{t_{n-1, \frac{\alpha}{2}}^{2}} > \frac{s^{2}}{\epsilon_{u}^{2}}$. We can approximate it by conducting a preliminary experiment first to have sample variance, then get a sense of the n by using (5), and then improve the gap one observation at a time until it obeys the inequality.
-7. (**CI for $\mu_{X}-\mu_{Y}$ when common $\sigma$ is unknown and n is small**) Suppose $X_{1}, \dots X_{n_{X}}$ and $Y_{1},\dots Y_{n_{Y}}$ independently from two normal $N(\mu_{X}, \sigma^{2}), N(\mu_{Y}, \sigma^{2})$. 
+7. (**CI for $\mu_{X}-\mu_{Y}$ when the common $\sigma$ is unknown and n is small**) Suppose $X_{1}, \dots X_{n_{X}}$ and $Y_{1},\dots Y_{n_{Y}}$ independently from two normal $N(\mu_{X}, \sigma^{2}), N(\mu_{Y}, \sigma^{2})$. 
     - $Z:=\frac{\bar X - \bar Y - (\mu_{X}-\mu_{Y})}{\sqrt{ \frac{\sigma^{2}}{n_{X}} + \frac{\sigma^{2}}{n_{Y}} }} \sim N(0,1)$. 
     - OTAH, $U:=\frac{(n_{X}-1)S_{X}^{2}}{\sigma^{2}}+\frac{(n_{Y}-1)S_{Y}^{2}}{\sigma^{2}}$ is the sum of two independent chi-square r.v. thus $U \sim X^{2}(n_{X}+n_{Y}-2)$. 
     - The independence between the sample means and sample variances implies that $Z \perp U$. Thus $T:=\frac{Z}{\sqrt{\frac{U}{n_{X}+n_{Y}-2}}}\sim t_{n_{X}+n_{Y}-2}$ .
@@ -175,16 +175,63 @@ E.g.
     - By CLT, $\frac{\hat p - \text{I\kern-0.15em E} \hat p}{\sqrt{Var \hat p}}= \frac{\hat p - p}{ \sqrt{p(1-p)/n}} \sim N(0,1)$ approximately when n is large enough.
    $$\begin{aligned}&\text{I\kern-0.15em P}(-z_{\frac{\alpha}{2}} \le \frac{\hat p - p}{ \sqrt{\frac{p(1-p)}{n}}}  \le z_{\frac{\alpha}{2}} )=1-\alpha \\ \iff& \text{I\kern-0.15em P}\left(\frac{Y}{n}-z_{\frac{\alpha}{2}}\sqrt{\frac{p(1-p)}{n}}  \le p \le \frac{Y}{n}+z_{\frac{\alpha}{2}}\sqrt{\frac{p(1-p)}{n}}  \right)=1-\alpha\end{aligned}$$
     - Make additional approximation by replace $p$ in end points with $\hat p:=\frac{Y}{n}$.
-6. (**CI for variance**) 
+6. (**CI for variance**) $( \frac{(n-1)s^{2}}{X^{2}_{\frac{\alpha}{2}}} , \frac{(n-1)s^{2}}{X^{2}_{1-\frac{\alpha}{2}}} )$ .
     #TODO 
 ## 2.3 Hypothesis testing
-Partition the parameter space into two nonoverlapping disjoint subsets and then use the ovserved data to decide which set the parameter belongs to. The two cases are called **null hypothesis** $H_{0}$ and **alternative hypothesis** $H_{1}$. 
+Standard procedure (go back to here later):
+1. Formulate $H_{0}, H_{1}$;
+2. Identify a test statistic and its dist under $H_{0}$;
+3. Evaluate the test statistic by calculating a p-value;
+4. Compare p-value to $\alpha$. If less than, reject $H_{0}$;
+5. State conclusion as "there is/isn't enough evidence to show that ...".
 
-The result of hypothesis testing is either to reject or fail to reject. Hence, it is necesssary to partition the sample spaces into two part, say $C, C'$. The rejection region for $H_{0}$ is called **critical region**. Often, the partition is specified in terms of the values of a statistic called the **test statistic** (should convert into standard normal/t-distribution).
+Partition the parameter space into two nonoverlapping disjoint subsets and then use the ovserved data to decide which set the parameter belongs to. The two cases are called **null hypothesis** $H_{0}$ and **alternative hypothesis** $H_{1}$. We don't reject $H_{0}$ by default unless we have enough evidence to support $H_{1}$, and thus reject $H_{0}$.
 
-- **Type 1 error**: $H_{0}$ is true but $(X_{i}) \in C$, i.e. get rejected. The probability of this case, denoted as $\alpha:=\text{I\kern-0.15em P}((X_{i}) \in C | H_{0})$, is called the **significance level**. We may pick suitable critical region for specified significance level.
-- **Type 2 error**: $H_{1}$ is true but $(X_{i}) \in C'$, i.e. fail to reject $H_{0}$. The probability of this case is denoted as $\beta:=\text{I\kern-0.15em P}((X_{i})\in C' | H_{1})$.
-- **p-value**: the tail-end probability, under $H_{0}$, of the distribution of the test statistic beyond the observed value. The "beyond" means at least as extreme as the observed value so that away from $H_{0}$ in the direction(s) of $H_{1}$. When $H_{1}$ is two-sided, it is generally taken to be $2 \min(\text{I\kern-0.15em P}(\text{smaller than the observed}), \text{I\kern-0.15em P}(\text{greater than the observed}))$. The smaller the p-value, the less we believe in $H_{0}$. When p-value$<\alpha$, we reject.
+The result of hypothesis testing is either to **reject or fail to rejec**t $H_{0}$. Hence, it is necesssary to partition the sample spaces into two part, say $C, C'$. The rejection region C for $H_{0}$ is called **critical region**. Often, the partition is specified in terms of the values of a statistic called the **test statistic** (should convert into standard normal/t-distribution before testing). Remember that critical region and test statistic should be in standard dist.
+
+Def. **Type 1 error**: $H_{0}$ is true but $(X_{i}) \in C$, i.e. get rejected. The probability of this case, denoted as $\alpha:=\text{I\kern-0.15em P}((X_{i}) \in C | H_{0})$, is called the **significance level**. To control this error, we may pick suitable critical region for specified significance level that we want to achieve.
+
+Def. **Type 2 error**: $H_{1}$ is true but $(X_{i}) \in C'$, i.e. fail to reject $H_{0}$. The probability of this case is denoted as $\beta:=\text{I\kern-0.15em P}((X_{i})\in C' | H_{1})$.
+
+Def. **p-value**: the tail-end probability, under $H_{0}$, of the distribution of the test statistic beyond the observed value. 
+- The "beyond" means at least as extreme as the observed value so that away from $H_{0}$ in the direction(s) of $H_{1}$. When $H_{1}$ is two-sided, it is generally taken to be $2 \min(\text{I\kern-0.15em P}(\text{smaller than the observed}), \text{I\kern-0.15em P}(\text{greater than the observed}))$. 
+- The smaller the p-value, the less we believe in $H_{0}$. When p-value$<\alpha$, we reject $H_{0}$. The specific p-value is more informative than simply put whether hypothesis is rejected under certain $\alpha$, since the latter cannot tell what will happen when the $\alpha$ is different.
+- **In testing, asking p-value of test statistic to be less than $\alpha$ is the same as asking test statistic to be in the CI based on $\mu$. In contrast, in last session, we ask the chance of $\mu$ being in the CI based on the test statistic.**
+
+- Test for **one mean** with known variance or large n:
+    - $H_{0}: \mu=\mu_{0}$, test statistics $Z:=\frac{ \bar X - \mu_{0} }{ \sigma/\sqrt{n} } \sim N(0,1)$.
+    - When $H_{1}: \mu \ne \mu_{0}$, the critical region $|z| \ge z_{\alpha/2}$ or $|\bar x - \mu_{0}| \ge z_{\frac{\alpha}{2}}\sigma / \sqrt{n}$.
+    - When $H_{1}: \mu > \mu_{0}$, the critical region $z \ge z_{\alpha}$ or $\bar x - \mu_{0}\ge z_{\alpha}\sigma / \sqrt{n}$.
+- Test for **one mean** with unknown variance and small n:
+    - Simply adopt the t-distribution CI.
+- Test for **one proportion**:
+    - $H_{0}: p=p_{0}$, under which test statistics $Z:=\frac{ \frac{Y}{n} - p_{0} }{ \sqrt{p_{0} (1-p_{0}) /n } } \sim N(0,1)$, whose denominator is different from the CI. That one can also be used, yet produce approximately the same result.
+    - When $H_{1}: \mu \ne \mu_{0}$, the critical region $|z| \ge z_{\alpha/2}$.
+- Test for **equality of two means** with both dist approximately normal:
+    - $Z:=\frac{\bar X - \bar Y - (\mu_{X}-\mu_{Y})}{\sqrt{ \frac{\sigma_{X}^{2}}{n_{X}} + \frac{\sigma_{Y}^{2}}{n_{Y}} }} \sim N(0,1)$. 
+    - CI = $(\bar X - \bar Y) \pm z_\frac{\alpha}{2}\sqrt{ \frac{\sigma_{X}^{2}}{n_{X}}+\frac{\sigma_{Y}^{2}}{n_{Y}} }$.
+- Test for **equality of two means** with unknown variance and n is small:
+    - In general case, to use t distribution, we can use conservative T: $df=min(n_{1}, n_{2})-1$ or **Welch's T**: $df=\lfloor \frac{ (\frac{s_{X}^{2}}{n_{X}} + \frac{s_{Y}^{2}}{n_{Y}} )^{2} }{ \frac{1}{n_{X}-1} (\frac{s_{X}^{2}}{n_{X}})^{2} +  \frac{1}{n_{Y}-1} (\frac{s_{Y}^{2}}{n_{Y}})^{2} } \rfloor$.
+    - **Pooled variance**: in the case that we assume $\sigma_{X}=\sigma_{Y}$, we can use $s_{pooled}$ as the estimator for both, where $s_{pooled}^{2}:=\frac{ (n_{X}-1)s_{X}^{2} + (n_{Y}-1)s_{Y}^{2} }{ n_{X} + n_{Y} -2 }$ and $df=n_{X}+n_{Y}-2$. This assumption is reasonable **if quotient between two sample standard deviation is at most 2**.
+    - **Matched pairs**: if the data are paried, i.e. $D_{i}=X_{i}-Y_{i}$ are approximately random sample from normal. Then df=n-1, treat as one dist directly.
+- Test for **two proportion**:
+    - $Z:=\frac{ (\frac{Y_{1}}{n_{1}}-\frac{Y_{2}}{n_{2}})-(p_{1}-p_{2}) }{ \sqrt{ \frac{p_{1}(1-p_{1})}{n_{1}} + \frac{p_{2}(1-p_{2})}{n_{2}} } } \sim N(0,1)$.
+    - To get test statistic under $H_{0}: p_{1}=p_{2}$, estimate $p_{1},p_{2}$ with $\hat p:=\frac{Y_{1}+Y_{2}}{n_{1}+n_{2}}$. $Z:=\frac{ (\frac{Y_{1}}{n_{1}}-\frac{Y_{2}}{n_{2}}) }{ \sqrt{ \hat p(1-\hat p) (\frac{1}{n_{1}}+ \frac{1}{n_{2}} ) } } \sim N(0,1)$.
+- Test for **variance**:
+    - $X^{2}=\frac{(n-1)S^{2}}{\sigma^{2}} \sim X^{2}_{(n-1)}$
+    - $H_{0}: \sigma = \sigma_{0},H_{1}:\sigma < \sigma_{0}, C=\{ X^{2} < X^{2}_{n-1, 1-\alpha} \}$.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ---
@@ -198,7 +245,6 @@ V=V[Y]=V[QX]=QV[X]Q^{T}=QD^{2}Q^{T}
 $$
 Eigenvalue decomposition solves this problem. Say $eigen(V)=\lambda_{1}, \dots$, then $\lambda_{i}=\sigma_{i}^{2}$.
 
-# **Hypothesis Testing**
 
 # **Kullback–Leibler divergence**
 

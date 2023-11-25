@@ -8,16 +8,17 @@
 
 # Textbook
 Gerald B. Folland, Real Analysis
-[Sol1](https://people.umass.edu/bban/Solutions.html), [Sol2](https://www.math.wustl.edu/~sawyer/m5051f09/hwindex.html)
+[Sol1](https://people.umass.edu/bban/Solutions.html), [Sol2](https://www.math.wustl.edu/~sawyer/m5051f09/hwindex.html), [Sol3](https://drive.google.com/file/d/16Qn-uS54XDMrnI18poGnOzlWrl50l4Vo/view?usp=sharing)
 
 # Ch0 Preliminaries
 
 ## High level techniques
 1. When we want to show an inequality related to measure, it's usually easier to enlarge it, since the subadditivity is giving you more terms during enlarging. Otherwise, you need to organize your terms and take a pair of it to apply subadditivity. Also, during enlarging, you can directly drop unnecessary terms in intersection, due to monotonicity.
 2. When showing general inequality, though, try both. Sometimes either is easier.
+3. Do algebra with $\mu(E)$ carefully, since it can be infinity.
 
-## Reminder
-- Do algebra with $\mu(E)$ carefully, since it can be infinity.
+## Technical tricks
+1. (Chebyshev’s inequality in $L^{1}$) $m(|f-g|>\lambda) \le \int_{|f-g|>\lambda} 1 \le \int_{|f-g|>\lambda} \frac{|f-g|}{\lambda} \le \frac{1}{\lambda} ||f-g||_{1}$. ^cd31a5
 
 ## Notation
 - X: (in plain text) the universal set.
@@ -68,6 +69,8 @@ E.g. Monotonic set sequence converges (if including $\infty$).
 - Arbitrary union of open set still open, arbitrary intersection of closed set still closed.
 - $f:X \to Y$ is continuous on X iff for any open set U in Y, $f^{-1}(U)$ is open in X.
 - $\sum_{j=1}^{n} \sum_{k=1}^{\infty}=\sum_{k=1}^{\infty} \sum_{j=1}^{n}$ is interchangable. Proof by induction on n.
+
+
 
 # Ch1 Measure theory
 ## 1.2 Some algebraic structures
@@ -840,14 +843,18 @@ Proof. #TODO thm2.26
 we can turn simple func into cts func
 
 > [!important] Thm. (Lusin's thm)
-> $\mu$ is Lebesgue-Stieltjes measure, $f:E \to \mathbb{C}$ where $\mu(E)<\infty$. Then $\forall \epsilon>0, \exists$ continuous func $g, F \in \mathcal{M}, F \subset E$, s.t. $m(E \setminus F)<\epsilon, \forall x, |f(x)-g(x)|<\epsilon$.
+> $\mu$ is Lebesgue-Stieltjes measure, measurable $f:E \to \mathbb{C}$ where $\mu(E)<\infty$. Then $\forall \epsilon>0, \exists$ continuous func $g,  \exists F \in \mathcal{M}, F \subset E$, s.t. $m(E \setminus F)<\epsilon, \forall x, |f(x)-g(x)|<\epsilon$.
 
 Proof. #TODO 
+
+> Cor. $\mu$ is Lebesgue-Stieltjes measure, $f:E \to \mathbb{C}$. Then f is measurable iff $\forall \epsilon>0, \exists$ closed $F \in \mathcal{M}, F \subset E$, s.t. $m(E \setminus F)<\epsilon, f|_{F}$ is continuous. https://heil.math.gatech.edu/6337/spring11/lusin.pdf
 
 Rmk. (Littlewood's three principles of real analysis)
 1. Every measurable set in $\mathbb{R}$ is nearly a finite union of intervals (prop1.20 #TODO );
 2. Every function (of class Lp) on $\mathbb{R}$ is nearly continuous (Egorov's);
-3. Every convergent sequence of measurable functions on finite measure set is nearly uniformly convergent (Lusin's).
+3. Every convergent sequence of measurable functions on finite measure set is nearly uniformly convergent / every measurable function is nearly continuous (Lusin's).
+
+Rmk. $\forall f \in L^{1}, \epsilon>0, \exists$ complex-valued continuous func $g$ with compact support, s.t. $||f-g||_{1}<\epsilon$. https://mathproblems123.files.wordpress.com/2011/02/density-1.pdf
 
 ## 2.5 Product measure
 In this part, we mainly talk about product of two spaces. But all in fact can generalize to any finite dimension.
@@ -922,42 +929,101 @@ Proof. #TODO
 
 E.g. Show that $\int_{0}^{\infty} \frac{\sin x}{x} \ \mathrm{d}x=\frac{\pi}{2}$.  Note that $\frac{1}{x}=\int_{0}^{\infty} \exp(-xt) \ \mathrm{d}t, \forall x \ge 0$. #TODO 
 
-## 2.6 Lebesgue Differential Thm, LDT
+# Ch3 Signed measures and differentiation
+## 3.4 Lebesgue Differential Thm, LDT
 In this part, remember that $n$ refers to the dimension. We may use $c_{n}$ to denote a constant that only depends on $n$.
 
 > [!note] Def. 
 > 1. (**Locally integrable**) $f: \mathbb{R}^{n} \to \mathbb{C}, s.t., \int_{K} |f| \ \mathrm{d} m < \infty$ for any compact $K$. The set of it is denoted as $L_{loc}^{1}(\mathbb{R}^{n})$, which is a superset of $L^{1}(\mathbb{R}^{n})$;
 > 2. (**Hardy-littlewood max function**) $M_{f}:= x \mapsto \sup_{r>0} \frac{1}{m(B_{r}(x))} \int_{B_{r}(x)} |f| \ \mathrm{d}m$;
 > 3. (**Variants**) **Uncentered max func** $\tilde M_{f}:=x \mapsto \sup_{B} \{ \frac{1}{m(B)} \int_{B} |f| \ \mathrm{d}m : x \in B \}$. **Rectangle version** $M^{*}_{f}:=x \mapsto \sup_{R} \{ \dots : x \in R, R\text{ is rectangle with any direction} \}$. **Kakeya/Besicovitch set**: a set containing unit line segments pointing all possible directions.
+> 4. (operator $T$ of type **weak(p,p)**) Let $E_{\lambda}:=\{ x \in \mathbb{R}^{n}: |Tf(x)|>\lambda \}$, then $\exists C \in \mathbb{R}^{ >0}, \forall \lambda >0, \forall f \in L^{p}$, $m(E_{\lambda})\le \frac{ C \cdot ||f||_{p}^{p} }{\lambda^{p}}$.
+> 5. (operator $T$ of type **strong(p,p)**) $\exists C \in \mathbb{R}^{ >0},  \forall f \in L^{p}$, $|| Tf(x) ||_{p} \le C \cdot ||f||_{p}^{p}$.
 
 Rmk.
-1. $m(B_{r}(x))=r^{n} \cdot m(B_{1}(0))=: c_{n} \cdot m(B_{1}(0))$;
+1. $m(B_{r}(x))=r^{n} \cdot m(B_{1}(0))$;
 2. $M_{f} \le \tilde M_{f} \le 2^{n} M_{f}$;
-3. There is Kakeya set with zero measure, resulting failure of Vitali Covering lemma, thus LDT, on the rectangle version.
+3. There is a Kakeya set with zero measure, resulting in the failure of Vitali Covering lemma, thus LDT, on the rectangle version.
 
-> Lemma. (**Vitali Covering lemma**)
+> [!important] Lemma. (**Vitali Covering lemma**)
 > Suppose measurable $E \subset \cup_{\alpha \in A} B_{\alpha}$, where $\sup_{\alpha \in A} r(B_\alpha)<\infty$. Then there is a disjoint countable subcollection $\alpha_{1}, \dots \alpha_{k} \dots$, s.t.  $m(E) \le c_{n} \sum_{k=1}^{\infty} m(B_{\alpha_{k}})$. 
 
 Proof.
 1. When RHS is infinite, we are done. WLOG, $\sum_{k=1}^{\infty} m(B_{\alpha_{k}}) < \infty$, which means $\lim_{k \to \infty} m(B_{\alpha_{k}})=0$, i.e. $\lim_{k \to \infty} r(B_{\alpha_{k}})=0$.
-2. It sufficient to show that $\forall  \alpha, B_\alpha \subset \cup_{k=1}^{\infty} 5B_{\alpha_{k}}$. Here the dilution of ball $5B_{r}(x):=B_{5r}(x)$. The heuristic is that we keep choosing the largest available ball and then cross out all overlapping balls to get a disjoint collection. Then we need to show the dilution of these balls can still cover the whole set;
-4. The largest ball may not exists. An operational construction makes use of supremum. Pick $\alpha_{k+1}$, s.t.  $r(B_{\alpha_{k+1}}) > \frac 1 2 \sup_{\beta}\{ r(B_{\beta}): B_{\beta} \cap (\cup_{j=1}^{k} B_{\alpha_{j}})= \emptyset \}$, which is finite.
-5. Now $\forall \alpha$, find the first $k, s.t. r(B_{\alpha_{k+1}}) < \frac{1}{2} r(B_{\alpha})$, i.e. $\forall j \le k, r(B_{\alpha_{k+1}}) \ge \frac{1}{2} r(B_{\alpha})$. If we can find an overlaping one, we are done, because the dilution of it will cover $B_{\alpha}$.
-6. Note that $B_{\alpha}$ is itself not a potential option for supremum when getting $\alpha_{k+1}$, otherwise won't get a smaller one: $B_{\alpha_{k+1}}$. Hence we know $B_{\alpha} \cap (\cup_{j=1}^{k} B_{\alpha_{j}}) \ne \emptyset$. Find any $j, s.t. B_{\alpha}\cap B_{\alpha_{j}} \ne \emptyset$,then we are done.
+2. It's sufficient to show that $\forall  \alpha, B_\alpha \subset \cup_{k=1}^{\infty} 5B_{\alpha_{k}}$. Here the dilution of ball $5B_{r}(x):=B_{5r}(x)$. The heuristic is that we keep choosing the largest available ball and then crossing out all balls that overlap with the chosen to get a disjoint collection. Then we need to show the dilution of these balls can still cover the whole set;
+4. The largest ball may not exist. An operational construction makes use of supremum. Pick $\alpha_{k+1}$, s.t.  $r(B_{\alpha_{k+1}}) > \frac 1 2 \sup_{\beta}\{ r(B_{\beta}): B_{\beta} \cap (\cup_{j=1}^{k} B_{\alpha_{j}})= \emptyset \}$, which is finite.
+5. Now $\forall \alpha$, find the first $k, s.t. r(B_{\alpha_{k+1}}) < \frac{1}{2} r(B_{\alpha})$, i.e. $\forall j \le k, r(B_{\alpha_{j}}) \ge \frac{1}{2} r(B_{\alpha})$. Such k exists since the limit of radius is zero. If we can find an overlaping ball for $B_{\alpha}$ in the first k balls, we are done, because the dilution of it will cover $B_{\alpha}$.
+6. Note that $B_{\alpha}$ is itself not a potential option for supremum when getting $\alpha_{k+1}$, otherwise won't get a smaller one: $B_{\alpha_{k+1}}$. Hence we know $B_{\alpha} \cap (\cup_{j=1}^{k} B_{\alpha_{j}}) \ne \emptyset$. Find any $j \le k, s.t. B_{\alpha}\cap B_{\alpha_{j}} \ne \emptyset$, then we are done.
 
-> [!important] Thm.
+> [!important] Thm. (**Hardy-littlewood maximum thm**)
 > The H-L max func is of weak(1,1). In other word, let $E_{\lambda}:=\{ x \in \mathbb{R}^{n}: M_{f}(x)>\lambda \}$, then $\exists c_{n} \in \mathbb{R}^{ >0}, \forall \lambda >0, \forall f \in L^{1}$, $m(E_{\lambda})\le \frac{ c_{n} \cdot ||f||_{1} }{\lambda}$.
 
 Proof.
 1. $\forall x \in E_{\lambda}, M_{f}(x) := \sup_{r} \frac{1}{m(B_{x}(r))} \int_{B_{x}(r)} |f|  > \lambda$. Then $\exists B_{x}, s.t. \frac{1}{m(B_{x})} \int_{B_{x}} |f|  > \lambda$ and $E_{\lambda} \subset \cup_{x \in E_{\lambda}} B_{x}$.
 2. Note that $m(B_{x}) \le \frac{1}{\lambda} \int_{B_{x}} |f| \le \frac{||f||_{1}}{\lambda}<\infty$, we can take supremum. Then by covering lemma, $m(E_{\lambda}) \le c_{n} \sum_{k=1}^{\infty} m(B_{x_{k}}) \le c_{n}\sum_{k=1}^{\infty}  \frac{1}{\lambda} \int_{B_{x}} |f|=\frac{c_{n}}{\lambda} \int_{\cup B_{x}} |f| \le c_{n} \frac{||f||_{1}}{\lambda}$.
 
+> Lemma. For $f \in L_{loc}^{1}$, define an operator $T_{f}(x):=\lim_{r\to 0} \frac{1}{m(B_{r}(x))} \int_{B_{r}(x)} |f(x)-f(y)| \ \mathrm{d} m (y)$. Define **Lebesgue set** $L_{f}:=\{x: T_{f}(x) =0  \}$. If $f$ is continuous at $x$, then $x \in L_{f}$. 
+
+Proof. By continuity, $\forall \epsilon>0, \exists \delta>0$ s.t. $\forall y\in B_{\delta}(x), |f(y)-f(x)|<\epsilon$. Then $\forall \epsilon>0, \forall r<\delta, \frac{1}{m(B_{r}(x))} \int_{B_{r}(x)} |f(x)-f(y)| \ \mathrm{d} y<\epsilon$. Take r to 0 to get $\forall \epsilon>0, T_{f}(x)<\epsilon$, and then take $\epsilon$ to 0.
 
 > [!important] Thm. (Lebesgue Differential Thm, LDT)
-> For $f \in L_{loc}^{1}(\mathbb{R}^{n}), \lim_{r\to 0} \frac{1}{m(B_{r}(x))} \int_{B_{r}(x)} f \ \mathrm{d}m=f(x)$ a.e.
+> For $f \in L_{loc}^{1}(\mathbb{R}^{n}), T_{f}(x)=0$ a.e. In other word, $\mu(L_{f}^{c})=0$.
+
+Proof. 
+1. Claim: $T_{f}$ exists in $\mathbb{R}$ a.e. i.e. $\theta(f):= x \mapsto (\limsup_{r}-\liminf_{r}) \frac{1}{m(B_{r}(x))} \int_{B_{r}(x)} | f(x)-f(y) | \ \mathrm{d} y=0$ a.e. Since $\{ x: \theta(f)(x)\ne 0 \} \subset \cup_{\lambda>0} \{ x: \theta(f)(x)>\lambda \}$, it suffices to show each of the latter is of measure 0.
+2. To show that, recall that continuous funcs are dense in $L^{1}$, i.e. $\exists \epsilon>0, \exists g \in C(\mathbb{R}^{n})$, s.t. $||f-g||_{1}<\epsilon$ and $\theta(g)=0$ by lemma. Note that $\theta(f)=|\theta(f)-\theta(g)| \le |\theta(f-g)| \le 2M_{f-g}$.  Consider that $\theta(f)(x) > \lambda$ implies $M_{f-g} > \frac{\lambda}{2}$. Then $\forall \epsilon>0$, by maximum thm, $m(\{\dots\}) \le c_{n} \frac{||f-g||_{1}}{\lambda/2}<\frac{c_{n}\epsilon}{\lambda/2}$. Send $\epsilon$ to 0.
+3. $$\begin{aligned}
+|f(x)-f(y)| &\le |f(x)-g(x)+g(x)-g(y)+g(y)-f(y)| \\ 
+&\le |f(x)-g(x)|+|g(x)-g(y)|+|g(y)-f(y)| \\
+|T_{f}(x)| &\le M_{f-g}(x)+|f(x)-g(x)| \\
+\forall \lambda>0, & \{ T_{f}>\lambda \} \subset \{M_{f-g}>\frac{\lambda}{2}\}\cup \{|f(x)-g(x)|>\frac{\lambda}{2}\}
+\end{aligned}$$
+The latter is zero given Chebyshev's inequality ([[Real Analysis#^cd31a5]]).
+
+Rmk. For n=1 and continuous, $\frac{\ \mathrm{d}}{\ \mathrm{d} x} \int_{a}^{x} f(y) \ \mathrm{d}y = f(x)$. We get the fundamental thm of calculus.
+
+## 3.5 Func of bounded variation
+> [!important] Thm.
+> $F: \mathbb{R} \to \mathbb{R}$, $F \nearrow$, then $F$ is 1) continuous a.e. and 2) differentiable a.e. with 3) $F: [a,b] \to \mathbb{R}, \int_{a}^{b} f'(x) \ \mathrm{d}m(x) \le f(b)-f(a)$. 
+
+Proof.
+1. $D:=$ the set of discontinuous points. Claim D is countable. $x \in D \iff F(x+)>F(x-)$. Let $I_{x}:= (F(x-), F(x+))$, then $card(D)=card(\{I_{x}\})$. Claim: $I_{x}$'s are disjoint. Since $\forall x_{1},x_{2} \in D, x_{1}<x_{2}, \exists y \in (x_{1}, x_{2})$, $F(x_{1}+):=\inf \{ F(x):x_{1}<x \} \le F(y) \le \sup \{ F(x) : x < x_{2} \} =: F(x_{2}-)$. Since they're disjoint, we can always pick a non-overlaping rational number in each $I_{x}$, thus $card(\{I_{x}\})\le card(\mathbb{Q})$.
+2. Two methods: abstract measure theory or some variants of Vitali covering lemma; #NotCovered 
+3. For convenience, define $f(x>b):=f(b)$. Let $g(x):=f'(x+):=\lim_{n \to \infty} g_{n}(x)$, where $g_{n}(x):=\frac{ f(x+ \frac{1}{n} )-f(x) }{\frac{1}{n}} \in L^{+}$, then $g=f'$ a.e. Apply Fatou's lemma, $$\begin{aligned} \int_{[a,b]} f' \ \mathrm{d}m&=\int_{[a,b]} \lim g_{n} \le \liminf \int_{[a,b]}g_{n} \\ &= \liminf \left( n \int_{\left[b,b+ \frac{1}{n}\right]} f - n \int_{\left[a,a+ \frac{1}{n}\right]} f \right) \\ &=\liminf \left( f(b)- n \int_{\left[a,a+ \frac{1}{n}\right]} f \right) \le f(b)-f(a) \end{aligned}$$
+
+E.g. (**Cantor func**) $F \nearrow$, continuous on $[0,1]$, diff. a.e. and $F'=0$ a.e.
+
+> [!note] Def.
+> - (**Total variation func**) $T_{f}(x)=\sup_{n, \{x_{i}\}} \{ \sum_{j=1}^{n} |f(x_{j})-f(x_{j-1})| : n \in \mathbb{N}, -\infty < x_{0} < \dots < x_{n}=x \}$;
+> - (**Bounded variation**) If $T_{f}(\infty)=\lim_{x \to \infty} T_{f}(x)<\infty$;
+> - (**Total variation on $[a,b]$**) $T_{f}([a,b]), Var_{f}([a,b])$;
+> - The collection of those functions is denoted as $BV(\mathbb{R})$ and $BV([a,b])$.
+
+E.g. $f(x)= x \sin \frac{1}{x}  \mathcal{X}_{\{x \ne 0\}} \notin BV([0,1])$.
+
+> [!important] Thm.
+> $f \in BV(\mathbb{R})$ iff f is the difference between two bounded increasing functions.
+
+Proof. 
+
+Rmk. The decomposition $f=\frac{1}{2} ( T_{f}+f) + \frac{1}{2}(T_{f}-f)$ are called the **Jordan decomposition**.
+
+> Cor. $f \in BV(\mathbb{R})$, then $f$ is differentiable a.e.
+
+> [!note] Def. (**Absolutely continuous**)
+> $f:[a,b] \to \mathbb{R}$ if called absolutely continuous if $\forall \epsilon>0, \exists \delta>0$, s.t. $\forall$ disjoint collection of intervals $(a_{1}, b_{1}) \dots (a_{n}, b_{n}), \sum_{j=1}^{n} (b_{j}-a_{j})<\delta$, then $\sum_{j=1}^{n} |f(b_{j})-f(a_{j})|<\epsilon$. The collection of these func is denoted as $AC([a,b])$.
+
+Rmk.
+1. $AC([a,b]) \supset \mathcal{C}([a,b])$; #TODO 
+2. $AC([a,b]) \supset BV([a,b])$; #TODO 
+
+> [!important] Thm.
+> $f \in AC([a,b]), f'=0$ a.e. then $f$ is constant.
 
 Proof. #TODO 
 
-> Cor.
-> 1. **Lebesgue set** $L_{f}:=\{x: \lim_{r\to 0} \frac{1}{m(B_{r}(x))} \int_{B_{r}(x)} |f(x)-f(y)| \ \mathrm{d} y=0  \}$, then $\mu(L_{f}^{c})=0$;
-> 2. For n=1, $\frac{\ \mathrm{d}}{\ \mathrm{d} x} \int_{a}^{x} f(y) \ \mathrm{d}y = f(x)$ a.e. When f is continuous, we can drop "a.e", and get the fundamental thm of calculus.
+> [!note] Def. (**Vitali cover**)
+> A collection of intervals $J$ is a Vitali cover for $E \subset \mathbb{R}$ if $\forall \epsilon>0, x \in E, \exists I \in J$ s.t. $m(I)<\epsilon, x\in I$.
+
+> Lemma. (another **Vitali covering lemma**)
+> Outermeasure $m^{*}, E \subset \mathbb{R}, m^{*}(E)<\infty$. Let J be a Vitali cover of E, then $\forall \epsilon>0, \exists$ disjoint $I_{1}, \dots I_{N} \in J, s.t. m^{*}(E \setminus \cup_{j=1}^{N} I_{j}) < \epsilon$.

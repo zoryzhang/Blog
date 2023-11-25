@@ -911,7 +911,7 @@ When $F_{x}$ is continuous at x, let $\epsilon \to 0$, we get $F_{n}(x) \to F_{X
 
 ###### Proof of 2
 ($X_{n} \overset{1}{\to} X$ implies $X_{n} \overset{\text{I\kern-0.15em P}}{\to} X$) 
-Directly result from Markov's inequality.
+Directly result from Markov's inequality. Recall:
 
 $$
 \begin{gather}
