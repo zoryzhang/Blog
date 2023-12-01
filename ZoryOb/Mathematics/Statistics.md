@@ -43,7 +43,7 @@ Rmk. $M(t)=e^{\lambda(e^{t}-1)}$, then $\mu = \sigma^{2}=\lambda$.
 
 E.g. Number of customers of a shop between 5-6pm.
 
-> Def. (**Hypergeometric distribution**) $f_{X}(k)=\frac{ {K \choose k} {N-K \choose n-k} }{ N \choose n }$. $\text{I\kern-0.15em E} X=n N_{1}/N$, $Var X=n \frac{N_{1}}{N}\frac{N-K}{N}\frac{N-n}{N-1}$. The sample 
+> Def. (**Hypergeometric distribution**) $f_{X}(k)=\frac{ {K \choose k} {N-K \choose n-k} }{ N \choose n }$. $\text{I\kern-0.15em E} X=n N_{1}/N$, $Var X=n \frac{N_{1}}{N}\frac{N-K}{N}\frac{N-n}{N-1}$. 
 
 > Def. (**Multinomial**) Multi-outcome version of hypergeometric. $f_{X}(x)=\frac{n!}{ \prod x_{i}!} \prod p_{i}^{x_{i}}$, where $\text{I\kern-0.15em E} X_{i}=np_{i}, VarX_{i}=np_{i}(1-p_{i})$.
 
@@ -166,14 +166,14 @@ E.g.
 4. (**CI for $\mu$ when $\sigma$ is unknown and n is small**) Let $t_{n-1, \frac{\alpha}{2}}$ be the $100(1-\frac{\alpha}{2})$-percentile of $t_{n-1}$, then when $\sigma$ is unknown (need estimation $s$), it is $\bar x \pm t_{n-1, \frac{\alpha}{2}} \frac{s}{\sqrt n}$, derived from $\text{I\kern-0.15em P}(-t_{\frac{\alpha}{2}} \le T=\frac{ \bar X - \mu }{ s /\sqrt{n} } \le t_{\frac{\alpha}{2}} )\approx 1-\alpha$ .
 5. (**Sample size for target error when $\sigma$ is known or n is large**) The question is to find a sample size so that we have high confident that the mean is within $\bar X \pm \epsilon$. In other word, the CI is within $\bar X \pm \epsilon$, where $\epsilon$ is called the **maximum error of the estimate**. Then $\epsilon:=z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt n}$. When we want to know what sample size n is needed for certain amount of error, we can solve n from that equation. 
 6. (**Sample size for target error when $\sigma$ is unknown and n is small**) Note that $\text{I\kern-0.15em P}(\mu \in \bar X \pm t_{n-1, \frac{\alpha}{2}} \frac{S}{\sqrt n } )=1-\alpha$, and $\text{I\kern-0.15em E} (t_{n-1, \frac{\alpha}{2}} \frac{S}{\sqrt n } )^{2}=t_{n-1, \frac{\alpha}{2}} \frac{\sigma^{2}}{\sqrt n }$. Now if we hope $\text{I\kern-0.15em E} \epsilon^{2} := \text{I\kern-0.15em E} (t_{n-1, \frac{\alpha}{2}} \frac{S}{\sqrt n } )^{2}  \le \epsilon_{u}^{2}$, then we want $\frac{n}{t_{n-1, \frac{\alpha}{2}}^{2}} > \frac{s^{2}}{\epsilon_{u}^{2}}$. We can approximate it by conducting a preliminary experiment first to have sample variance, then get a sense of the n by using (5), and then improve the gap one observation at a time until it obeys the inequality.
-7. (**CI for $\mu_{X}-\mu_{Y}$ when the common $\sigma$ is unknown and n is small**) Suppose $X_{1}, \dots X_{n_{X}}$ and $Y_{1},\dots Y_{n_{Y}}$ independently from two normal $N(\mu_{X}, \sigma^{2}), N(\mu_{Y}, \sigma^{2})$. 
+7. (**CI for $\mu_{X}-\mu_{Y}$ when $\sigma_{X}, \sigma_{Y}$ is known or n is large**) Suppose $X_{1}, \dots X_{n_{X}}$ and $Y_{1},\dots Y_{n_{Y}}$ independently from two normal $N(\mu_{X}, \sigma_{X}^{2}), N(\mu_{Y}, \sigma_{Y}^{2})$. $W:=X-Y, \sigma_{W}=\sqrt{ \frac{\sigma_{X}^{2}}{n_{X}} + \frac{\sigma_{Y}^{2}}{n_{Y}} }, Z:=\frac{\bar X - \bar Y - (\mu_{X}-\mu_{Y})}{\sigma_{W}} \sim N(0,1)$. 
+8. (**CI for $\mu_{X}-\mu_{Y}$ when the common $\sigma$ is unknown and n is small**) Suppose $X_{1}, \dots X_{n_{X}}$ and $Y_{1},\dots Y_{n_{Y}}$ independently from two normal $N(\mu_{X}, \sigma^{2}), N(\mu_{Y}, \sigma^{2})$. 
     - $Z:=\frac{\bar X - \bar Y - (\mu_{X}-\mu_{Y})}{\sqrt{ \frac{\sigma^{2}}{n_{X}} + \frac{\sigma^{2}}{n_{Y}} }} \sim N(0,1)$. 
     - OTAH, $U:=\frac{(n_{X}-1)S_{X}^{2}}{\sigma^{2}}+\frac{(n_{Y}-1)S_{Y}^{2}}{\sigma^{2}}$ is the sum of two independent chi-square r.v. thus $U \sim X^{2}(n_{X}+n_{Y}-2)$. 
     - The independence between the sample means and sample variances implies that $Z \perp U$. Thus $T:=\frac{Z}{\sqrt{\frac{U}{n_{X}+n_{Y}-2}}}\sim t_{n_{X}+n_{Y}-2}$ .
     - Then let $S_{p}:=\sqrt{ \frac{ (n_{X}-1)S_{X}^{2}+(n_{Y}-1)S_{Y}^{2} }{n_{X}+n_{Y}-2} }, t_{0}:=t_{n_{X}+n_{Y}-2, \alpha/2}$, we have the CI: $\bar X-\bar Y \pm t_{0} S_{p} \sqrt{ \frac{1}{n_{X}}+\frac{1}{n_{Y}} }$.
-8. (**CI for proportion** $p$) Treat proportion as event success with probability $p$. Assume independent $X_{1}, \dots X_{n} \sim Bernoulli(p)$, unbiased MLE $\hat p=\frac{Y}{n}:= \frac{\sum X_{i}}{n}$, where $Y \sim Bin(n,p)$. 
-    - By CLT, $\frac{\hat p - \text{I\kern-0.15em E} \hat p}{\sqrt{Var \hat p}}= \frac{\hat p - p}{ \sqrt{p(1-p)/n}} \sim N(0,1)$ approximately when n is large enough.
-   $$\begin{aligned}&\text{I\kern-0.15em P}(-z_{\frac{\alpha}{2}} \le \frac{\hat p - p}{ \sqrt{\frac{p(1-p)}{n}}}  \le z_{\frac{\alpha}{2}} )=1-\alpha \\ \iff& \text{I\kern-0.15em P}\left(\frac{Y}{n}-z_{\frac{\alpha}{2}}\sqrt{\frac{p(1-p)}{n}}  \le p \le \frac{Y}{n}+z_{\frac{\alpha}{2}}\sqrt{\frac{p(1-p)}{n}}  \right)=1-\alpha\end{aligned}$$
+9. (**CI for proportion** $p$) Treat proportion as event success with probability $p$. Assume independent $X_{1}, \dots X_{n} \sim Bernoulli(p)$, unbiased MLE $\hat p=\frac{Y}{n}:= \frac{\sum X_{i}}{n}$, where $Y \sim Bin(n,p)$. 
+    - By CLT, $\frac{\hat p - \text{I\kern-0.15em E} \hat p}{\sqrt{Var \hat p}}= \frac{\hat p - p}{ \sqrt{p(1-p)/n}} \sim N(0,1)$ approximately when n is large enough. $$\begin{aligned}&\text{I\kern-0.15em P}(-z_{\frac{\alpha}{2}} \le \frac{\hat p - p}{ \sqrt{\frac{p(1-p)}{n}}}  \le z_{\frac{\alpha}{2}} )=1-\alpha \\ \iff& \text{I\kern-0.15em P}\left(\frac{Y}{n}-z_{\frac{\alpha}{2}}\sqrt{\frac{p(1-p)}{n}}  \le p \le \frac{Y}{n}+z_{\frac{\alpha}{2}}\sqrt{\frac{p(1-p)}{n}}  \right)=1-\alpha\end{aligned}$$
     - Make additional approximation by replace $p$ in end points with $\hat p:=\frac{Y}{n}$.
 6. (**CI for variance**) $( \frac{(n-1)s^{2}}{X^{2}_{\frac{\alpha}{2}}} , \frac{(n-1)s^{2}}{X^{2}_{1-\frac{\alpha}{2}}} )$ .
     #TODO 
@@ -187,7 +187,7 @@ Standard procedure (go back to here later):
 
 Partition the parameter space into two nonoverlapping disjoint subsets and then use the ovserved data to decide which set the parameter belongs to. The two cases are called **null hypothesis** $H_{0}$ and **alternative hypothesis** $H_{1}$. We don't reject $H_{0}$ by default unless we have enough evidence to support $H_{1}$, and thus reject $H_{0}$.
 
-The result of hypothesis testing is either to **reject or fail to rejec**t $H_{0}$. Hence, it is necesssary to partition the sample spaces into two part, say $C, C'$. The rejection region C for $H_{0}$ is called **critical region**. Often, the partition is specified in terms of the values of a statistic called the **test statistic** (should convert into standard normal/t-distribution before testing). Remember that critical region and test statistic should be in standard dist.
+The result of hypothesis testing is either to **reject or fail to rejec**t $H_{0}$. Hence, it is necesssary to partition the sample spaces into two part, say $C, C'$. The rejection region C for $H_{0}$ is called **critical region**. Often, the partition is specified in terms of the values of a statistic called the **test statistic** (should convert into standard normal/t-distribution before testing). **Remember that critical region and test statistic should be in standard dist.**
 
 Def. **Type 1 error**: $H_{0}$ is true but $(X_{i}) \in C$, i.e. get rejected. The probability of this case, denoted as $\alpha:=\text{I\kern-0.15em P}((X_{i}) \in C | H_{0})$, is called the **significance level**. To control this error, we may pick suitable critical region for specified significance level that we want to achieve.
 
@@ -205,13 +205,13 @@ Def. **p-value**: the tail-end probability, under $H_{0}$, of the distribution o
 - Test for **one mean** with unknown variance and small n:
     - Simply adopt the t-distribution CI.
 - Test for **one proportion**:
-    - $H_{0}: p=p_{0}$, under which test statistics $Z:=\frac{ \frac{Y}{n} - p_{0} }{ \sqrt{p_{0} (1-p_{0}) /n } } \sim N(0,1)$, whose denominator is different from the CI. That one can also be used, yet produce approximately the same result.
+    - $H_{0}: p=p_{0}$, under which test statistics $Z:=\frac{ \frac{Y}{n} - p_{0} }{ \sqrt{p_{0} (1-p_{0}) /n } } \sim N(0,1)$, whose denominator is different from the CI. That one can also be used, yet produces approximately the same result.
     - When $H_{1}: \mu \ne \mu_{0}$, the critical region $|z| \ge z_{\alpha/2}$.
 - Test for **equality of two means** with both dist approximately normal:
     - $Z:=\frac{\bar X - \bar Y - (\mu_{X}-\mu_{Y})}{\sqrt{ \frac{\sigma_{X}^{2}}{n_{X}} + \frac{\sigma_{Y}^{2}}{n_{Y}} }} \sim N(0,1)$. 
     - CI = $(\bar X - \bar Y) \pm z_\frac{\alpha}{2}\sqrt{ \frac{\sigma_{X}^{2}}{n_{X}}+\frac{\sigma_{Y}^{2}}{n_{Y}} }$.
 - Test for **equality of two means** with unknown variance and n is small:
-    - In general case, to use t distribution, we can use conservative T: $df=min(n_{1}, n_{2})-1$ or **Welch's T**: $df=\lfloor \frac{ (\frac{s_{X}^{2}}{n_{X}} + \frac{s_{Y}^{2}}{n_{Y}} )^{2} }{ \frac{1}{n_{X}-1} (\frac{s_{X}^{2}}{n_{X}})^{2} +  \frac{1}{n_{Y}-1} (\frac{s_{Y}^{2}}{n_{Y}})^{2} } \rfloor$.
+    - In general case, to use t distribution, we can use **conservative T**: $df=min(n_{1}, n_{2})-1$ or **Welch's T**: $df=\lfloor \frac{ (\frac{s_{X}^{2}}{n_{X}} + \frac{s_{Y}^{2}}{n_{Y}} )^{2} }{ \frac{1}{n_{X}-1} (\frac{s_{X}^{2}}{n_{X}})^{2} +  \frac{1}{n_{Y}-1} (\frac{s_{Y}^{2}}{n_{Y}})^{2} } \rfloor$.
     - **Pooled variance**: in the case that we assume $\sigma_{X}=\sigma_{Y}$, we can use $s_{pooled}$ as the estimator for both, where $s_{pooled}^{2}:=\frac{ (n_{X}-1)s_{X}^{2} + (n_{Y}-1)s_{Y}^{2} }{ n_{X} + n_{Y} -2 }$ and $df=n_{X}+n_{Y}-2$. This assumption is reasonable **if quotient between two sample standard deviation is at most 2**.
     - **Matched pairs**: if the data are paried, i.e. $D_{i}=X_{i}-Y_{i}$ are approximately random sample from normal. Then df=n-1, treat as one dist directly.
 - Test for **two proportion**:

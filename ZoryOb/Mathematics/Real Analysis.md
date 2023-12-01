@@ -69,7 +69,7 @@ E.g. Monotonic set sequence converges (if including $\infty$).
 - Arbitrary union of open set still open, arbitrary intersection of closed set still closed.
 - $f:X \to Y$ is continuous on X iff for any open set U in Y, $f^{-1}(U)$ is open in X.
 - $\sum_{j=1}^{n} \sum_{k=1}^{\infty}=\sum_{k=1}^{\infty} \sum_{j=1}^{n}$ is interchangable. Proof by induction on n.
-
+- $\forall n, f_{n}$ continuous at $a$ implies that $f:=\lim f_{n}$ continuous at $a$.
 
 
 # Ch1 Measure theory
@@ -178,7 +178,8 @@ Ex. Given E, define $\mu_{E}(A):=\mu(A \cap E)$. Then it's a measure.
 #NotCovered  THM1.9. Completion of measure.
 
 ### Continuity of measure (not covered)
-> [!note] Def. (**Continuity of general measure**) $\mu$ is continuous if $\forall \{A_{n}\}, A_{n} \to A, n \to  \infty \longrightarrow \lim_{n \to  \infty} \mu(A_{n}) = \mu(\lim_{n \to  \infty} A_n):=\mu(A)$. Notice the closeness under union&intersection gives that $A:=\limsup_{n}A_{n} \in \mathcal{F}$.
+> [!note] Def. (**Continuity of general measure**) 
+> $\mu$ is continuous if $\forall \{A_{n}\}, A_{n} \to A, n \to  \infty \longrightarrow \lim_{n \to  \infty} \mu(A_{n}) = \mu(\lim_{n \to  \infty} A_n):=\mu(A)$. Notice the closeness under union&intersection gives that $A:=\limsup_{n}A_{n} \in \mathcal{F}$.
 
 Thm. (**Countable additivity implies continuity**)
 
@@ -983,8 +984,12 @@ The latter is zero given Chebyshev's inequality ([[Real Analysis#^cd31a5]]).
 Rmk. For n=1 and continuous, $\frac{\ \mathrm{d}}{\ \mathrm{d} x} \int_{a}^{x} f(y) \ \mathrm{d}y = f(x)$. We get the fundamental thm of calculus.
 
 ## 3.5 Func of bounded variation
-> [!important] Thm.
+The session works on $m$.
+
+> [!important] Thm. (3.5.1)
 > $F: \mathbb{R} \to \mathbb{R}$, $F \nearrow$, then $F$ is 1) continuous a.e. and 2) differentiable a.e. with 3) $F: [a,b] \to \mathbb{R}, \int_{a}^{b} f'(x) \ \mathrm{d}m(x) \le f(b)-f(a)$. 
+
+^aa2507
 
 Proof.
 1. $D:=$ the set of discontinuous points. Claim D is countable. $x \in D \iff F(x+)>F(x-)$. Let $I_{x}:= (F(x-), F(x+))$, then $card(D)=card(\{I_{x}\})$. Claim: $I_{x}$'s are disjoint. Since $\forall x_{1},x_{2} \in D, x_{1}<x_{2}, \exists y \in (x_{1}, x_{2})$, $F(x_{1}+):=\inf \{ F(x):x_{1}<x \} \le F(y) \le \sup \{ F(x) : x < x_{2} \} =: F(x_{2}-)$. Since they're disjoint, we can always pick a non-overlaping rational number in each $I_{x}$, thus $card(\{I_{x}\})\le card(\mathbb{Q})$.
@@ -999,23 +1004,31 @@ E.g. (**Cantor func**) $F \nearrow$, continuous on $[0,1]$, diff. a.e. and $F'=0
 > - (**Total variation on $[a,b]$**) $T_{f}([a,b]), Var_{f}([a,b])$;
 > - The collection of those functions is denoted as $BV(\mathbb{R})$ and $BV([a,b])$.
 
+Rmk. $T_{f} \nearrow$, since if $a<b$, we can assume that a is always one of the subdivision points without affecting the values. Thus $T_{f}([a,b])=T_{f}(b)-T_{f}(a)$.
+
 E.g. $f(x)= x \sin \frac{1}{x}  \mathcal{X}_{\{x \ne 0\}} \notin BV([0,1])$.
+
+> Prop. $f: X \to \mathbb{C} \in BV([a,b]), \int_{[a,b]} |f'| \le T_{f}(a,b)$.
+
+Proof. #NotCovered 
 
 > [!important] Thm.
 > $f \in BV(\mathbb{R})$ iff f is the difference between two bounded increasing functions.
 
-Proof. 
-
-Rmk. The decomposition $f=\frac{1}{2} ( T_{f}+f) + \frac{1}{2}(T_{f}-f)$ are called the **Jordan decomposition**.
+Proof. (=>) 
+1. Claim: the **Jordan decomposition** $f=\frac{1}{2} ( T_{f}+f) + \frac{1}{2}(T_{f}-f)$ gives a valid decomposition. The motivation is that $T_{f} \nearrow$ and $\forall a \in \mathbb{R}, a+|a|\ge 0$. 
+2. By def. $T_{f}(\infty)<\infty$, thus $|T_{f} \pm f| < \infty$, bounded. WTS $\forall  x<y$, $(T_{f} \pm f)(y)>(T_{f} \pm f)(x)$.
+3. By def. $\forall \epsilon>0, \exists -\infty<x_{0}< \dots x_{n}=x$, s.t. $T_{f}(x)-\epsilon<\sum_{j=1}^{n} |f(x_{j})-f(x_{j-1})|$. OTAH, $\sum_{j=1}^{n} |f(x_{j})-f(x_{j-1})| + |f(y)-f(x)| \le T_{f}(y)$. In summary, $$\begin{aligned} (T_{f} \pm f)(y) &\ge \sum_{j=1}^{n} |f(x_{j})-f(x_{j-1})| + |f(y)-f(x)| \pm f(y) \\ &\ge T_{f}(x) -\epsilon + |f(y)-f(x)| \pm f(y)  \\ &=(T_{f} \pm f)(x) -\epsilon + |f(y)-f(x)| \pm( f(y)- f(x)) \\&\ge (T_{f} \pm f)(x) -\epsilon\end{aligned}$$
 
 > Cor. $f \in BV(\mathbb{R})$, then $f$ is differentiable a.e.
 
 > [!note] Def. (**Absolutely continuous**)
-> $f:[a,b] \to \mathbb{R}$ if called absolutely continuous if $\forall \epsilon>0, \exists \delta>0$, s.t. $\forall$ disjoint collection of intervals $(a_{1}, b_{1}) \dots (a_{n}, b_{n}), \sum_{j=1}^{n} (b_{j}-a_{j})<\delta$, then $\sum_{j=1}^{n} |f(b_{j})-f(a_{j})|<\epsilon$. The collection of these func is denoted as $AC([a,b])$.
+> $f:[a,b] \to \mathbb{R}$ is called absolutely continuous if $\forall \epsilon>0, \exists \delta>0$, s.t. $\forall$ finite disjoint collection of intervals $(a_{1}, b_{1}) \dots (a_{n}, b_{n})$, $\sum_{j=1}^{n} (b_{j}-a_{j})<\delta \to \sum_{j=1}^{n} |f(b_{j})-f(a_{j})|<\epsilon$. The collection of these func is denoted as $AC([a,b])$.
 
 Rmk.
-1. $AC([a,b]) \supset \mathcal{C}([a,b])$; #TODO 
-2. $AC([a,b]) \supset BV([a,b])$; #TODO 
+1. $AC([a,b]) \subset \mathcal{C}([a,b])$: trivial.
+2. $AC([a,b]) \subset BV([a,b])$; #TODO 
+3. Lipschitz > absolutely continuous > uniformly continuous and bounded variation #NotCovered 
 
 > [!important] Thm.
 > $f \in AC([a,b]), f'=0$ a.e. then $f$ is constant.
@@ -1027,3 +1040,31 @@ Proof. #TODO
 
 > Lemma. (another **Vitali covering lemma**)
 > Outermeasure $m^{*}, E \subset \mathbb{R}, m^{*}(E)<\infty$. Let J be a Vitali cover of E, then $\forall \epsilon>0, \exists$ disjoint $I_{1}, \dots I_{N} \in J, s.t. m^{*}(E \setminus \cup_{j=1}^{N} I_{j}) < \epsilon$.
+
+Proof. #TODO 
+
+> Lemma. $f \in L^{1}([a,b]), \forall \epsilon>0, \exists \delta>0, \forall E, m(E)<\delta \to \int_{E} |f| \ \mathrm{d}m<\epsilon$.
+
+Proof. #TODO 
+
+> [!important] Thm.
+> $F: [a,b] \to \mathbb{C}$, TFAE:
+> 1. F absolutely continuous;
+> 2. $\exists f \in L^{1}([a,b], \mathcal{L},m), \forall x, F(x)-F(a)=\int_{[a,x]} f$;
+> 3. F is differentiable a.e. on $[a,b], F' \in L^{1}(\ \mathrm{d} m)$, and $\forall x, F(x)-F(a)=\int_{[a,x]} F'$.
+
+Proof. #TODO 
+
+> Prop. $F:[a,b] \to \mathbb{R}, F'=f, f \in L^{1}([a,b])$, then $F(b)-F(a)=\int_{[a,b]} f$.
+
+Proof.  As a generalization of thm3.5.1 ([[Real Analysis#^aa2507]]). [proof](https://math.stackexchange.com/questions/68364/integral-of-the-derivative-of-a-function-of-bounded-variation), [proof2](https://math.stackexchange.com/questions/678120/the-total-variation-and-the-integral-of-the-derivative), [proof3](https://math.stackexchange.com/questions/126577/total-variation-and-integral)  #NotCovered 
+
+# Ch6 $L^{p}$ space
+
+> [!note] Def.
+> For $0<p<\infty, f: X \to \mathbb{C}$:
+> - $L^{p}$ norm: $||f||_{p}:=\int_{X} |f|^{p} \ \mathrm{d} \mu$;
+> - $||f||_{\infty}=\inf \{ M: M \ge 0, \mu(\{ x \in X: |f(x)| \ge M \})=0 \}$;
+> - $L^{p}$ space: $L^{p}(X):=\{ f: ||f||_{p}<\infty \}$;
+> - Distribution function: $\lambda_{f}(\alpha):=$
+

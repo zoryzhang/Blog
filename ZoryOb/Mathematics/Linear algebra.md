@@ -465,7 +465,7 @@ Proof.
 
 Proof. Let $S:=T-\lambda I$, apply the lemma, we get $W=R(S^{n})$, $S|_{W}: W \to W$ is isomorphism, $V=V_{\lambda} \oplus W, V_{\lambda}=Ker((T-\lambda I)^{n})$. What we need to show is $T(W) \subset W$, which is trivial.
 
-> [!important] Thm. 
+> [!important] Thm. (5.2.1)
 > $\dim V=n < \infty$, $T:V \to V$, T.F.A.E:
 > 1. $p_{T}(t)=(-1)^{n} \prod_{i=1}^{r} (t-\lambda_{i})^{n_{i}}$ split;
 > 2. $V=\bigoplus_{i=1}^{r} V_{\lambda_{i}}$;
@@ -482,11 +482,13 @@ Cor. If $p_{T}(t)$ split, $\dim V_{\lambda_{i}}=multi_{p}(\lambda_{i})$, i.e. $p
 
 #TODO 
 
-> [!important] Thm. 
+> [!important] Thm. (5.2.2)
 > $\dim V=n < \infty$, $T:V \to V$, T.F.A.E:
 > 1. $p_{T}(t)=(-1)^{n} \prod_{i}^{r} (t-\lambda_{i})^{n_{i}}$ split, and $\forall  \lambda \in F,\dim(E_\lambda)=multi(\lambda)$;
 > 2. $V=\bigoplus_{i=1}^{r} E_{\lambda_{i}}$;
 > 3. T is **diagonalizable**, i.e. $\exists$ ordered basis $\beta$, $[T]_{\beta}^{\beta}$ is diagonal.
+
+^2f8c8e
 
 Proof. #TODO 
 
@@ -568,8 +570,8 @@ Proof. #TODO
 
 ## 6.2 Orthogonal
 > [!note] Def. (**Orthogonal and orthonormal**)
-> 1. The set $\{ s_{1}, \dots, s_{m} \}$ is orthogonal / perpendicular if all $e_{i} \ne 0$ and $\forall  i \ne j, <s_{i}, s_{j}> =0$;
-> 2. The set $\{ s_{1}, \dots, s_{m} \}$ is orthonormal if it is orthogonal and $||s_{i}||=1$.
+> 1. The set $\{ s_{1}, \dots, s_{m} \}$ is **orthogonal / perpendicular** if all $e_{i} \ne 0$ and $\forall  i \ne j, <s_{i}, s_{j}> =0$;
+> 2. The set $\{ s_{1}, \dots, s_{m} \}$ is **orthonormal** if it is orthogonal and $||s_{i}||=1$.
 
 > Lemma. $v \ne 0, c=\frac{<u,v>}{||v^{2}||}, w=u-cv$, then $<v,w>=0$.
 
@@ -578,7 +580,7 @@ Proof. #TODO
 
 Proof. Say $w=\sum a_{j} s_{j}$, then $<w,s_{i}>=a_{i} ||s_{i}||^{2}$.
 
-> Cor. (6.3.1) $T:V \to W$ with orthonormal ordered basis $\beta=(s_{1}, \dots, s_{n})$ for V and $\alpha=(t_{1}, \dots, t_{n})$. Let $A=[T]_{\beta}^{\alpha}$, then $A_{ij}=<T(s_{j}), t_{i}>_{W}$.
+> Cor. (6.2.1) $T:V \to W$ with orthonormal ordered basis $\beta=(s_{1}, \dots, s_{n})$ for V and $\alpha=(t_{1}, \dots, t_{n})$. Let $A=[T]_{\beta}^{\alpha}$, then $A_{ij}=<T(s_{j}), t_{i}>_{W}$.
 
 ^bc4c8f
 
@@ -590,18 +592,24 @@ Proof.
 2. If $v_{i}=0$, independence of $\{s_{i}\}$ fails.
 3. Assume it's true on $i-1$. $\forall  k<i, <v_{i}, v_{k}>=<s_{i}, v_{k}>-\sum_{j<i} \frac{1}{||v_{j}||^{2}} <s_{i}, v_{j}> <v_{j}, v_{k}>=0$.
 
-> Cor. For $W \subset V, \exists$ basis $(e_{1}, \dots, e_{n}), s.t. W=span (e_{1}, \dots, e_{m})$. Furthur more, W can has $< \sum a_{i} e_{i}, \sum b_{i} e_{i} >_{W} = \sum a_{i} \overline{b_{i}}$.
-
-Proof. #TODO 
+> Cor. For $W \subset V, \exists$ orthonormal basis $(e_{1}, \dots, e_{n})$, s.t. $W=span (e_{1}, \dots, e_{m})$. Furthur more, W can has $< \sum a_{i} e_{i}, \sum b_{i} e_{i} >_{W} = \sum a_{i} \overline{b_{i}}$.
 
 > [!note] Def. (**Orthogonal complement**)
 > $S^{\perp}:=\{ x: \forall y \in S, <x,y> =0 \}$.
 
-> Prop. $V=W \oplus W^{\perp}$.
+> Prop. (6.6) $V=W \oplus W^{\perp}$.
 
-Proof. #TODO Let $W^{\perp}=span(e_{m+1} \dots e_{n})$.
+Proof. Inspired by the above corollary, WTS $W^{\perp}=span(e_{m+1} \dots e_{n})$. To show the latter contains the former, consider any element in the former. According to thm6.3, it is not in the span of basis of W.
 
-thm 6.7
+> Cor. $\dim W < \infty, W \subset V, \forall x \notin W, \exists y \in W^{\perp}, <x,y> \ne 0$. 
+
+Proof. For $x=w+w', w' \ne 0$, we can let $y=w'$, then $<x,y>=||y||^{2} \ne 0$.
+
+> Cor. $\dim V < \infty, (W^{\perp})^{\perp}=W$.
+
+Proof. Last corollary implies that for $x \in V, \forall y \in W^{\perp}, <x,y>=0 \implies x \in W$. Then it follows.
+
+> Cor. $R(T^{*})^{\perp}=N(T)$. When $\dim V<\infty, R(T^{*})=N(T)^{\perp}$.
 
 > Cor. (Least distance function) For $W \subset V$, let $v \in V$, then $\exists ! w \in W, w' \in W^{\perp}, v=w+w'$ and $||v-w|| \le ||v-u||$ for all u, and are equal only when $w=u$.
 
@@ -611,28 +619,130 @@ Proof. $||v-w||^{2}=||w'||^{2}$, OTAH, $||v-u||^{2}=||w-u+w'||^{2}=||w-u||^{2}+|
 > Lemma. For $(V, <,>), \dim V<\infty$, let $\phi\in V^{*}$, then $\exists !w \in V, s.t. \phi=<\cdot,w>$.
 
 Proof.
-1. Existence: pick orthonormal basis, $\phi(v=\sum a_{i} e_{i})=\sum a_{i}\phi(e_{i})$. Now $<v=\sum a_{i} e_{i}, w= \sum b_{i}e_{i}>=\sum a_{i} \overline{b_{i}}$. Then $b_{i}=\overline{\phi(e_{i})}$.
+1. Existence: pick orthonormal basis, $\phi(v=\sum a_{i} e_{i})=\sum a_{i}\phi(e_{i})$. Now $<v=\sum a_{i} e_{i}, w= \sum b_{i}e_{i}>=\sum a_{i} \overline{b_{i}}$. Then $b_{i}=\overline{\phi(e_{i})}$ gives a valid $w$.
 2. Uniqueness: usual way.
 3. Thus $L: \phi \mapsto w$ is a function. Furthermore, it's linear, onto and 1-1.
 
 > [!important] Thm. (**Adjoint**)
-> For $T: V \to W$, $\exists ! T^{*}: W \to V, s.t. <Tv, w>_{W} = <v, T^{*}w>_{V}$.
+> For $T: V \to W$, $\exists ! T^{*}: W \to V, s.t. \forall v \in V,w \in W, <Tv, w>_{W} = <v, T^{*}w>_{V}$.
 
 Proof.
 1. For $w \in W$, define $\phi_{w}:= v \mapsto <Tv,w>, \phi_{w} \in V^{*}$. IOW, $<Tv,w>=\phi_{w}(v)$.
-2. By lemma, $\exists ! y \in V, s.t. \phi_{w}=<\cdot,y>$. Now $<v,y>=\phi_{w}(v)$.
-3. Then $T^{*}:=w \mapsto y = (w \mapsto \phi_{w}) \circ (\phi_{w} \mapsto y)=(w \mapsto \phi_{w}) \circ L$. It can be shown that it is linear and an isomorphism.
-4. $T^{*}$ is also unique since y is unique in step 2.
+2. For any $\phi_{w}$, by lemma, $\exists ! y \in V, s.t. \phi_{w}=<\cdot,y>$. IOW, $<v,y>=\phi_{w}(v)$.
+3. Then $T^{*}:=w \mapsto y = (w \mapsto \phi_{w}) \circ (\phi_{w} \mapsto y)=(w \mapsto \phi_{w}) \circ L$ satisfies the desired equality.
+4. It can be shown that it is linear, and further, an isomorphism.
+5. $T^{*}$ is also unique since y is unique in step 2.
 
 > Cor. $<w, Tv> = <T^{*}w, v>$, by taking conjugate.
 
-> Cor. $B:=[L_{A}^{*}]_{\alpha}^{\beta}=A^{*}$.
+> Cor. $[L_{A}^{*}]_{\alpha}^{\beta}=A^{*}$.
 
-Proof. By cor6.3.1 ([[Linear algebra#^bc4c8f]]), $a_{ij}=<T(s_{j}), t_{i}>=\overline{<T^{*} (t_{i}), s_{j}>}=\overline{b_{ji}}$.
+Proof. By cor6.2.1 ([[Linear algebra#^bc4c8f]]), $a_{ij}=<T(s_{j}), t_{i}>=\overline{<T^{*} (t_{i}), s_{j}>}=\overline{b_{ji}}$.
+
+> Prop. 
+> 1. $(T+U)^{*}=T^{*}+U^{*}$;
+> 2. $(\lambda T)^{*}=\bar \lambda T^{*}$;
+> 3. $I^{*}=I$;
+> 4. If $T, U$ composible, $(TU)^{*}=U^{*} T^{*}$.
+
+Rmk. (Relationship between dual and adjoint)
+$$
+\begin{aligned}
+& T:V \to W, T^{*}:W^{*}\to V^{*}, T^{*}:(W,<,>_{W}) \to (V,<,>_{V}) \\
+& \phi \in W^{*}, T^{*}(\phi):= \phi \circ T \\
+& \phi_{w}:=<\cdot,w>_{W} \in W^{*} \\
+& \text{(dual)} T^{*}(\phi_{w})= \phi_{w} \circ T=<T \cdot, w>_{W}=<\cdot, T^{*}w>_{V}=\psi_{T^{*}w} \in V^{*} \text{(adjoint)}
+\end{aligned}
+$$
+[Deeper result](https://math.stackexchange.com/questions/573594/dual-and-adjoint-operator)
 
 Ex. Orthonormal basis $\beta$, let Q be the matrix whose columns are $\beta$, then $Q^{*}=Q^{-1}$.
 
+Ex. $\begin{aligned} T: V \to V, \dim V<\infty &\implies N(T^{*}T)=N(T) \implies rk(T^{*}T)=rk(T) \\ &\implies rk(T)=rk(T^{*}) \implies rk(TT^{*})=rk(T)\end{aligned}$.
+
+> [!note] Def. (**Self-adjoint**, **normal**)
+> - **Self-adjoint / Hermitian**: if $T^{*}=T$;
+> - **Normal**: if $T^{*}T=TT^{*}$.
+
+Ex. $V=W \oplus W^{\perp}$, then $proj_{W}: V \to W$ is self-adjoint.
+
+> Thm. (6.15) T is normal operator, then
+> 1. $\forall v, ||Tv|| = ||T^{*}v||$;
+> 2. $Tx=\lambda x \implies T^{*}x=\overline{\lambda}x$;
+
+^34affa
+
+> Prop. Normal T is self-adjoint iff all eigenvalues are real.
+
+> [!important] Lemma. (Schus's lemma)
+> $T: V \to V, p_{T}(t)$ split, then $\exists$ orthonormal basis $\beta$ s.t. $[T]_\beta$ is upper triangular, i.e. T-invariant flag.
+
+^a80b9a
+
+Proof. Since it splits, there is a basis producing T-invariant flag, i.e. $T(s_{i})=\sum_{j=1}^{i} a_{i}s_{i}$. Gram-Schmidt process is a precedure that automatically keeps this flag.
+
+> [!important] Thm. TFAE when $F=\mathbb{C}$:
+> 1. $T$ is normal;
+> 2. $V=\bigoplus_{i=1}^{r} E_{\lambda_{i}}$ and $\forall v\in E_{\lambda_{i}}, w \in E_{\lambda_{j}}, i \ne j \to <v,w>=0$, i.e. $E_{\lambda_{i}}^{\perp}=\bigoplus_{j \ne i} E_{\lambda_{j}}$;
+> 3. V has an orthonormal basis $\beta$ of eigenvectors of $T$, i.e. $[T]_{\beta}$ is diagonal.
+
+Proof.
+1. (1=>3) By Schus's lemma ([[Linear algebra#^a80b9a]]), there is $\beta=(s_{1} \dots s_{n})$, s.t. $[T]_{\beta}=(a_{ij})$ being upper triangular. Then $[T^{*}]_{\beta}$ is lower triangular. According to thm6.15 ([[Linear algebra#^34affa]]), $||Ts_{1}||^{2}=||a_{11} s_{1}||^{2}=|a_{11}|$ should be equal to $||T^{*} s_{1}||^{2}=||\sum_{j=1}^{n} \overline{a_{1j}} s_{1}||^{2}=\sum_{j=1}^{n} |\overline{a_{1j}}|$. Thus $\forall j>1, a_{1j}=0$. Apply induction.
+2. (3=>1) multiplication of two diagonal matrices commutes
+3. (3=>2) Since $[T]_{\beta}$ is diagonal, by thm5.2.2 ([[Linear algebra#^2f8c8e]]), we have $V=\bigoplus_{i=1}^{r} E_{\lambda_{i}}$. For any $E_{\lambda}=span\{s_{i}\}, E_{\sigma}=span\{t_{j}\}$, orthogonal to each other.
+4. (2=>3) pick orthonormal basis in each eigenspace, thus are eigenvectors, and then combine them.
+
+> [!important] Thm. TFAE when $F=\mathbb{R}$:
+> 1. $T$ is self-adjoint;
+> 2. $V=\bigoplus_{i=1}^{r} E_{\lambda_{i}}$ and $\forall v\in E_{\lambda_{i}}, w \in E_{\lambda_{j}}, i \ne j \to <v,w>=0$, i.e. $E_{\lambda_{i}}^{\perp}=\bigoplus_{j \ne i} E_{\lambda_{j}}$;
+> 3. V has an orthonormal basis $\beta$ of eigenvectors of $T$, i.e. $[T]_{\beta}$ is diagonal.
+
+Proof. Only need to fix (1=>3). WTS $p_{T}$ splits over field $\mathbb{R}$. Choose orthonormal basis $\beta$ to have $A:=[T]_{\beta}$ s.t. $A=A^{t}$. Consider the vecter space $(\mathbb{C}^{n}, <,>)$ over field $\mathbb{C}$, where $L_{A}: \mathbb{C}^{n} \to \mathbb{C}^{n}, L_{A}^{*}=L_{\overline{A^{t}}}=L_{A}$ is normal. By last thm, $[L_{A}^{*}]_{\alpha}=[L_{A}]_{\alpha}$ is diagonal, which means all entries are real. Thus $p_{L_{A}}$ splits over field $\mathbb{R}$, which is the same charateristic poly as $A$ and $T$. Now the original proof can be applied.
+
+> Cor. $F=\mathbb{C}$, then T is normal iff $T^{*}=p(T)$ for some poly p.
+
+Proof. (=>) Consider the projection mappings $\pi_{i}: v \to v_{i}\in E_{\lambda_{i}}$. Due to the direct sum decomposition, $T=\sum \lambda_{i} \pi_{i}$. #TODO 
+
+Ex. $T: V \to V, W \subset V. T(W) \subset W$. Then $T^{*}(W^{\perp}) \subset W^{\perp}$. If further that $T^{*}(W) \subset W$, then $(T|_{W})^{*}=(T^{*})|_{W}$. If once further that T is normal, then $T|_{W}$ is normal.
+
+> Lemma. (6.3.1) $S:V \to V$ self-adjoint ($F=\mathbb{R}$) or normal ($F=\mathbb{C}$), then $\forall v, <Sv,v>=0$ implies $S=0$.
+
+^98666c
+
+Proof. There is an orthonormal basis of eigenvectors. For any eigenvector $v, 0 = <Sv,v>= \lambda ||v||^{2}$, thus $\lambda=0$. Since S is diagonalizable, it has to be 0.
+
+Ex. If $T$ is normal, $\dim V<\infty$, then $Ker(T)=Ker(T^{*}),R(T)=R(T^{*})$.
+
+Ex. In fact, when $F=\mathbb{C}$, if $\forall v, <Sv,v>=0$, then $S=0$. This can be proved by expending the case of $v=x+y, v=x+iy$ respectively.
+
+> Cor. $F=\mathbb{C}$. $\forall v \in V, <Tv, v> \in \mathbb{R}$ iff T is self-adjoint.
+
+## 6.4 Isometry
+
+> [!note] Def. (**Isometry**)
+> $T: V \to V$ is an **isometry** if $\forall v,||Tv||=||v||$. It's also called **orthogonal** when $F=\mathbb{R}$ and **unitary** when $F=\mathbb{C}$.
+
+> [!important] Thm. TFAE:
+> 1. T is an isometry;
+> 2. T is invertible and $T^{*}=T^{-1}$;
+> 3. $\forall u,v, <Tu, Tv>=<u,v>$;
+> 4. $\forall$ orthonormal $\beta, T({\beta})$ is still orthonormal;
+> 5. $\exists$ orthonormal $\beta, T({\beta})$ is still orthonormal;
+> 6. $T^{*}$ is isometry.
+
+Proof.
+1. (1=>2) $<v,v>=<Tv,Tv>=<v,T^{*}Tv>$, then $<v, (I-T^{*}T)v>=0$. Let $S:= I-T^{*}T$, which is self-adjoint. By lemma6.3.1 ([[Linear algebra#^98666c]]), $S=0$. The other way is the same.
+2. (2=>3) Trivial.
+3. (3=>4) Trivial.
+4. (4=>5) G-S process.
+5. (5=>2) Say $\beta=(s_{1} \dots s_{n})$.
+6. (3=>1) #TODO 
+7. (1=>6)
+8. (6=>1) Apply (1=>6) one more time.
+
 # Later
+
+
 
 e.g. 
 When A is the adjacency matrix, $(A \vec v)_i = \frac 1 {deg_i }\sum_{j \in N(i)} v_j$
