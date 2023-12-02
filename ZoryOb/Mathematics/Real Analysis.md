@@ -284,15 +284,14 @@ $$
 $$
 
 > Lemma. For a sequence of disjoint $\mu^*$-measurable sets $A_{j}$, let $B_{n}=\cup_{i=1}^{n} A_{i}$, then we have:
-> $$
-\begin{aligned}
+> $$\begin{aligned}
 \mu^{*}(E\cap B_{n})
 &=\mu^{*}(E\cap B_{n}\cap A_{n})+\mu^{*}(E\cap B_{n}\cap A_{n}^{c}) \\
 \text{given disjoint}, &=\mu^{*}(E\cap A_{n})+\mu^{*}(E\cap B_{n-1}) \\
 \text{by induction}, &= \sum_{i=1}^{n} \mu^{*}(E\cap A_{i})
-\end{aligned}
-$$
-> The above result can be extended to infinite sum since only one side is needed given subadditivity.
+\end{aligned} $$
+
+Rmk. The above result can be extended to infinite sum since only one side is needed given subadditivity.
 
 > [!important] Thm. (**Caratheodory's thm**) 
 > If $\mu^{*}$ is an outer measure on X, then the collection $\mathcal{M}$ of $\mu^{*}$-measurable sets is a $\sigma$-algebra, and $\mu^{*}|_{\mathcal{M}}$ is a complete measure on measurable space $(X, \mathcal{M})$.
@@ -1008,6 +1007,8 @@ Rmk. $T_{f} \nearrow$, since if $a<b$, we can assume that a is always one of the
 
 E.g. $f(x)= x \sin \frac{1}{x}  \mathcal{X}_{\{x \ne 0\}} \notin BV([0,1])$.
 
+Ex. $\mathbb{Q}=\{q_{n}: n \in \mathbb{N}\}, f:=\sum_{k=1}^{\infty} 2^{-k} \mathcal{X}_{[q_{k},\infty)}$ is an increasing func with set of discontinuities $\mathbb{Q}$.
+
 > Prop. $f: X \to \mathbb{C} \in BV([a,b]), \int_{[a,b]} |f'| \le T_{f}(a,b)$.
 
 Proof. #NotCovered 
@@ -1028,7 +1029,6 @@ Proof. (=>)
 Rmk.
 1. $AC([a,b]) \subset \mathcal{C}([a,b])$: trivial.
 2. $AC([a,b]) \subset BV([a,b])$; #TODO 
-3. Lipschitz > absolutely continuous > uniformly continuous and bounded variation #NotCovered 
 
 > [!important] Thm.
 > $f \in AC([a,b]), f'=0$ a.e. then $f$ is constant.
@@ -1047,11 +1047,13 @@ Proof. #TODO
 
 Proof. #TODO 
 
-> [!important] Thm.
+> [!important] Thm. (3.5.2)
 > $F: [a,b] \to \mathbb{C}$, TFAE:
 > 1. F absolutely continuous;
 > 2. $\exists f \in L^{1}([a,b], \mathcal{L},m), \forall x, F(x)-F(a)=\int_{[a,x]} f$;
 > 3. F is differentiable a.e. on $[a,b], F' \in L^{1}(\ \mathrm{d} m)$, and $\forall x, F(x)-F(a)=\int_{[a,x]} F'$.
+
+^60422f
 
 Proof. #TODO 
 
@@ -1059,12 +1061,51 @@ Proof. #TODO
 
 Proof.  As a generalization of thm3.5.1 ([[Real Analysis#^aa2507]]). [proof](https://math.stackexchange.com/questions/68364/integral-of-the-derivative-of-a-function-of-bounded-variation), [proof2](https://math.stackexchange.com/questions/678120/the-total-variation-and-the-integral-of-the-derivative), [proof3](https://math.stackexchange.com/questions/126577/total-variation-and-integral)  #NotCovered 
 
+Ex. $x^{a} \sin(x^{-b}) \mathcal{X}_{\{0\}}$ is differentiable everywhere by definition. It is in $BV([-1,1])$ iff $a > b$. The case of $a>b$ can be shown by showing absolute continuity using thm3.5.2 ([[Real Analysis#^60422f]]), while the other case can be shown by giving counter example similar to $x_{n}^{-b}=n \pi + \frac{\pi}{2}$.
+
+Ex. $F: \mathbb{R} \to \mathbb{C}$, then $\exists M \in \mathbb{R} s.t. \forall x,y \in \mathbb{R}, |F(x)-F(y)| \le M|x-y|$ (Lipschitz continuous) iff $\exists M \in \mathbb{R} s.t. |F'| \le M$ a.e. and F is absolutely continuous.
+
 # Ch6 $L^{p}$ space
+## 6.1 Basic theory
 
 > [!note] Def.
 > For $0<p<\infty, f: X \to \mathbb{C}$:
-> - $L^{p}$ norm: $||f||_{p}:=\int_{X} |f|^{p} \ \mathrm{d} \mu$;
+> - $L^{p}$ **norm**: $||f||_{p}:=\int_{X} |f|^{p} \ \mathrm{d} \mu$;
 > - $||f||_{\infty}=\inf \{ M: M \ge 0, \mu(\{ x \in X: |f(x)| \ge M \})=0 \}$;
-> - $L^{p}$ space: $L^{p}(X):=\{ f: ||f||_{p}<\infty \}$;
-> - Distribution function: $\lambda_{f}(\alpha):=$
+> - $L^{p}$ **space**: $L^{p}(X):=\{ f: ||f||_{p}<\infty \}$;
+> - **Distribution function**: $\lambda_{f}(\alpha):=\mu(\{ x \in X: |f(x)| > \alpha \})$, $\lambda_{f}: (0, \infty) \to [0, \infty]$;
+> - $||f||_{p, \infty}:=(\sup_{\alpha>0} \alpha^{p} \lambda_{f}(\alpha))^{\frac{1}{p}}$;
+> - **Weak $L^{p}$ space**: $L^{p, \infty}(X):=\{ f: ||f||_{p, \infty}<\infty \}$;
 
+Rmk.
+1. $||f||_{\infty}$ can also be denoted as $ess\ sup |f(x)|$, since $|f(x)| \le ||f||_{\infty}$ a.e.
+2. $\lambda_{f} \searrow$ and right continuous (use continuity from below).
+
+> [!important] Thm.
+> $||f||_{p}^{p} = p \int_{0}^{\infty} \alpha^{p-1} \lambda_{f}(\alpha) \ \mathrm{d}m(\alpha)$.
+> 
+
+Proof. #TODO 
+
+> [!important] Thm. (**Chebyshev**)
+> $f  \in L^{p}, \alpha>0$, then $\lambda_{f} (\alpha) \le \frac{ ||f||_{p}^{p} }{ \alpha^{p} }$.
+
+Proof. #TODO 
+
+> Cor. $||f||_{p, \infty} \le ||f||_{p}$, i.e. $L^{p} \subset L^{p, \infty}$.
+
+Proof. #TODO 
+
+> Lemma. $0 < a \le b, 0 < \theta < 1$, then $a^{\theta} b^{1-\theta} \le \theta a + (1-\theta)b$, with equality iff $a=b$.
+
+Proof. #TODO 
+
+> [!important] Thm. (Holder's inequality)
+> $1 \le p \le \infty$, find $p'$ s.t. $\frac{1}{p} + \frac{1}{p'}=1$, then $||fg||_{1} \le ||f||_{p} ||g||_{p'}$, with equality iff $\exists \alpha, \beta, s.t. (\alpha,\beta) \ne (0,0)$ and $\alpha |f(x)|^{p}=\beta |g(x)|^{p'}$ a.e.
+
+Proof. #TODO 
+
+
+
+
+## 6.2 Dual of $L^{p}$
