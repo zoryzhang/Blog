@@ -27,8 +27,11 @@ Gerald B. Folland, Real Analysis
 - $\mathcal{P}(X)$: the power set $\{E:E\subset X\}$.
 - $\cup A_{j}$ can be finite, countable, or arbitrary union(same for other symbols like summation/intersection) and should be clear in context. Arbitrary union usually will be stressed by using $\cup_{\alpha}^{\infty} A_{\alpha}$.
 - ":=" means this is definition, or can be done by definition.
+- WLOG: without loss of generality
+- WTS: want to show
+- OTAH: on the other hand
+- $A \subset B$: interchangeable with $A \subseteq B$. note that A can be equal to B.
 ## Set theory
-Nota. $A \subset B$: A can be equal to B.
 
 Nota. A set $A$ is called **smaller** than set $B$, if $A \subset B$ but $A \ne B$.
 
@@ -145,12 +148,15 @@ Rmk.
 
 > [!note] Def. (**Finite measure**) 
 > $\mu(X)<\infty$.
-> 
-> [!note] Def. (**$\sigma$-finite measure**) $X=\bigcup E_{j}, s.t., \forall j, \mu(E_{j})<\infty$.
-> 
-> [!note] Def. (**Semifinite measure**) $\forall E\in \mathcal{M}, \mu(E)=\infty \to (\exists F \subset E, 0<\mu(F)<\infty)$ .
-> 
-> [!note] Def. (**Null set and "almost everywhere (a.e.)"**) E is a null set if $\mu(E)=0$. Proposition A is true almost everywhere if it is true on all but null set.
+
+> [!note] Def. (**$\sigma$-finite measure**) 
+> $X=\bigcup E_{j}, s.t., \forall j, \mu(E_{j})<\infty$.
+
+> [!note] Def. (**Semifinite measure**) 
+> $\forall E\in \mathcal{M}, \mu(E)=\infty \to (\exists F \subset E, 0<\mu(F)<\infty)$ .
+
+> [!note] Def. (**Null set and "almost everywhere (a.e.)"**) 
+> E is a null set if $\mu(E)=0$. Proposition A is true almost everywhere if it is true on all but null set.
 
 E.g. Given $f: X \to [0,\infty]$, we can define a measure by $\mu(E)=\sum_{x \in E} f(x)$.
 1. It's semifinite iff $f(x)<\infty$.
@@ -324,7 +330,7 @@ $$
 $$
 \mu^{*}(\cup_{i=1}^{\infty} A_{i} ) \ge\sum_{i=1}^{n} \mu^{*}((\cup_{j=1}^{\infty} A_{j} ) \cap A_{i})+\mu^{*}((\cup_{i=1}^{\infty} A_{i} ) \cap (\cup_{i=1}^{\infty} A_{i} )^{c})
 $$
-    The other side is again by $\sigma$-subadditivity.
+The other side is again by $\sigma$-subadditivity.
 4. $\mu^{*}|_{\mathcal{M}}$ is complete. Given $B \subset A,\mu^{*}(A)=\mu^{*}(B)=0$, $\forall E\subset X, \mu^{*}(E) \ge \mu^{*}(E\cap B^{c})=\mu^{*}(E\cap B)+\mu^{*}(E\cap B^{c})$.
 
 > [!note] Def. (**Premeasure**) 
@@ -646,7 +652,7 @@ Proof. Recall $\liminf_{n} a_{n}:= \lim_{n} (\inf_{k \ge n} a_{k})$. Then $\fora
 
 Rmk. (Show MCT using Fatou's lemma) If $f_{n} \in L^{+}, \{ f_{n}\} \nearrow$ and $\forall x, f_{n}(x) \to f(x)$, then apply Fatou's lemma to $\{ f_{n} \}$, we get $\int f = \int \liminf f_{n} \le \liminf_{n} \int f_{n}$. OTAH, apply Fatou's lemma to $\{f-f_{n}\}$, we get $0=\int \liminf (f-f_{n}) \le \liminf_{n} \int (f-f_{n})=\int f - \limsup_{n} \int f_{n}$, i.e. $\limsup\int  f_{n} \le \int f$. Thus $\{ \int  f_{n} \}_{n}$ converges to $\int f$.
 
-> Cor. If $\{ f_{n} \} \subset L^{+}, f \in L^{+}$, and $f_{n}(x) \to f(x)$ a.e., then $\int f \le \liminf \int f_{n}$.
+> Cor. If $\{ f_{n} \} \subset L^{+}, f \in L^{+}$, and $f_{n}(x) \to f(x)$ a.e., then $\int f \le \liminf \int f_{n}$. If further more, $f_{n} \le f$, then $\int f = \lim \int f_{n}$. (Shown by apply the lemma twice)
 
 > Ex. (ch2q13) If $\{ f_{n} \} \subset L^{+}$, $f_{n}(x) \to f(x)$ pointwise, and $\int f=\lim \int f_{n}<\infty$, then $\forall E \in \mathcal{M}, \int_{E} f=\lim \int_{E} f_{n}$. This need not be true if $\int f=\lim \int f_{n}=\infty$.
 
@@ -776,6 +782,8 @@ Proof. #TODO
 > [!note] Def. (Converge in measure)
 > $\forall  \epsilon>0, \lim_{n \to \infty} \mu( \{ x: | f_{n}(x) - f(x) | > \epsilon \}  )=0$.
 
+^deb71b
+
 > [!note] Def. (Cauchy in measure)
 > $\forall \sigma, \epsilon>0, \exists N \in \mathbb{N}, \forall n,m>N, \mu(\{x: |f_{n}(x)-f_{m}(x) | >\epsilon \})<\sigma$. It's usually denoted as $\mu(\{x: |f_{n}(x)-f_{m}(x) | >\epsilon \} \to 0$ as $m,n \to \infty$.
 
@@ -784,6 +792,8 @@ Proof. #TODO
 > 1. $\exists measurable\ f , s.t., f_{n} \overset{\mu}{\to} f$;
 > 2. There is a subsequence $\{ f_{n_{j}} \}  s.t. f_{n_{j}} \overset{a.e.}{\to} f$; 
 > 3. If also $f_{n} \overset{\mu}{\to} g$, then $g=f$ a.e.
+
+^4529a6
 
 Proof. 
 1. Given Cauchy in measure, pick subsequence s.t. if $E_{j}:=\{x: |f_{n_{j}}(x)-f_{n_{j+1}}(x) | >2^{-j} \}$, then $\mu(E_{j})< 2^{-j}$. Let $F_{k}:=\cup_{j=k}^{\infty}E_{j}$, then $\mu(F_{k}) < 2^{1-k}$ by subadditivity. OTAH, for $x \notin F_{k}, i \ge j \ge k, |f_{n_{i}}(x)-f_{n_{j}}(x) | \le 2^{1-j} \le 2^{1-k} (*)$. Thus $\{ f_{n_{j}} \}_{j=k}^\infty$ is pointwise Cauchy and therefore convergent on $F_{k}^{c}$.
@@ -797,7 +807,7 @@ Proof.
 
 Proof. (<=) $\{ | f_{n}-f_{m} | \ge \epsilon \} \subset \{ | f_{n}-f | \ge \frac{\epsilon}{2} \}\cup \{ | f-f_{m} | \ge \frac{\epsilon}{2} \}$, take $n, m \to \infty$, and the two measures on RHS diminish.
 
-> [!important] Cor.
+> [!important] Cor. (This implication appears more often)
 > If $f_{n} \overset{L_{1}}{\to} f$, then there is a subsequence $\{ f_{n_{j}} \}  s.t. f_{n_{j}} \overset{a.e.}{\to} f$.
 
 > Ex. (ch2q33) Replace the condition of "$f:=\liminf f_{n}$" into "$f_{n} \overset{\mu}{\to} {f}$" in Fatou's lemma, it still holds.
@@ -934,7 +944,7 @@ E.g. Show that $\int_{0}^{\infty} \frac{\sin x}{x} \ \mathrm{d}x=\frac{\pi}{2}$.
 In this part, remember that $n$ refers to the dimension. We may use $c_{n}$ to denote a constant that only depends on $n$.
 
 > [!note] Def. 
-> 1. (**Locally integrable**) $f: \mathbb{R}^{n} \to \mathbb{C}, s.t., \int_{K} |f| \ \mathrm{d} m < \infty$ for any compact $K$. The set of it is denoted as $L_{loc}^{1}(\mathbb{R}^{n})$, which is a superset of $L^{1}(\mathbb{R}^{n})$;
+> 1. (**Locally integrable**) $f: \mathbb{R}^{n} \to \mathbb{C}, s.t., \int_{K} |f| \ \mathrm{d} m < \infty$ for any compact $K$. The set of them is denoted as $L_{loc}^{1}(\mathbb{R}^{n})$, which is a superset of $L^{1}(\mathbb{R}^{n})$;
 > 2. (**Hardy-littlewood max function**) $M_{f}:= x \mapsto \sup_{r>0} \frac{1}{m(B_{r}(x))} \int_{B_{r}(x)} |f| \ \mathrm{d}m$;
 > 3. (**Variants**) **Uncentered max func** $\tilde M_{f}:=x \mapsto \sup_{B} \{ \frac{1}{m(B)} \int_{B} |f| \ \mathrm{d}m : x \in B \}$. **Rectangle version** $M^{*}_{f}:=x \mapsto \sup_{R} \{ \dots : x \in R, R\text{ is rectangle with any direction} \}$. **Kakeya/Besicovitch set**: a set containing unit line segments pointing all possible directions.
 > 4. (operator $T$ of type **weak(p,p)**) Let $E_{\lambda}:=\{ x \in \mathbb{R}^{n}: |Tf(x)|>\lambda \}$, then $\exists C \in \mathbb{R}^{ >0}, \forall \lambda >0, \forall f \in L^{p}$, $m(E_{\lambda})\le \frac{ C \cdot ||f||_{p}^{p} }{\lambda^{p}}$.
@@ -983,7 +993,7 @@ The latter is zero given Chebyshev's inequality ([[Real Analysis#^cd31a5]]).
 Rmk. For n=1 and continuous, $\frac{\ \mathrm{d}}{\ \mathrm{d} x} \int_{a}^{x} f(y) \ \mathrm{d}y = f(x)$. We get the fundamental thm of calculus.
 
 ## 3.5 Func of bounded variation
-The session works on $m$.
+This session works on $m$.
 
 > [!important] Thm. (3.5.1)
 > $F: \mathbb{R} \to \mathbb{R}$, $F \nearrow$, then $F$ is 1) continuous a.e. and 2) differentiable a.e. with 3) $F: [a,b] \to \mathbb{R}, \int_{a}^{b} f'(x) \ \mathrm{d}m(x) \le f(b)-f(a)$. 
@@ -1070,7 +1080,7 @@ Ex. $F: \mathbb{R} \to \mathbb{C}$, then $\exists M \in \mathbb{R} s.t. \forall 
 
 > [!note] Def.
 > For $0<p<\infty, f: X \to \mathbb{C}$:
-> - $L^{p}$ **norm**: $||f||_{p}:=\int_{X} |f|^{p} \ \mathrm{d} \mu$;
+> - $L^{p}$ **norm**: $||f||_{p}:=(\int_{X} |f|^{p} \ \mathrm{d} \mu)^{\frac{1}{p}}$;
 > - $||f||_{\infty}=\inf \{ M: M \ge 0, \mu(\{ x \in X: |f(x)| \ge M \})=0 \}$;
 > - $L^{p}$ **space**: $L^{p}(X):=\{ f: ||f||_{p}<\infty \}$;
 > - **Distribution function**: $\lambda_{f}(\alpha):=\mu(\{ x \in X: |f(x)| > \alpha \})$, $\lambda_{f}: (0, \infty) \to [0, \infty]$;
@@ -1078,8 +1088,18 @@ Ex. $F: \mathbb{R} \to \mathbb{C}$, then $\exists M \in \mathbb{R} s.t. \forall 
 > - **Weak $L^{p}$ space**: $L^{p, \infty}(X):=\{ f: ||f||_{p, \infty}<\infty \}$;
 
 Rmk.
-1. $||f||_{\infty}$ can also be denoted as $ess\ sup |f(x)|$, since $|f(x)| \le ||f||_{\infty}$ a.e.
+1. $||f||_{\infty}$ can also be denoted as $ess\ sup |f(x)|$, since $|f(x)| \le ||f||_{\infty}$ a.e. $\le \sup f$.
 2. $\lambda_{f} \searrow$ and right continuous (use continuity from below).
+3. Just like we did in $L^{1}$, we take two function with null set difference as the same element.
+4. $0<p<\infty, ||f||_{p} < ||f||_{\infty}$.
+
+> Prop. $p<\infty, f \in L^{p} \cap L^{\infty}$ and $\forall q>p, f \in L^{q}$, then $\lim_{q \to \infty} ||f||_{q} = ||f||_{\infty}$.
+
+Proof.
+1. WTS $\liminf_{q} ||f||_{q} \ge ||f||_{\infty}$ and $\limsup_{q} ||f||_{q} \le ||f||_{\infty}$.
+2. Assume $||f||_{\infty}>0$. WTS $\forall \epsilon>0, \liminf_{q} ||f||_{q} \ge ||f||_{\infty} - \epsilon$. Define $S_{\epsilon} := \{ x : |f(x)| > ||f||_{\infty}-\epsilon \}$. Then $\mu(S_{\epsilon})>0$ by def.
+3. $\forall q>0, ||f||_{q} > (\int_{S_{\epsilon}} |f(x)|^{q})^{\frac{1}{q}} = (||f||_{\infty}-\epsilon) \mu(S_{\epsilon})^{\frac{1}{q}}$. Given that $+\infty> ||f||_{p} > (||f||_{\infty}-\epsilon) \mu(S_{\epsilon})^{\frac{1}{p}}$, we know $\mu(S_{\epsilon})<\infty$. Therefore $\liminf_{q} ||f||_{q} \ge ||f||_{\infty} - \epsilon$.
+4. WTS $\limsup_{q} ||f||_{q} \le ||f||_{\infty}$. $$\left(\int |f|^{q} \right)^{\frac{1}{q}} = \left(\int |f|^{q-p} |f|^{p} \right)^{\frac{1}{q}} \le \left(\int ||f||_\infty^{q-p} |f|^{p} \right)^{\frac{1}{q}}=||f||_{\infty}^{\frac{(q-p)}{q}} ||f||_{p}^{\frac{p}{q}}$$Take limsup on each side.
 
 > [!important] Thm.
 > $||f||_{p}^{p} = p \int_{0}^{\infty} \alpha^{p-1} \lambda_{f}(\alpha) \ \mathrm{d}m(\alpha)$.
@@ -1098,14 +1118,88 @@ Proof. #TODO
 
 > Lemma. $0 < a \le b, 0 < \theta < 1$, then $a^{\theta} b^{1-\theta} \le \theta a + (1-\theta)b$, with equality iff $a=b$.
 
-Proof. #TODO 
+Proof. Divide both side by b and then take $t=\frac{a}{b}$. High school stuff.
 
 > [!important] Thm. (Holder's inequality)
 > $1 \le p \le \infty$, find $p'$ s.t. $\frac{1}{p} + \frac{1}{p'}=1$, then $||fg||_{1} \le ||f||_{p} ||g||_{p'}$, with equality iff $\exists \alpha, \beta, s.t. (\alpha,\beta) \ne (0,0)$ and $\alpha |f(x)|^{p}=\beta |g(x)|^{p'}$ a.e.
 
+Proof. WLOG, $||f||_{p} \le ||g||_{p'}$.
+1. Case1: $p=1, p'=\infty$ or $p=\infty, p'=1$. Trivially $\int |fg| \le \left(\int |f|\right)\cdot ess \sup |g(x)|$.
+2. Case2: $1<p<\infty$.
+3. Subcase1: $||f||_{p}=0$. Since $f=0$ a.e. LHS is 0.
+4. Subcase2: $||g||_{p'}=\infty$. Then RHS is infinity.
+5. Subcase3: By rescaling, WLOG, $||f||_{p}=||g||_{p'}=1$, WTS $||fg||_{1} \le 1$. For every x, apply the above lemma by taking $a=|f(x)|^{p}, b=|g(x)|^{p'}, \theta=\frac{1}{p}$, we get $|f(x)g(x)| \le \frac{1}{p} |f(x)|^{p} + \frac{1}{p'} |g(x)|^{p'}$, therefore $\int |fg| \le \frac{1}{p} + \frac{1}{p'}=1$.
+6. For the case of equality, it is iff a=b
+
+> [!important] Thm. (Minkowski's inequality)
+> $1 \le p \le \infty, ||f+g||_{p} \le ||f||_{p} + ||g||_{p}$
+
+Proof.
+1. If $p=\infty$ or $p=1$, derivable fom $|(f+g)(x)| \le |f(x)| + |g(x)|$.
+2. If $||f+g||_{p}=0$, LHS=0.
+3. Now $1 < p < \infty, ||f+g||_{p} \ne 0$. Try to have a multiplicative form to apply Holders's. Note that $\frac{1}{p} + \frac{1}{p'}=1 \implies 1+ \frac{p}{p'}=p \implies (p-1)p'=p$ and  $|f+g|^{p}=|f+g| \cdot |f+g|^{p-1} \le|f| \cdot |f+g|^{p-1} + |g| \cdot |f+g|^{p-1}$.
+4. $$\begin{aligned}||f+g||_{p}^{p} &= \int |f+g|^{p} \le \int | f\cdot |f+g|^{p-1} |  + \int | g \cdot |f+g|^{p-1} | \\ & = || f \cdot |f+g|^{p-1} ||_{1} + || g\cdot |f+g|^{p-1} ||_{1}  \\&\le (||f||_{p} + ||g||_{p})\cdot ||(f+g)^{p-1}||_{p'} \\ &= (||f||_{p} + ||g||_{p})\cdot (\int |f+g|^{(p-1)p'})^{\frac{1}{p'}}\\ &= (||f||_{p} + ||g||_{p})\cdot ( ||f+g||^{p}_{p})^{\frac{1}{p'}} \end{aligned}$$
+
+> [!important] Thm. (Critical point of Minkowski)
+> - $||f+g||_{1}=||f||_{1}+||g||_{1} \iff |(f+g)(x)|=|f(x)|+|g(x)|$ a.e.
+> - $1 < p < \infty, ||f+g||_{p}=||f||_{p}+||g||_{p} \iff \exists C \ge 0, f(x)=C \cdot g(x)$ a.e.
+
+Proof. 
+1. The case of $p=1$ is obvious. 
+2. The case of $p=\infty$ #NotCovered 
+3. The case of $1<p<\infty$. In the proof, the first inequality becomes equal iff $|(f+g)(x)|=|f(x)|+|g(x)|$ a.e. The second inequality (Holder's) becomes equal iff $\exists \alpha, \beta, s.t. (\alpha,\beta) \ne (0,0)$ and $\alpha |f(x)|^{p}=\beta ( |(f+g)(x)|^{p-1} )^{p'}=\beta |(f+g)(x)|^{p}$ a.e. These two hold iff $\exists C \ge 0, f(x)=C \cdot g(x)$ a.e.
+
+> [!important] Thm. (Riesz-Fischer)
+> $1 \le p \le \infty$, then $(L^{p}, || \cdot||_{p})$ is Banach. 
+> 
+
 Proof. #TODO 
 
+> Prop. Suppose $1 \le p < \infty$. $||f_{n}-f||_{p} \to 0$ implies $f_{n} \overset{\mu}{\to} f$. Conversely, $||f_{n} \overset{\mu}{\to} f$ and $\forall n,|f_{n}|< g \in L^{p}$ implies $||f_{n}-f||_{p} \to 0$.
 
-
+Proof.
+1. Recall definition of convergence in measure ([[Real Analysis#^deb71b]]) and the fact that it induces an a.e. convergence subseq ([[Real Analysis#^4529a6]]). Let $H_{\epsilon,n}:=\{x: | f_{n}(x)-f(x)| > \epsilon  \}$. $f_{n} \overset{\mu}{\to} f$ iff $\forall \epsilon>0, \mu(H_{\epsilon, n}) \to 0$ as $n \to \infty$.
+2. (Lp convergence implies convergence in measure) $$\begin{aligned} &||f_{n}-f||_{p} \iff \int |f_{n}-f|^{p} \to 0 \\ & \implies  \forall  \epsilon>0, \int_{H_{\epsilon, n}} |f_{n}-f|^{p} \to 0 \\ & \implies \forall  \epsilon>0,   \int_{H_{\epsilon, n}} \epsilon^{p} \to 0 \\& \iff  \forall  \epsilon>0,  \epsilon^{p} \cdot \mu(H_{\epsilon,n}) \iff  f_{n} \overset{\mu}{\to} f \end{aligned}$$
+3. (convergence in measure implies Lp convergence under dominance) Convergence in measure induces an a.e. convergence subseq. WTS $\lim \int |f_{n}-f|^{p}=0$. Try to satisfy the conditions of DCT for $h_{n}:= |f_{n}-f|^{p}$. $\int |h_{n}|=\int (|f|+|g|)^{p} \le || (|f|+|g|) ||_{p}^{p}$, which, by Minkowski, no more than $(||f||_{p}+||g||_{p})^{p}<\infty$.
+4. Suppose the consequent false given antecedent, then $\exists  \epsilon>0, \exists \{ f_{n_{i}} \}$ s.t. $||f_{n_{i}}-f||_{p} \ge \epsilon$. OTAH, since subsequence preserves sequence convergence, $f_{n_{i}} \overset{\mu}{\to} f$. Use the above argument to achieve contradiction.
 
 ## 6.2 Dual of $L^{p}$
+> [!note] Def. (Linear functional, dual)
+> Let X be a vector space over $\mathbb{C}$,
+> - A **linear functional** is $T:X \to \mathbb{C}$. 
+> - A **bounded linear function** is when $\exists C \in \mathbb{R}, \forall x\in X, |Tx| \le C ||x||$.
+> - The **dual space** $X^{*}$ is the collection of bounded linear functional on X.
+> - **Isometric isomorphism**: normed vector space $(X, || \cdot||_{X}), (Y, ||\cdot||_{Y}), \exists T$ surjective s.t. $||x||_{X}=||Tx||_{Y}$.
+
+Rmk. #NotCovered 
+1. (Isometric isomorphism) For $1<p<\infty, (L^{p})^{*} \overset{\sim}{=} L^{p'}$.
+2. $L^{2}$ is the only Hilbert space, $(L^{2})^ * \overset{\sim}{=} L^{2}$.
+3. If $\mu$ is $\sigma$-finite, then $(L^{1})^{*}=L^{\infty}, L^{1} \subset (L^{\infty})^{*}$.
+
+> [!important] Thm.
+> $1 \le p < \infty,  f\in L^{p}$, then $||f||_{p}= \sup \{ |\int_{X} fg \ \mathrm{d} \mu| : g \in L^{p'} \}$. By normalization, we get $\sup \{ |\int_{X} fg \ \mathrm{d} \mu| : g \in L^{p'}, ||g||_{p'}=1 \}$. Moreover, if $\mu$ is semi-finite, then $||f||_{\infty} = \sup \{ |\int_{X} fg \ \mathrm{d} \mu| : g \in L^{1}, ||g||_{1}=1 \}$.
+
+Proof. Define RHS as $\Phi(f)$. #TODO 
+
+> [!important] Thm. 
+> $S:=\{ f: f=\sum_{j=1}^{n} a_{j}\mathcal{X}_{E_{j}}, \mu(E_{j})<\infty \}$, $\mu$ is $\sigma$-finite,
+> 1. If $0<p \le \infty$, then S is dense in $L^{p}$.
+> 2. If $1 \le p \le \infty$, then $||f||_{p}=\sup \{ |\int_{X} fg \ \mathrm{d} \mu| : g \in S, ||g||_{p'}=1 \}$
+
+Proof.
+1. #NotCovered 
+2. #TODO 
+
+> [!note] Def. (Continuous func with compact support)
+> - $C_{c}(X):=\{ f: X \to \mathbb{C} | f\text{ continuous}, supp\ f\text{ is compact} \}$, where $supp f:=\{x\in X | f(x) \ne 0 \}$.
+> - $C_{c}^\infty(X):=\{ f \in C_{c}(X) | f \in C^{\infty} \}$.
+
+> Prop. $C_{c}(\mathbb{R}^{n})$ is dense in $L^{p}(\mathbb{R}^{n})$ when $1 \le p <\infty$, but false when $p=\infty$.
+
+Proof. #NotCovered 
+
+> [!important] Thm. (Continuity of $L^{p}$ norm)
+> $f \in L^{p}(\mathbb{R}), \lim_{t \to \infty} ( \int |f(x+t)-f(x)|^{p} \ \mathrm{d}m(x) )^{\frac{1}{p}}=0$.
+
+Proof. #TODO 
+

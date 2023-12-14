@@ -8,18 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "5aba9e5e1a08e652",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Mathematics/Real Analysis.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "32e4856fd4cd92b9",
             "type": "leaf",
             "state": {
@@ -30,21 +18,8 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "861afee3092863cf",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Mathematics/Statistics.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
           }
         ],
-        "currentTab": 2,
         "stacked": true
       }
     ],
@@ -119,7 +94,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "Mathematics/Statistics.md",
+            "file": "Mathematics/Linear algebra.md",
             "collapseAll": true,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -136,7 +111,7 @@
         "state": {
           "type": "outgoing-link",
           "state": {
-            "file": "Mathematics/Statistics.md",
+            "file": "Mathematics/Linear algebra.md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           }
@@ -148,7 +123,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "Mathematics/Statistics.md"
+            "file": "Mathematics/Linear algebra.md"
           }
         }
       }
@@ -165,10 +140,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "861afee3092863cf",
+  "active": "32e4856fd4cd92b9",
   "lastOpenFiles": [
-    "Mathematics/Linear algebra.md",
     "Mathematics/Real Analysis.md",
+    "Mathematics/Linear algebra.md",
     "Mathematics/Statistics.md",
     "Mathematics/2023-01-01.md",
     "Mathematics/quote-of-the-day.md",

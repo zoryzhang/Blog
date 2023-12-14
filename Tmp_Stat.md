@@ -1,8 +1,9 @@
 ### Reminder
 - p-value for 2-side: remember twice it.
 - The two properties of variance can save a lot of work.
+
 ### Dist
-%% > Def. (**Geometric distribution**, $W \sim Geom(p)$ ) Keep performing Bernoulli trials until the first success, and let $W:=\text{the waiting time}$, then $f_{W}(k)=(1-p)^{k-1}p,k=1, 2, \dots$, $F(x)=1-(1-p)^{x}$. 
+> Def. (**Geometric distribution**, $W \sim Geom(p)$ ) Keep performing Bernoulli trials until the first success, and let $W:=\text{the waiting time}$, then $f_{W}(k)=(1-p)^{k-1}p,k=1, 2, \dots$, $F(x)=1-(1-p)^{x}$. 
 
  > Def. (**Negative Binomial distribution**, $W_{r} \sim NB(r,p)$ ) Let $W_{r}:=\text{the waiting time for r successes}$, then $f_{W_{r}}(k)={k-1 \choose k-r} p^{r-1} (1-p)^{k-r}p ,k=1, 2, \dots$ 
 
@@ -27,7 +28,7 @@ Rmk. $\Gamma(t)=(-y^{t-1}e^{-y})_{y=0}^{\infty} + \int_{0}^{\infty} (t-1) y^{t-2
 
 > Def. (**Gamma distribution**, $X \sim Gamma(\alpha, \theta)$ ) For $x \ge 0$, $f_{X}(x)=\frac{1}{\Gamma(\alpha) \theta^{\alpha}} x^{\alpha-1}e^{-x/\theta}$. In a poisson process, the waiting time of first occurence is $Exp(\theta=1/\lambda)$, now gamma distribution describes the waiting time until $\alpha$-th occurrence.
 
-> Def. (**Normal/Gaussian distribution**, $X \sim \mathcal{N}(\mu,\sigma^{2})$ ) $f_{X}(x)=\frac{1}{ \sqrt{2\pi} \sigma } \exp ( - \frac{(x-\mu)^{2}}{2 \sigma^{2}} )$. Standard normal distribution $Y \sim \mathcal{N}(0,1)$, denote the p.d.f. as $\phi(x)=\frac{1}{\sqrt{2\pi}} \exp(\frac{-x^{2}}{2})$. %%
+> Def. (**Normal/Gaussian distribution**, $X \sim \mathcal{N}(\mu,\sigma^{2})$ ) $f_{X}(x)=\frac{1}{ \sqrt{2\pi} \sigma } \exp ( - \frac{(x-\mu)^{2}}{2 \sigma^{2}} )$. Standard normal distribution $Y \sim \mathcal{N}(0,1)$, denote the p.d.f. as $\phi(x)=\frac{1}{\sqrt{2\pi}} \exp(\frac{-x^{2}}{2})$. 
 
 > Def. (**Chi-squared distribution**) If k iid $Z_{i} \sim N(0,1)$, then $\sum_{i=1}^{k} Z_{i}^{2} \sim X^{2}_{(k)} = Gamma(\alpha=k/2,\theta=2)$. $k$ is called the **degree of freedom**, DF.
 

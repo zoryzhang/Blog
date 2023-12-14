@@ -191,7 +191,7 @@ The result of hypothesis testing is either to **reject or fail to rejec**t $H_{0
 
 Def. **Type 1 error**: $H_{0}$ is true but $(X_{i}) \in C$, i.e. get rejected. The probability of this case, denoted as $\alpha:=\text{I\kern-0.15em P}((X_{i}) \in C | H_{0})$, is called the **significance level**. To control this error, we may pick suitable critical region for specified significance level that we want to achieve.
 
-Def. **Type 2 error**: $H_{1}$ is true but $(X_{i}) \in C'$, i.e. fail to reject $H_{0}$. The probability of this case is denoted as $\beta:=\text{I\kern-0.15em P}((X_{i})\in C' | H_{1})$.
+Def. **Type 2 error**: $H_{1}$ is true but $(X_{i}) \in C'$, i.e. fail to reject $H_{0}$. The probability of this case is denoted as $\beta:=\text{I\kern-0.15em P}((X_{i})\in C' | H_{1})$. $1-\beta$ is called the **power** of a test, which is a function of some parameters when $H_{1}$ is compound. Sometimes the power function is denoted as $\beta(\theta), K(\mu)$. The whole function itself depends on the critical region, which depends on $\alpha$. The more power a test is, the more likely it can reject the null hypothesis when $H_{1}$ is true.
 
 Def. **p-value**: the tail-end probability, under $H_{0}$, of the distribution of the test statistic beyond the observed value. 
 - The "beyond" means at least as extreme as the observed value so that away from $H_{0}$ in the direction(s) of $H_{1}$. When $H_{1}$ is two-sided, it is generally taken to be $2 \min(\text{I\kern-0.15em P}(\text{smaller than the observed}), \text{I\kern-0.15em P}(\text{greater than the observed}))$. 
@@ -221,12 +221,22 @@ Def. **p-value**: the tail-end probability, under $H_{0}$, of the distribution o
     - $X^{2}=\frac{(n-1)S^{2}}{\sigma^{2}} \sim X^{2}_{(n-1)}$
     - $H_{0}: \sigma = \sigma_{0},H_{1}:\sigma < \sigma_{0}, C=\{ X^{2} < X^{2}_{n-1, 1-\alpha} \}$.
 
-
-
-
-
-
-
+## 2.4 Chi Square tests
+### 2.4.1 Goodness of Fit
+- A random sample of size $n=\sum_{i=1}^{k} Y_{i}$ is classified into k catagories / cells with frequency $Y_{i}$. Ground truth cell probabilities are $p_{i}$, while the sample probabilities are $\hat p_{i}= Y_{i} / n$. $H_{0}: \forall i, p_{i}=p_{i0}$.
+- Test statistic $X^{2}=\sum \frac{(obs-exp)^{2}}{exp} =\sum \frac{ (Y_{i}- n * p_{i0})^{2} }{n * p_{i0}} \sim X^{2}_{k-1}$.
+- This approximate test is only appropriate when all $Y_{i} \ge 5$.
+### 2.4.2 Test of Homogeneity
+- A random sample of size $n=\sum_{i=1}^{r} n_{i}=\sum_{i=1}^{r}\sum_{j=1}^{c} Y_{ij}$. $H_{0}:$ $r$ sub-groups of a population share the same distribution of a single categorical variable with $c$ categories. In other word, $\forall j, p_{ij}$ are all the same among i.
+- $X^{2}=\sum \frac{(obs-exp)^{2}}{exp} = \sum_{j=1}^{c}\sum_{i=1}^{r} \frac{ (Y_{ij}-n_{i}*p_{ij}) }{n_{i} * p_{ij}} \sim X^{2}_{r(c-1)}$.
+- Under $H_{0}$, estimate $p_{ij}$ by the relative frequency $\hat p_{ij}:=\frac{ \sum_{i} Y_{ij} }{\sum_{i} n_{i}}$, by thinking they are part of a larger experiment in which $\sum_{i} Y_{ij}$ is the frequency.
+- Test statistic $X^{2}=\sum \frac{(obs-exp)^{2}}{exp} = \sum_{j=1}^{c}\sum_{i=1}^{r} \frac{ (Y_{ij}-n_{i}* \hat p_{ij})^2 }{n_{i} * \hat p_{ij}} \sim X^{2}_{(r-1)(c-1)}$.
+- By selecting k and defining categories, this method can be extended to test the equality of two distributions.
+### 2.4.3 Test of Independence
+- $H_{0}:$ two categorial variables, with $r, c$ categories respectively, are independent in the population. $Y_{ij}$ is the frequency of $A_{i} \cap B_{j}$, the intersection of two categories.
+- In other word, $H_{0}: p_{ij}=p_{i \cdot} p_{\cdot j}$, which means $\text{I\kern-0.15em P}(A_{i} \cap B_{j}) = P(A_{i}) P(B_{j})$. Under this hypothesis, $\hat p_{ij}= \hat{p_{i \cdot}} \hat{p_{\cdot j} }:=\frac{Y_{i \cdot}}{n} \frac{Y_{\cdot j}}{n}$.
+- Test statistic $X^{2}=\sum \frac{(obs-exp)^{2}}{exp} = \sum_{j=1}^{c}\sum_{i=1}^{r} \frac{ (Y_{ij}-n* \hat p_{ij})^2 }{n * \hat p_{ij}} \sim X^{2}_{(r-1)(c-1)}$.
+- The same degree of freedom eventually.
 
 
 

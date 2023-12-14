@@ -13,10 +13,11 @@ notionID: f7250863-2ac4-4d17-b16a-d8a2940fa662
 # Reminder
 1. Carefully look at "dependent" or "independent".
 
-# Notation / Convension
+# Notation / Convention
 1.  $\epsilon_{n}$ is the standard basis of $F^{n}$.
 2.  $a_{ij}$ stands for entries of A; $A_{ij}$ stands for minor; $\hat a_{ij}$ stands for cofactor of entry $a_{ij}$.
 3. Basis $\beta=(s_{1}, \dots s_{n})$ for V, $\alpha=(t_{1},  \dots, t_{m})$ for W.
+4. Unless specified, the vector space is finite-dimensional.
 
 # Ch1 Vector Spaces
 ## 1.2 Vector Space
@@ -188,8 +189,9 @@ Rmk. $V \overset{T}{\to} W, \dim V=n, \dim W=m$, then $B:=[T]_{\beta'}^{\alpha'}
 
 > Prop. 
 > If $rk (A)=r$, then there're invertible matrices P, Q s.t.
-> $$PAQ=\begin{bmatrix}  I_{r} & 0 \\ 0 & 0 \end{bmatrix} \in M_{m \times n}$$
-> That means there's only $\min(n,m)$ many equivalence classes. Also, that means $rk A \le \min(n,m)$. This result will be justified later.
+> $$PAQ=\begin{bmatrix}  I_{r} & 0 \\ 0 & 0 \end{bmatrix} \in M_{m \times n}$$ 
+
+Rmk. That means there's only $\min(n,m)+1$ many equivalence classes. Also, that means $rk A \le \min(n,m)$. This result will be justified later. ^4f3137
 
 Proof. 
 1. By replacement thm, we can pick $\alpha$ so that $R(L_{A})=span(t_{1}, \dots, t_{r})$. For $i \le r$, since $t_{i} \in R(L_{A})$, we can find $s_{i}$ s.t. $L_{A}(s_{i})=t_{i}$.
@@ -341,7 +343,7 @@ Ex. Say H is the vector space of all function of the form $V_{1} \dots \times V_
 
 > Cor. $\det AE=\det A \det E$.
 
-> Cor. $\det AB = \det A \det B$.
+> Cor. $\det AB = \det A \det B$. Therefore $\det AB=\det BA$.
 
 Proof. If B is not invertible, then $rk(AB) \le rk(B)<n$, AB is not invertible either, then both sides are 0; If B is invertible, according to cor of thm3.6 ([[Linear algebra#^377d64]]), it is a product of elementary matrices.
 
@@ -415,7 +417,7 @@ Proof. Expend the first row first, and then the column:
 > [!note] Def. (**Eigenline**)
 > An eigenline of a linear transformation is a subspace charaterized by $span(\{v\})$, s.t., $\exists \lambda, Tv=\lambda v$. Such $v \in span(\{v\})$ is called **eigenvecter**, and $\lambda$ is called **eigenvalue**.
 
-Rmk. If we regard matrix/transformation W as a space movement in Euclidean space, we need to apply it on certain vector to examine its feature. What if we try to apply it multiple times?
+Rmk. If we regard matrix/transformation W as a space movement in Euclidean space, we need to apply it on certain vector to examine its feature.  E.g. When A is the adjacency matrix, $(A \vec v)_i = \frac 1 {deg_i }\sum_{j \in N(i)} v_j$. When $L=I-D^{-1}A$ , the Laplacian matrix, $(L \vec v)_i = \frac 1 {deg_i} \sum_{j \in N(i)} (v_i - v_j)$. What if we try to apply it multiple times?
 $$
 \begin{aligned}
 \vec v&=\sum_i \alpha_i \vec  u_i
@@ -430,15 +432,16 @@ We find out that the largest eigenvalue corresponding eigenvector will eventuall
 - first principle eigenvector indicates the movement direction.
 
 > [!note] Def. (Charateristic polynomial) 
-> $P_{A}(t):=\det(A-t I_{n})$, a polynomial of $t$.
+> $p_{A}(t):=\det(A-t I_{n})$, a polynomial of $t$.
 
 Rmk.
-1. $P_{A}(t)$ can be written as $(-1)^{t^{n}}+\sum_{i=2}^{n-2} a_{i} t^{i} +(-1)^{n-1} trA \cdot t^{1}+\det A \cdot t^{0}$.
-2. If $B=PAP^{-1}$, then $P_{B}(t)=\det(PAP^{-1}-\lambda I_{n})=\det(P(A-\lambda I_{n})P^{-1})=P_{A}(t)$.
-3. (Characteristic polynimial of linear map) $P_{T}(t):=\det([T]_{\beta}^{\beta}-t I_{n})$ for any choice of $\beta$.
-4. $\begin{aligned}\exists  v, Tv=\lambda v \iff \exists v, (T-\lambda I)v=0 \iff Ker(T-\lambda I) \ne 0 \\ \iff \det(A-\lambda I_{n})=0 \iff P_{A}(t) \text{ has root }\lambda. \end{aligned}$ 
+1. $p_{A}(t)$ can be written as $(-1)^{n}t^{n} +(-1)^{n-1} trA \cdot t^{n-1} +\sum_{i=1}^{n-2} a_{i} t^{i}+\det A \cdot t^{0}$.
+2. If $B=PAP^{-1}$, then $p_{B}(t)=\det(PAP^{-1}-\lambda I_{n})=\det(P(A-\lambda I_{n})P^{-1})=p_{A}(t)$.
+3. (Characteristic polynimial of linear map) $p_{T}(t):=\det([T]_{\beta}^{\beta}-t I_{n})$ for any choice of $\beta$.
+4. $$\begin{aligned}\exists  v, Tv=\lambda v \iff \exists v, (T-\lambda I)v=0 \iff Ker(T-\lambda I) \ne 0 \\ \iff \det(A-\lambda I_{n})=0 \iff p_{A}(t) \text{ has root }\lambda. \end{aligned}$$  Therefore, if $p_{A}(t)$ split, $p_{A}(t)=\prod (\lambda_{i}-t)$. Then $\det A=\prod \lambda_{i}$.
 5. T is invertible iff 0 is not an eigenvalue of T;
 6. Invertible T, then $\lambda$ is an eigenvalue of T iff $\lambda^{-1}$ is an eigenvalue of $T^{-1}$.
+7. $p_{A}(t)=p_{A^{T}}(t)$. This is because $\det (A-tI)=\det (A-tI)^{T}=\det (A^{T}-tI)$.
 
 > [!note] Def. (Generalized eigenvector)
 > $v$ is a **generalized eigenvector** of $\lambda\in F$ if $(T-\lambda I)^{k} v=0$ for some $k \ge 1$.
@@ -453,7 +456,7 @@ Rmk.
 Rmk. 
 1. For an uppertriangular matrix, the numbers on the diagonal are the eigenvalues, by showing that $Ker(A-a_{ii} I) \ne 0$ since it's no longer invertible but this is linear operator.
 2. $T(V_{\lambda})\subset V_{\lambda}$: $\forall v, s.t. (T-\lambda I)^{n} v=0$, then $(T-\lambda I)^{n} (Tv)=T((T-\lambda I)^{n} v)=0$. The commutivity comes from the nature of polynomial of transformation.
-3. $A$ and $A^{t}$ have the same charateristic polynomial, where multiplicity is known to be the same. Now furthermore, $\dim E_{\lambda}=\dim E'_{\lambda}$. Thus if $A$ is diagonalizable, so is $A^{t}$.
+3. As said before, $A$ and $A^{t}$ have the same charateristic polynomial, where multiplicity is known to be the same. Now furthermore, $\dim E_{\lambda}=\dim E'_{\lambda}$. Thus if $A$ is diagonalizable, so is $A^{t}$.
 
 > Lemma. $\dim V<\infty, \exists ! W$ with decomposition $V=V_{0} \oplus W$, s.t. $T|_{W}:W \to W$ is an isomorphism, where $V_{0}$ is the generalized eigenspace for $0$. In fact, $W=R(T^{n}), V_{0}=Ker T^{n}$.
 
@@ -551,6 +554,12 @@ Rmk. (**Notational simplification**) For $x,y \in F^{n}, <x,y>=y^{*}x$.
 E.g. (**Frobenius inner product**) $<A,B>$ can be defined as $tr(AB^{*})$.
 
 > Lemma. (**Pythagorean theorem**) $<u,v>=0 \implies ||u+v|||^{2}=||u||^{2}+||v||^{2}$.
+
+> Prop. (6.1.1) $F=\mathbb{R}, \mathbb{C}, M \in M_{n \times n}(\mathbb{R}), M=M^{t}$, then $\forall$ eigenvalue $\lambda \in \mathbb{R}$.
+
+^bb8320
+
+Proof. $Mv=\lambda v$, then $(Mv)^{*}=v^{*} M^{*}=v^{*} M$ equals to $(\lambda v)^{*}=\bar \lambda v^{*}$. Then on one hand, $v^{*} M v=(v^{*} M)v=(\bar \lambda v^{*})v=\bar \lambda v^{*}v$, OTAH, $v^{*}Mv=v^{*}(Mv)=v^{*}(\lambda v)=\lambda v^{*}v$, therefore $\lambda=\bar \lambda$.
 
 > [!important] Thm. (Cauchy-Schwarz) 
 > $|<u,v>| \le ||u|| \cdot ||v||$.
@@ -659,7 +668,8 @@ $$
 Ex. Orthonormal basis $\beta$, let Q be the matrix whose columns are $\beta$, then $Q^{*}=Q^{-1}$.
 
 Ex. $\begin{aligned} T: V \to V, \dim V<\infty &\implies N(T^{*}T)=N(T) \implies rk(T^{*}T)=rk(T) \\ &\implies rk(T)=rk(T^{*}) \implies rk(TT^{*})=rk(T)\end{aligned}$.
-
+    
+## 6.4 Normal and self-adjoint
 > [!note] Def. (**Self-adjoint**, **normal**)
 > - **Self-adjoint / Hermitian**: if $T^{*}=T$;
 > - **Normal**: if $T^{*}T=TT^{*}$.
@@ -681,7 +691,8 @@ Ex. $V=W \oplus W^{\perp}$, then $proj_{W}: V \to W$ is self-adjoint.
 
 Proof. Since it splits, there is a basis producing T-invariant flag, i.e. $T(s_{i})=\sum_{j=1}^{i} a_{i}s_{i}$. Gram-Schmidt process is a precedure that automatically keeps this flag.
 
-> [!important] Thm. TFAE when $F=\mathbb{C}$:
+> [!important] Thm. (6.4.1)
+> TFAE when $F=\mathbb{C}$:
 > 1. $T$ is normal;
 > 2. $V=\bigoplus_{i=1}^{r} E_{\lambda_{i}}$ and $\forall v\in E_{\lambda_{i}}, w \in E_{\lambda_{j}}, i \ne j \to <v,w>=0$, i.e. $E_{\lambda_{i}}^{\perp}=\bigoplus_{j \ne i} E_{\lambda_{j}}$;
 > 3. V has an orthonormal basis $\beta$ of eigenvectors of $T$, i.e. $[T]_{\beta}$ is diagonal.
@@ -692,18 +703,23 @@ Proof.
 3. (3=>2) Since $[T]_{\beta}$ is diagonal, by thm5.2.2 ([[Linear algebra#^2f8c8e]]), we have $V=\bigoplus_{i=1}^{r} E_{\lambda_{i}}$. For any $E_{\lambda}=span\{s_{i}\}, E_{\sigma}=span\{t_{j}\}$, orthogonal to each other.
 4. (2=>3) pick orthonormal basis in each eigenspace, thus are eigenvectors, and then combine them.
 
-> [!important] Thm. TFAE when $F=\mathbb{R}$:
+> [!important] Thm.  (6.4.2)
+> TFAE when $F=\mathbb{R}$:
 > 1. $T$ is self-adjoint;
 > 2. $V=\bigoplus_{i=1}^{r} E_{\lambda_{i}}$ and $\forall v\in E_{\lambda_{i}}, w \in E_{\lambda_{j}}, i \ne j \to <v,w>=0$, i.e. $E_{\lambda_{i}}^{\perp}=\bigoplus_{j \ne i} E_{\lambda_{j}}$;
 > 3. V has an orthonormal basis $\beta$ of eigenvectors of $T$, i.e. $[T]_{\beta}$ is diagonal.
 
+^fe98ba
+
 Proof. Only need to fix (1=>3). WTS $p_{T}$ splits over field $\mathbb{R}$. Choose orthonormal basis $\beta$ to have $A:=[T]_{\beta}$ s.t. $A=A^{t}$. Consider the vecter space $(\mathbb{C}^{n}, <,>)$ over field $\mathbb{C}$, where $L_{A}: \mathbb{C}^{n} \to \mathbb{C}^{n}, L_{A}^{*}=L_{\overline{A^{t}}}=L_{A}$ is normal. By last thm, $[L_{A}^{*}]_{\alpha}=[L_{A}]_{\alpha}$ is diagonal, which means all entries are real. Thus $p_{L_{A}}$ splits over field $\mathbb{R}$, which is the same charateristic poly as $A$ and $T$. Now the original proof can be applied.
+
+Rmk. (**Spectral thm**) An important implication is the spectral decomposition $T=\sum \lambda_{i}T_{i}, s.t. I=\sum T_{i}, T_{i} \circ T_{j}=\delta_{ij} T_{i}$.
 
 > Cor. $F=\mathbb{C}$, then T is normal iff $T^{*}=p(T)$ for some poly p.
 
 Proof. (=>) Consider the projection mappings $\pi_{i}: v \to v_{i}\in E_{\lambda_{i}}$. Due to the direct sum decomposition, $T=\sum \lambda_{i} \pi_{i}$. #TODO 
 
-Ex. $T: V \to V, W \subset V. T(W) \subset W$. Then $T^{*}(W^{\perp}) \subset W^{\perp}$. If further that $T^{*}(W) \subset W$, then $(T|_{W})^{*}=(T^{*})|_{W}$. If once further that T is normal, then $T|_{W}$ is normal.
+> Ex. $T: V \to V, W \subset V. T(W) \subset W$. Then $T^{*}(W^{\perp}) \subset W^{\perp}$. If further that $T^{*}(W) \subset W$, then $(T|_{W})^{*}=(T^{*})|_{W}$. If once further that T is normal, then $T|_{W}$ is normal.
 
 > Lemma. (6.3.1) $S:V \to V$ self-adjoint ($F=\mathbb{R}$) or normal ($F=\mathbb{C}$), then $\forall v, <Sv,v>=0$ implies $S=0$.
 
@@ -711,13 +727,31 @@ Ex. $T: V \to V, W \subset V. T(W) \subset W$. Then $T^{*}(W^{\perp}) \subset W^
 
 Proof. There is an orthonormal basis of eigenvectors. For any eigenvector $v, 0 = <Sv,v>= \lambda ||v||^{2}$, thus $\lambda=0$. Since S is diagonalizable, it has to be 0.
 
-Ex. If $T$ is normal, $\dim V<\infty$, then $Ker(T)=Ker(T^{*}),R(T)=R(T^{*})$.
+> Ex. In fact, when $F=\mathbb{C}$, even if S is jsut a general operator, if $\forall v, <Sv,v>=0$, then $S=0$. This can be proved by expending the case of $v=x+y, v=x+iy$ respectively.
 
-Ex. In fact, when $F=\mathbb{C}$, if $\forall v, <Sv,v>=0$, then $S=0$. This can be proved by expending the case of $v=x+y, v=x+iy$ respectively.
+> Ex. If $T$ is normal, $\dim V<\infty$, then $Ker(T)=Ker(T^{*}),R(T)=R(T^{*})$.
 
 > Cor. $F=\mathbb{C}$. $\forall v \in V, <Tv, v> \in \mathbb{R}$ iff T is self-adjoint.
 
-## 6.4 Isometry
+Proof. #TODO  also proved in note
+
+> [!important] Thm.
+> $M \in M_{n \times n}(F)$ self-adjoint ($F=\mathbb{R}$) or normal ($F=\mathbb{C}$), let $v_{1} \dots v_{n}$ be the orthonormal eigenvector basis given thm6.4.2 ([[Linear algebra#^fe98ba]]), then $M = \sum_{i}\lambda_{i} v_{i} v_{i}^{*}$.
+
+Proof. It suffices to show that $\forall j, M v_{j}:=\lambda_{j} v_{j}=(\sum_{i} \lambda_{i} v_{i} v_{i}^{*}) v_{j}$, where $RHS=\sum_{i} \lambda_{i} v_{i} <v_{j},v_{i}>=\lambda_{j} v_{j}$.
+
+> Cor. M self-adjoint ($F=\mathbb{R}$) or normal ($F=\mathbb{C}$),
+> 1. $M^k := \sum_{i}\lambda_{i}^k v_{i} v_{i}^{*}$;
+> 2. $M^{-1} = \sum_{i} \frac{1}{\lambda_{i}} v_{i} v_{i}^{*}$;
+> 3. $tr(M)=\sum_{i} \lambda_{i}$;
+> 4. $tr(M^{*}M)=\sum_{i} |\lambda_{i}|^{2}$.
+
+Proof. 
+1. $\lambda^{k}, v$ are eigenvalue, eigenvector for $M^{k}$. 
+2. $$\begin{aligned} \left(\sum_{i} \frac{1}{\lambda_{i}} v_{i} v_{i}^{*}\right) \left(M=\sum_{j} \lambda_{j} v_{j} v_{j}^{*}\right) = \sum_{i,j} \frac{\lambda_{j}}{\lambda_{i}} v_{i} (v_{i}^{*}v_{j}) v_{j}^{*} = \sum_{i} v_{i}v_{i}^{*}  =I\end{aligned}$$
+3. This can be shown by taking orthonormal standard basis $\epsilon=(e_{1} \dots e_{n})$ and orthonormal eigenvector basis $\beta=(s_{1} \dots s_{n}) \subset F^{n}$, and then by cor6.2.1 ([[Linear algebra#^bc4c8f]]), $$\begin{aligned}tr(M)&=tr( [L_{M}]_\epsilon )=\sum_{i} <M e_{i}, e_{i}> =\sum_{i} e_{i}^{*} M e_{i}\\&=\sum_{i} e_{i}^{*} \left(\sum \lambda_{j} v_{j} v_{j}^{*}\right) e_{i} = \sum_{i,j} \lambda_{j} (e_{i}^{*} v_{j}) (v_{j}^{*} e_{i} )\\&= \sum_{i,j} \lambda_{j} <v_{j}, e_{i}> <e_{i}, v_{j}> \\ &= \sum_{j} \lambda_{j} < (\sum_{i}  <v_{j}, e_{i}> e_{i}), v_{j}> \\&= \sum_{j} \lambda_{j} < v_{j}, v_{j}>=\sum_{j} \lambda_{j} \end{aligned}$$
+4. Similarly, $e_{i}=\sum_{j} <e_{i}, v_{j}> v_{j}, Me_{i}=\sum_{j} \lambda_{j} <e_{i}, v_{j}> v_{j}$, $$\begin{aligned}tr(M^{*}M)&=tr( [L_{M^{*}M}]_\epsilon )=\sum_{i} <M^{*}M e_{i}, e_{i}> =\sum_{i} <Me_{i}, Me_{i}> \\&= \sum_{i} \sum_{j} \lambda_{j} \overline{\lambda_{j}} <e_{i}, v_{j}> <v_{j}, e_{i}> \\ &= \sum_{j} |\lambda_{j}|^{2}  \end{aligned}$$
+## 6.5 Isometry
 
 > [!note] Def. (**Isometry**)
 > $T: V \to V$ is an **isometry** if $\forall v,||Tv||=||v||$. It's also called **orthogonal** when $F=\mathbb{R}$ and **unitary** when $F=\mathbb{C}$.
@@ -737,39 +771,117 @@ Proof.
 4. (4=>5) G-S process.
 5. (5=>2) Say $\beta=(s_{1} \dots s_{n})$.
 6. (3=>1) #TODO 
-7. (1=>6)
+7. (1=>6) #TODO 
 8. (6=>1) Apply (1=>6) one more time.
 
+> Cor. $A \in M_{n \times n}(F), A$ is self-adjoint/normal iff $\exists$ isometry U s.t. $UAU^{-1}$ is diagonal.
+
+Proof. Self-adjoint/normal iff orthonormal diagonalizable iff isometry diagonalizable, since $UAU^{-1}=[I]_{\epsilon}^{\beta}[L_{A}]_{\epsilon}^{\epsilon} [I]_{\beta}^{\epsilon}=[L_{A}]_\beta$ and $[I]_{\beta}^{\epsilon}$ is isometry by definition.
+
+> Prop.
+> 1. If T is isometry, T is normal (given form2);
+> 2. If $F=\mathbb{C}$, then T is isometry iff $\exists$ orthonormal basis $\beta$ s.t. $[T]_{\beta}$ diagonal and $\forall i, |\lambda_{i}|=1$.
+
+> [!note] Def. (Matrix Isometry)
+> $U \in M_{n \times n}(F)$ is an isometry if columns orthonormal.
+
+> Lemma. $U\in M_{n \times n}(F)$ is isometry iff $L_{U}: F^{n} \to F^{n}$ in $(F^{n}, <,>_{F^{n}})$ is isometry.
+
+Proof. #TODO 
+
+Ex. If M is isometry and upper triangular, then M is diagonal.
+
+Proof. $s_{i}:=Me_{i}=\sum_{j=1}^{i} m_{ji} e_{i}$, then $1=<s_{i}, s_{i}>=\sum_{j=1}^{i} |m_{ji}|^{2}$; $\forall i<k, 0=<s_{i}, s_{k}>=\sum_{j=1}^{i} m_{ji} \overline{a_{jk}}$. Induction.
+
+Ex. (**QR-decomposition** for solving linear sys) Every invertiable A can be decomposed as the product of a isometry matrix Q and an upper triangular matrix R.
+
+> [!note] Def. (Orthogonal projection)
+> $T: V \to V, R(T)^{\perp} = N(T), N(T)^{\perp}=R(T)$.
+
+## 6.6 Positivity
+
+> [!note] Def. (Positive semidefinite operator)
+> - For $F=\mathbb{C}, \forall v, <Tv,v> \ge 0$;
+> - For $F=\mathbb{R}, T$ is self-adjoint.
+
+> [!important] Thm.
+> TFAE:
+> 1. T is positive semidefinite;
+> 2. $T=T^*$ and $\forall$ eigenvalue $\lambda \in \mathbb{R}^{\ge 0}$;
+> 3. $\exists$ positive semidefinite R, $R^{2}=T$;
+> 4. $\exists R=R^{*}, R^{2}=T$;
+> 5. $\exists R, RR^{*}=T$.
+
+Proof. #TODO 
+
+Rmk. Positive semidefinite $\implies$ self-adjoint. In other word, when $F=\mathbb{C}$, it requires more than when $F=\mathbb{R}$.
+
+Ex. $T^{*}T, TT^{*}$ are positive semidefinite and $rk(TT^{*})=rk(T^{*}T)$.
+
+## 6.7 SVD and Pseudo-inverse
+
+> [!important] Thm. (Singular Value thm)
+> $T:V \to W$, then $\exists$ orthonormal basis $(v_{1} \dots v_{n})$ of V and $(u_{1} \dots u_{m})$ of W, s.t. $T(v_{i})=\sigma_{i} u_{i} \mathbb{1}(1 \le i \le r)$ and $\sigma_{i} \searrow, \sigma_{i} \in \mathbb{R}^{>0}$ for $1 \le i \le r$. Conversely, when such condition satisfied, $v_{i}$ is an eigenvector of $T^{*}T$ with eigenvalue $\lambda _{i} \mathbb{1}(1 \le i \le r)$. In other word, the singular value set $\{ \sigma_{i}\}_{i=1}^{r}$ uniquely determined by T.
+
+Proof.
+1. Existence: $T^{*}T$ are positive semidefinite, then $\forall$ eigenvalues $\lambda \ge 0$. Put them into order to get $T^{*} T v_{i}=\lambda_{i} v_{i} \mathbb{1}(1 \le i \le r)$. Now define $\sigma_{i}:=\sqrt{\lambda_{i}}$ and $u_{i}:=\frac{1}{{\sigma_{i}}} T(v_{i})$, so that $<u_{i},u_{j}>_{W}= \frac{\sigma_{i}^{2}}{\sigma_{i} \sigma_{j}} <v_{i}, v_{j}> =\delta_{ij}$. Extend it by gram-schmitd and normalization to get orthonormal basis of W. For $i > r, T^{*}Tv_{i}=0$, then $<Tv_{i}, Tv_{i}>=<v_{i}, T^{*}Tv_{i}>=<v_{i}, 0>=0$ confirming the equation $\sigma_{i} \searrow, \sigma_{i} \in \mathbb{R}^{>0}$. 
+2. Uniqueness: just verify the statement about eigenvector via inner product.
+
+> Cor. (Singular Value Decomposition, **SVD**) $A\in M_{m \times n}(F), \exists$ isometry $U \in M_{m \times m} ,V \in M_{n \times n}$ s.t. $A=U \Sigma V^{*}$ where $diag(\Sigma)=(\sigma_{1}, \sigma_{2}, \dots, \sigma_{r}, 0, \dots, 0)$ with $\sigma_{i} \searrow, \sigma_{i}\in \mathbb{R}^{>0}$.
+
+Proof. Get singular values and orthonormal bases from theorem applied on $L_{A}$. U and V are isometry by def. Now $AVe_{i}=Av_{i}=\sigma_{i} u_{i} \mathbb{1}(i \le r)$ and $U \Sigma e_{i}=U \mathbb{1}(i \le r) \sigma_{i} e_{i}=\mathbb{1}(i \le r) \sigma_{i} u_{i}$, therefore $AV=U\Sigma$, i.e. $A=U \Sigma V^{-1}=U \Sigma V^{*}$.
+
+Rmk. This decomposition can be regarded as eigenvalue decomposition with extra demand: two change of basis operators should preserve volume. The benefit is that $\Sigma$ will give a characterization of the size of A, while the downside is that now we have weaker but still nice form of $\Sigma$ (compared to [[Linear algebra#^4f3137]]).
+
+> [!note] Def. (Psuedo-inverse)
+> $T^{\dagger}: W \to V, T^{\dagger}|_{R(T)} := (T|_{(Ker T)^{\perp}})^{-1}, T^{\dagger}|_{ R(T)^{\perp} }:=0$.
+
+Motiv. Consider $V=KerT \oplus KerT^{\perp}$ and $W=R(T)^{\perp} \oplus R(T)$. $T$ maps one subspace in LHS to RHS correspondingly, but only $R(T)$ can be inverted back. Since actually $T(Ker T)=0$, we can define its psuedo-inverse on $R(T)^{\perp}$ be simply a zero map, thus our definition of psuedo-inverse.
+
+Rmk. $T^{\dagger} T: V \to V$ is $proj_{KerT^{\perp}}^{V}$, $TT^{\dagger} : W \to W$ is $proj_{R(T)^{\perp}}^{W}$. When T is 1-1, $T^{\dagger} T=I_{V}$. When T is onto, $T T^{\dagger}=I_{W}$. Therefore, psuedo-inverse is close to inverse as much as possible.
+
+# Ch7 Jordan Normal/Canonical Form
+Rmk. This charpter assumes all charateristic polys split.
+
+> [!note] Def. (Jordan form)
+> $J_{r,\lambda}:=\begin{bmatrix} \lambda & 1 \\ & \ddots & \ddots \\ && \lambda \end{bmatrix}$
+
+> [!important] Thm. (Jordan normal form)
+> $A \in M_{n \times n}(F), p_{A}(t)$ split, then
+> 1. $A \sim \begin{bmatrix} J_{r_{1}, \lambda_{1}} \\ & \ddots \\ && J_{r_{t}, \lambda_{t}} \end{bmatrix}$;
+> 2. If $A \sim \begin{bmatrix} J_{s_{1}, \sigma_{1}} \\ & \ddots \\ && J_{s_{k}, \sigma_{t}} \end{bmatrix}$, then $k=t$, and up to renumbering, $\forall i, (s_{i}, \sigma_{i})=(r_{i}, \lambda_{i})$.
+
+Proof. #TODO 
+
+> Cor. $A \sim B$ iff $\exists$ Jordan form J s.t. $A \sim J \sim B$.
+
+> Cor. $A \sim A^{t}$ when $p_{A}(t)$ split.
+
+Rmk. This is in fact always true, but that's a much deeper result.
+
+Proof. Find $J=PAP^{-1}$. Then $J^{T}=(P^{-1})^{T} A^{T} P^{T}=(P^{T})^{-1} A^{T} P^{T}$. It suffices to show $J \sim J^{T}$. Only need to look at each nilpotent $S=J_{\lambda_{i}, r_{i}} - \lambda_{i} I_{r_{i}}=\begin{bmatrix} 0 & 1 \\ & 0 & 1 \\ && \ddots & \ddots \end{bmatrix}$. Note that $S e_{i}=e_{i-1}$ and $S^{T} e_{i}=e_{i+1}$. Therefore $S \sim S^{T}$.
+
+Ex. $T:V \to V, \dim V<\infty, T^{2}=Id$, then T is diagonalizable.
+
+Rmk. An example is $V=\{ M_{n \times n } \}$ and T is taking transpose/adjoint. Then $E_{1}$ are the symmatric matrices, and $E_{-1}$ are the skew-symmetric matrices.
+
+Proof. (Trick of invariant cyclic subspace)
+1. First we show $p_{T}(t)$ split by looking at the invariant cyclic subspace $U=span\{ v, Tv, T^{2} v \dots \}$ to decompose the space/polynomial. Note that $\dim U \le 2$. In the case of $\dim U=2$, $p_{T|_{U}}=\det \begin{bmatrix} -t & 1 \\ 1 & -t \end{bmatrix}=t^{2}-1$ split. Let $\bar T: V/W\to V/W$, $p_{T}(t) = p_{T|_{U}} (t) p_{\bar T} (t)$, then since $\dim(V/W)<\dim V$ and $(\bar T)^{2}[x]=[T^{2}x]=[x] \implies (\bar T)^{2}=Id$, apply induction to show that $p_{T}(t)$ split.
+2. The roots of $p_{T}(t)$ are contained in $\{-1,1\}$. Simply since $Tv=\lambda v \implies v=T^{2}v=\lambda^{2} v$.
+4. Since split, take the JNF of T, $J=(J_{r_{1}, \pm 1} \dots)$. Being diagonalizable means $\forall i, r_{i}=1$. Since $T^{2}=Id$, $J_{r_{i}, \pm 1}^{2}=I$. OTAH, write $J_{r_{i}, \pm 1}=S+N$, where $S=\pm I$ and N is nilpotent, then contradiction $I=J_{r_{i}, \pm 1}^{2}=S^{2}+N^{2}+2SN \ne I$ holds whenever $r_{i}>1$.
+5. For the last step, alternatively, note that $V=V_{-1} \oplus V_{1}$. Show every generalized eigenvector is also an eigenvector.
+
+# Summary up to now
+1. Equivalence relations
+    1. $PAQ \sim A$: only $n+1$ equivalence classes by rank ([[Linear algebra#^4f3137]]).
+    2. $PAP^{-1} \sim A$: conjugate (which is the default one)
+    3. $PA \sim A$, where $P$ is invertible: RREF
+    4. $UAV^{*} \sim A$: SVD
+
 # Later
-
-
-
-e.g. 
-When A is the adjacency matrix, $(A \vec v)_i = \frac 1 {deg_i }\sum_{j \in N(i)} v_j$
-When $L=I-D^{-1}A$ , the Laplacian matrix, $(L \vec v)_i = \frac 1 {deg_i} \sum_{j \in N(i)} (v_i - v_j)$
-
-## How to find them?
-When the transformation A is normal operator, which means orthogonal diagonalizable, then:
-$$
-\begin{gather}
-A=P \Lambda P^{-1}
-\end{gather}
-$$
-where $\Lambda$ stretchs (eigenvalues), $P$ rotates (orthonormal eigenvectors).
-Further more, when A is symmetric real matrix(e.g. adjacency and Laplacian matrix), then it is hermitian/self-adjoint, which means all eigenvalues are real.
-
-## THM
-Symmetric real matrix M
-$M := \sum_{i}\lambda_{i} v_{i} v_{i}^T$, #TODO 
-(upd) dim V=K
-We may use the same eigenvectors in $M^k$, such that $M^k := \sum_{i}\lambda_{i}^k v_{i} v_{i}^T$
-claim: $M^{-1} := \sum_{i} \frac{1}{\lambda_{i}} v_{i} v_{i}^{T} , M^{-1} M=I$
-proof: substitute
-
-thm2: $tr(M)=\sum_{i} \lambda_{i}$
 https://courses.cs.washington.edu/courses/cse521/16sp/521-lecture-8.pdf
 
-## Variational Characterization of Eigenvalues
+## Rayleigh Quotient: Variational Characterization of Eigenvalues
 $$
 \begin{gather}
 \text{symmetric real}\ M_{n \times n},\text{ eigenvalue}\ \lambda_1 \le \lambda_2 ... \le\lambda_n
@@ -785,10 +897,3 @@ https://blog.csdn.net/a358463121/article/details/100166818
 
 证明$V$里面一定存在向量使得Rayleigh quotient时，只需要取$\lambda_1,\lambda_2, ...,\lambda k$对应的$v1, v_2, ..., v_k$组成的空间$V$即可。
 https://zhuanlan.zhihu.com/p/80817719
-
-
-# Hilbert space
-conjucture symmetric
-
-## Reference
-Basic knowledge in Spectral Theory.
