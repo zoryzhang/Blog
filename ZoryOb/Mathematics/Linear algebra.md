@@ -246,9 +246,9 @@ Proof.
 2. $hat$ is linear;
 3. $hat$ is bijective. The case of infinite dimension is #NotCovered . Otherwise, $\dim V^{**}=\dim V$, we need only 1-1 or onto. We show 1-1 here. Whenever $\hat x=0$, i.e. $\forall \varphi \in \mathcal{L}(V, F), \varphi(x)=0$. Suppose $\exists x_{0} \ne 0$ follows the above condition. When it's non-zero, one thing we can tell by replacement thm is that we can pick a basis in V as $\beta:=(x_{0}, \dots)$, then we got $x_{0}^{*}(x_{0})=1 \ne 0, x_{0}^{*} \in \mathcal{L}(V, F)$, contradicts.
 
-> Cor. If $\dim V<\infty$, then for any basis $\gamma$ of V*, there's a basis $\beta$ of V, s.t. $\beta^{*}=\gamma$.
+> Cor. If $\dim V<\infty$, then for any basis $\gamma$ of $V*$, there's a basis $\beta$ of V, s.t. $\beta^{*}=\gamma$.
 
-Proof. It's nice to be able to regard linear transformation as elements of vector space. For $\gamma:=(\varphi_{1}, \dots)$, we can generate $\gamma^{*}:=(\varphi_{1}^{*}, \dots)$, and find unique $\beta:=(x_{1}, \dots), s.t. \hat x_{i}=\varphi_{i}^{*}$. It's what suggested by the notation since $\varphi_{i}(x_{j})=:\hat x_{j}(\varphi_{i})=\varphi_{j}^{*}(\varphi_{i}):=\delta_{ji}=\delta_{ij}$.
+Proof. It's nice to be able to regard linear transformation as elements of vector space. For $\gamma:=(\varphi_{1}, \dots)$, we can generate $\gamma^{*}:=(\varphi_{1}^{*}, \dots)$, and find unique $\beta:=(x_{1}, \dots), s.t. \hat x_{i}=\varphi_{i}^{*}$. It's what suggested by the notation since $\varphi_{i}(x_{j})=: \hat x_{j}(\varphi_{i})=\varphi_{j}^{*} (\varphi_{i}):=\delta_{ji}=\delta_{ij}$.
 
 # Ch3. Elementary Matrix Operations and Systems of Linear Equations
 ## 3.1 Elementary Matrix Operations
@@ -430,6 +430,10 @@ $$
 We find out that the largest eigenvalue corresponding eigenvector will eventually dominate as k getting larger and larger. That's why we would like to conclude:
 - first principle eigenvalue(largest) indicates the movement speed;
 - first principle eigenvector indicates the movement direction.
+
+> Ex. $T: V \to V, p(T)=0, \forall \lambda$ as eigenvalue, $p(\lambda)=0$.
+
+Proof. $v \ne 0, Tv=\lambda v$, 
 
 > [!note] Def. (Charateristic polynomial) 
 > $p_{A}(t):=\det(A-t I_{n})$, a polynomial of $t$.
@@ -833,6 +837,8 @@ Proof. Get singular values and orthonormal bases from theorem applied on $L_{A}$
 
 Rmk. This decomposition can be regarded as eigenvalue decomposition with extra demand: two change of basis operators should preserve volume. The benefit is that $\Sigma$ will give a characterization of the size of A, while the downside is that now we have weaker but still nice form of $\Sigma$ (compared to [[Linear algebra#^4f3137]]).
 
+Ex. $A$ positive and invertible, $UAV^{*}=\Sigma$, then $U=V$.
+
 > [!note] Def. (Psuedo-inverse)
 > $T^{\dagger}: W \to V, T^{\dagger}|_{R(T)} := (T|_{(Ker T)^{\perp}})^{-1}, T^{\dagger}|_{ R(T)^{\perp} }:=0$.
 
@@ -840,6 +846,17 @@ Motiv. Consider $V=KerT \oplus KerT^{\perp}$ and $W=R(T)^{\perp} \oplus R(T)$. $
 
 Rmk. $T^{\dagger} T: V \to V$ is $proj_{KerT^{\perp}}^{V}$, $TT^{\dagger} : W \to W$ is $proj_{R(T)^{\perp}}^{W}$. When T is 1-1, $T^{\dagger} T=I_{V}$. When T is onto, $T T^{\dagger}=I_{W}$. Therefore, psuedo-inverse is close to inverse as much as possible.
 
+> [!note] Def. (Psuedo-inverse for matrix)
+> $A \in M_{m \times n}(F), A^{\dagger} \in M_{n \times m}(F)$ via $L_{A^\dagger}=(L_{A})^\dagger$.
+
+> Cor. (Almost SVD) Suppose $A=U \Sigma V^{*}$, then $A^{\dagger}=V\Sigma^{\dagger} U^{*}$, where $diag(\Sigma^{\dagger})=(\frac{1}{\sigma_{1}}, \frac{1}{\sigma_{2}} \dots \frac{1}{\sigma_{r}},0 \dots)$.
+
+Proof. $Ker L_{A}=span\{ v_{r+1}, \dots v_{n} \}, Ker L_{A}^{\perp} = span\{ v_{1} \dots v_{r} \}$. Note that $L_{A^{\dagger}}(u_{i}):= \frac{1}{\sigma_{i}} v_{i} \mathbb{1}(1 \le i \le r)$.
+
+> [!important] Thm.
+> $w=T(x)$, then $T^{-1}(w)=T^{\dagger}(w)+Ker T$. Furthermore, $\forall v\in T^{-1}(w), ||v|| \ge ||T^{\dagger}(w)||$.
+
+Proof. #TODO 
 # Ch7 Jordan Normal/Canonical Form
 Rmk. This charpter assumes all charateristic polys split.
 
@@ -877,6 +894,8 @@ Proof. (Trick of invariant cyclic subspace)
     2. $PAP^{-1} \sim A$: conjugate (which is the default one)
     3. $PA \sim A$, where $P$ is invertible: RREF
     4. $UAV^{*} \sim A$: SVD
+2. Some observation about "regarding real matrix A as complex matrix A'"
+    - $L_{A}'(x+iy)=L_{A}'(x)+iL_{A}'(y)=L_{A}(x)+i L_{A}(y)$.
 
 # Later
 https://courses.cs.washington.edu/courses/cse521/16sp/521-lecture-8.pdf
